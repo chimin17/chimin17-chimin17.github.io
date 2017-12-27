@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="前兩天我們先用CARTO(CartoDB)實作了一些基本的GIS資料視覺化，接觸了GIS資料。 取得GIS資料的方式有很多，包含：  取得實體檔或API(opendata等資料交換平台) 拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc. 地址定位：僅有poi的地址，可從線上資源取得地址的坐標  今天要介紹的為地址定位，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。  本文是">
+<meta name="description" content="取得GIS資料的方式有很多，包含：  取得實體檔或API(opendata等資料交換平台) 拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc. 地址定位：僅有poi的地址，可從線上資源取得地址的坐標  今天要介紹的為地址定位，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  以 臺北市各">
 <meta name="keywords" content="鐵人賽,web,GIS,google">
 <meta property="og:type" content="article">
 <meta property="og:title" content="鐵人賽Day 8-自己產製資料-地址定位part1">
 <meta property="og:url" content="https://chimin17.github,.io/2017/12/27/ironman-2018-day8/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="前兩天我們先用CARTO(CartoDB)實作了一些基本的GIS資料視覺化，接觸了GIS資料。 取得GIS資料的方式有很多，包含：  取得實體檔或API(opendata等資料交換平台) 拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc. 地址定位：僅有poi的地址，可從線上資源取得地址的坐標  今天要介紹的為地址定位，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。  本文是">
+<meta property="og:description" content="取得GIS資料的方式有很多，包含：  取得實體檔或API(opendata等資料交換平台) 拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc. 地址定位：僅有poi的地址，可從線上資源取得地址的坐標  今天要介紹的為地址定位，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  以 臺北市各">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20171227/20107816DaK7lkTNPs.jpg">
 <meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20171227/20107816IqfkzFy4YM.png">
@@ -96,10 +96,10 @@
 <meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20171227/201078160FcpfGkEPe.jpg">
 <meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20171227/201078165vK3FvChhI.jpg">
 <meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20171227/20107816JQLHpG6d2A.jpg">
-<meta property="og:updated_time" content="2017-12-27T05:08:25.071Z">
+<meta property="og:updated_time" content="2017-12-27T16:34:26.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽Day 8-自己產製資料-地址定位part1">
-<meta name="twitter:description" content="前兩天我們先用CARTO(CartoDB)實作了一些基本的GIS資料視覺化，接觸了GIS資料。 取得GIS資料的方式有很多，包含：  取得實體檔或API(opendata等資料交換平台) 拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc. 地址定位：僅有poi的地址，可從線上資源取得地址的坐標  今天要介紹的為地址定位，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。  本文是">
+<meta name="twitter:description" content="取得GIS資料的方式有很多，包含：  取得實體檔或API(opendata等資料交換平台) 拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc. 地址定位：僅有poi的地址，可從線上資源取得地址的坐標  今天要介紹的為地址定位，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  以 臺北市各">
 <meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20171227/20107816DaK7lkTNPs.jpg">
 
 
@@ -363,8 +363,7 @@
       
 
       
-        <p>前兩天我們先用CARTO(CartoDB)實作了一些基本的GIS資料視覺化，接觸了GIS資料。</p>
-<p>取得GIS資料的方式有很多，包含：</p>
+        <p>取得GIS資料的方式有很多，包含：</p>
 <ul>
 <li>取得實體檔或API(opendata等資料交換平台)</li>
 <li>拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc.</li>
