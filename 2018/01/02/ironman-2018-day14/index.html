@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="鐵人賽,web,GIS,geojson," />
+  <meta name="keywords" content="鐵人賽,web,GIS,geojson,leaflet," />
 
 
 
@@ -79,23 +79,25 @@
 
 
 
-<meta name="description" content="前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  Polygon with hole(Polygon裡面有洞)polygon with hole是polygon內挖個洞，geojson處理polygon with hole的方法是在coor">
-<meta name="keywords" content="鐵人賽,web,GIS,geojson">
+<meta name="description" content="前言網格(raster)資料是指以規則網格的方式呈現空間資料，可能是長這樣。 上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是… 假設今天網格的間隔更密一些，範圍在大一些，其資料量可能會很可觀，這時候無論在計算或是前端展示上，GIS傾向會使用影像方式儲存。 再者，上述案例在網格">
+<meta name="keywords" content="鐵人賽,web,GIS,geojson,leaflet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon">
-<meta property="og:url" content="https://chimin17.github,.io/2017/12/31/ironman-2018-day12/index.html">
+<meta property="og:title" content="鐵人賽Day 14- webgis中的網格資料">
+<meta property="og:url" content="https://chimin17.github,.io/2018/01/02/ironman-2018-day14/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  Polygon with hole(Polygon裡面有洞)polygon with hole是polygon內挖個洞，geojson處理polygon with hole的方法是在coor">
+<meta property="og:description" content="前言網格(raster)資料是指以規則網格的方式呈現空間資料，可能是長這樣。 上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是… 假設今天網格的間隔更密一些，範圍在大一些，其資料量可能會很可觀，這時候無論在計算或是前端展示上，GIS傾向會使用影像方式儲存。 再者，上述案例在網格">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20171230/20107816EWj2ahVeE1.png">
-<meta property="og:image" content="https://ppt.cc/fpVcux@.png">
-<meta property="og:image" content="https://ppt.cc/fAZJUx@.png">
-<meta property="og:image" content="http://ppt.cc/fmG5Ax@.png">
-<meta property="og:updated_time" content="2017-12-31T13:56:52.059Z">
+<meta property="og:image" content="https://ppt.cc/fJZEyx@.png">
+<meta property="og:image" content="https://ppt.cc/fJEkux@.png">
+<meta property="og:image" content="https://ppt.cc/f4WlWx@.png">
+<meta property="og:image" content="https://ppt.cc/fDRByx@.png">
+<meta property="og:image" content="https://ppt.cc/fxgSHx@.png">
+<meta property="og:image" content="https://ppt.cc/fPizDx@.png">
+<meta property="og:updated_time" content="2018-01-01T18:06:07.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon">
-<meta name="twitter:description" content="前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  Polygon with hole(Polygon裡面有洞)polygon with hole是polygon內挖個洞，geojson處理polygon with hole的方法是在coor">
-<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20171230/20107816EWj2ahVeE1.png">
+<meta name="twitter:title" content="鐵人賽Day 14- webgis中的網格資料">
+<meta name="twitter:description" content="前言網格(raster)資料是指以規則網格的方式呈現空間資料，可能是長這樣。 上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是… 假設今天網格的間隔更密一些，範圍在大一些，其資料量可能會很可觀，這時候無論在計算或是前端展示上，GIS傾向會使用影像方式儲存。 再者，上述案例在網格">
+<meta name="twitter:image" content="https://ppt.cc/fJZEyx@.png">
 
 
 
@@ -125,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="https://chimin17.github,.io/2017/12/31/ironman-2018-day12/"/>
+  <link rel="canonical" href="https://chimin17.github,.io/2018/01/02/ironman-2018-day14/"/>
 
 
 
 
 
-  <title>鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon | Chimin's Blog</title>
+  <title>鐵人賽Day 14- webgis中的網格資料 | Chimin's Blog</title>
   
 
 
@@ -258,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/31/ironman-2018-day12/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/02/ironman-2018-day14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -275,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon</h1>
+          <h1 class="post-title" itemprop="name headline">鐵人賽Day 14- webgis中的網格資料</h1>
         
 
         <div class="post-meta">
@@ -287,8 +289,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-31T10:11:43+08:00">
-                2017-12-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-02T01:11:43+08:00">
+                2018-01-02
               </time>
             
 
@@ -328,9 +330,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/31/ironman-2018-day12/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/02/ironman-2018-day14/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/31/ironman-2018-day12/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/02/ironman-2018-day14/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -358,18 +360,37 @@
       
 
       
-        <p>前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>網格(raster)資料是指以規則網格的方式呈現空間資料，可能是<a href="https://gist.github.com/chimin17/a15dd5a8f4664f8a7377e0d8a33673f5" target="_blank" rel="noopener">長這樣</a>。<br><img src="https://ppt.cc/fJZEyx@.png" alt=""></p>
+<p>上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是…</p>
+<p>假設今天網格的間隔<strong>更密一些</strong>，<strong>範圍在大一些</strong>，其資料量可能會很可觀，這時候無論在計算或是前端展示上，GIS傾向會使用影像方式儲存。</p>
+<p>再者，上述案例在網格式資料是<strong>單一波段</strong>的資料(也就是只有solRad這個屬性)，網格資料大多都是<strong>三個波段</strong>的資料(例如正射影像、衛星影像)，相關討論我們在<a href="https://ithelp.ithome.com.tw/articles/10193701" target="_blank" rel="noopener">[Day 6] 常見的GIS資料格式</a>有探討過。</p>
+<p>在webGIS中，我們可能比較少直接處理網格資料，通常都是使用它，今天我們試著使用Leaflet的raster圖層功能。</p>
 <blockquote>
 <p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
 </blockquote>
-<h2 id="Polygon-with-hole-Polygon裡面有洞"><a href="#Polygon-with-hole-Polygon裡面有洞" class="headerlink" title="Polygon with hole(Polygon裡面有洞)"></a>Polygon with hole(Polygon裡面有洞)</h2><p>polygon with hole是polygon內挖個洞，<strong>geojson</strong>處理polygon with hole的方法是在coordinates中加入hole，而且可以加入多個hole。<br>事實上，polygon的coordinates記錄的內容有兩個部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;coordinates&quot;: </span><br><span class="line">[[外圈形狀(outter ring array)], [內圈形狀1(inner ring array)],[內圈形狀2(inner ring array)]]</span><br></pre></td></tr></table></figure></p>
-<p>舉個例子，一個有洞的Polygon資料是長這樣(用json ediotr觀察)：<br><img src="https://ithelp.ithome.com.tw/upload/images/20171230/20107816EWj2ahVeE1.png" alt="https://ithelp.ithome.com.tw/upload/images/20171230/20107816EWj2ahVeE1.png"><br>coordinates這個array包覆的第一個元素是<strong>outter ring</strong>，為polygon的外框，<br>第二個元素後面則擺可以選擇性的放多個<strong>inner ring</strong>，其效果就是在polygon挖洞，並且可以挖很多洞。</p>
-<p>實務上，我們偶爾會遇到這種幾何，例如包圍著臺北市的新北市行政區域範圍(上面就是新北市的geojson)，polygon中的coordinates除了outter ring外，跟昨天的Polygon範例相比，多了一個inner ring，<a href="https://gist.github.com/chimin17/7dc4f37580e41d068800f05637b34ebb" target="_blank" rel="noopener">如有興趣，新北市geojson請點此下載</a>。<br><img src="https://ppt.cc/fpVcux@.png" alt=""><br>(資料取自<a href="https://github.com/ronnywang/twgeojson" target="_blank" rel="noopener">github twgeojson</a>。)</p>
-<h2 id="行政區域界線圖與Multipolygon"><a href="#行政區域界線圖與Multipolygon" class="headerlink" title="行政區域界線圖與Multipolygon"></a>行政區域界線圖與Multipolygon</h2><p>延續台灣的行政區當例子，行政區除了polygon內要被挖洞以外，當然也有行政區是由多個polgon組成，這時候在GIS資料是用multipolygon表示，例如澎湖等具有島嶼或群島性質的縣市，(<a href="https://gist.github.com/chimin17/a2651d9ad07c4ad5430d251c5b313226" target="_blank" rel="noopener">澎湖縣geojson請點此下載</a>)。<br><img src="https://ppt.cc/fAZJUx@.png" alt=""><br>(資料取自<a href="https://github.com/ronnywang/twgeojson" target="_blank" rel="noopener">github twgeojson</a>。)</p>
-<h3 id="飛地"><a href="#飛地" class="headerlink" title="飛地"></a>飛地</h3><p>除了外島因為地理上就是群島的關係，很合理的需要用到multipolygon，但是在本島，也有不少區域會用到multi polygon，這種現象叫做飛地，例如-<a href="https://zh.wikipedia.org/wiki/%E7%91%AA%E5%AE%B6%E9%84%89#%E8%A1%8C%E6%94%BF%E5%8D%80" target="_blank" rel="noopener">屏東縣瑪家鄉(wiki)</a>，除了原本的區域範圍外，因為政府早期鼓勵原住民到平地鄉開墾，因此遷村到原屬於內埔鄉及長治鄉範圍內，形成飛地，需要使用multipolygon表現<a href="https://gist.github.com/chimin17/271f7bc0fdc970e525ac378516518c5a" target="_blank" rel="noopener">(瑪家鄉geojson資料請點此下載)</a>。<br><img src="http://ppt.cc/fmG5Ax@.png" alt=""><br>(資料重製自<a href="http://nominatim.openstreetmap.org" target="_blank" rel="noopener">Open Street Map</a>)</p>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>關於飛地的資料，台灣其實有不少村里，由於一些因素造成遷村(政府政策、災害)，借用原本屬於其他行政區的一塊範圍使用，而出現像是瑪家鄉這樣的飛地。</p>
-<p>另外有一件有趣的事，就是發現國土測繪中心opendata的村里界圖資好像怪怪的…，竟然沒有顯示遷村而調整界線，還是沿用沒有遷村的範圍(1967年就遷村了)，可能有特殊理由吧(掌管門牌及行政區界是根據地方自治應該是縣市政府的權責，國土測繪中心這部分只是整合圖資供應的角色)。</p>
-<p>總之就是套上官方的行政區域圖後，竟發現<strong>瑪家國中位置及門牌竟然在瑪家鄉鄉界的外面</strong>…，這個問題我前陣子遇到過一次，還以為是自己程式有bug，弄了半天才發現是這個資料的問題，所以特別拿出來做為參考囉。</p>
+<h2 id="在地圖放影像-使用Leaflet-ImageOverlay"><a href="#在地圖放影像-使用Leaflet-ImageOverlay" class="headerlink" title="在地圖放影像:使用Leaflet-ImageOverlay"></a>在地圖放影像:使用Leaflet-ImageOverlay</h2><p>使用ImageOverlay之前我們先要有資料，這邊我們使用<a href="https://data.gov.tw/dataset/35430" target="_blank" rel="noopener">內政部20米DTM</a>。</p>
+<p>下載下來之後，原始檔案是*.grd，此時必須使用QGIS這套軟體稍作處理，將其轉為.tif或.jpg等。</p>
+<p>原先內政部提供的為TWD97，我們把它轉為WGS84，透過crs設定記錄其範圍坐標（後面要用）。<br><img src="https://ppt.cc/fJEkux@.png" alt=""></p>
+<p>把這張圖片加入地圖，使用imageOverlay，需要使用剛剛記錄的邊界<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var imageUrl = &apos;/dist/DEM.tif&apos;;</span><br><span class="line">var imageBounds = [[24.8737080, 120.9426029], [24.847877, 120.958343]];</span><br><span class="line">var imglayer = L.imageOverlay(imageUrl, imageBounds).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<p>成果：<br><img src="https://ppt.cc/f4WlWx@.png" alt=""></p>
+<p>另外，Leaflet也有VideoOverlay的類別，方法差不多，有需要可以自行參考。</p>
+<h2 id="介接圖磚服務-WMTS-使用Leaflet-TileLayer"><a href="#介接圖磚服務-WMTS-使用Leaflet-TileLayer" class="headerlink" title="介接圖磚服務(WMTS):使用Leaflet-TileLayer"></a>介接圖磚服務(WMTS):使用Leaflet-TileLayer</h2><p>我們在<a href="https://ithelp.ithome.com.tw/articles/10192948" target="_blank" rel="noopener">[Day 3] 談互操作性及Web Map Service 標準</a>有提到WMS與WMTS，兩者在Leaflet中分別方法可以放入我們的地圖，以國土測繪中心的WMTS為例，我們從<a href="https://wmts.nlsc.gov.tw/wmts" target="_blank" rel="noopener">Capabilities</a>的xml檔可以看到介接圖磚的資訊。<br>使用tileLayer實作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L.tileLayer(&apos;https://wmts.nlsc.gov.tw/wmts/EMAP/default/GoogleMapsCompatible/&#123;z&#125;/&#123;y&#125;/&#123;x&#125;&apos;).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<h2 id="圖磚-web-tiles-跟向量圖磚-vector-tiles"><a href="#圖磚-web-tiles-跟向量圖磚-vector-tiles" class="headerlink" title="圖磚(web tiles)跟向量圖磚(vector tiles)"></a>圖磚(web tiles)跟向量圖磚(vector tiles)</h2><p>觀察一下剛剛前面增加的兩個圖層：<br><img src="https://ppt.cc/fDRByx@.png" alt=""><br><img src="https://ppt.cc/fxgSHx@.png" alt=""></p>
+<p>可以觀察到：</p>
+<ul>
+<li>使用imageOverlay，request部分是把整張影像存取下來<br>而使用tileLayer可以發現整個地圖是以細碎的方式存取，這是兩者最大差異。</li>
+<li>對地圖做縮放，imageOverlay並不會重新request資料，tileLayer則會，表示tileLayer是有高度(深度)的。</li>
+</ul>
+<p>以上兩點正好可以拿來說明tileLayer，試想，如果我們一次要存取大範圍的影像，使用imageOverlay應該不太妥當，一來<strong>影像太大</strong>，<strong>二來不能依照深度或高度展示不同細節</strong>。</p>
+<h3 id="圖磚-web-tiles"><a href="#圖磚-web-tiles" class="headerlink" title="圖磚(web tiles)"></a>圖磚(web tiles)</h3><p>TileLayer或是說WMTS的設計概念如下，簡單來講，就是將原始影像<strong>依不同深度切成不同大小的磚</strong>，並透過資料標準的方式協定介接規格，所以client端可以根據不同坐標及深度要求不同的資料，而不是整張影像存取，以增加效率：<br><img src="https://ppt.cc/fPizDx@.png" alt=""><br>(<a href="https://docs.qgis.org/2.14/id/docs/user_manual/working_with_ogc/ogc_client_support.html" target="_blank" rel="noopener">取自QGIS</a>)</p>
+<h2 id="向量圖磚-vector-tiles"><a href="#向量圖磚-vector-tiles" class="headerlink" title="向量圖磚(vector tiles)"></a>向量圖磚(vector tiles)</h2><p>Vector tiles是這幾年webGIS發展的趨勢，它不像wmts是以影像為respond，而是使用geojson，也就是說，過去我們使用的wmts(指通用版電子地圖這類的，不是指正射影像)，是把點線面向量資料網格化成影像製成tiles，而vector tiles是以向量的方式提供給client端。</p>
+<p>使用vector tiles具有這些優勢 (取自<a href="https://www.mapbox.com/vector-tiles/" target="_blank" rel="noopener">mapbox</a>)：</p>
+<ul>
+<li>可自行定義地圖樣式</li>
+<li>vector tile資料小，存取更快</li>
+</ul>
+<p>像是Google map也是採用vector tile的技術，因此可以使用<a href="https://snazzymaps.com/" target="_blank" rel="noopener">snazzy</a>這類工具產生樣式定義檔，並在地圖上使用。</p>
+<p>其他像是<a href="https://carto.com/location-data-services/basemaps/" target="_blank" rel="noopener">cartodb</a>、<a href="https://www.mapbox.com/vector-tiles/" target="_blank" rel="noopener">mapbox</a>，OpenStreetMap的<a href="http://wiki.openstreetmap.org/wiki/Vector_tiles" target="_blank" rel="noopener">ID editor</a>也是利用vector tile技術，而Leaflet也有<a href="http://leafletjs.com/plugins.html#vector-tiles" target="_blank" rel="noopener">相關擴充</a>。</p>
 
       
     </div>
@@ -395,6 +416,8 @@
           
             <a href="/tags/geojson/" rel="tag"># geojson</a>
           
+            <a href="/tags/leaflet/" rel="tag"># leaflet</a>
+          
         </div>
       
 
@@ -406,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/30/ironman-2018-day11/" rel="next" title="鐵人賽Day 11- webgis中的向量圖層-除了點資料以外的幾何">
-                <i class="fa fa-chevron-left"></i> 鐵人賽Day 11- webgis中的向量圖層-除了點資料以外的幾何
+              <a href="/2018/01/01/ironman-2018-day13/" rel="next" title="鐵人賽Day 13- webgis中的向量資料:在leaflet實作">
+                <i class="fa fa-chevron-left"></i> 鐵人賽Day 13- webgis中的向量資料:在leaflet實作
               </a>
             
           </div>
@@ -415,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/01/ironman-2018-day13/" rel="prev" title="鐵人賽Day 13- webgis中的向量資料:在leaflet實作">
-                鐵人賽Day 13- webgis中的向量資料:在leaflet實作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -570,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Polygon-with-hole-Polygon裡面有洞"><span class="nav-number">1.</span> <span class="nav-text">Polygon with hole(Polygon裡面有洞)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行政區域界線圖與Multipolygon"><span class="nav-number">2.</span> <span class="nav-text">行政區域界線圖與Multipolygon</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#飛地"><span class="nav-number">2.1.</span> <span class="nav-text">飛地</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#後記"><span class="nav-number">3.</span> <span class="nav-text">後記</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在地圖放影像-使用Leaflet-ImageOverlay"><span class="nav-number">2.</span> <span class="nav-text">在地圖放影像:使用Leaflet-ImageOverlay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#介接圖磚服務-WMTS-使用Leaflet-TileLayer"><span class="nav-number">3.</span> <span class="nav-text">介接圖磚服務(WMTS):使用Leaflet-TileLayer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圖磚-web-tiles-跟向量圖磚-vector-tiles"><span class="nav-number">4.</span> <span class="nav-text">圖磚(web tiles)跟向量圖磚(vector tiles)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#圖磚-web-tiles"><span class="nav-number">4.1.</span> <span class="nav-text">圖磚(web tiles)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向量圖磚-vector-tiles"><span class="nav-number">5.</span> <span class="nav-text">向量圖磚(vector tiles)</span></a></li></ol></div>
             
 
           </div>
@@ -740,9 +759,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://chimin17.github,.io/2017/12/31/ironman-2018-day12/';
-          this.page.identifier = '2017/12/31/ironman-2018-day12/';
-          this.page.title = '鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon';
+          this.page.url = 'https://chimin17.github,.io/2018/01/02/ironman-2018-day14/';
+          this.page.identifier = '2018/01/02/ironman-2018-day14/';
+          this.page.title = '鐵人賽Day 14- webgis中的網格資料';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://chimin17.disqus.com/embed.js';
