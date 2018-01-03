@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="鐵人賽,web,GIS," />
+  <meta name="keywords" content="鐵人賽,web,GIS,leaflet," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="webGIS-資訊時代的地理大發現在現代的網頁應用中，地圖應用已經成為了不可或缺的網頁元素，一個現代網頁中，有了地圖應用，可以讓使用者查詢空間資訊；開發者亦可實踐各種LBS(Location Based Services)及IOT(Internet of Things)的應用。 目前網路上有許多開發資源可以協助我們建構一些地圖應用，並且透過資料視覺化及UI/UX，使空間資訊有效地呈現給user，u">
-<meta name="keywords" content="鐵人賽,web,GIS">
+<meta name="description" content="前言今天開始要逐步建立一個webGIS，練習一下使用Leaflet等API的實戰能力，在開始之前，先設定這個系統的基本功能：  切換底圖 定位 量測 資料查詢 街景 空間查詢 結合統計圖表 路徑規劃 資料視覺化 本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”    今日工作我們把工作分成幾天說明，今天預計會完成的部分屬於地圖基本款的設置，包含了：  版型及基">
+<meta name="keywords" content="鐵人賽,web,GIS,leaflet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="鐵人賽Day 1-webGIS:資訊時代的地理大發現">
-<meta property="og:url" content="https://chimin17.github,.io/2017/12/20/ironman-2018-day1/index.html">
+<meta property="og:title" content="鐵人賽Day 16- webgis中的網格資料">
+<meta property="og:url" content="https://chimin17.github,.io/2018/01/04/ironman-2018-day16/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="webGIS-資訊時代的地理大發現在現代的網頁應用中，地圖應用已經成為了不可或缺的網頁元素，一個現代網頁中，有了地圖應用，可以讓使用者查詢空間資訊；開發者亦可實踐各種LBS(Location Based Services)及IOT(Internet of Things)的應用。 目前網路上有許多開發資源可以協助我們建構一些地圖應用，並且透過資料視覺化及UI/UX，使空間資訊有效地呈現給user，u">
+<meta property="og:description" content="前言今天開始要逐步建立一個webGIS，練習一下使用Leaflet等API的實戰能力，在開始之前，先設定這個系統的基本功能：  切換底圖 定位 量測 資料查詢 街景 空間查詢 結合統計圖表 路徑規劃 資料視覺化 本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”    今日工作我們把工作分成幾天說明，今天預計會完成的部分屬於地圖基本款的設置，包含了：  版型及基">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-27T05:05:37.442Z">
+<meta property="og:image" content="https://ppt.cc/fOgvux@.png">
+<meta property="og:updated_time" content="2018-01-03T16:36:52.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="鐵人賽Day 1-webGIS:資訊時代的地理大發現">
-<meta name="twitter:description" content="webGIS-資訊時代的地理大發現在現代的網頁應用中，地圖應用已經成為了不可或缺的網頁元素，一個現代網頁中，有了地圖應用，可以讓使用者查詢空間資訊；開發者亦可實踐各種LBS(Location Based Services)及IOT(Internet of Things)的應用。 目前網路上有許多開發資源可以協助我們建構一些地圖應用，並且透過資料視覺化及UI/UX，使空間資訊有效地呈現給user，u">
+<meta name="twitter:title" content="鐵人賽Day 16- webgis中的網格資料">
+<meta name="twitter:description" content="前言今天開始要逐步建立一個webGIS，練習一下使用Leaflet等API的實戰能力，在開始之前，先設定這個系統的基本功能：  切換底圖 定位 量測 資料查詢 街景 空間查詢 結合統計圖表 路徑規劃 資料視覺化 本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”    今日工作我們把工作分成幾天說明，今天預計會完成的部分屬於地圖基本款的設置，包含了：  版型及基">
+<meta name="twitter:image" content="https://ppt.cc/fOgvux@.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://chimin17.github,.io/2017/12/20/ironman-2018-day1/"/>
+  <link rel="canonical" href="https://chimin17.github,.io/2018/01/04/ironman-2018-day16/"/>
 
 
 
 
 
-  <title>鐵人賽Day 1-webGIS:資訊時代的地理大發現 | Chimin's Blog</title>
+  <title>鐵人賽Day 16- webgis中的網格資料 | Chimin's Blog</title>
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/20/ironman-2018-day1/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/04/ironman-2018-day16/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">鐵人賽Day 1-webGIS:資訊時代的地理大發現</h1>
+          <h1 class="post-title" itemprop="name headline">鐵人賽Day 16- webgis中的網格資料</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-20T23:26:43+08:00">
-                2017-12-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T00:11:43+08:00">
+                2018-01-04
               </time>
             
 
@@ -323,9 +325,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/20/ironman-2018-day1/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/04/ironman-2018-day16/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/20/ironman-2018-day1/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/04/ironman-2018-day16/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -353,40 +355,53 @@
       
 
       
-        <h2 id="webGIS-資訊時代的地理大發現"><a href="#webGIS-資訊時代的地理大發現" class="headerlink" title="webGIS-資訊時代的地理大發現"></a>webGIS-資訊時代的地理大發現</h2><p>在現代的網頁應用中，地圖應用已經成為了不可或缺的網頁元素，一個現代網頁中，有了地圖應用，可以讓使用者查詢空間資訊；開發者亦可實踐各種<strong>LBS</strong>(Location Based Services)及<strong>IOT</strong>(Internet of Things)的應用。</p>
-<p>目前網路上有許多開發資源可以協助我們建構一些地圖應用，並且透過資料視覺化及UI/UX，使空間資訊有效地呈現給user，user也可以request資訊，讓系統是雙向互動的，相關的應用國內外都有很多案例。</p>
-<p>然而，目前線上整合這些資源且能涵蓋背後相關技術的完整介紹並不多，我們團隊希望藉由<strong>2018 IT邦鐵人賽</strong>機會，除整合資源應用外，再加碼一些GIS相關技術面探討，目標是運用開源軟體，<strong>30天打造一個webGIS系統</strong>。</p>
-<blockquote>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天開始要逐步建立一個webGIS，練習一下使用<strong>Leaflet</strong>等API的實戰能力，在開始之前，先設定這個系統的基本功能：</p>
+<ul>
+<li>切換底圖</li>
+<li>定位</li>
+<li>量測</li>
+<li>資料查詢</li>
+<li>街景</li>
+<li>空間查詢</li>
+<li>結合統計圖表</li>
+<li>路徑規劃</li>
+<li>資料視覺化<blockquote>
 <p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
 </blockquote>
-<h2 id="地圖應用與webGIS"><a href="#地圖應用與webGIS" class="headerlink" title="地圖應用與webGIS"></a>地圖應用與webGIS</h2><p>GIS是地理資訊系統(Geographical Information System)的英文縮寫，GIS在學術及產業應用上發展已經蓬勃發展數十年，而<strong>webGIS簡單來說就是把GIS應用在網頁相關平台上</strong>。</p>
-<p>根據GIS應用軟體供應商龍頭Esri的定義：</p>
-<blockquote>
-<p>In its simplest form, web GIS can be defined as any GIS that uses web technology to communicate between a server and a client (Esri)</p>
-</blockquote>
-<p>更具體一點，Esri認為webGIS包含以下元素</p>
-<blockquote>
-<ul>
-<li>The server has a URL so that clients can find it on the web.</li>
-<li>The client relies on HTTP specifications to send - requests to the server.</li>
-<li>The server performs the requested GIS operations and &gt; sends responses to the client via HTTP.</li>
-<li>The format of the response sent to the client can be in many formats, such as HTML, binary image, XML (Extensible Markup Language), or JSON (JavaScript Object Notation).</li>
+</li>
 </ul>
-</blockquote>
-<p>上述文字基本上描述了webGIS的核心，在此我們可以加以擴充，有了webGIS技術，配合前後端技術的整合，得以讓網頁加入地圖應用元素。</p>
-<blockquote>
-<p>參考文獻: <a href="http://www.geo-jobe.com/videos/web-gis-explained-5-essential-elements-web-gis/" target="_blank" rel="noopener">http://www.geo-jobe.com/videos/web-gis-explained-5-essential-elements-web-gis/</a></p>
-</blockquote>
-<h2 id="規劃架構"><a href="#規劃架構" class="headerlink" title="規劃架構"></a>規劃架構</h2><p>以下是擬定的架構，希望能完整走過：</p>
+<h2 id="今日工作"><a href="#今日工作" class="headerlink" title="今日工作"></a>今日工作</h2><p>我們把工作分成幾天說明，今天預計會完成的部分屬於地圖基本款的設置，<br>包含了：</p>
 <ul>
-<li>開發之前，先暸解資料：GIS資料基本概念、資料處理、如何自製資料 </li>
-<li>一些既有的線上SDK: CARTO, Google Fusion table</li>
-<li>webGIS開發資源: 資源介紹, 創造資源(OSM)</li>
-<li>資源實作: 開始整合各種接API</li>
-<li>進階處理: 空間資料庫處理、空間運算</li>
-<li>綜合演練</li>
+<li>版型及基本設置</li>
+<li>切換底圖</li>
+<li>定位</li>
+<li>量測</li>
 </ul>
-<h2 id="關於作者"><a href="#關於作者" class="headerlink" title="關於作者"></a>關於作者</h2><p>服務於國內知名工程顧問公司的GIS應用開發團隊，希望藉由此次經驗，強化自己對開源軟體及本身核心技術的暸解！</p>
+<p>相關的程式碼都放在<a href="https://github.com/chimin17/dotnet-leaflet" target="_blank" rel="noopener">github</a>，commit原則上會依照文章標示。</p>
+<h3 id="版型及基本設置"><a href="#版型及基本設置" class="headerlink" title="版型及基本設置"></a>版型及基本設置</h3><p>首先，版型很重要，為了方便起見，我們直接套用<strong>boostrap template</strong>，並模仿bootleaf這個專案設計了一套版型。</p>
+<p>大概會是長這樣：<br><img src="https://ppt.cc/fOgvux@.png" alt=""></p>
+<p>上方留一個Navigation Bar做為選單空間，此外，最重要的區塊，就是要有一個map的 div</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;container&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;map&quot;&gt;&lt;/div&gt;</span><br><span class="line">  //預留其他上下左右panel,寬度及高度建議滿版</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ps.關於排版詳情請參考原始碼..</p>
+</blockquote>
+<p>接下來，我們在app.js加入：<br><code>map = L.map(&#39;map&#39;).setView([25.0375928, 121.5529563], 10);</code><br>在這邊提醒一下，leaflet預設使用的坐標系統是<strong>EPSG:4326</strong>，但tileLayers的WMTS標準大多是EPSG:3857，忘記或搞混的可以參考<a href="https://ithelp.ithome.com.tw/articles/10194371" target="_blank" rel="noopener">這一篇</a>，另外，第二個值是指zoom layer。</p>
+<h3 id="底圖切換功能"><a href="#底圖切換功能" class="headerlink" title="底圖切換功能"></a>底圖切換功能</h3><p>加入底圖部分，在過去幾天我們也有使用了幾次，基本上是使用tileLayer這個類別，然而，webGIS通常會加入多種底圖，並且要有切換的功能。</p>
+<p>因此，在此我們使用<a href="https://github.com/consbio/Leaflet.Basemaps" target="_blank" rel="noopener">Leaflet.Basemaps</a>套件：</p>
+<blockquote>
+<p>ps.類似的功能也可以自行實作看看，使用<strong>layerGroup</strong></p>
+</blockquote>
+<p>Include the CSS:<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;L.Control.Basemaps.css&quot; /&gt;</code><br>Include the JavaScript:<br><code>&lt;script src=&quot;L.Control.Basemaps-min.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>app.js：<strong>這邊用了兩個我覺得滿好看的底圖</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var basemaps = [</span><br><span class="line">  L.tileLayer(&apos;//&#123;s&#125;.tile.stamen.com/toner-lite/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;.png&apos;, &#123;</span><br><span class="line">    attribution: &apos;Map tiles by &lt;a href=&quot;http://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt; — Map data © &lt;a href=&quot;http://openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href=&quot;http://creativecommons.org/licenses/by-sa/2.0/&quot;&gt;CC-BY-SA&lt;/a&gt;&apos;,</span><br><span class="line">    subdomains: &apos;abcd&apos;,</span><br><span class="line">    maxZoom: 20,</span><br><span class="line">    minZoom: 0,</span><br><span class="line">    label: &apos;Toner Lite&apos;  // optional label used for tooltip</span><br><span class="line">  &#125;),</span><br><span class="line"></span><br><span class="line">  L.tileLayer(&apos;//&#123;s&#125;.tile.stamen.com/watercolor/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;.png&apos;, &#123;</span><br><span class="line">    attribution: &apos;Map tiles by &lt;a href=&quot;http://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt; — Map data © &lt;a href=&quot;http://openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href=&quot;http://creativecommons.org/licenses/by-sa/2.0/&quot;&gt;CC-BY-SA&lt;/a&gt;&apos;,</span><br><span class="line">    subdomains: &apos;abcd&apos;,</span><br><span class="line">    maxZoom: 16,</span><br><span class="line">    minZoom: 1,</span><br><span class="line">    label: &apos;Watercolor&apos;</span><br><span class="line">  &#125;)</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">map.addControl(L.control.basemaps(&#123;</span><br><span class="line">  basemaps: basemaps,</span><br><span class="line">  tileX: 0,  // tile X coordinate</span><br><span class="line">  tileY: 0,  // tile Y coordinate</span><br><span class="line">  tileZ: 1   // tile zoom level</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p>
+<h3 id="定位功能"><a href="#定位功能" class="headerlink" title="定位功能"></a>定位功能</h3><p>定位功能是webgis基本款，因為光有地圖，很多使用者會不知道自己在哪裡而迷了路，因此類似Google關鍵字地標搜尋，可以輸入關鍵字定位的功能，會是webGIS會出現的東西。</p>
+<p>這類地標搜尋可以使用<strong>Google、Here、Mapbox</strong>，有些是免費(有request限制)以些是付費的，像這些POI供應平台申請access token後即可使用他們的API，在這邊我們使用的也是套件:<a href="https://github.com/perliedman/leaflet-control-geocoder" target="_blank" rel="noopener">Leaflet.geocoder</a>。</p>
+<p>Include the CSS:<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;~/dist/assets/css/Control.Geocoder.css&quot; /&gt;</code></p>
+<p> Include the JavaScript:<br><code>&lt;script src=&quot;~/dist/assets/js/Control.Geocoder.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>app.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var geocoder = L.Control.geocoder(&#123;</span><br><span class="line">  defaultMarkGeocode: true</span><br><span class="line">&#125;).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<h3 id="量測功能"><a href="#量測功能" class="headerlink" title="量測功能"></a>量測功能</h3><p>在圖上量測距離及面積，我們一樣直接使用模組，並把套件的文字稍微中文化。<br>Include the CSS:<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;~/dist/assets/css/leaflet-measure.css&quot; /&gt;</code></p>
+<p> Include the JavaScript:<br><code>&lt;script src=&quot;~/dist/assets/js/leaflet-measure.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>app.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var measureControl = new L.Control.Measure(&#123; measureControl: true, primaryLengthUnit: &apos;meters&apos;, secondaryLengthUnit: &apos;kilometers&apos; &#125;);</span><br><span class="line">measureControl.addTo(map);</span><br></pre></td></tr></table></figure></p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>今天先將版型設置好及將地圖基本款功能放在地圖上，後續我們還有很多部分要實作，明天繼續加油！</p>
 
       
     </div>
@@ -410,6 +425,8 @@
           
             <a href="/tags/GIS/" rel="tag"># GIS</a>
           
+            <a href="/tags/leaflet/" rel="tag"># leaflet</a>
+          
         </div>
       
 
@@ -421,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/26/annaconda/" rel="next" title="annaconda python環境快速搭建">
-                <i class="fa fa-chevron-left"></i> annaconda python環境快速搭建
+              <a href="/2018/01/02/ironman-2018-day14/" rel="next" title="鐵人賽Day 14- webgis中的網格資料">
+                <i class="fa fa-chevron-left"></i> 鐵人賽Day 14- webgis中的網格資料
               </a>
             
           </div>
@@ -430,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/21/ironman-2018-day2/" rel="prev" title="鐵人賽Day 2-webGIS初步">
-                鐵人賽Day 2-webGIS初步 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webGIS-資訊時代的地理大發現"><span class="nav-number">1.</span> <span class="nav-text">webGIS-資訊時代的地理大發現</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#地圖應用與webGIS"><span class="nav-number">2.</span> <span class="nav-text">地圖應用與webGIS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#規劃架構"><span class="nav-number">3.</span> <span class="nav-text">規劃架構</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#關於作者"><span class="nav-number">4.</span> <span class="nav-text">關於作者</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#今日工作"><span class="nav-number">2.</span> <span class="nav-text">今日工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版型及基本設置"><span class="nav-number">2.1.</span> <span class="nav-text">版型及基本設置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#底圖切換功能"><span class="nav-number">2.2.</span> <span class="nav-text">底圖切換功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定位功能"><span class="nav-number">2.3.</span> <span class="nav-text">定位功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#量測功能"><span class="nav-number">2.4.</span> <span class="nav-text">量測功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#後記"><span class="nav-number">3.</span> <span class="nav-text">後記</span></a></li></ol></div>
             
 
           </div>
@@ -755,9 +768,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://chimin17.github,.io/2017/12/20/ironman-2018-day1/';
-          this.page.identifier = '2017/12/20/ironman-2018-day1/';
-          this.page.title = '鐵人賽Day 1-webGIS:資訊時代的地理大發現';
+          this.page.url = 'https://chimin17.github,.io/2018/01/04/ironman-2018-day16/';
+          this.page.identifier = '2018/01/04/ironman-2018-day16/';
+          this.page.title = '鐵人賽Day 16- webgis中的網格資料';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://chimin17.disqus.com/embed.js';
