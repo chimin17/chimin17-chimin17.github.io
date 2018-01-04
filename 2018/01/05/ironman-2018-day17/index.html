@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性POI資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。 今天就繼續昨天的成果，使用Leaflet實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。 今日工作 goejson加入marker 建立list table 詳細">
+<meta name="description" content="昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性POI資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。 今天就繼續昨天的成果，使用Leaflet實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的W">
 <meta name="keywords" content="鐵人賽,web,GIS,leaflet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="鐵人賽Day 17- Leaflet.js：加入資料及資料互動">
 <meta property="og:url" content="https://chimin17.github,.io/2018/01/05/ironman-2018-day17/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性POI資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。 今天就繼續昨天的成果，使用Leaflet實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。 今日工作 goejson加入marker 建立list table 詳細">
+<meta property="og:description" content="昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性POI資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。 今天就繼續昨天的成果，使用Leaflet實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的W">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ppt.cc/f3pVix@.png">
 <meta property="og:image" content="https://ppt.cc/fmd2Ux@.png">
 <meta property="og:image" content="https://ppt.cc/fTSUhx@.png">
-<meta property="og:updated_time" content="2018-01-04T16:31:34.671Z">
+<meta property="og:updated_time" content="2018-01-04T16:34:10.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽Day 17- Leaflet.js：加入資料及資料互動">
-<meta name="twitter:description" content="昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性POI資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。 今天就繼續昨天的成果，使用Leaflet實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。 今日工作 goejson加入marker 建立list table 詳細">
+<meta name="twitter:description" content="昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性POI資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。 今天就繼續昨天的成果，使用Leaflet實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的W">
 <meta name="twitter:image" content="https://ppt.cc/f3pVix@.png">
 
 
@@ -359,6 +359,9 @@
       
         <p>昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性<strong>POI</strong>資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。</p>
 <p>今天就繼續昨天的成果，使用<strong>Leaflet</strong>實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
 <h2 id="今日工作"><a href="#今日工作" class="headerlink" title="今日工作"></a>今日工作</h2><ul>
 <li>goejson加入marker</li>
 <li>建立list table</li>
