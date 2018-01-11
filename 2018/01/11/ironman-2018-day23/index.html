@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="鐵人賽,web,GIS,leaflet,Google," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言今天要在地圖中加入另一個元素：街景。到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  申請token跟昨天一樣，使用Google API都要申請token，這邊偷懶地簡單說明一下：街景服務是被放在Google J">
+<meta name="keywords" content="鐵人賽,web,GIS,leaflet,Google">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鐵人賽Day 23- 在WebGIS中加入Google街景">
+<meta property="og:url" content="https://chimin17.github,.io/2018/01/11/ironman-2018-day23/index.html">
+<meta property="og:site_name" content="Chimin&#39;s Blog">
+<meta property="og:description" content="前言今天要在地圖中加入另一個元素：街景。到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  申請token跟昨天一樣，使用Google API都要申請token，這邊偷懶地簡單說明一下：街景服務是被放在Google J">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://ppt.cc/f1t0Yx@.png">
+<meta property="og:image" content="https://ppt.cc/foKFXx@.png">
+<meta property="og:image" content="https://ppt.cc/f5iwnx@.png">
+<meta property="og:image" content="https://ppt.cc/feER2x@.png">
+<meta property="og:image" content="https://ppt.cc/fQGQgx@.png">
+<meta property="og:image" content="https://ppt.cc/fPUykx@.png">
+<meta property="og:image" content="https://ppt.cc/fthGCx@.gif">
+<meta property="og:updated_time" content="2018-01-11T17:11:05.960Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鐵人賽Day 23- 在WebGIS中加入Google街景">
+<meta name="twitter:description" content="前言今天要在地圖中加入另一個元素：街景。到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  申請token跟昨天一樣，使用Google API都要申請token，這邊偷懶地簡單說明一下：街景服務是被放在Google J">
+<meta name="twitter:image" content="https://ppt.cc/f1t0Yx@.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chimin17.github,.io/2018/01/11/ironman-2018-day23/"/>
+
+
+
+
+
+  <title>鐵人賽Day 23- 在WebGIS中加入Google街景 | Chimin's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chimin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Chimin's 技術分享筆記</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/11/ironman-2018-day23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chi-Min Chiu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chimin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">鐵人賽Day 23- 在WebGIS中加入Google街景</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-11T08:00:43+08:00">
+                2018-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/11/ironman-2018-day23/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/11/ironman-2018-day23/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在地圖中加入另一個元素：街景。<br>到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="申請token"><a href="#申請token" class="headerlink" title="申請token"></a>申請token</h2><p>跟昨天一樣，使用Google API都要申請token，這邊偷懶地簡單說明一下：<br>街景服務是被放在Google Javascript API之下，<br>首先打開<a href="https://developers.google.com/maps/documentation/javascript/streetview?hl=zh-tw" target="_blank" rel="noopener">連結</a>，按右上角取得金鑰。<br><img src="https://ppt.cc/f1t0Yx@.png" alt=""></p>
+<p>然後選取一個專案(如果沒有要另外開啟)。<br><img src="https://ppt.cc/foKFXx@.png" alt=""></p>
+<p>之後就會取得一組金鑰，這就是token。<br><img src="https://ppt.cc/f5iwnx@.png" alt=""></p>
+<h2 id="加入街景"><a href="#加入街景" class="headerlink" title="加入街景"></a>加入街景</h2><p>收先要引入Google API，記得YOUR_KEY是放你的token喔<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;script type=&quot;text/javascript&quot;</span><br><span class="line">  src=&quot;https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&amp;libraries=StreetViewPanorama&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>首先我們沿用昨天的版型，在bottom區塊增加一個id 為googleStreet的div<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&apos;googleStreet&apos;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>接著在app.js加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var panorama = new google.maps.StreetViewPanorama(</span><br><span class="line">  document.getElementById(&apos;googleStreet&apos;), &#123;</span><br><span class="line">    position: &#123;</span><br><span class="line"></span><br><span class="line">      lat: 25.0574304,</span><br><span class="line">      lng: 121.5964764</span><br><span class="line">    &#125;,</span><br><span class="line">    pov: &#123; heading: 165, pitch: 0 &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>其中呢，lat及lng為經緯度資訊，pov為相片的水平角及俯仰角。</p>
+<blockquote>
+<ul>
+<li>heading （預設為 0）使用從正北方算起的相對角度來定義相機焦點的旋轉角度。方向是以順時針方向計算（90 度為正東方）。</li>
+<li>pitch （預設為 0）定義從相機的初始預設傾斜「往上」或「往下」的角度變化，通常是（但不總是）平面水平。（例如，在山丘上拍到的影像可能會展示不是水平視角的預設傾斜。）傾斜角度的測量是往上仰視為正值（與預設傾斜呈垂直向上的 +90 度），往下俯視為負值（與預設傾斜呈垂直向下的 -90 度）。</li>
+</ul>
+</blockquote>
+<p>成功囉：</p>
+<p><img src="https://ppt.cc/feER2x@.png" alt=""></p>
+<h2 id="加入地圖互動"><a href="#加入地圖互動" class="headerlink" title="加入地圖互動"></a>加入地圖互動</h2><p>利用Google的方法，初始化街景影像還不夠，別忘記Google環景還有「小人」這個元素。<br>我們來加入類似小人的marker，讓街景跟地圖能互動。<br>要完成這件事需要一些事件綁定，在google.maps.StreetViewPanorama有訂定一些事件：</p>
+<blockquote>
+<ul>
+<li>pano_changed 個別全景變更時引發。</li>
+<li>position_changed 會在全景的底層 (LatLng) 位置變更時引發。旋轉全景將不會觸發此事件。</li>
+<li>pov_changed 會在「街景服務」的 StreetViewPov 變更時引發。</li>
+<li>links_changed 會在「街景服務」的連結變更時引發。</li>
+<li>visible_changed 會在「街景服務」的可見度變更時引發。</li>
+</ul>
+</blockquote>
+<h3 id="移動事件"><a href="#移動事件" class="headerlink" title="移動事件"></a>移動事件</h3><p>移動事件這邊使用position_changed，並且在事件中利用getPosition()取得相片所在坐標，把坐標標示一個marker在地圖上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var panoramMan = L.geoJson(null);</span><br><span class="line">panorama.addListener(&apos;position_changed&apos;, function () &#123;</span><br><span class="line">  map.removeLayer(panoramMan);</span><br><span class="line">  console.log(&quot;x:&quot; + panorama.getPosition().lng());</span><br><span class="line">  console.log(&quot;y:&quot; + panorama.getPosition().lat());</span><br><span class="line">  panoramMan = L.marker([panorama.getPosition().lat(), panorama.getPosition().lng()]).addTo(map);</span><br><span class="line">  map.setView([panorama.getPosition().lat(), panorama.getPosition().lng()], 17)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>加入這個事件以後，只要我們在全景視窗中移動，會有一個marker在圖上。<br>成果：<br><img src="https://ppt.cc/fQGQgx@.png" alt=""></p>
+<h3 id="旋轉事件"><a href="#旋轉事件" class="headerlink" title="旋轉事件"></a>旋轉事件</h3><p>要有旋轉的效果，首先先把marker的symbol改成有方向性的圖片：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var streetIcon = L.icon(&#123;</span><br><span class="line">  iconUrl: &apos;./dist/assets/img/streetman.png&apos;,</span><br><span class="line">  iconSize: [32, 32],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在加入時設定icon的rotationAngle，值我們可以使用panorama.pov.heading取得轉向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">panoramMan = L.marker([panorama.getPosition().lat(), panorama.getPosition().lng()],</span><br><span class="line">    &#123; rotationAngle: panorama.pov.heading, icon: streetIcon &#125;).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ppt.cc/fPUykx@.png" alt=""><br>完整程式碼：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">var panoramMan = L.geoJson(null);</span><br><span class="line">//圖片</span><br><span class="line">var streetIcon = L.icon(&#123;</span><br><span class="line">  iconUrl: &apos;./dist/assets/img/streetman.png&apos;,</span><br><span class="line">  iconSize: [32, 32],</span><br><span class="line">&#125;);</span><br><span class="line">google街景</span><br><span class="line">var panorama = new google.maps.StreetViewPanorama(</span><br><span class="line">  document.getElementById(&apos;googleStreet&apos;), &#123;</span><br><span class="line">    position: &#123;</span><br><span class="line">      lat: 25.0574304,</span><br><span class="line">      lng: 121.5964764</span><br><span class="line">    &#125;,</span><br><span class="line">    pov: &#123; heading: 165, pitch: 0 &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  </span><br><span class="line">//位置變換事件</span><br><span class="line">panorama.addListener(&apos;position_changed&apos;, function () &#123;</span><br><span class="line">  map.removeLayer(panoramMan);</span><br><span class="line">  console.log(&quot;x:&quot; + panorama.getPosition().lng());</span><br><span class="line">  console.log(&quot;y:&quot; + panorama.getPosition().lat());</span><br><span class="line">  console.log(&quot;rotation:&quot; + panorama.pov.heading);</span><br><span class="line">  panoramMan = L.marker([panorama.getPosition().lat(), panorama.getPosition().lng()],</span><br><span class="line">    &#123; rotationAngle: panorama.pov.heading, icon: streetIcon &#125;).addTo(map);</span><br><span class="line">  map.setView([panorama.getPosition().lat(), panorama.getPosition().lng()], 17)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//旋轉事件</span><br><span class="line">panorama.addListener(&apos;pov_changed&apos;, function () &#123;</span><br><span class="line">  map.removeLayer(panoramMan);</span><br><span class="line">  console.log(&quot;x:&quot; + panorama.getPosition().lng());</span><br><span class="line">  console.log(&quot;y:&quot; + panorama.getPosition().lat());</span><br><span class="line">  console.log(&quot;rotation:&quot; + panorama.pov.heading);</span><br><span class="line">  panoramMan = L.marker([panorama.getPosition().lat(), panorama.getPosition().lng()],</span><br><span class="line">    &#123; rotationAngle: panorama.pov.heading, icon: streetIcon &#125;).addTo(map);</span><br><span class="line">  map.setView([panorama.getPosition().lat(), panorama.getPosition().lng()], 17)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>動態成果：<br><img src="https://ppt.cc/fthGCx@.gif" alt=""></p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>把Google街景接進自己的圖台會讓WebGIS功能更完整，使用的方法也很簡單，提供參考囉！<br>今天的程式碼一樣放在<a href="https://github.com/chimin17/dotnet-leaflet" target="_blank" rel="noopener">github</a>(day23的commit)。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/鐵人賽/" rel="tag"># 鐵人賽</a>
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+            <a href="/tags/GIS/" rel="tag"># GIS</a>
+          
+            <a href="/tags/leaflet/" rel="tag"># leaflet</a>
+          
+            <a href="/tags/Google/" rel="tag"># Google</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/10/ironman-2018-day22/" rel="next" title="鐵人賽Day 22- WebGIS中加入Google Directions導航API">
+                <i class="fa fa-chevron-left"></i> 鐵人賽Day 22- WebGIS中加入Google Directions導航API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/12/ironman-2018-day24/" rel="prev" title="鐵人賽Day 24- 在WebGIS加入Mapillary街景">
+                鐵人賽Day 24- 在WebGIS加入Mapillary街景 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Chi-Min Chiu</p>
+              <p class="site-description motion-element" itemprop="description">我是一個工程師，這個部落格記錄一些技術文章，包含.net, gis, python, node js 踩雷日記及測試心得</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/chimin17" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#申請token"><span class="nav-number">2.</span> <span class="nav-text">申請token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入街景"><span class="nav-number">3.</span> <span class="nav-text">加入街景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入地圖互動"><span class="nav-number">4.</span> <span class="nav-text">加入地圖互動</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#移動事件"><span class="nav-number">4.1.</span> <span class="nav-text">移動事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#旋轉事件"><span class="nav-number">4.2.</span> <span class="nav-text">旋轉事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#後記"><span class="nav-number">5.</span> <span class="nav-text">後記</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chi-Min Chiu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://chimin17.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://chimin17.github,.io/2018/01/11/ironman-2018-day23/';
+          this.page.identifier = '2018/01/11/ironman-2018-day23/';
+          this.page.title = '鐵人賽Day 23- 在WebGIS中加入Google街景';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chimin17.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

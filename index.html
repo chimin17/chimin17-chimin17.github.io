@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/07/ironman-2018-day19/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/12/ironman-2018-day24/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -271,7 +271,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/07/ironman-2018-day19/" itemprop="url">鐵人賽Day 19- 使用Turf.js進行空間資料內插</a></h1>
+                <a class="post-title-link" href="/2018/01/12/ironman-2018-day24/" itemprop="url">鐵人賽Day 24- 在WebGIS加入Mapillary街景</a></h1>
         
 
         <div class="post-meta">
@@ -283,8 +283,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-07T00:00:43+08:00">
-                2018-01-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-12T11:00:43+08:00">
+                2018-01-12
               </time>
             
 
@@ -324,9 +324,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/07/ironman-2018-day19/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/12/ironman-2018-day24/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/07/ironman-2018-day19/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/12/ironman-2018-day24/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,13 +356,11 @@
       
         
           
-          前言今天的主題是空間資料內插(interpolation)，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成面狀成果，這樣除了方便資料視覺化，也可以進一步進行空間分析。
-
-本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天
+          前言Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用Mapillary的街景，Mapillary計畫透過將其使用者生成的資
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/07/ironman-2018-day19/#more" rel="contents">
+            <a class="btn" href="/2018/01/12/ironman-2018-day24/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -413,7 +411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/06/ironman-2018-day18/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/11/ironman-2018-day23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -432,7 +430,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/06/ironman-2018-day18/" itemprop="url">鐵人賽Day 18- Turf.js:空間資料運算及分析</a></h1>
+                <a class="post-title-link" href="/2018/01/11/ironman-2018-day23/" itemprop="url">鐵人賽Day 23- 在WebGIS中加入Google街景</a></h1>
         
 
         <div class="post-meta">
@@ -444,8 +442,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-06T00:20:43+08:00">
-                2018-01-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-11T08:00:43+08:00">
+                2018-01-11
               </time>
             
 
@@ -485,9 +483,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/06/ironman-2018-day18/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/11/ironman-2018-day23/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/06/ironman-2018-day18/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/11/ironman-2018-day23/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -517,15 +515,15 @@
       
         
           
-          前言今天要介紹turf.js，前兩天的網球地圖完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做空間資料分析，使用的是turf.js。
+          前言今天要在地圖中加入另一個元素：街景。到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。
 
 本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”
 
-turf.js是Mapbox公司提出用來
+申請token跟昨天一樣，
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/06/ironman-2018-day18/#more" rel="contents">
+            <a class="btn" href="/2018/01/11/ironman-2018-day23/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -576,7 +574,7 @@ turf.js是Mapbox公司提出用來
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/05/ironman-2018-day17/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/10/ironman-2018-day22/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -595,7 +593,7 @@ turf.js是Mapbox公司提出用來
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/05/ironman-2018-day17/" itemprop="url">鐵人賽Day 17- Leaflet.js：加入資料及資料互動</a></h1>
+                <a class="post-title-link" href="/2018/01/10/ironman-2018-day22/" itemprop="url">鐵人賽Day 22- WebGIS中加入Google Directions導航API</a></h1>
         
 
         <div class="post-meta">
@@ -607,8 +605,8 @@ turf.js是Mapbox公司提出用來
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-05T00:31:43+08:00">
-                2018-01-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-10T11:00:43+08:00">
+                2018-01-10
               </time>
             
 
@@ -648,9 +646,9 @@ turf.js是Mapbox公司提出用來
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/05/ironman-2018-day17/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/10/ironman-2018-day22/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/05/ironman-2018-day17/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/10/ironman-2018-day22/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -680,183 +678,15 @@ turf.js是Mapbox公司提出用來
       
         
           
-          昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性POI資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。
-今天就繼續昨天的成果，使用Leaflet實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為web
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/05/ironman-2018-day17/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+          前言今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是Directions API，把它整合進我們的地圖。
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/04/ironman-2018-day16/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chi-Min Chiu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chimin's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/04/ironman-2018-day16/" itemprop="url">鐵人賽Day 16- Leaflet.js：設置基本地圖元件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T00:11:43+08:00">
-                2018-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/04/ironman-2018-day16/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/04/ironman-2018-day16/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          前言今天開始要逐步建立一個webGIS，練習一下使用Leaflet等API的實戰能力，在開始之前，先設定這個系統的基本功能：
-
-切換底圖
-定位
-量測
-資料查詢
-街景
-空間查詢
-結合統計圖表
-路徑規劃
-資料視覺化
 本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”
 
+申請tok
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/04/ironman-2018-day16/#more" rel="contents">
+            <a class="btn" href="/2018/01/10/ironman-2018-day22/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -907,7 +737,7 @@ turf.js是Mapbox公司提出用來
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/02/ironman-2018-day14/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/09/ironman-2018-day21/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -926,7 +756,7 @@ turf.js是Mapbox公司提出用來
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/02/ironman-2018-day14/" itemprop="url">鐵人賽Day 14- webgis中的網格資料</a></h1>
+                <a class="post-title-link" href="/2018/01/09/ironman-2018-day21/" itemprop="url">鐵人賽Day 21- WebGIS中加入Google Directions導航API</a></h1>
         
 
         <div class="post-meta">
@@ -938,8 +768,8 @@ turf.js是Mapbox公司提出用來
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-02T01:11:43+08:00">
-                2018-01-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-09T11:00:43+08:00">
+                2018-01-09
               </time>
             
 
@@ -979,9 +809,9 @@ turf.js是Mapbox公司提出用來
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/02/ironman-2018-day14/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/09/ironman-2018-day21/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/02/ironman-2018-day14/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/09/ironman-2018-day21/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1011,13 +841,175 @@ turf.js是Mapbox公司提出用來
       
         
           
-          前言網格(raster)資料是指以規則網格的方式呈現空間資料，可能是長這樣。
-上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是…
-假設今天網格的間隔更密一些，範圍在大一些，其資料
+          前言今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是Directions API，把它整合進我們的地圖。
+
+本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”
+
+申請tok
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/02/ironman-2018-day14/#more" rel="contents">
+            <a class="btn" href="/2018/01/09/ironman-2018-day21/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/08/ironman-2018-day20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chi-Min Chiu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chimin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/08/ironman-2018-day20/" itemprop="url">鐵人賽Day 20- WebGIS中的Contours、Heatmaps與Clustering資料呈現</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-08T08:00:43+08:00">
+                2018-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/08/ironman-2018-day20/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/08/ironman-2018-day20/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          前言今天延續昨天內插的議題，準備研究一下webGIS中的Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)等方法，用來增進原本只是點資料的資訊呈現方式。
+等高線(或等值線)要算等高線(contours)或等值線我們可以使用turf.js的isobands，要產製一
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/08/ironman-2018-day20/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1059,7 +1051,7 @@ turf.js是Mapbox公司提出用來
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1105,7 +1097,7 @@ turf.js是Mapbox公司提出用來
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1127,7 +1119,7 @@ turf.js是Mapbox公司提出用來
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
