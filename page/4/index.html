@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/27/ironman-2018-day8/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/02/ironman-2018-day14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -271,7 +271,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/27/ironman-2018-day8/" itemprop="url">鐵人賽Day 8-自己產製資料-地址定位part1</a></h1>
+                <a class="post-title-link" href="/2018/01/02/ironman-2018-day14/" itemprop="url">鐵人賽Day 14- webgis中的網格資料</a></h1>
         
 
         <div class="post-meta">
@@ -283,8 +283,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-27T23:26:43+08:00">
-                2017-12-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-02T01:11:43+08:00">
+                2018-01-02
               </time>
             
 
@@ -324,9 +324,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/27/ironman-2018-day8/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/02/ironman-2018-day14/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/27/ironman-2018-day8/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/02/ironman-2018-day14/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -356,19 +356,13 @@
       
         
           
-          取得GIS資料的方式有很多，包含：
-
-取得實體檔或API(opendata等資料交換平台)
-拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc.
-地址定位：僅有poi的地址，可從線上資源取得地址的坐標
-
-今天要介紹的為地址定位，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。
-
-本
+          前言網格(raster)資料是指以規則網格的方式呈現空間資料，可能是長這樣。
+上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是…
+假設今天網格的間隔更密一些，範圍在大一些，其資料
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/27/ironman-2018-day8/#more" rel="contents">
+            <a class="btn" href="/2018/01/02/ironman-2018-day14/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -419,7 +413,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/26/ironman-2018-day7/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/01/ironman-2018-day13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -438,7 +432,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/26/ironman-2018-day7/" itemprop="url">鐵人賽Day 7-常見的GIS資料格式-轉換篇</a></h1>
+                <a class="post-title-link" href="/2018/01/01/ironman-2018-day13/" itemprop="url">鐵人賽Day 13- webgis中的向量資料:在leaflet實作</a></h1>
         
 
         <div class="post-meta">
@@ -450,8 +444,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-26T23:26:43+08:00">
-                2017-12-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-01T13:11:43+08:00">
+                2018-01-01
               </time>
             
 
@@ -491,9 +485,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/26/ironman-2018-day7/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/01/ironman-2018-day13/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/26/ironman-2018-day7/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/01/ironman-2018-day13/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -523,12 +517,15 @@
       
         
           
-          昨天介紹了geojson、shapefile、kml基本概念，今天我們簡單用npm上面的工具寫個簡單轉換，有關node.js的安裝及使用請各位參考其他線上教學資源，這邊我們就直接使用囉。
-&gt; 本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”geojson資
+          前言在[Day1]webGIS-資訊時代的地理大發現的引言中提到webgis的前端實踐可以透過幾個地圖API，本次鐵人賽將都以leaflet做說明。
+
+本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”
+
+Leaflet的向量圖層GIS資料中，資料的類型就是網格資
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/26/ironman-2018-day7/#more" rel="contents">
+            <a class="btn" href="/2018/01/01/ironman-2018-day13/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -579,7 +576,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/25/ironman-2018-day6/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/31/ironman-2018-day12/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -598,7 +595,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/25/ironman-2018-day6/" itemprop="url">鐵人賽Day 6-常見的GIS資料格式</a></h1>
+                <a class="post-title-link" href="/2017/12/31/ironman-2018-day12/" itemprop="url">鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon</a></h1>
         
 
         <div class="post-meta">
@@ -610,8 +607,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-25T23:26:43+08:00">
-                2017-12-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-31T10:11:43+08:00">
+                2017-12-31
               </time>
             
 
@@ -651,9 +648,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/25/ironman-2018-day6/#comments" itemprop="discussionUrl">
+                <a href="/2017/12/31/ironman-2018-day12/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/25/ironman-2018-day6/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/12/31/ironman-2018-day12/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -683,14 +680,15 @@
       
         
           
-          前兩天我們先用CARTO(CartoDB)實作了一些基本的GIS資料視覺化，接觸了GIS資料。
-延續 [Day3]  談互操作性及Web Map Service 標準議題，我們在處理資料時可能會遇到各種GIS格式，今日就來攻略幾種web常用的GIS資料格式。
+          前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。
 
-本文是參加鐵人賽的文章，同步發表於 “
+本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”
+
+Polygon with hole(Polygon裡面有洞)polygon with ho
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/25/ironman-2018-day6/#more" rel="contents">
+            <a class="btn" href="/2017/12/31/ironman-2018-day12/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -741,7 +739,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/22/ironman-2018-day3/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/30/ironman-2018-day11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -760,7 +758,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/22/ironman-2018-day3/" itemprop="url">鐵人賽Day 3-談互操作性及Web service 標準</a></h1>
+                <a class="post-title-link" href="/2017/12/30/ironman-2018-day11/" itemprop="url">鐵人賽Day 11- webgis中的向量圖層-除了點資料以外的幾何</a></h1>
         
 
         <div class="post-meta">
@@ -772,8 +770,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-22T23:26:43+08:00">
-                2017-12-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-30T23:11:43+08:00">
+                2017-12-30
               </time>
             
 
@@ -813,9 +811,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/22/ironman-2018-day3/#comments" itemprop="discussionUrl">
+                <a href="/2017/12/30/ironman-2018-day11/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/22/ironman-2018-day3/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/12/30/ironman-2018-day11/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -845,13 +843,15 @@
       
         
           
-          前一天用了Leaflet了一個地圖，並接了國土測繪中心的WMTS跟一個geojson，像是WMTS(Web Map Tile Service)這類web service已廣泛流通於webgis世界，今天試著來使用這些標準。
+          在Day4、Day5及Day8、Day9談的資料都是點資料，一般使用者最熟悉也最需要的資料也是點，例如各式各樣的POI資料..
 
-本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的Web
+本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”
+
+事實上在二維向量GIS資料中還有其他幾何型態，今天就簡單來看看除了點以外的資料：
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/22/ironman-2018-day3/#more" rel="contents">
+            <a class="btn" href="/2017/12/30/ironman-2018-day11/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -902,7 +902,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/21/ironman-2018-day2/">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2017/12/29/ironman-2018-day10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chi-Min Chiu">
@@ -921,7 +921,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/21/ironman-2018-day2/" itemprop="url">鐵人賽Day 2-webGIS初步</a></h1>
+                <a class="post-title-link" href="/2017/12/29/ironman-2018-day10/" itemprop="url">鐵人賽Day 10-坐標系統及webgis常用的坐標轉換</a></h1>
         
 
         <div class="post-meta">
@@ -933,8 +933,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-21T23:26:43+08:00">
-                2017-12-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-29T09:26:43+08:00">
+                2017-12-29
               </time>
             
 
@@ -974,9 +974,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/12/21/ironman-2018-day2/#comments" itemprop="discussionUrl">
+                <a href="/2017/12/29/ironman-2018-day10/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/21/ironman-2018-day2/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/12/29/ironman-2018-day10/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1006,13 +1006,15 @@
       
         
           
-          webgis：從Client端及Server端談起Clinet端：跟一般網頁應用程式一樣，webgis需要前端程式與使用者互動，要開發一個webgis，開發者可以使用各種前端框架。然而，要炒一盤webgis的菜，就必須要有專屬於gis/地圖的前端框架
+          坐標系統是GIS、大地測量及製圖的核心，而坐標轉換則是開發webGIS最常會遇到的課題。
 
-本文是參加鐵人賽的文章，同步發表於 “2018
+本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”
+
+坐標系統大地坐標系統: 地球是近似橢球由於地球是近似橢球，會有很多模式來描述這個橢球，以及球上面的點位坐標，描述這個橢
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/21/ironman-2018-day2/#more" rel="contents">
+            <a class="btn" href="/2017/12/29/ironman-2018-day10/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1054,7 +1056,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1100,7 +1102,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1122,7 +1124,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

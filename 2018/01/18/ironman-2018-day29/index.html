@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="鐵人賽,web,GIS,Leaflet," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言到了第29天，想講的東西很多，但能寫的時間不多XD，所以決定在倒數第二天來看一些有趣的WebGIS。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  Story Map -The Bare EarthThe Bare Earth這個網站利用Story Map的概念，以說故事的方式展示了許多GIS在地質上的應用及名詞解釋，除了資料處理上用了各種GIS內">
+<meta name="keywords" content="鐵人賽,web,GIS,Leaflet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鐵人賽Day 29- WebGIS大觀園">
+<meta property="og:url" content="https://chimin17.github,.io/2018/01/18/ironman-2018-day29/index.html">
+<meta property="og:site_name" content="Chimin&#39;s Blog">
+<meta property="og:description" content="前言到了第29天，想講的東西很多，但能寫的時間不多XD，所以決定在倒數第二天來看一些有趣的WebGIS。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  Story Map -The Bare EarthThe Bare Earth這個網站利用Story Map的概念，以說故事的方式展示了許多GIS在地質上的應用及名詞解釋，除了資料處理上用了各種GIS內">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://ppt.cc/fhRiix@.png">
+<meta property="og:image" content="https://ppt.cc/fFJJ7x@.png">
+<meta property="og:image" content="https://ppt.cc/fcGpBx@.png">
+<meta property="og:image" content="https://ppt.cc/feRuhx@.png">
+<meta property="og:image" content="https://ppt.cc/fjNDmx@.png">
+<meta property="og:image" content="https://ppt.cc/fMtMnx@.png">
+<meta property="og:updated_time" content="2018-01-20T02:21:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鐵人賽Day 29- WebGIS大觀園">
+<meta name="twitter:description" content="前言到了第29天，想講的東西很多，但能寫的時間不多XD，所以決定在倒數第二天來看一些有趣的WebGIS。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  Story Map -The Bare EarthThe Bare Earth這個網站利用Story Map的概念，以說故事的方式展示了許多GIS在地質上的應用及名詞解釋，除了資料處理上用了各種GIS內">
+<meta name="twitter:image" content="https://ppt.cc/fhRiix@.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chimin17.github,.io/2018/01/18/ironman-2018-day29/"/>
+
+
+
+
+
+  <title>鐵人賽Day 29- WebGIS大觀園 | Chimin's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chimin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Chimin's 技術分享筆記</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chimin17.github,.io/2018/01/18/ironman-2018-day29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chi-Min Chiu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chimin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">鐵人賽Day 29- WebGIS大觀園</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-18T22:02:33+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/18/ironman-2018-day29/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/18/ironman-2018-day29/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>到了第29天，想講的東西很多，但能寫的時間不多XD，所以決定在倒數第二天來看一些有趣的WebGIS。</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="Story-Map-The-Bare-Earth"><a href="#Story-Map-The-Bare-Earth" class="headerlink" title="Story Map -The Bare Earth"></a>Story Map -The Bare Earth</h2><p><a href="https://wadnr.maps.arcgis.com/apps/Cascade/index.html?appid=36b4887370d141fcbb35392f996c82d9" target="_blank" rel="noopener">The Bare Earth</a>這個網站利用<a href="http://atlefren.github.io/storymap/" target="_blank" rel="noopener">Story Map</a>的概念，以說故事的方式展示了許多GIS在地質上的應用及名詞解釋，除了資料處理上用了各種GIS內插、視覺化、空間運算等技術外，Web上也使用了大量的swipe雙視窗的功能。<br><img src="https://ppt.cc/fhRiix@.png" alt=""></p>
+<h2 id="3D-Bar-Chart-3D-Feinstaub-Berlin"><a href="#3D-Bar-Chart-3D-Feinstaub-Berlin" class="headerlink" title="3D Bar Chart- 3D Feinstaub Berlin"></a>3D Bar Chart- 3D Feinstaub Berlin</h2><p><a href="http://projekte.geo3.eu/feinstaub/#13.54/52.5400/13.4034/52/55" target="_blank" rel="noopener">3D-Feinstaub Berlin</a>網站是在<a href="http://googlemapsmania.blogspot.tw/2018/01/berlin-pollution-mapped.html" target="_blank" rel="noopener">Maps Mania</a>上看到的，以3D視角加上bar chart做視覺展示，所展示的資料是污染物測站的觀測量，並有一個heatmap的開關可供結合，在3D GIS當紅的時代，這種3D GIS視覺化的應用越來越多。<br><img src="https://ppt.cc/fFJJ7x@.png" alt=""></p>
+<h2 id="Indoor-Map"><a href="#Indoor-Map" class="headerlink" title="Indoor Map"></a>Indoor Map</h2><p>室內GIS應該是未來幾年GIS的發展方向，包含OSM Indoor Mapping也越來越多貢獻者，隨著室內定位技術逐漸提升，無論在資料生產維護或是應用開發的部分，會有越來越多室內GIS應用的產品出現，在WebGIS方面應該也會有所變化，這是從esri網站上看到的案例<a href="http://coolmaps.esri.com/IndoorMaps/ParisMall/" target="_blank" rel="noopener">IndoorMaps ParisMall</a>，Leaflet上也有類似的<a href="https://www.cbaines.net/projects/osm/leaflet-indoor/examples/" target="_blank" rel="noopener">發表</a>。<br><img src="https://ppt.cc/fcGpBx@.png" alt=""></p>
+<h2 id="FlowMap、百度Echarts3與Pixi-js的應用"><a href="#FlowMap、百度Echarts3與Pixi-js的應用" class="headerlink" title="FlowMap、百度Echarts3與Pixi.js的應用"></a>FlowMap、百度Echarts3與Pixi.js的應用</h2><p>WebGIS與人類生活做息息相關的就是交通，也隨著各種交通數據的整合及應用相關視覺化的表現越來越豐富，例如Leaflet上的案例<a href="https://jwasilgeo.github.io/Leaflet.Canvas-Flowmap-Layer/docs/main/" target="_blank" rel="noopener">Flowmap</a>及赫赫有名的<a href="http://wandergis.com/leaflet-echarts3/examples/index.html" target="_blank" rel="noopener">百度Echarts3</a>，另外各種WebGL(e.g. <a href="https://github.com/manubb/Leaflet.PixiOverlay" target="_blank" rel="noopener">Pixi with Leaflet</a>)在地圖上的結合也是越來越常見到。<br><img src="https://ppt.cc/feRuhx@.png" alt=""></p>
+<p><img src="https://ppt.cc/fjNDmx@.png" alt=""></p>
+<p><img src="https://ppt.cc/fMtMnx@.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/鐵人賽/" rel="tag"># 鐵人賽</a>
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+            <a href="/tags/GIS/" rel="tag"># GIS</a>
+          
+            <a href="/tags/Leaflet/" rel="tag"># Leaflet</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/ironman-2018-day28/" rel="next" title="鐵人賽Day 28- WebGL與3D GIS概觀">
+                <i class="fa fa-chevron-left"></i> 鐵人賽Day 28- WebGL與3D GIS概觀
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/19/ironman-2018-day30/" rel="prev" title="鐵人賽Day 30- 最重要的回顧">
+                鐵人賽Day 30- 最重要的回顧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Chi-Min Chiu</p>
+              <p class="site-description motion-element" itemprop="description">我是一個工程師，這個部落格記錄一些技術文章，包含.net, gis, python, node js 踩雷日記及測試心得</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/chimin17" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Story-Map-The-Bare-Earth"><span class="nav-number">2.</span> <span class="nav-text">Story Map -The Bare Earth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-Bar-Chart-3D-Feinstaub-Berlin"><span class="nav-number">3.</span> <span class="nav-text">3D Bar Chart- 3D Feinstaub Berlin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Indoor-Map"><span class="nav-number">4.</span> <span class="nav-text">Indoor Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FlowMap、百度Echarts3與Pixi-js的應用"><span class="nav-number">5.</span> <span class="nav-text">FlowMap、百度Echarts3與Pixi.js的應用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chi-Min Chiu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://chimin17.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://chimin17.github,.io/2018/01/18/ironman-2018-day29/';
+          this.page.identifier = '2018/01/18/ironman-2018-day29/';
+          this.page.title = '鐵人賽Day 29- WebGIS大觀園';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chimin17.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
