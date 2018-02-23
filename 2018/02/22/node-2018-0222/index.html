@@ -14,7 +14,7 @@
 <meta property="og:description" content="引入request報錯一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程似乎都沒有發生什麼問題，在前端部分也整合了webpack, babel及vue等.直到最近看到有人分享有Node爬蟲的套件，感覺滿方便的，因為有現成code就直接貼貼在我的前端的程式區塊結果，就發生問題了..1234567891011121314151617import reque">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chimin17.github.io/images/post/thumb_0427.jpg">
-<meta property="og:updated_time" content="2018-02-23T07:39:07.974Z">
+<meta property="og:updated_time" content="2018-02-23T07:55:12.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Webpack and request module錯誤-server端與client端node.js模組">
 <meta name="twitter:description" content="引入request報錯一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程似乎都沒有發生什麼問題，在前端部分也整合了webpack, babel及vue等.直到最近看到有人分享有Node爬蟲的套件，感覺滿方便的，因為有現成code就直接貼貼在我的前端的程式區塊結果，就發生問題了..1234567891011121314151617import reque">
@@ -250,8 +250,8 @@ ga('send', 'pageview');
 <p>但是，fs,net,tls是node.js內建模組啊…怎麼會錯</p>
 <p>後來找到這個issue:<br><a href="https://github.com/webpack/react-starter/issues/3" target="_blank" rel="noopener">https://github.com/webpack/react-starter/issues/3</a></p>
 <p>原來…Node.js有分client端與server端的模組<br>webpack打包的都是client端，引入request屬於server端應用<br>原本比較熟悉的後端是.Net架構，開始使用Node幾乎都是用在前端<br>所以也沒想到什麼前端後端問題，直接把碼貼在js區塊測試一下<br>報錯…</p>
-<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>爬文一下解決方案也是不少<br>就我這個案例可以使用request替代套件：superagen<br><a href="https://www.npmjs.com/package/superagent" target="_blank" rel="noopener">https://www.npmjs.com/package/superagent</a></p>
-<p>superagent簡單來講是一個在client端使用的request模組</p>
+<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>爬文一下解決方案也是不少<br>就我這個案例可以使用request替代套件：superagen<br><a href="https://www.npmjs.com/package/superagent" target="_blank" rel="noopener">https://www.npmjs.com/package/superagent</a><br>superagent簡單來講是一個在client端使用的request模組</p>
+<p>當然啦，本來就該後端歸後端，前端歸前端XD</p>
 <h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>會發生這個問題，可能是一直以來不常使用Node的後端模組來開發專案<br>所以沒有client端與server端模組的想法<br>過程中還以為Node.js版本太舊之類的</p>
 
         
@@ -263,7 +263,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://chimin17.github.io/2018/02/22/node-2018-0222/" data-id="cjdzmze2y002bqupcomd0bj5w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://chimin17.github.io/2018/02/22/node-2018-0222/" data-id="cjdzn614j002fuxpcm4fswb1r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
