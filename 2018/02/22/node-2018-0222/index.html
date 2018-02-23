@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Webpack and request module錯誤-server端與client端node.js模組 | Chimin&#39;s Blog</title>
+    <title>Webpack and request module報錯：有關server端與client端Node.js模組 | Chimin&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="引入request報錯一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程似乎都沒有發生什麼問題，在前端部分也整合了webpack, babel及vue等.直到最近看到有人分享有Node爬蟲的套件，感覺滿方便的，因為有現成code就直接貼貼在我的前端的程式區塊結果，就發生問題了..1234567891011121314151617import reque">
+    <meta name="description" content="Webpack and request module報錯一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程在前端部分整合了webpack, babel及vue等 似乎都沒有發生什麼問題直到最近遇到一個錯，暸解之後覺得自己有點傻在此分享一下 主要是看到Node爬蟲的範例，如果用Javascirpt寫爬蟲感覺滿方便的又有現成code，所以就直接貼 貼在我一">
 <meta name="keywords" content="node,webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Webpack and request module錯誤-server端與client端node.js模組">
+<meta property="og:title" content="Webpack and request module報錯：有關server端與client端Node.js模組">
 <meta property="og:url" content="https://chimin17.github.io/2018/02/22/node-2018-0222/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="引入request報錯一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程似乎都沒有發生什麼問題，在前端部分也整合了webpack, babel及vue等.直到最近看到有人分享有Node爬蟲的套件，感覺滿方便的，因為有現成code就直接貼貼在我的前端的程式區塊結果，就發生問題了..1234567891011121314151617import reque">
+<meta property="og:description" content="Webpack and request module報錯一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程在前端部分整合了webpack, babel及vue等 似乎都沒有發生什麼問題直到最近遇到一個錯，暸解之後覺得自己有點傻在此分享一下 主要是看到Node爬蟲的範例，如果用Javascirpt寫爬蟲感覺滿方便的又有現成code，所以就直接貼 貼在我一">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chimin17.github.io/images/post/thumb_0427.jpg">
-<meta property="og:updated_time" content="2018-02-23T07:55:12.343Z">
+<meta property="og:updated_time" content="2018-02-23T13:29:52.271Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Webpack and request module錯誤-server端與client端node.js模組">
-<meta name="twitter:description" content="引入request報錯一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程似乎都沒有發生什麼問題，在前端部分也整合了webpack, babel及vue等.直到最近看到有人分享有Node爬蟲的套件，感覺滿方便的，因為有現成code就直接貼貼在我的前端的程式區塊結果，就發生問題了..1234567891011121314151617import reque">
+<meta name="twitter:title" content="Webpack and request module報錯：有關server端與client端Node.js模組">
+<meta name="twitter:description" content="Webpack and request module報錯一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程在前端部分整合了webpack, babel及vue等 似乎都沒有發生什麼問題直到最近遇到一個錯，暸解之後覺得自己有點傻在此分享一下 主要是看到Node爬蟲的範例，如果用Javascirpt寫爬蟲感覺滿方便的又有現成code，所以就直接貼 貼在我一">
 <meta name="twitter:image" content="https://chimin17.github.io/images/post/thumb_0427.jpg">
     
 
@@ -208,7 +208,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Webpack and request module錯誤-server端與client端node.js模組
+            Webpack and request module報錯：有關server端與client端Node.js模組
         </h1>
     
 
@@ -244,8 +244,11 @@ ga('send', 'pageview');
         
             
             <p><img src="/images/post/thumb_0427.jpg" alt=""></p>
-<h2 id="引入request報錯"><a href="#引入request報錯" class="headerlink" title="引入request報錯"></a>引入request報錯</h2><p>一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程<br>似乎都沒有發生什麼問題，在前端部分也整合了webpack, babel及vue等<br>.<br>直到最近看到有人分享有Node爬蟲的套件，感覺滿方便的，因為有現成code就直接貼<br>貼在我的前端的程式區塊<br>結果，就發生問題了..<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import request from &apos;request&apos;</span><br><span class="line">import cheerio from &apos;cheerio&apos;</span><br><span class="line">const URL=&quot;&quot;;</span><br><span class="line">const GetData = () =&gt; &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        let list = [];</span><br><span class="line">        request.get(&#123;</span><br><span class="line">            url: URL,</span><br><span class="line">        &#125;, function (err, res, body) &#123;</span><br><span class="line">            const $ = cheerio.load(body);</span><br><span class="line">            $(&apos;table&apos;).each(function (index, element) &#123;</span><br><span class="line">              //略</span><br><span class="line">            &#125;)</span><br><span class="line">            resolve(list);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>npm run 執行後發生錯誤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ERROR in ./node_modules/request/lib/har.js</span><br><span class="line">Module not found: Error: Can&apos;t resolve &apos;fs&apos; in &apos;/Users/pann/GitRepo/dotnet-leaflet/node_modules/request/lib&apos;</span><br><span class="line"></span><br><span class="line">ERROR in ./node_modules/forever-agent/index.js</span><br><span class="line">Module not found: Error: Can&apos;t resolve &apos;net&apos; in &apos;/Users/pann/GitRepo/dotnet-leaflet/node_modules/forever-agent&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Webpack-and-request-module報錯"><a href="#Webpack-and-request-module報錯" class="headerlink" title="Webpack and request module報錯"></a>Webpack and request module報錯</h2><p>一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程<br>在前端部分整合了webpack, babel及vue等</p>
+<p>似乎都沒有發生什麼問題<br>直到最近遇到一個錯，暸解之後覺得自己有點傻<br>在此分享一下</p>
+<p>主要是看到Node爬蟲的範例，如果用Javascirpt寫爬蟲感覺滿方便的<br>又有現成code，所以就直接貼</p>
+<p>貼在我一個專案的前端的程式區塊<br>結果，一編譯就發生問題了..<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import request from &apos;request&apos;</span><br><span class="line">import cheerio from &apos;cheerio&apos;</span><br><span class="line">const URL=&quot;&quot;;</span><br><span class="line">const GetData = () =&gt; &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        let list = [];</span><br><span class="line">        request.get(&#123;</span><br><span class="line">            url: URL,</span><br><span class="line">        &#125;, function (err, res, body) &#123;</span><br><span class="line">            const $ = cheerio.load(body);</span><br><span class="line">            $(&apos;table&apos;).each(function (index, element) &#123;</span><br><span class="line">              //略</span><br><span class="line">            &#125;)</span><br><span class="line">            resolve(list);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>編譯後發生錯誤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ERROR in ./node_modules/request/lib/har.js</span><br><span class="line">Module not found: Error: Can&apos;t resolve &apos;fs&apos; in &apos;/Users/pann/GitRepo/dotnet-leaflet/node_modules/request/lib&apos;</span><br><span class="line"></span><br><span class="line">ERROR in ./node_modules/forever-agent/index.js</span><br><span class="line">Module not found: Error: Can&apos;t resolve &apos;net&apos; in &apos;/Users/pann/GitRepo/dotnet-leaflet/node_modules/forever-agent&apos;</span><br></pre></td></tr></table></figure></p>
 <h2 id="client端與server端模組"><a href="#client端與server端模組" class="headerlink" title="client端與server端模組"></a>client端與server端模組</h2><p>在webpack打包時問題顯示說找不到或無法解析fs,net,tls模組<br>猜想跟引入request有關</p>
 <p>但是，fs,net,tls是node.js內建模組啊…怎麼會錯</p>
 <p>後來找到這個issue:<br><a href="https://github.com/webpack/react-starter/issues/3" target="_blank" rel="noopener">https://github.com/webpack/react-starter/issues/3</a></p>
@@ -263,7 +266,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://chimin17.github.io/2018/02/22/node-2018-0222/" data-id="cjdzn614j002fuxpcm4fswb1r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://chimin17.github.io/2018/02/22/node-2018-0222/" data-id="cjdzygw7l002441rm4pzj7czz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -379,7 +382,7 @@ ga('send', 'pageview');
                             <a href="/2018/02/22/node-2018-0222/" class="thumbnail">
     
     
-        <span style="background-image:url(/images/post/thumb_0427.jpg)" alt="Webpack and request module錯誤-server端與client端node.js模組" class="thumbnail-image"></span>
+        <span style="background-image:url(/images/post/thumb_0427.jpg)" alt="Webpack and request module報錯：有關server端與client端Node.js模組" class="thumbnail-image"></span>
     
 </a>
 
@@ -387,7 +390,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/02/22/node-2018-0222/" class="title">Webpack and request module錯誤-server端與client端node.js模組</a></p>
+                            <p class="item-title"><a href="/2018/02/22/node-2018-0222/" class="title">Webpack and request module報錯：有關server端與client端Node.js模組</a></p>
                             <p class="item-date"><time datetime="2018-02-22T15:02:33.000Z" itemprop="datePublished">2018-02-22</time></p>
                         </div>
                     </li>
