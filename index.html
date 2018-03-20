@@ -205,7 +205,7 @@ ga('send', 'pageview');
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2018/02/22/node-2018-0222/">Webpack and request module報錯：有關server端與client端Node.js模組</a>
+            <a class="article-title" href="/2018/02/22/node-2018-0222/">關於request模組：server side與client side 的Node.js</a>
         </h1>
     
 
@@ -239,21 +239,10 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <p><img src="/images/post/thumb_0427.jpeg" alt=""></p>
-<h2 id="Webpack-and-request-module報錯"><a href="#Webpack-and-request-module報錯" class="headerlink" title="Webpack and request module報錯"></a>Webpack and request module報錯</h2><p>一直以來專案開發使用的後端都是.NET Core MVC架構，並用Node.js進行前端的工程<br>在前端部分整合了webpack, babel及vue等</p>
-<p>似乎都沒有發生什麼問題<br>直到最近遇到一個錯，暸解之後覺得自己有點傻<br>在此分享一下</p>
-<p>主要是看到Node爬蟲的範例，如果用Javascirpt寫爬蟲感覺滿方便的<br>又有現成code，所以就直接貼</p>
-<p>貼在我一個專案的前端的程式區塊<br>結果，一編譯就發生問題了..<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import request from &apos;request&apos;</span><br><span class="line">import cheerio from &apos;cheerio&apos;</span><br><span class="line">const URL=&quot;&quot;;</span><br><span class="line">const GetData = () =&gt; &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        let list = [];</span><br><span class="line">        request.get(&#123;</span><br><span class="line">            url: URL,</span><br><span class="line">        &#125;, function (err, res, body) &#123;</span><br><span class="line">            const $ = cheerio.load(body);</span><br><span class="line">            $(&apos;table&apos;).each(function (index, element) &#123;</span><br><span class="line">              //略</span><br><span class="line">            &#125;)</span><br><span class="line">            resolve(list);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>編譯後發生錯誤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ERROR in ./node_modules/request/lib/har.js</span><br><span class="line">Module not found: Error: Can&apos;t resolve &apos;fs&apos; in &apos;/Users/pann/GitRepo/dotnet-leaflet/node_modules/request/lib&apos;</span><br><span class="line"></span><br><span class="line">ERROR in ./node_modules/forever-agent/index.js</span><br><span class="line">Module not found: Error: Can&apos;t resolve &apos;net&apos; in &apos;/Users/pann/GitRepo/dotnet-leaflet/node_modules/forever-agent&apos;</span><br></pre></td></tr></table></figure></p>
-<h2 id="client端與server端模組"><a href="#client端與server端模組" class="headerlink" title="client端與server端模組"></a>client端與server端模組</h2><p>在webpack打包時問題顯示說找不到或無法解析fs,net,tls模組<br>猜想跟引入request有關</p>
-<p>但是，fs,net,tls是node.js內建模組啊…怎麼會錯</p>
-<p>後來找到這個issue:<br><a href="https://github.com/webpack/react-starter/issues/3" target="_blank" rel="noopener">https://github.com/webpack/react-starter/issues/3</a></p>
-<p>原來…Node.js有分client端與server端的模組<br>webpack打包的都是client端，引入request屬於server端應用<br>原本比較熟悉的後端是.Net架構，開始使用Node幾乎都是用在前端<br>所以也沒想到什麼前端後端問題，直接把碼貼在js區塊測試一下<br>報錯…</p>
-<h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>爬文一下解決方案也是不少<br>就我這個案例可以使用request替代套件：superagen<br><a href="https://www.npmjs.com/package/superagent" target="_blank" rel="noopener">https://www.npmjs.com/package/superagent</a><br>superagent簡單來講是一個在client端使用的request模組</p>
-<p>當然啦，本來就該後端歸後端，前端歸前端XD</p>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>會發生這個問題，可能是一直以來不常使用Node的後端模組來開發專案<br>所以沒有client端與server端模組的想法<br>過程中還以為Node.js版本太舊之類的</p>
-
+            <p><h2 id="問題是出在webpack打包時。"><a href="#問題是出在webpack打包時。" class="headerlink" title="問題是出在webpack打包時。"></a>問題是出在webpack打包時。</h2><p>某天在用Node.js寫一個爬蟲應用時，webpack跳出一個request的錯誤。<br></p>
+            <p class="article-more-link">
+                <a href="/2018/02/22/node-2018-0222/#more">Read More</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -263,7 +252,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://chimin17.github.io/2018/02/22/node-2018-0222/" data-id="cjdzzfxrd006oxxrmahx9njev" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://chimin17.github.io/2018/02/22/node-2018-0222/" data-id="cjezqruor0028kormkv7w35ky" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -383,7 +372,11 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p>第30天了，來回顧一下並發表心得吧！<br></p>
+            <p><p>第30天了，來回顧一下並發表心得吧！</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="30天的發文大綱"><a href="#30天的發文大綱" class="headerlink" title="30天的發文大綱"></a>30天的發文大綱</h2><p>這30天的大綱可以切為6塊，分述如下：<br></p>
             <p class="article-more-link">
                 <a href="/2018/01/19/ironman-2018-day30/#more">Read More</a>
             </p>
@@ -396,7 +389,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://chimin17.github.io/2018/01/19/ironman-2018-day30/" data-id="cjdzzfxpo001rxxrmkat61uqj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://chimin17.github.io/2018/01/19/ironman-2018-day30/" data-id="cjezqruod001rkorm7h034f9g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -529,7 +522,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://chimin17.github.io/2018/01/18/ironman-2018-day29/" data-id="cjdzzfxpk001lxxrmt5aatsgi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://chimin17.github.io/2018/01/18/ironman-2018-day29/" data-id="cjezqruo8001mkorm6ehjzbft" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -663,7 +656,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://chimin17.github.io/2018/01/17/ironman-2018-day28/" data-id="cjdzzfxpi001jxxrmy2hrqrsh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://chimin17.github.io/2018/01/17/ironman-2018-day28/" data-id="cjezqruo3001fkormvs50z7h9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -796,7 +789,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="https://chimin17.github.io/2018/01/16/ironman-2018-day27/" data-id="cjdzzfxpg001gxxrmxvjogp1j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://chimin17.github.io/2018/01/16/ironman-2018-day27/" data-id="cjezqruo5001ikormtju3ph1e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -894,7 +887,7 @@ ga('send', 'pageview');
                             <a href="/2018/02/22/node-2018-0222/" class="thumbnail">
     
     
-        <span style="background-image:url(/images/post/thumb_0427.jpeg)" alt="Webpack and request module報錯：有關server端與client端Node.js模組" class="thumbnail-image"></span>
+        <span style="background-image:url(/images/post/thumb_0427.jpeg)" alt="關於request模組：server side與client side 的Node.js" class="thumbnail-image"></span>
     
 </a>
 
@@ -902,7 +895,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/02/22/node-2018-0222/" class="title">Webpack and request module報錯：有關server端與client端Node.js模組</a></p>
+                            <p class="item-title"><a href="/2018/02/22/node-2018-0222/" class="title">關於request模組：server side與client side 的Node.js</a></p>
                             <p class="item-date"><time datetime="2018-02-22T15:02:33.000Z" itemprop="datePublished">2018-02-22</time></p>
                         </div>
                     </li>
