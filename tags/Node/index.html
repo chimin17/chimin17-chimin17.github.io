@@ -151,48 +151,17 @@
   </section>
   <section class="article typo">
 	  <p>昨天介紹了geojson、shapefile、kml基本概念，今天我們簡單用npm上面的工具寫個簡單轉換，有關node.js的安裝及使用請各位參考其他線上教學資源，這邊我們就直接使用囉。</p>
-<h2 id="gt-本文是參加鐵人賽的文章，同步發表於-“2018鐵人賽-30天打造我的WebGIS系列”"><a href="#gt-本文是參加鐵人賽的文章，同步發表於-“2018鐵人賽-30天打造我的WebGIS系列”" class="headerlink" title="&gt; 本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”"></a>&gt; 本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></h2><h3 id="geojson資料轉換工具："><a href="#geojson資料轉換工具：" class="headerlink" title="geojson資料轉換工具："></a>geojson資料轉換工具：</h3><p>這邊使用npm上的<a href="https://www.npmjs.com/package/geojson2" target="_blank" rel="noopener">geojson2</a>，直接安裝：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install geojson2</span><br></pre></td></tr></table></figure>
-<p>建立test.js，寫一個geojson2.kml的轉換<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var geojson2 = require(&apos;geojson2&apos;);</span><br><span class="line">geojson2.kml(&apos;test.geojson&apos;, &apos;./out.kml&apos;, function (err) &#123;</span><br><span class="line">    console.log(&quot;finish&quot;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>執行<br><code>node test.js</code></p>
-<p>結果out.kml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span><br><span class="line">&lt;kml xmlns=&quot;http://www.opengis.net/kml/2.2&quot;&gt;</span><br><span class="line">&lt;Document id=&quot;root_doc&quot;&gt;</span><br><span class="line">&lt;Folder&gt;&lt;name&gt;OGRGeoJSON&lt;/name&gt;</span><br><span class="line">  &lt;Placemark&gt;</span><br><span class="line">	&lt;name&gt;Dinagat Islands&lt;/name&gt;</span><br><span class="line">      &lt;Point&gt;&lt;coordinates&gt;125.6,10.1&lt;/coordinates&gt;&lt;/Point&gt;</span><br><span class="line">  &lt;/Placemark&gt;</span><br><span class="line">&lt;/Folder&gt;</span><br><span class="line">&lt;/Document&gt;&lt;/kml&gt;</span><br></pre></td></tr></table></figure></p>
-<p>geojson2這個模組，包含了四個子功能</p>
-<ul>
-<li>geojson2csv</li>
-<li>geojson2shape</li>
-<li>geojson2kml</li>
-<li>geojson2topojson</li>
-</ul>
-<p>有需要可以自行測試！</p>
-<blockquote>
-<p>其中官方文件提到，若要輸出kml and shp. 須先安裝gdal<br>Run ‘brew install gdal’ on OSX,<br>or ‘sudo apt-get install gdal’ on linux.</p>
-</blockquote>
-<hr>
-<h3 id="shapefile資料轉換工具："><a href="#shapefile資料轉換工具：" class="headerlink" title="shapefile資料轉換工具："></a>shapefile資料轉換工具：</h3><p>這邊一樣使用NPM上的<a href="https://www.npmjs.com/package/shp2json" target="_blank" rel="noopener">shp2json</a></p>
-<blockquote>
-<p>一樣須先安裝gdal<br>Run ‘brew install gdal’ on OSX,<br>or ‘sudo apt-get install gdal’ on linux.</p>
-</blockquote>
-<p>安裝<br><code>npm install shp2json.</code></p>
-<p>建立test.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var toJSON = require(&apos;shp2json&apos;);</span><br><span class="line">var result = toJSON.fromShpFile(&apos;out.shp&apos;).pipe(process.stdout);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure></p>
-<p>執行<br><code>node test.js</code></p>
-<p>結果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;type&quot;: &quot;FeatureCollection&quot;, </span><br><span class="line">    &quot;features&quot;: </span><br><span class="line">    [</span><br><span class="line">        &#123; </span><br><span class="line">            &quot;type&quot;: &quot;Feature&quot;, </span><br><span class="line">            &quot;properties&quot;: &#123; &quot;name&quot;: &quot;Dinagat Islands&quot; &#125;, </span><br><span class="line">            &quot;geometry&quot;: &#123; &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [125.6, 10.1] &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="kml資料轉換工具："><a href="#kml資料轉換工具：" class="headerlink" title="kml資料轉換工具："></a>kml資料轉換工具：</h3><p>使用NPM上的<a href="https://www.npmjs.com/package/kml-stream" target="_blank" rel="noopener">kml-stream</a></p>
-<p>安裝kml-stream<br><code>npm install kml-stream</code></p>
-<p>test.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&apos;fs&apos;);</span><br><span class="line">var KmlStream = require(&quot;kml-stream&quot;);</span><br><span class="line">var data = fs.createReadStream(&apos;./out.kml&apos;).pipe(new KmlStream()).on(&apos;data&apos;, function (d) &#123;</span><br><span class="line">    console.log(d);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>執行<br><code>node test.js</code></p>
-<p>結果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: &apos;Feature&apos;,</span><br><span class="line">    properties: &#123; &#125;,</span><br><span class="line">    geometry: &#123; type: &apos;Point&apos;, coordinates: [125.6, 10.1] &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>基本上只要掌握了這三類資料互轉，大多數webgis線上資源的格式應該幾乎可以掌握了，後續如果真的有其他GIS資料轉換及讀取的問題，建議可進一步研究專業的GIS軟體：<a href="https://www.qgis.org/en/site/" target="_blank" rel="noopener">QGIS</a>，由於本次鐵人賽的目標是快速上手webgis，比較可惜無法操作太多QGIS，QGIS無論在轉檔、分析及處理等功能都很強大，可以自行試看看唷。</p>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/12/26/ironman-2018-day7/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
-      
-        <a href="/tags/web/">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/GIS/">GIS</a>
       
@@ -254,7 +223,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14px; color: #808080">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
     </div>
 </div>
 

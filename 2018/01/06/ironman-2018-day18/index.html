@@ -12,22 +12,22 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言今天要介紹turf.js，前兩天的網球地圖完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做空間資料分析，使用的是turf.js。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  turf.js是Mapbox公司提出用來處理空間資料分析的開源函式庫，打開turf.js的說明文件，可以看到其功能非常的多： 要處理空間資料">
-<meta name="keywords" content="鐵人賽,web,GIS,leaflet,Turf.js">
+  <meta name="description" content="前言今天要介紹turf.js，前兩天的網球地圖完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做空間資料分析，使用的是turf.js。">
+<meta name="keywords" content="2018鐵人賽-30天打造我的WebGIS系列,web,GIS,leaflet,Turf.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="鐵人賽Day 18- Turf.js:空間資料運算及分析">
 <meta property="og:url" content="https://chimin17.github.io/2018/01/06/ironman-2018-day18/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="前言今天要介紹turf.js，前兩天的網球地圖完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做空間資料分析，使用的是turf.js。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  turf.js是Mapbox公司提出用來處理空間資料分析的開源函式庫，打開turf.js的說明文件，可以看到其功能非常的多： 要處理空間資料">
+<meta property="og:description" content="前言今天要介紹turf.js，前兩天的網球地圖完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做空間資料分析，使用的是turf.js。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ppt.cc/fo2KJx@.png">
 <meta property="og:image" content="https://ppt.cc/fJyLhx@.png">
 <meta property="og:image" content="https://ppt.cc/fGzRLx@.png">
 <meta property="og:image" content="https://ppt.cc/fQYlDx@.png">
-<meta property="og:updated_time" content="2018-01-06T16:05:48.638Z">
+<meta property="og:updated_time" content="2018-10-16T13:32:22.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽Day 18- Turf.js:空間資料運算及分析">
-<meta name="twitter:description" content="前言今天要介紹turf.js，前兩天的網球地圖完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做空間資料分析，使用的是turf.js。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  turf.js是Mapbox公司提出用來處理空間資料分析的開源函式庫，打開turf.js的說明文件，可以看到其功能非常的多： 要處理空間資料">
+<meta name="twitter:description" content="前言今天要介紹turf.js，前兩天的網球地圖完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做空間資料分析，使用的是turf.js。">
 <meta name="twitter:image" content="https://ppt.cc/fo2KJx@.png">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
@@ -153,7 +153,7 @@
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
-    	<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要介紹turf.js，<br>前兩天的<strong>網球地圖</strong>完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做<strong>空間資料分析</strong>，使用的是<a href="http://turfjs.org/" target="_blank" rel="noopener">turf.js</a>。<br><img src="https://ppt.cc/fo2KJx@.png" alt=""></p>
+    	<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要介紹turf.js，<br>前兩天的<strong>網球地圖</strong>完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做<strong>空間資料分析</strong>，使用的是<a href="http://turfjs.org/" target="_blank" rel="noopener">turf.js</a>。<br><img src="https://ppt.cc/fo2KJx@.png" alt=""><br><a id="more"></a></p>
 <blockquote>
 <p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
 </blockquote>
@@ -182,7 +182,7 @@
 	  
 	  <div class="article-tags tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -268,7 +268,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14px; color: #808080">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
     </div>
 </div>
 

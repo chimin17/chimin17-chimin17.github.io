@@ -12,13 +12,13 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言今天的主題是空間資料內插(interpolation)，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成面狀成果，這樣除了方便資料視覺化，也可以進一步進行空間分析。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  內插有很多演算法，我們今天使用turf.js，在client端也可以做">
-<meta name="keywords" content="鐵人賽,web,GIS,leaflet,Turf.js">
+  <meta name="description" content="前言今天的主題是空間資料內插(interpolation)，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成面狀成果，這樣除了方便資料視覺化，也可以進一步進行空間分析。">
+<meta name="keywords" content="2018鐵人賽-30天打造我的WebGIS系列,web,GIS,leaflet,Turf.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="鐵人賽Day 19- 使用Turf.js進行空間資料內插">
 <meta property="og:url" content="https://chimin17.github.io/2018/01/07/ironman-2018-day19/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="前言今天的主題是空間資料內插(interpolation)，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成面狀成果，這樣除了方便資料視覺化，也可以進一步進行空間分析。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  內插有很多演算法，我們今天使用turf.js，在client端也可以做">
+<meta property="og:description" content="前言今天的主題是空間資料內插(interpolation)，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成面狀成果，這樣除了方便資料視覺化，也可以進一步進行空間分析。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ppt.cc/fdBy7x@.png">
 <meta property="og:image" content="https://ppt.cc/ffUj3x@.png">
@@ -28,10 +28,10 @@
 <meta property="og:image" content="https://ppt.cc/fIMhhx@.png">
 <meta property="og:image" content="https://ppt.cc/fAEl1x@.png">
 <meta property="og:image" content="https://ppt.cc/fAGtlx@.png">
-<meta property="og:updated_time" content="2018-01-06T16:05:53.936Z">
+<meta property="og:updated_time" content="2018-10-16T13:32:26.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽Day 19- 使用Turf.js進行空間資料內插">
-<meta name="twitter:description" content="前言今天的主題是空間資料內插(interpolation)，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成面狀成果，這樣除了方便資料視覺化，也可以進一步進行空間分析。  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  內插有很多演算法，我們今天使用turf.js，在client端也可以做">
+<meta name="twitter:description" content="前言今天的主題是空間資料內插(interpolation)，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成面狀成果，這樣除了方便資料視覺化，也可以進一步進行空間分析。">
 <meta name="twitter:image" content="https://ppt.cc/fdBy7x@.png">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
@@ -158,6 +158,7 @@
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
     	<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天的主題是空間資料<strong>內插(interpolation)</strong>，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成<strong>面狀成果</strong>，這樣除了方便資料視覺化，也可以進一步進行空間分析。</p>
+<a id="more"></a>
 <blockquote>
 <p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
 </blockquote>
@@ -203,7 +204,7 @@
 	  
 	  <div class="article-tags tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -289,7 +290,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14px; color: #808080">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
     </div>
 </div>
 

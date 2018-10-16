@@ -155,36 +155,18 @@
 <p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
 </blockquote>
 <h2 id="TGOS-Taiwan-Geospatial-One-Stop"><a href="#TGOS-Taiwan-Geospatial-One-Stop" class="headerlink" title="TGOS (Taiwan Geospatial One Stop)"></a>TGOS (Taiwan Geospatial One Stop)</h2><p>TGOS是內政部資訊中心維運的系統，整合了很多國內GIS資料，也提供了很多GIS相關API，除了需要申請token的API外，也有民眾版的查詢系統可供線上使用。<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816kyqSsyu3bD.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816kyqSsyu3bD.jpg"></p>
-<h3 id="TGOS全國門牌定位服務"><a href="#TGOS全國門牌定位服務" class="headerlink" title="TGOS全國門牌定位服務"></a>TGOS全國門牌定位服務</h3><p><strong><a href="https://www.tgos.tw/TGOS/Web/Address/TGOS_Address.aspx" target="_blank" rel="noopener">全國門牌定位API服務</a></strong> 整合了國內戶政機關的門牌坐標資料，更新頻率很高，因為各縣市門牌資料在建置時驗收的標準滿高的，所以完整性跟正確性都很高。</p>
-<p>更重要的是該API的模糊查詢的機制滿實用的:<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816swpNRoftBV.png" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816swpNRoftBV.png"></p>
-<blockquote>
-<p>假設今天輸入 <strong>[忠孝東路十段380號]</strong> ，這是一個不存在的門牌</p>
-<ul>
-<li>在Google Geocode可能傳給忠孝東路十段38號(常理上，380號跟38號可能差距天南地北)</li>
-<li>TGOS可能傳給忠孝東路十段370號，這是一個在空間上比較有關聯的結果</li>
-</ul>
-<p>另外也可以選擇單雙號的鎖定(台灣門牌編制，單號通常在一側，雙號在另一側)，實際例子可能要請各位實際去操作看看</p>
-</blockquote>
-<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>以下直接實際操作看看</p>
-<ol>
-<li>開啟服務網址，輸入門牌<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816Ov1zv5zLdZ.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816Ov1zv5zLdZ.jpg"></li>
-</ol>
-<p>2.系統會跳出一個地圖，並顯示坐標<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816oG1QJseHlL.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816oG1QJseHlL.jpg"></p>
-<p><strong>[關於坐標值]</strong></p>
-<blockquote>
-<p>TGOS單筆查詢的坐標值是X是6位數,Y是7位數，跟先前幾天看到的121.XX,24.XX經緯度不一樣<br>這邊顯示的坐標系統是採用國內的TWD97，坐標系統這件事跟製圖有關，世界各國各區都會定義適合自己的局部坐標系統，關於坐標系統，後續打算攻略一番，就靜待下回分曉瞜。</p>
-</blockquote>
-<h3 id="批次操作"><a href="#批次操作" class="headerlink" title="批次操作"></a>批次操作</h3><p>TGOS門牌API是可以批次使用的(其實批次才是重點)，但是需要申請(網站上有提供教學)，申請後就可以使用啦，目前申請取得token後，好像一天可以使用1萬次。<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816erY99zLo31.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816erY99zLo31.jpg"></p>
-<p>批次操作的選擇項目比較多，像是可以選輸出的坐標系統。<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/201078161pM3S7dvHi.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/201078161pM3S7dvHi.jpg"></p>
-<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><h4 id="什麼-坐標系統"><a href="#什麼-坐標系統" class="headerlink" title="什麼? 坐標系統 ?"></a>什麼? 坐標系統 ?</h4><p>這邊我們看到個資料坐標系統是<code>TWD97(EPSG:3826)</code>，而之前的提到的資料都是<code>WGS84(EPSG:4326)</code>，關於這些坐標的內容及轉換..，就明天見囉!</p>
+<h3 id="TGOS全國門牌定位服務"><a href="#TGOS全國門牌定位服務" class="headerlink" title="TGOS全國門牌定位服務"></a>TGOS全國門牌定位服務</h3><p><strong><a href="https://www.tgos.tw/TGOS/Web/Address/TGOS_Address.aspx" target="_blank" rel="noopener">全國門牌定位API服務</a></strong> 整合了國內戶政機關的門牌坐標資料，更新頻率很高，因為各縣市門牌資料在建置時驗收的標準滿高的，所以完整性跟正確性都很高。<br>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/12/28/ironman-2018-day9/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -225,54 +207,18 @@
 <li>拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc.</li>
 <li>地址定位：僅有poi的地址，可從線上資源取得地址的坐標</li>
 </ul>
-<p>今天要介紹的為<strong>地址定位</strong>，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。</p>
-<blockquote>
-<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
-</blockquote>
-<p>以 <strong><a href="http://data.taipei/opendata/datalist/datasetMeta?oid=900f910f-a63c-46a0-a0c6-c2c1e55eef99" target="_blank" rel="noopener">臺北市各區農會地址一覽表</a></strong> 臺北市開放資料平臺下載的這份為例，就是具有<strong>地址</strong>，但沒有<strong>坐標</strong> 的資料。<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816DaK7lkTNPs.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816DaK7lkTNPs.jpg"></p>
-<p>我們可以使用一些線上資源幫助我們把它加值為具空間資訊的GIS資料，包括:</p>
-<ul>
-<li>Google Fusion Table</li>
-<li>內政部TGOS門牌對位系統</li>
-<li>其它 (例如CartoDB也有支援Here的Geocoding，但需酌收點數)</li>
-</ul>
-<p>我們這兩天就來使用看看免費又好用的<strong>Google Fusion Table</strong>及<strong>內政部TGOS門牌對位系統</strong>，自己動手產生GIS資料。</p>
-<hr>
-<h3 id="Google-Fusion-Table："><a href="#Google-Fusion-Table：" class="headerlink" title="Google Fusion Table："></a>Google Fusion Table：</h3><ol>
-<li><p>Fusion Table是在Google雲端上的一個功能，在Google雲端新增處可選擇<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816IqfkzFy4YM.png" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816IqfkzFy4YM.png"></p>
-</li>
-<li><p>如果找不到，請按 <strong>[連結更多應用程式]</strong> ，搜尋後找到<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816NJQl8zf1YD.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816NJQl8zf1YD.jpg"></p>
-</li>
-<li><p>fusion table有幾種匯入資料的方式，這邊直接把剛剛的csv匯入，可能要注意一下編碼，中文字常會出現Big5/UTF8的問題<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816Fa1zxYIfh3.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816Fa1zxYIfh3.jpg"></p>
-</li>
-</ol>
-<ol>
-<li><p>然後會是一些設定(沒啥問題就下一步然後完成)<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816NtSRqap8Uk.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816NtSRqap8Uk.jpg"></p>
-</li>
-<li><p>接著，我們選擇[File]–&gt;[Geocode]<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816pYd8BJdePj.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816pYd8BJdePj.jpg"></p>
-</li>
-<li><p>Geocode需要設定地址的欄位名稱，設定好後，就直接給它Run下去，需要執行一段時間<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/201078160FcpfGkEPe.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/201078160FcpfGkEPe.jpg"></p>
-</li>
-<li><p>然後…就完成了，我們切換至map頁籤看結果，<br>這邊其實可以作一些視覺化設定，包含marker符號及產生熱區圖(heat map)<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/201078165vK3FvChhI.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/201078165vK3FvChhI.jpg"></p>
-</li>
-</ol>
-<ol>
-<li>接著我們可以把資料匯出成kml，再透過<a href="https://ithelp.ithome.com.tw/articles/10193938" target="_blank" rel="noopener">[Day 7] 常見的GIS資料格式-轉換篇</a>的程式轉換成想要的格式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&apos;fs&apos;);</span><br><span class="line">var KmlStream = require(&quot;kml-stream&quot;);</span><br><span class="line">var data = fs.createReadStream(&apos;./out.kml&apos;).pipe(new KmlStream()).on(&apos;data&apos;, function (d) &#123;</span><br><span class="line">    console.log(d);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在Google Earth可以看到匯出的成果:<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816JQLHpG6d2A.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816JQLHpG6d2A.jpg"></p>
-<hr>
-<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>fusion table是一個快速地址對位的工具，但由於Google門牌資料庫完整度及更新頻率並不是這麼高，正確性及完整性可以還有一些限制，但已經可以滿足大多數需求，有了這個功能，只要手邊有地址，就可以<strong>自己的GIS資料自己產啦</strong>。</p>
-<p>而fusion table其實是基於<a href="https://developers.google.com/maps/documentation/geocoding/intro?hl=zh-tw" target="_blank" rel="noopener">Google Geocode Api</a>，所以每天只能request2500筆。</p>
-<p>另外，這幾天在蒐集資料時，發現<a href="https://kuro.tw/posts/2015/10/15/using-google-fusion-table-without-writing-code-or-topic-maps/" target="_blank" rel="noopener">Kuro大大</a>之前也非常完整的介紹Fusion Table，或許大家也可以參考唷!</p>
+<p>今天要介紹的為<strong>地址定位</strong>，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。<br>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/12/27/ironman-2018-day8/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -308,48 +254,17 @@
   </section>
   <section class="article typo">
 	  <p>昨天介紹了geojson、shapefile、kml基本概念，今天我們簡單用npm上面的工具寫個簡單轉換，有關node.js的安裝及使用請各位參考其他線上教學資源，這邊我們就直接使用囉。</p>
-<h2 id="gt-本文是參加鐵人賽的文章，同步發表於-“2018鐵人賽-30天打造我的WebGIS系列”"><a href="#gt-本文是參加鐵人賽的文章，同步發表於-“2018鐵人賽-30天打造我的WebGIS系列”" class="headerlink" title="&gt; 本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”"></a>&gt; 本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></h2><h3 id="geojson資料轉換工具："><a href="#geojson資料轉換工具：" class="headerlink" title="geojson資料轉換工具："></a>geojson資料轉換工具：</h3><p>這邊使用npm上的<a href="https://www.npmjs.com/package/geojson2" target="_blank" rel="noopener">geojson2</a>，直接安裝：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install geojson2</span><br></pre></td></tr></table></figure>
-<p>建立test.js，寫一個geojson2.kml的轉換<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var geojson2 = require(&apos;geojson2&apos;);</span><br><span class="line">geojson2.kml(&apos;test.geojson&apos;, &apos;./out.kml&apos;, function (err) &#123;</span><br><span class="line">    console.log(&quot;finish&quot;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>執行<br><code>node test.js</code></p>
-<p>結果out.kml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;</span><br><span class="line">&lt;kml xmlns=&quot;http://www.opengis.net/kml/2.2&quot;&gt;</span><br><span class="line">&lt;Document id=&quot;root_doc&quot;&gt;</span><br><span class="line">&lt;Folder&gt;&lt;name&gt;OGRGeoJSON&lt;/name&gt;</span><br><span class="line">  &lt;Placemark&gt;</span><br><span class="line">	&lt;name&gt;Dinagat Islands&lt;/name&gt;</span><br><span class="line">      &lt;Point&gt;&lt;coordinates&gt;125.6,10.1&lt;/coordinates&gt;&lt;/Point&gt;</span><br><span class="line">  &lt;/Placemark&gt;</span><br><span class="line">&lt;/Folder&gt;</span><br><span class="line">&lt;/Document&gt;&lt;/kml&gt;</span><br></pre></td></tr></table></figure></p>
-<p>geojson2這個模組，包含了四個子功能</p>
-<ul>
-<li>geojson2csv</li>
-<li>geojson2shape</li>
-<li>geojson2kml</li>
-<li>geojson2topojson</li>
-</ul>
-<p>有需要可以自行測試！</p>
-<blockquote>
-<p>其中官方文件提到，若要輸出kml and shp. 須先安裝gdal<br>Run ‘brew install gdal’ on OSX,<br>or ‘sudo apt-get install gdal’ on linux.</p>
-</blockquote>
-<hr>
-<h3 id="shapefile資料轉換工具："><a href="#shapefile資料轉換工具：" class="headerlink" title="shapefile資料轉換工具："></a>shapefile資料轉換工具：</h3><p>這邊一樣使用NPM上的<a href="https://www.npmjs.com/package/shp2json" target="_blank" rel="noopener">shp2json</a></p>
-<blockquote>
-<p>一樣須先安裝gdal<br>Run ‘brew install gdal’ on OSX,<br>or ‘sudo apt-get install gdal’ on linux.</p>
-</blockquote>
-<p>安裝<br><code>npm install shp2json.</code></p>
-<p>建立test.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var toJSON = require(&apos;shp2json&apos;);</span><br><span class="line">var result = toJSON.fromShpFile(&apos;out.shp&apos;).pipe(process.stdout);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure></p>
-<p>執行<br><code>node test.js</code></p>
-<p>結果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;type&quot;: &quot;FeatureCollection&quot;, </span><br><span class="line">    &quot;features&quot;: </span><br><span class="line">    [</span><br><span class="line">        &#123; </span><br><span class="line">            &quot;type&quot;: &quot;Feature&quot;, </span><br><span class="line">            &quot;properties&quot;: &#123; &quot;name&quot;: &quot;Dinagat Islands&quot; &#125;, </span><br><span class="line">            &quot;geometry&quot;: &#123; &quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [125.6, 10.1] &#125; </span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="kml資料轉換工具："><a href="#kml資料轉換工具：" class="headerlink" title="kml資料轉換工具："></a>kml資料轉換工具：</h3><p>使用NPM上的<a href="https://www.npmjs.com/package/kml-stream" target="_blank" rel="noopener">kml-stream</a></p>
-<p>安裝kml-stream<br><code>npm install kml-stream</code></p>
-<p>test.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var fs = require(&apos;fs&apos;);</span><br><span class="line">var KmlStream = require(&quot;kml-stream&quot;);</span><br><span class="line">var data = fs.createReadStream(&apos;./out.kml&apos;).pipe(new KmlStream()).on(&apos;data&apos;, function (d) &#123;</span><br><span class="line">    console.log(d);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>執行<br><code>node test.js</code></p>
-<p>結果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: &apos;Feature&apos;,</span><br><span class="line">    properties: &#123; &#125;,</span><br><span class="line">    geometry: &#123; type: &apos;Point&apos;, coordinates: [125.6, 10.1] &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>基本上只要掌握了這三類資料互轉，大多數webgis線上資源的格式應該幾乎可以掌握了，後續如果真的有其他GIS資料轉換及讀取的問題，建議可進一步研究專業的GIS軟體：<a href="https://www.qgis.org/en/site/" target="_blank" rel="noopener">QGIS</a>，由於本次鐵人賽的目標是快速上手webgis，比較可惜無法操作太多QGIS，QGIS無論在轉檔、分析及處理等功能都很強大，可以自行試看看唷。</p>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/12/26/ironman-2018-day7/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
-      
-        <a href="/tags/web/">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/GIS/">GIS</a>
       
@@ -386,64 +301,17 @@
   <section class="article typo">
 	  <p>前兩天我們先用CARTO(CartoDB)實作了一些基本的GIS資料視覺化，接觸了GIS資料。</p>
 <p>延續 <strong><a href="https://ithelp.ithome.com.tw/articles/10192948" target="_blank" rel="noopener">[Day3]  談互操作性及Web Map Service 標準</a>議題</strong>，我們在處理資料時可能會遇到各種GIS格式，今日就來攻略幾種<strong>web常用的GIS資料格式</strong>。</p>
-<blockquote>
-<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
-</blockquote>
-<h2 id="先釐清一下資料型態"><a href="#先釐清一下資料型態" class="headerlink" title="先釐清一下資料型態"></a>先釐清一下資料型態</h2><p>根據教科書，所謂GIS資料就是具備空間資訊的資料，依照資料型態可以分成兩類</p>
-<ul>
-<li>網格資料(raster)</li>
-<li>向量資料(vector)</li>
-</ul>
-<h3 id="網格資料："><a href="#網格資料：" class="headerlink" title="網格資料："></a>網格資料：</h3><p>網格資料指的通常是影像類型等<strong>規則網格</strong>的資料，例如衛星影像、高程模型(用來表示地形)，以像元(pixel)為基礎，每個pixel會有一些資訊如R,G,B, 或是深度、高度，等，賦予每一個pixel對應的空間坐標，就是一個網格式GIS資料，而賦予坐標的做法通常是定義<strong>網格大小、起始網格坐標、以及方向</strong>，定義這些資訊的檔案稱作 <strong><a href="http://webhelp.esri.com/arcims/9.3/General/topics/author_world_files.htm" target="_blank" rel="noopener">world file</a></strong>，常用的格式如geotiff、tiff、jpg、bmp等影像檔具有world file都屬於此類。</p>
-<h3 id="向量資料："><a href="#向量資料：" class="headerlink" title="向量資料："></a>向量資料：</h3><p>比起網格式資料可能都是使用專業人員處理好的資料，向量式資料在應用上常見得多，又依表示方法分成：<strong>點、線、面</strong>（註）</p>
-<blockquote>
-<p>註：點線面是統稱，在2D 又可細分為multi points, multi polygon…etc. 在3D GIS的世界，相關格式另有一片天….。</p>
-</blockquote>
-<hr>
-<h2 id="本篇主要談的資料格式屬於向量式資料"><a href="#本篇主要談的資料格式屬於向量式資料" class="headerlink" title="本篇主要談的資料格式屬於向量式資料"></a>本篇主要談的資料格式屬於向量式資料</h2><h3 id="geojson-http-geojson-org"><a href="#geojson-http-geojson-org" class="headerlink" title="geojson (http://geojson.org/)"></a>geojson (<a href="http://geojson.org/" target="_blank" rel="noopener">http://geojson.org/</a>)</h3><p>geojson我們在第二天的範例中就已經在地圖上介接了一個開放資料範例，而跟前幾天提到GIS常用的OGC標準不同，<strong>geojson非OGC標準，是由IETF(Internet Engineering Task Force)組織訂定的</strong>，因為是json物件的方式表現，使用起來可說是簡單好用，於webgis廣為流通，目前版本的<a href="https://en.wikipedia.org/wiki/GeoJSON" target="_blank" rel="noopener">geojson(RFC 7946)</a>具有以下特徵：</p>
-<ul>
-<li>JSON，流通方便</li>
-<li><p>一個geojson結構如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;type&quot;: &quot;Feature&quot;,</span><br><span class="line">  &quot;geometry&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;Point&quot;,</span><br><span class="line">    &quot;coordinates&quot;: [125.6, 10.1]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;properties&quot;: &#123;</span><br><span class="line">    &quot;name&quot;: &quot;Dinagat Islands&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>幾何樣態（geometry Type）：Point, LineString, Polygon, MultiPoint, MultiLineString, and MultiPolygon</p>
-</li>
-<li>坐標(coordinates)：不同幾何形態有不同坐標值記錄方式，可以參考 <strong><a href="https://en.wikipedia.org/wiki/GeoJSON" target="_blank" rel="noopener">wiki範例</a></strong>，而且並沒有定義投影坐標系統的欄位，通常默認為EPSG4326(也就是wgs84經緯度)</li>
-<li>屬性(properties)：在properties以key-value方式記錄每一筆資料的屬性欄位</li>
-</ul>
-<h3 id="ESRI-shapefile-shp"><a href="#ESRI-shapefile-shp" class="headerlink" title="ESRI shapefile(shp)"></a>ESRI shapefile(shp)</h3><p>shapefile在GIS領域廣為使用多年，目前仍廣泛使用中，它是GIS應用軟體供應商ESRI定義的格式，亦已部分公開相關結構，大多數GIS軟體(如QGIS、Arcgis等)也都支援。<br>要解析shapefile，可參考github上有許多shapefile library，而一個shapefile通常包含很多附屬檔案(<a href="https://zh.wikipedia.org/wiki/Shapefile#cite_note-esri98-1" target="_blank" rel="noopener">wiki</a>)：</p>
-<ul>
-<li>Shapefile圖形格式 (.shp)</li>
-<li>Shapefile圖形索引格式(.shx)</li>
-<li>Shapefile屬性格式(.dbf)，屬性資料庫</li>
-<li>Shapefile投影格式(.prj)，紀錄坐標系統</li>
-<li>Shapefile空間索引格式(.sbn)</li>
-</ul>
-<p>一個shapefile只會有一種幾何形態，共支援Point, Polyline, Polygon, 等13類的幾何型態資料，更多shape資料問題可參考<a href="https://zh.wikipedia.org/wiki/Shapefile#cite_note-esri98-1" target="_blank" rel="noopener">wiki</a>。</p>
-<p>這邊要特別分享一個小小使用經驗：</p>
-<blockquote>
-<p>shapefile因為具有(.prj)檔案記錄投影坐標系統的特性，與geojson有個不同的地方在於它可以使用不同的坐標系統(一般來說geojson都是使用ESPG4326，也就是wgs84經緯度)，我們拿到一份shapefile可能會是各式各樣坐標系統，這些坐標值是存在shp內，<strong>當我們偶爾會拿到沒有prj檔的shapefile時，可能會遇到對於shp內坐標值到底是啥而一頭霧水的現象，這時便需要經驗判斷資料的坐標系統喔！</strong>(關於坐標系統，預計過兩天再來攻略^^)</p>
-</blockquote>
-<h2 id="kml"><a href="#kml" class="headerlink" title="kml"></a>kml</h2><p>kml是OGC規範格式，廣泛用於Google Earth等平台上，它是xml方式表達GIS資料，並且包含了其在Google Earth上的樣式資料，基本上都使用ESPG4326的經緯度坐標，範例如下(<a href="https://en.wikipedia.org/wiki/Keyhole_Markup_Language" target="_blank" rel="noopener">wiki</a>)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;kml xmlns=&quot;http://www.opengis.net/kml/2.2&quot;&gt;</span><br><span class="line">&lt;Document&gt;</span><br><span class="line">&lt;Placemark&gt;</span><br><span class="line">  &lt;name&gt;New York City&lt;/name&gt;</span><br><span class="line">  &lt;description&gt;New York City&lt;/description&gt;</span><br><span class="line">  &lt;Point&gt;</span><br><span class="line">    &lt;coordinates&gt;-74.006393,40.714172,0&lt;/coordinates&gt;</span><br><span class="line">  &lt;/Point&gt;</span><br><span class="line">&lt;/Placemark&gt;</span><br><span class="line">&lt;/Document&gt;</span><br><span class="line">&lt;/kml&gt;</span><br></pre></td></tr></table></figure></p>
-<p>在我過去使用kml的經驗，Google Earth對於kml在樣式屬性上實在非常具有彈性，他甚至可以定義其在Google Earth上的Popup內容、視角、事件等等，個人覺得算是很單純但又很難掌握(ㄊㄠˇ 一ㄢˋ)的格式(樣式部分)</p>
-<h2 id="topojson"><a href="#topojson" class="headerlink" title="topojson"></a>topojson</h2><p>topojson是geojson的擴充，大致上是基於geojson但具<strong>資訊壓縮</strong>並考量<strong>位相關係</strong>的(<a href="https://en.wikipedia.org/wiki/Geospatial_topology" target="_blank" rel="noopener">topology</a>)的資料格式(<a href="https://github.com/topojson/topojson-specification#1-introduction" target="_blank" rel="noopener">請參考topojson spec文件</a>)，<strong>廣泛用於webgis及d3.js資料視覺化</strong>(作者同時也是d3.js作者Mike Bostock)，關於topojson詳細的規格可以直接參考文件，在這邊我們先快速來看看一個Taiwan.TopoJSON範例(因長度關係，請直接前往<a href="https://github.com/jason2506/Taiwan.TopoJSON/blame/master/topojson/towns/towns-09007.json" target="_blank" rel="noopener">github上的範例</a>)。</p>
-<p>拿到資料後，我們把資料複製到<a href="http://jsoneditoronline.org" target="_blank" rel="noopener">json edirtor</a>檢視：<br><img src="https://ithelp.ithome.com.tw/upload/images/20171225/201078169w5CgPveJz.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171225/201078169w5CgPveJz.jpg"></p>
-<p>從資料格式架構中可以看到，topojson相較於geojson多增加了幾個項目:bbox、transform、arcs</p>
-<ul>
-<li>bbox: 記錄的是這份geojson的邊界</li>
-<li>transfrom: 記錄<strong>兩個尺度</strong>及<strong>兩個平移參數</strong>，在topojson中為了減少記錄位數，坐標都是用int方式記錄，再靠transform參數還原</li>
-<li>arcs: 記錄資料中的邊，arcs分兩個部分，<strong>一個是最外層的arcs記錄所有的邊</strong>，<strong>第二個是每個幾何物件中的arcs記錄的為arc index</strong>，每個幾何物件內的arcs都參照最外層arcs，如此是以共邊的概念記錄每個物件的幾何，減低資料量並保有位相關係(topology)</li>
-<li>objects: GIS資料物件陣列，包含幾何及屬性</li>
-</ul>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>geojson、shapefile、kml在webgis中最常被用到，資料交換也常依賴這幾類格式，大多數webgis平台都支援這些資料形式，因此大家一定會碰到，今天先介紹這些格式，明天預計來攻略這幾類的資料轉換(這應該才是最重要的^^)。</p>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/12/25/ironman-2018-day6/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -479,99 +347,21 @@
   </section>
   <section class="article typo">
 	  <p>前一天用了Leaflet了一個地圖，並接了國土測繪中心的WMTS跟一個geojson，像是WMTS(Web Map Tile Service)這類web service已廣泛流通於webgis世界，今天試著來使用這些標準。</p>
-<blockquote>
-<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
-</blockquote>
 <h1 id="Interoperability-amp-Standard"><a href="#Interoperability-amp-Standard" class="headerlink" title="Interoperability &amp; Standard"></a>Interoperability &amp; Standard</h1><p>在進入今天的主題「空間資料的格式及標準」之前，先來個名詞解釋—Interoperability。<br>Interoperability中文為<strong>互操作性</strong>，IEEE對於互操作性的定義如下(<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E6%93%8D%E4%BD%9C%E6%80%A7" target="_blank" rel="noopener">維基百科</a>)</p>
 <blockquote>
 <p><strong>兩個或多個系統之間交換信息之能力，以及對交換的信息加以使用之能力</strong></p>
 </blockquote>
-<p>看完這句話，或許各位還是對於interoperability感到抽象。各位可以想像一下，若兩千多年前秦始皇沒有統一文字、統一度量衡、統一貨幣，那會是個什麼樣的狀況？是不是大家難以溝通，公說公有理，婆說婆有理，無法達到「共識」。</p>
-<p>為了解決這樣<strong>異質性</strong>的問題，「標準」(standard)就因此誕生了！大家只要遵照著標準，就能夠理解對方所說的話、做的事，達到互操作性。</p>
-<p>那標準是誰來訂定的呢？其實世界上有許多不為人知的標準組織為各自領域努力建立標準（像螞蟻～默默做自己～～）。標準組織百百種，而最有名的就屬<strong>ISO　(International Organization for Standardization)</strong>。由於組織規模大，其所訂定的標準也是包山包海，像是常聽到的ISO 9001（品質管理系統）、ISO 22000（食品安全管理系統）及ISO 27001（資訊安全管理系統）等驗證均是由ISO國際標準組織所制訂。</p>
-<hr>
-<p><img src="https://i.imgur.com/najbKw3.png" alt=""><br>而地理資訊的開放標準是由一個叫 <strong>OGC(Open Geospatial Consortium)</strong> 的組織來訂定。OGC成立於1994年，是一個國際的非營利組織，由許多公司、政府單位及學術研究機構所組成。其建立了50多項地理資訊標準（<a href="http://www.opengeospatial.org/" target="_blank" rel="noopener">官方網站</a>），如</p>
-<ul>
-<li>KML，為用於Google Earth展示向量資料（點、線、面）的檔案格式。</li>
-<li>WMS(Web Map Service)為網路地圖服務。</li>
-<li>WMTS(Web Map Tile Service)也是地圖服務，和WMS不同的是WMTS是提供地圖的「圖磚」(Tiles)，也就是把地圖切成一小塊一小塊給用戶端，提高展示效能。</li>
-<li>WFS(Web Feature Service)是負責提供向量資料的服務。</li>
-<li>SOS(Sensor Observation Service)則是提供感測器資料，如雨量、氣溫等觀測資料的服務。</li>
-</ul>
-<p>另外其他許多OGC標準的網路服務或資料格式，族繁不及備載。除了OGC，ESRI的Shapefile也是常見的地理資料標準，但並不是開放標準。<br><strong>註:常見的geojson也非OGC標準，這些資料格式後面幾天找機會攻略</strong></p>
-<h1 id="WMS使用教學"><a href="#WMS使用教學" class="headerlink" title="WMS使用教學"></a>WMS使用教學</h1><p>上面提到那麼多OGC的網路服務，包含我們前一天接的WMTS也屬其中之一，這邊就挑WMS來為各位示範如何透過WMS來取得地圖。</p>
-<p>取得地圖分為兩個步驟，分別是<strong>GetCapabilities</strong>以及<strong>GetMap</strong>。</p>
-<ul>
-<li>GetCapabilities就是取得網路服務的<strong>詮釋資料（metadata）</strong>，意思是先看看這個服務提供哪些地圖？地圖範圍如何？坐標系統是什麼？諸如此類的資料描述都會在這個步驟取得，才能夠決定你要哪張地圖。</li>
-<li>而GetMap則是根據上一步驟的資訊，向服務提出取得地圖的要求。</li>
-</ul>
-<h3 id="範例如下："><a href="#範例如下：" class="headerlink" title="範例如下："></a>範例如下：</h3><ol>
-<li>在WMS服務網址 <a href="https://neo.sci.gsfc.nasa.gov/wms/wms" target="_blank" rel="noopener">https://neo.sci.gsfc.nasa.gov/wms/wms</a> 後加上request參數<br>?service=WMS&amp;request=GetCapabilities，代表對WMS服務寄送一個GetCapabilities的要求，如下所示。若要求成功會收到一份XML資料，<br>:::success<br><a href="https://neo.sci.gsfc.nasa.gov/wms/wms?service=WMS&amp;request=GetCapabilities" target="_blank" rel="noopener">https://neo.sci.gsfc.nasa.gov/wms/wms?service=WMS&amp;request=GetCapabilities</a><br>:::</li>
-<li>我們先跳到GetMap要求，GetMap要求所需的參數如下：</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">參數</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>version</strong>=VERSION</td>
-<td style="text-align:left">WMS版本</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>request</strong>=GetMap</td>
-<td style="text-align:left">對WMS送GetMap request</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>layers</strong>=LAYERNAME</td>
-<td style="text-align:left">WMS的地圖單位為Layer，此參數為Layer名稱</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>style</strong>=STYLE</td>
-<td style="text-align:left">黑白或彩色影像</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>crs</strong>=CRS</td>
-<td style="text-align:left">坐標系統</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>bbox</strong>=MINX,MINY,MAXX,MAXY</td>
-<td style="text-align:left">欲取得的地圖範圍</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>width</strong>=WIDTH</td>
-<td style="text-align:left">輸出地圖寬度</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>height</strong>=HEIGHT</td>
-<td style="text-align:left">輸出地圖高度</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>format</strong>=FORMAT</td>
-<td style="text-align:left">輸出地圖格式</td>
-</tr>
-</tbody>
-</table>
-<p>而這些參數就是從步驟一的Capabilities XML來取得。</p>
-<p><img src="https://i.imgur.com/4vbDZjx.png" alt=""></p>
-<p><img src="https://i.imgur.com/vxwa1jg.png" alt=""></p>
-<p>GetMap要求範例如下：<br>:::success<br><a href="https://neo.sci.gsfc.nasa.gov/wms/wms?version=1.3.0&amp;request=GetMap&amp;layers=MOD14A1_M_FIRE&amp;style=rgb&amp;crs=CRS:84&amp;bbox=-180,-90,180,90&amp;width=720&amp;height=360&amp;format=image/png" target="_blank" rel="noopener">https://neo.sci.gsfc.nasa.gov/wms/wms?version=1.3.0&amp;request=GetMap&amp;layers=MOD14A1_M_FIRE&amp;style=rgb&amp;crs=CRS:84&amp;bbox=-180,-90,180,90&amp;width=720&amp;height=360&amp;format=image/png</a><br>:::</p>
-<p>得到的Map如下：<br><img src="https://i.imgur.com/2dhZq01.png" alt=""></p>
-<p>用一個GET request的方式就能夠得到一張地圖影像，使用者只需根據自己的需求來調整參數，是不是很方便呢？</p>
-<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>隨這網際網路的發展，地理資訊也逐漸朝向WebGIS的方向前進。越來越多人能夠透過網路交流地理資訊，因此標準及網路服務即是奠定的基礎。</p>
-<p>像是Leaflet.js這類的前端地圖框架，當然支援WMS標準的資料介接，也因此我們可以使用它們<a href="http://leafletjs.com/reference-1.2.0.html#tilelayer-wms" target="_blank" rel="noopener">官方文件</a>的方法去接地圖資料，例如我們昨天使用的內政部國土測繪中心WMTS <strong>(WMTS即是WMS加入<a href="https://en.wikipedia.org/wiki/Tiled_web_map" target="_blank" rel="noopener">Tiled web map</a>的概念</strong>，加快服務存取效率)。</p>
-<p>今天主要整理了WMS的說明，後續仍有webGIS會遇到的各種<strong>GIS格式</strong>及<strong>坐標系統</strong>攻略，在介紹資料之前，接下來兩天會先用一些線上GIS資料視覺化SDK，看一下GIS資料可以怎麼用。</p>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/12/22/ironman-2018-day3/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -618,29 +408,17 @@
 </ul>
 </blockquote>
 <p>一個地圖框架提供我們基本地圖操作，把地圖元素(含空間坐標物件)轉換成前端可操作的元件(DOM等)，而為使地圖互動更生動活潑，其它前端工具當然也是可以整合進來的，包含Jquery, Vue, React, Angularjs…甚至D3.js, C3.js等可能都需要整合在webGIS中。</p>
-<h3 id="Server端：Web-service及資料庫"><a href="#Server端：Web-service及資料庫" class="headerlink" title="Server端：Web service及資料庫"></a>Server端：Web service及資料庫</h3><p>在webGIS應用程式中，可以透過Web service來進行資料操作，這之中最常使用到的是<strong>網路圖磚服務(WMTS)</strong>，例如我們透過 <strong><a href="https://developers.google.com/maps/documentation/javascript/tutorial?hl=zh-tw" target="_blank" rel="noopener">Google maps api</a></strong> 在網頁之中建立一個地圖，這時可以看到Google maps的底圖，這個底圖服務就是透過類似WMTS的概念來實作的。</p>
-<p>另一個面向是資料庫，具有空間資料的資料庫稱作「空間資料庫」，空間資料庫能夠執行各種空間查詢，目前包含<strong>MSSQL(SQL Spatial)</strong>、<strong>Postgressql(PostGIS)</strong>、 <strong>Oracle(Oracel Spatial)</strong>、<strong>MySQL</strong>、<strong>MongoDB</strong>等各大資料庫系統都有支援空間資料庫的格式及模組。</p>
-<h2 id="先直接來個範例"><a href="#先直接來個範例" class="headerlink" title="先直接來個範例"></a>先直接來個範例</h2><p>上面長篇大論講了一堆，<strong>本次鐵人賽的目標是把這些事情說清楚，逐一擊破。</strong></p>
-<p>以下先快速開始一個範例:<br>我們使用leaflet.js new一個地圖並以線上WMTS作為底圖，並把一些資料放上圖台，<br>這樣其實就是最簡單的一個webGIS。</p>
-<p>引入必要元件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.2.0/dist/leaflet.css&quot; /&gt;</span><br><span class="line">&lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;</span><br><span class="line">  integrity=&quot;sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=&quot;</span><br><span class="line">  crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/leaflet@1.2.0/dist/leaflet.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<p>初始化一個地圖並設定中心經緯度為[25.0375928,121.5529563], 比例尺尺度為10的視角<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&apos;map_div&apos; style=&quot;height:100%&quot;&gt;&lt;/div&gt;</span><br><span class="line">var map = L.map(&apos;map_div&apos;).setView([25.0375928,121.5529563], 10);</span><br></pre></td></tr></table></figure></p>
-<p>一個地圖應用都需要底圖，這邊我們使用官方維護的<a href="https://maps.nlsc.gov.tw/S09SOA/" target="_blank" rel="noopener">內政部國土測繪中心wmts</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var basemap = L.tileLayer(&apos;https://wmts.nlsc.gov.tw/wmts/EMAP/default/GoogleMapsCompatible/&#123;z&#125;/&#123;y&#125;/&#123;x&#125;&apos;, &#123;</span><br><span class="line">        attribution: &apos;&amp;copy; &lt;a href=&quot;http://osm.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors&apos;</span><br><span class="line">&#125;).addTo(map);</span><br></pre></td></tr></table></figure></p>
-<p>接下來，webGIS都會有自己的資料，可能是靜態的，也可以是需要資料庫IO的<br>可能需要從Server side 寫一個api接口取資料<br>c#:(示意)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//取資料接口..</span><br><span class="line">[Route(&quot;api/Poi&quot;)]</span><br><span class="line">[httpget] </span><br><span class="line">public JsonResult Poi()</span><br><span class="line">&#123;    </span><br><span class="line">   //Bson collection example [&#123;&quot;name&quot;:&quot;市府店&quot;,&quot;geo&quot;:[25.0375,121.5529]&#125;,&#123;&quot;name&quot;:&quot;西門店&quot;,&quot;geo&quot;:[25.0401,121.509]&#125;....]</span><br><span class="line">   List&lt;PoiDataModel&gt; pois =  List&lt;PoiDataModel&gt;();</span><br><span class="line">   //取資料...</span><br><span class="line">   略..</span><br><span class="line">   return Json(...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>client side:<br>接上面的api,把資料放在地圖上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: &quot;/api/Poi&quot;,</span><br><span class="line">    contentType: &apos;application/json&apos;,</span><br><span class="line">    type: &apos;GET&apos;,</span><br><span class="line">    contentType: &apos;application/json; charset=utf-8&apos;,</span><br><span class="line">    success: function(data) &#123;</span><br><span class="line">         $.each(data.pois, function(k, v) &#123;</span><br><span class="line">            L.marker([v[0], v[1]]).addTo(map)</span><br><span class="line">            .bindPopup(v.name)</span><br><span class="line">            .openPopup();</span><br><span class="line">         &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>另外，可能需要介接其它api資料，我們的範例資料是一個展店的計畫，<br>在此，我們有需求是看看周圍的商家資料。<br>這邊我們介接<a href="https://egis.moea.gov.tw/OpenData/" target="_blank" rel="noopener">經濟部開放資料</a><br><code>說明: A-3 鄰近商家查詢：透過坐標參數，查詢所在位置鄰近商家清冊資料。</code></p>
-<p>接到的資料是geojson，把它們放到地圖上<br>並以不同符號表示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">   url: &quot;https://egis.moea.gov.tw/MoeaEGFxData_WebAPI_Inside/InnoServe/BusinessBUSM?resptype=GeoJson&amp;x=121.509&amp;y=25.0401&amp;buffer=1000&quot;,</span><br><span class="line">   type: &apos;GET&apos;,</span><br><span class="line">   success: function (data) &#123;</span><br><span class="line">       var symbol = &#123;</span><br><span class="line">            radius: 3,</span><br><span class="line">            fillColor: &quot;#ff7800&quot;,</span><br><span class="line">            color: &quot;#000&quot;,</span><br><span class="line">            weight: 1,</span><br><span class="line">            opacity: 1,</span><br><span class="line">            fillOpacity: 0.8</span><br><span class="line">       &#125;;</span><br><span class="line">       L.geoJSON(data, &#123;</span><br><span class="line">            pointToLayer: function (feature, latlng) &#123;</span><br><span class="line">                return L.circleMarker(latlng, symbol);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;).addTo(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>完整程式碼</p>
-<p><strong>client side(map.html):</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet@1.2.0/dist/leaflet.css&quot; /&gt;</span><br><span class="line">&lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;</span><br><span class="line">  integrity=&quot;sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=&quot;</span><br><span class="line">  crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/leaflet@1.2.0/dist/leaflet.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;div id=&apos;map_div&apos; style=&quot;height:100%&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">//利用leaflet初始化地圖</span><br><span class="line">var map = L.map(&apos;map_div&apos;).setView([25.0375928,121.5529563], 10);</span><br><span class="line"></span><br><span class="line">//加入內政部國土測繪中心wmts</span><br><span class="line">var basemap=L.tileLayer(&apos;https://wmts.nlsc.gov.tw/wmts/EMAP/default/GoogleMapsCompatible/&#123;z&#125;/&#123;y&#125;/&#123;x&#125;&apos;, &#123;</span><br><span class="line">        attribution: &apos;&amp;copy; &lt;a href=&quot;http://osm.org/copyright&quot;&gt;OpenStreetMap&lt;/a&gt; contributors&apos;</span><br><span class="line">    &#125;).addTo(map);</span><br><span class="line"></span><br><span class="line">//從Server端API接口把POI展在地圖上,並binding一個popup</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">    url: &quot;/api/Poi&quot;,</span><br><span class="line">    contentType: &apos;application/json&apos;,</span><br><span class="line">    type: &apos;GET&apos;,</span><br><span class="line">    contentType: &apos;application/json; charset=utf-8&apos;,</span><br><span class="line">    success: function(data) &#123;</span><br><span class="line">         $.each(data.pois, function(k, v) &#123;</span><br><span class="line">            L.marker([v[0], v[1]]).addTo(map)</span><br><span class="line">            .bindPopup(v.name)</span><br><span class="line">            .openPopup();</span><br><span class="line">         &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//介接經濟部商家查詢api</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">   url: &quot;https://egis.moea.gov.tw/MoeaEGFxData_WebAPI_Inside/InnoServe/BusinessBUSM?resptype=GeoJson&amp;x=121.509&amp;y=25.0401&amp;buffer=1000&quot;,</span><br><span class="line">   type: &apos;GET&apos;,</span><br><span class="line">   success: function (data) &#123;</span><br><span class="line">       var symbol = &#123;</span><br><span class="line">            radius: 3,</span><br><span class="line">            fillColor: &quot;#ff7800&quot;,</span><br><span class="line">            color: &quot;#000&quot;,</span><br><span class="line">            weight: 1,</span><br><span class="line">            opacity: 1,</span><br><span class="line">            fillOpacity: 0.8</span><br><span class="line">       &#125;;</span><br><span class="line">       L.geoJSON(data, &#123;</span><br><span class="line">            pointToLayer: function (feature, latlng) &#123;</span><br><span class="line">                return L.circleMarker(latlng, symbol);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;).addTo(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>server side(ApiController.cs):</strong><br>API接口取資料庫中的據點資料，假設使用mongodb去Query到bson document..<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//取資料接口..</span><br><span class="line">[Route(&quot;api/Poi&quot;)]</span><br><span class="line">[httpget] </span><br><span class="line">public JsonResult Poi()</span><br><span class="line">&#123;    </span><br><span class="line">   //Bson collection example [&#123;&quot;name&quot;:&quot;市府店&quot;,&quot;geo&quot;:[25.0375,121.5529]&#125;,&#123;&quot;name&quot;:&quot;西門店&quot;,&quot;geo&quot;:[25.0401,121.509]&#125;....]</span><br><span class="line">   List&lt;PoiDataModel&gt; pois =  List&lt;PoiDataModel&gt;();</span><br><span class="line">   //取資料...</span><br><span class="line">   略..</span><br><span class="line">   return Json(...)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//新增資料接口...</span><br><span class="line">[Route(&quot;api/Poi&quot;)]</span><br><span class="line">[httppost]</span><br><span class="line">public JsonResult GetPois(PoiDataModel poi)</span><br><span class="line">&#123;  </span><br><span class="line">   //新增資料進資料庫...</span><br><span class="line">   略..</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>上面範例，結果如下:<br><img src="https://ppt.cc/fDOGOx@.jpg" alt=""></p>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/12/21/ironman-2018-day2/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -676,45 +454,17 @@
 	  <h2 id="webGIS-資訊時代的地理大發現"><a href="#webGIS-資訊時代的地理大發現" class="headerlink" title="webGIS-資訊時代的地理大發現"></a>webGIS-資訊時代的地理大發現</h2><p>在現代的網頁應用中，地圖應用已經成為了不可或缺的網頁元素，一個現代網頁中，有了地圖應用，可以讓使用者查詢空間資訊；開發者亦可實踐各種<strong>LBS</strong>(Location Based Services)及<strong>IOT</strong>(Internet of Things)的應用。</p>
 <p>目前網路上有許多開發資源可以協助我們建構一些地圖應用，並且透過資料視覺化及UI/UX，使空間資訊有效地呈現給user，user也可以request資訊，讓系統是雙向互動的，相關的應用國內外都有很多案例。</p>
 <p>然而，目前線上整合這些資源且能涵蓋背後相關技術的完整介紹並不多，我們團隊希望藉由<strong>2018 IT邦鐵人賽</strong>機會，除整合資源應用外，再加碼一些GIS相關技術面探討，目標是運用開源軟體，<strong>30天打造一個webGIS系統</strong>。</p>
-<blockquote>
-<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
-</blockquote>
-<h2 id="地圖應用與webGIS"><a href="#地圖應用與webGIS" class="headerlink" title="地圖應用與webGIS"></a>地圖應用與webGIS</h2><p>GIS是地理資訊系統(Geographical Information System)的英文縮寫，GIS在學術及產業應用上發展已經蓬勃發展數十年，而<strong>webGIS簡單來說就是把GIS應用在網頁相關平台上</strong>。</p>
-<p>根據GIS應用軟體供應商龍頭Esri的定義：</p>
-<blockquote>
-<p>In its simplest form, web GIS can be defined as any GIS that uses web technology to communicate between a server and a client (Esri)</p>
-</blockquote>
-<p>更具體一點，Esri認為webGIS包含以下元素</p>
-<blockquote>
-<ul>
-<li>The server has a URL so that clients can find it on the web.</li>
-<li>The client relies on HTTP specifications to send - requests to the server.</li>
-<li>The server performs the requested GIS operations and &gt; sends responses to the client via HTTP.</li>
-<li>The format of the response sent to the client can be in many formats, such as HTML, binary image, XML (Extensible Markup Language), or JSON (JavaScript Object Notation).</li>
-</ul>
-</blockquote>
-<p>上述文字基本上描述了webGIS的核心，在此我們可以加以擴充，有了webGIS技術，配合前後端技術的整合，得以讓網頁加入地圖應用元素。</p>
-<blockquote>
-<p>參考文獻: <a href="http://www.geo-jobe.com/videos/web-gis-explained-5-essential-elements-web-gis/" target="_blank" rel="noopener">http://www.geo-jobe.com/videos/web-gis-explained-5-essential-elements-web-gis/</a></p>
-</blockquote>
-<h2 id="規劃架構"><a href="#規劃架構" class="headerlink" title="規劃架構"></a>規劃架構</h2><p>以下是擬定的架構，希望能完整走過：</p>
-<ul>
-<li>開發之前，先暸解資料：GIS資料基本概念、資料處理、如何自製資料 </li>
-<li>一些既有的線上SDK: CARTO, Google Fusion table</li>
-<li>webGIS開發資源: 資源介紹, 創造資源(OSM)</li>
-<li>資源實作: 開始整合各種接API</li>
-<li>進階處理: 空間資料庫處理、空間運算</li>
-<li>綜合演練</li>
-</ul>
-<h2 id="關於作者"><a href="#關於作者" class="headerlink" title="關於作者"></a>關於作者</h2><p>服務於國內知名工程顧問公司的GIS應用開發團隊，希望藉由此次經驗，強化自己對開源軟體及本身核心技術的暸解！</p>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/12/20/ironman-2018-day1/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -872,7 +622,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14px; color: #808080">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
     </div>
 </div>
 

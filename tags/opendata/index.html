@@ -155,36 +155,18 @@
 <p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
 </blockquote>
 <h2 id="TGOS-Taiwan-Geospatial-One-Stop"><a href="#TGOS-Taiwan-Geospatial-One-Stop" class="headerlink" title="TGOS (Taiwan Geospatial One Stop)"></a>TGOS (Taiwan Geospatial One Stop)</h2><p>TGOS是內政部資訊中心維運的系統，整合了很多國內GIS資料，也提供了很多GIS相關API，除了需要申請token的API外，也有民眾版的查詢系統可供線上使用。<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816kyqSsyu3bD.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816kyqSsyu3bD.jpg"></p>
-<h3 id="TGOS全國門牌定位服務"><a href="#TGOS全國門牌定位服務" class="headerlink" title="TGOS全國門牌定位服務"></a>TGOS全國門牌定位服務</h3><p><strong><a href="https://www.tgos.tw/TGOS/Web/Address/TGOS_Address.aspx" target="_blank" rel="noopener">全國門牌定位API服務</a></strong> 整合了國內戶政機關的門牌坐標資料，更新頻率很高，因為各縣市門牌資料在建置時驗收的標準滿高的，所以完整性跟正確性都很高。</p>
-<p>更重要的是該API的模糊查詢的機制滿實用的:<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816swpNRoftBV.png" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816swpNRoftBV.png"></p>
-<blockquote>
-<p>假設今天輸入 <strong>[忠孝東路十段380號]</strong> ，這是一個不存在的門牌</p>
-<ul>
-<li>在Google Geocode可能傳給忠孝東路十段38號(常理上，380號跟38號可能差距天南地北)</li>
-<li>TGOS可能傳給忠孝東路十段370號，這是一個在空間上比較有關聯的結果</li>
-</ul>
-<p>另外也可以選擇單雙號的鎖定(台灣門牌編制，單號通常在一側，雙號在另一側)，實際例子可能要請各位實際去操作看看</p>
-</blockquote>
-<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><p>以下直接實際操作看看</p>
-<ol>
-<li>開啟服務網址，輸入門牌<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816Ov1zv5zLdZ.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816Ov1zv5zLdZ.jpg"></li>
-</ol>
-<p>2.系統會跳出一個地圖，並顯示坐標<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816oG1QJseHlL.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816oG1QJseHlL.jpg"></p>
-<p><strong>[關於坐標值]</strong></p>
-<blockquote>
-<p>TGOS單筆查詢的坐標值是X是6位數,Y是7位數，跟先前幾天看到的121.XX,24.XX經緯度不一樣<br>這邊顯示的坐標系統是採用國內的TWD97，坐標系統這件事跟製圖有關，世界各國各區都會定義適合自己的局部坐標系統，關於坐標系統，後續打算攻略一番，就靜待下回分曉瞜。</p>
-</blockquote>
-<h3 id="批次操作"><a href="#批次操作" class="headerlink" title="批次操作"></a>批次操作</h3><p>TGOS門牌API是可以批次使用的(其實批次才是重點)，但是需要申請(網站上有提供教學)，申請後就可以使用啦，目前申請取得token後，好像一天可以使用1萬次。<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816erY99zLo31.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816erY99zLo31.jpg"></p>
-<p>批次操作的選擇項目比較多，像是可以選輸出的坐標系統。<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/201078161pM3S7dvHi.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/201078161pM3S7dvHi.jpg"></p>
-<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><h4 id="什麼-坐標系統"><a href="#什麼-坐標系統" class="headerlink" title="什麼? 坐標系統 ?"></a>什麼? 坐標系統 ?</h4><p>這邊我們看到個資料坐標系統是<code>TWD97(EPSG:3826)</code>，而之前的提到的資料都是<code>WGS84(EPSG:4326)</code>，關於這些坐標的內容及轉換..，就明天見囉!</p>
+<h3 id="TGOS全國門牌定位服務"><a href="#TGOS全國門牌定位服務" class="headerlink" title="TGOS全國門牌定位服務"></a>TGOS全國門牌定位服務</h3><p><strong><a href="https://www.tgos.tw/TGOS/Web/Address/TGOS_Address.aspx" target="_blank" rel="noopener">全國門牌定位API服務</a></strong> 整合了國內戶政機關的門牌坐標資料，更新頻率很高，因為各縣市門牌資料在建置時驗收的標準滿高的，所以完整性跟正確性都很高。<br>
 
-
+    
+	  <div class="readmore">
+      <a href="/2017/12/28/ironman-2018-day9/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -246,7 +228,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14px; color: #808080">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
     </div>
 </div>
 

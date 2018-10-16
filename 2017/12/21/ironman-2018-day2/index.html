@@ -13,7 +13,7 @@
   <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="webgis：從Client端及Server端談起Clinet端：跟一般網頁應用程式一樣，webgis需要前端程式與使用者互動，要開發一個webgis，開發者可以使用各種前端框架。然而，要炒一盤webgis的菜，就必須要有專屬於gis/地圖的前端框架  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  這些框架主要功能包含提供地圖，圖層渲染，基本地圖互動、介">
-<meta name="keywords" content="鐵人賽,web,GIS">
+<meta name="keywords" content="2018鐵人賽-30天打造我的WebGIS系列,web,GIS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="鐵人賽Day 2-webGIS初步">
 <meta property="og:url" content="https://chimin17.github.io/2017/12/21/ironman-2018-day2/index.html">
@@ -21,7 +21,7 @@
 <meta property="og:description" content="webgis：從Client端及Server端談起Clinet端：跟一般網頁應用程式一樣，webgis需要前端程式與使用者互動，要開發一個webgis，開發者可以使用各種前端框架。然而，要炒一盤webgis的菜，就必須要有專屬於gis/地圖的前端框架  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  這些框架主要功能包含提供地圖，圖層渲染，基本地圖互動、介">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ppt.cc/fDOGOx@.jpg">
-<meta property="og:updated_time" content="2017-12-27T05:06:01.590Z">
+<meta property="og:updated_time" content="2018-10-16T13:26:00.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽Day 2-webGIS初步">
 <meta name="twitter:description" content="webgis：從Client端及Server端談起Clinet端：跟一般網頁應用程式一樣，webgis需要前端程式與使用者互動，要開發一個webgis，開發者可以使用各種前端框架。然而，要炒一盤webgis的菜，就必須要有專屬於gis/地圖的前端框架  本文是參加鐵人賽的文章，同步發表於 “2018鐵人賽-30天打造我的WebGIS系列”  這些框架主要功能包含提供地圖，圖層渲染，基本地圖互動、介">
@@ -164,6 +164,7 @@
 </ul>
 </blockquote>
 <p>一個地圖框架提供我們基本地圖操作，把地圖元素(含空間坐標物件)轉換成前端可操作的元件(DOM等)，而為使地圖互動更生動活潑，其它前端工具當然也是可以整合進來的，包含Jquery, Vue, React, Angularjs…甚至D3.js, C3.js等可能都需要整合在webGIS中。</p>
+<a id="more"></a>
 <h3 id="Server端：Web-service及資料庫"><a href="#Server端：Web-service及資料庫" class="headerlink" title="Server端：Web service及資料庫"></a>Server端：Web service及資料庫</h3><p>在webGIS應用程式中，可以透過Web service來進行資料操作，這之中最常使用到的是<strong>網路圖磚服務(WMTS)</strong>，例如我們透過 <strong><a href="https://developers.google.com/maps/documentation/javascript/tutorial?hl=zh-tw" target="_blank" rel="noopener">Google maps api</a></strong> 在網頁之中建立一個地圖，這時可以看到Google maps的底圖，這個底圖服務就是透過類似WMTS的概念來實作的。</p>
 <p>另一個面向是資料庫，具有空間資料的資料庫稱作「空間資料庫」，空間資料庫能夠執行各種空間查詢，目前包含<strong>MSSQL(SQL Spatial)</strong>、<strong>Postgressql(PostGIS)</strong>、 <strong>Oracle(Oracel Spatial)</strong>、<strong>MySQL</strong>、<strong>MongoDB</strong>等各大資料庫系統都有支援空間資料庫的格式及模組。</p>
 <h2 id="先直接來個範例"><a href="#先直接來個範例" class="headerlink" title="先直接來個範例"></a>先直接來個範例</h2><p>上面長篇大論講了一堆，<strong>本次鐵人賽的目標是把這些事情說清楚，逐一擊破。</strong></p>
@@ -184,7 +185,7 @@
 	  
 	  <div class="article-tags tags">
       
-        <a href="/tags/鐵人賽/">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
         <a href="/tags/web/">web</a>
       
@@ -266,7 +267,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14px; color: #808080">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
     </div>
 </div>
 

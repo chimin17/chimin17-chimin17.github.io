@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives: 2018/1 | Chimin&#39;s Blog</title>
+  <title>Tag: 2018鐵人賽-30天打造我的WebGIS系列 | Chimin&#39;s Blog</title>
   <meta name="description" content="you are never wrong to do the right thing" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -15,7 +15,7 @@
   <meta name="description" content="you are never wrong to do the right thing">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chimin&#39;s Blog">
-<meta property="og:url" content="https://chimin17.github.io/archives/2018/01/index.html">
+<meta property="og:url" content="https://chimin17.github.io/tags/2018鐵人賽-30天打造我的WebGIS系列/page/3/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
 <meta property="og:description" content="you are never wrong to do the right thing">
 <meta property="og:locale" content="en">
@@ -123,9 +123,8 @@
     <div class='container clearfix'>
       <div class='l_main'>
         
-	
   <script>
-    window.subData= { title:'Year : 2018.1'}
+    window.subData= { title:'Tag : 2018鐵人賽-30天打造我的WebGIS系列'}
   </script>
 
 <section class="post-list">
@@ -135,13 +134,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/19/ironman-2018-day30/">
-        鐵人賽Day 30- 最重要的回顧
+      <a href="/2017/12/28/ironman-2018-day9/">
+        鐵人賽Day 9-自己產製資料-地址定位part2
       </a>
     </h2>
     
     <time>
-      Jan 19, 2018
+      Dec 28, 2017
     </time>
 		
     
@@ -151,15 +150,211 @@
 
   </section>
   <section class="article typo">
-	  <p>第30天了，來回顧一下並發表心得吧！</p>
+	  <p>今天要介紹TGOS全國門牌定位服務。</p>
 <blockquote>
 <p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
 </blockquote>
-<h2 id="30天的發文大綱"><a href="#30天的發文大綱" class="headerlink" title="30天的發文大綱"></a>30天的發文大綱</h2><p>這30天的大綱可以切為6塊，分述如下：<br>
+<h2 id="TGOS-Taiwan-Geospatial-One-Stop"><a href="#TGOS-Taiwan-Geospatial-One-Stop" class="headerlink" title="TGOS (Taiwan Geospatial One Stop)"></a>TGOS (Taiwan Geospatial One Stop)</h2><p>TGOS是內政部資訊中心維運的系統，整合了很多國內GIS資料，也提供了很多GIS相關API，除了需要申請token的API外，也有民眾版的查詢系統可供線上使用。<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816kyqSsyu3bD.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816kyqSsyu3bD.jpg"></p>
+<h3 id="TGOS全國門牌定位服務"><a href="#TGOS全國門牌定位服務" class="headerlink" title="TGOS全國門牌定位服務"></a>TGOS全國門牌定位服務</h3><p><strong><a href="https://www.tgos.tw/TGOS/Web/Address/TGOS_Address.aspx" target="_blank" rel="noopener">全國門牌定位API服務</a></strong> 整合了國內戶政機關的門牌坐標資料，更新頻率很高，因為各縣市門牌資料在建置時驗收的標準滿高的，所以完整性跟正確性都很高。<br>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/19/ironman-2018-day30/">Read More</a>
+      <a href="/2017/12/28/ironman-2018-day9/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/opendata/">opendata</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/27/ironman-2018-day8/">
+        鐵人賽Day 8-自己產製資料-地址定位part1
+      </a>
+    </h2>
+    
+    <time>
+      Dec 27, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>取得GIS資料的方式有很多，包含：</p>
+<ul>
+<li>取得實體檔或API(opendata等資料交換平台)</li>
+<li>拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc.</li>
+<li>地址定位：僅有poi的地址，可從線上資源取得地址的坐標</li>
+</ul>
+<p>今天要介紹的為<strong>地址定位</strong>，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。<br>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/27/ironman-2018-day8/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/google/">google</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/26/ironman-2018-day7/">
+        鐵人賽Day 7-常見的GIS資料格式-轉換篇
+      </a>
+    </h2>
+    
+    <time>
+      Dec 26, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>昨天介紹了geojson、shapefile、kml基本概念，今天我們簡單用npm上面的工具寫個簡單轉換，有關node.js的安裝及使用請各位參考其他線上教學資源，這邊我們就直接使用囉。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/26/ironman-2018-day7/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/Node/">Node</a>
+      
+        <a href="/tags/javascript/">javascript</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/25/ironman-2018-day6/">
+        鐵人賽Day 6-常見的GIS資料格式
+      </a>
+    </h2>
+    
+    <time>
+      Dec 25, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>前兩天我們先用CARTO(CartoDB)實作了一些基本的GIS資料視覺化，接觸了GIS資料。</p>
+<p>延續 <strong><a href="https://ithelp.ithome.com.tw/articles/10192948" target="_blank" rel="noopener">[Day3]  談互操作性及Web Map Service 標準</a>議題</strong>，我們在處理資料時可能會遇到各種GIS格式，今日就來攻略幾種<strong>web常用的GIS資料格式</strong>。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/25/ironman-2018-day6/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/json/">json</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/22/ironman-2018-day3/">
+        鐵人賽Day 3-談互操作性及Web service 標準
+      </a>
+    </h2>
+    
+    <time>
+      Dec 22, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>前一天用了Leaflet了一個地圖，並接了國土測繪中心的WMTS跟一個geojson，像是WMTS(Web Map Tile Service)這類web service已廣泛流通於webgis世界，今天試著來使用這些標準。</p>
+<h1 id="Interoperability-amp-Standard"><a href="#Interoperability-amp-Standard" class="headerlink" title="Interoperability &amp; Standard"></a>Interoperability &amp; Standard</h1><p>在進入今天的主題「空間資料的格式及標準」之前，先來個名詞解釋—Interoperability。<br>Interoperability中文為<strong>互操作性</strong>，IEEE對於互操作性的定義如下(<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E6%93%8D%E4%BD%9C%E6%80%A7" target="_blank" rel="noopener">維基百科</a>)</p>
+<blockquote>
+<p><strong>兩個或多個系統之間交換信息之能力，以及對交換的信息加以使用之能力</strong></p>
+</blockquote>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/22/ironman-2018-day3/">Read More</a>
     </div>
     
     
@@ -183,13 +378,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/18/ironman-2018-day29/">
-        鐵人賽Day 29- WebGIS大觀園
+      <a href="/2017/12/21/ironman-2018-day2/">
+        鐵人賽Day 2-webGIS初步
       </a>
     </h2>
     
     <time>
-      Jan 18, 2018
+      Dec 21, 2017
     </time>
 		
     
@@ -199,11 +394,24 @@
 
   </section>
   <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>到了第29天，想講的東西很多，但能寫的時間不多XD，所以決定在倒數第二天來看一些有趣的WebGIS。<br>
+	  <h2 id="webgis：從Client端及Server端談起"><a href="#webgis：從Client端及Server端談起" class="headerlink" title="webgis：從Client端及Server端談起"></a>webgis：從Client端及Server端談起</h2><h3 id="Clinet端："><a href="#Clinet端：" class="headerlink" title="Clinet端："></a>Clinet端：</h3><p>跟一般網頁應用程式一樣，webgis需要前端程式與使用者互動，要開發一個webgis，開發者可以使用各種前端框架。<br>然而，要炒一盤webgis的菜，就必須要有專屬於gis/地圖的前端框架</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<p><strong>這些框架主要功能包含提供地圖，圖層渲染，基本地圖互動、介接資料等功能，Javascript常見的webgis框架包含:</strong></p>
+<blockquote>
+<ul>
+<li>(1)leaflet</li>
+<li>(2)openlayers</li>
+<li>(3)google maps api</li>
+<li>(4)esri javascript api</li>
+</ul>
+</blockquote>
+<p>一個地圖框架提供我們基本地圖操作，把地圖元素(含空間坐標物件)轉換成前端可操作的元件(DOM等)，而為使地圖互動更生動活潑，其它前端工具當然也是可以整合進來的，包含Jquery, Vue, React, Angularjs…甚至D3.js, C3.js等可能都需要整合在webGIS中。</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/18/ironman-2018-day29/">Read More</a>
+      <a href="/2017/12/21/ironman-2018-day2/">Read More</a>
     </div>
     
     
@@ -215,8 +423,6 @@
         <a href="/tags/web/">web</a>
       
         <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/Leaflet/">Leaflet</a>
       
 	  </div>
     
@@ -229,13 +435,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/17/ironman-2018-day28/">
-        鐵人賽Day 28- WebGL與3D GIS概觀
+      <a href="/2017/12/20/ironman-2018-day1/">
+        鐵人賽Day 1-webGIS:資訊時代的地理大發現
       </a>
     </h2>
     
     <time>
-      Jan 17, 2018
+      Dec 20, 2017
     </time>
 		
     
@@ -245,12 +451,13 @@
 
   </section>
   <section class="article typo">
-	  <h2 id="3D-GIS"><a href="#3D-GIS" class="headerlink" title="3D GIS"></a>3D GIS</h2><p>WebGIS已經逐步走向3D GIS時代，雖然說3D GIS已經發展很多年了，也有Google Earth這樣的產品，不過真的3D GIS在這幾年才比較有大進展，突破原因除了資料獲取的技術提升以外，主要還是跟Web技術息息相關，其中WebGL佔了重要角色。</p>
-<p>3D GIS雖然過去有Google Earth這種霸王級產品，但是其應用有限，而要說這幾年3D GIS發展及前進的速度可說是過去的好幾倍，這與WebGL發展有關，目前3D GIS仍是百家爭鳴階段，連互操作相關議題才剛有幾家大型龍頭爭奪完畢好讓自己的格式成為OGC標準(ESRI I3S勝出)，姑且不論很早起就已ready for use的3D空間分析演算法(與2D差異甚多)，3D GIS在格式、資料方面都與2D截然不同，所以，既然如此，今天就不討論那些，來瀏覽看看一些WebGL for 3D GIS的範例。<br>
+	  <h2 id="webGIS-資訊時代的地理大發現"><a href="#webGIS-資訊時代的地理大發現" class="headerlink" title="webGIS-資訊時代的地理大發現"></a>webGIS-資訊時代的地理大發現</h2><p>在現代的網頁應用中，地圖應用已經成為了不可或缺的網頁元素，一個現代網頁中，有了地圖應用，可以讓使用者查詢空間資訊；開發者亦可實踐各種<strong>LBS</strong>(Location Based Services)及<strong>IOT</strong>(Internet of Things)的應用。</p>
+<p>目前網路上有許多開發資源可以協助我們建構一些地圖應用，並且透過資料視覺化及UI/UX，使空間資訊有效地呈現給user，user也可以request資訊，讓系統是雙向互動的，相關的應用國內外都有很多案例。</p>
+<p>然而，目前線上整合這些資源且能涵蓋背後相關技術的完整介紹並不多，我們團隊希望藉由<strong>2018 IT邦鐵人賽</strong>機會，除整合資源應用外，再加碼一些GIS相關技術面探討，目標是運用開源軟體，<strong>30天打造一個webGIS系統</strong>。</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/17/ironman-2018-day28/">Read More</a>
+      <a href="/2017/12/20/ironman-2018-day1/">Read More</a>
     </div>
     
     
@@ -262,340 +469,6 @@
         <a href="/tags/web/">web</a>
       
         <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/WebGL/">WebGL</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/16/ironman-2018-day27/">
-        鐵人賽Day 27- WebGIS 加入D3.js圖表互動
-      </a>
-    </h2>
-    
-    <time>
-      Jan 16, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在WebGIS中加入一些資訊圖表，利用D3.js來實作圖表並與地圖互動，<a href="https://d3js.org/" target="_blank" rel="noopener">D3.js</a>非常具有彈性且多樣，能與地圖結合有錦上添花的感覺，let’s go!<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/16/ironman-2018-day27/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/D3/">D3</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/15/ironman-2018-day26/">
-        鐵人賽Day 26- 在資料庫中操作空間資料-MongoDB
-      </a>
-    </h2>
-    
-    <time>
-      Jan 15, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>除了前一天有提到的關聯式資料庫具有地理空間函式庫，使用Key-Value的資料庫例如MongoDB也支援一些空間運算子，在不同應用場合可能會用到，就來嘗試看看。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/15/ironman-2018-day26/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/Mongodb/">Mongodb</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/13/ironman-2018-day25/">
-        鐵人賽Day 25- 在資料庫中操作空間資料-PostGIS
-      </a>
-    </h2>
-    
-    <time>
-      Jan 13, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PostGIS是PostgreSQL基於OpenGIS中的SFS規範(Simple Feature Specification for SQL)所實作出來的地理物件函式庫，而PostgreSQL則是一個關聯式資料庫的自由軟體(BSD license)，</p>
-<p>跟PostGIS類似的東西相當於MS SQL Server中的SQL Spatial、Oracle spatial、MySQL spatial。</p>
-<p>PostGIS在地理空間運算的實作function非常多，也可以與QGIS等軟體做結合。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/13/ironman-2018-day25/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/PostgreSQL/">PostgreSQL</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/12/ironman-2018-day24/">
-        鐵人賽Day 24- 在WebGIS加入Mapillary街景
-      </a>
-    </h2>
-    
-    <time>
-      Jan 12, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用<a href="https://www.mapillary.com/app/?lat=25.05576118895428&amp;lng=121.61677684859569&amp;z=17&amp;focus=map&amp;pKey=MiEVQvYuxJOmTgpS2TNK8w" target="_blank" rel="noopener"><strong>Mapillary的街景</strong></a>，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(<a href="https://zh.wikipedia.org/wiki/Mapillary" target="_blank" rel="noopener">wiki</a>)，目前Mapillary的資料已授權OpenStreetMap使用。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/12/ironman-2018-day24/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Mapillary/">Mapillary</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/11/ironman-2018-day23/">
-        鐵人賽Day 23- 在WebGIS中加入Google街景
-      </a>
-    </h2>
-    
-    <time>
-      Jan 11, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在地圖中加入另一個元素：街景。<br>到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/11/ironman-2018-day23/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Google/">Google</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/10/ironman-2018-day22/">
-        鐵人賽Day 22- WebGIS中加入Google Directions導航API
-      </a>
-    </h2>
-    
-    <time>
-      Jan 10, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，把它整合進我們的地圖。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/10/ironman-2018-day22/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Google/">Google</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/09/ironman-2018-day21/">
-        鐵人賽Day 21- WebGIS中加入Google Directions導航API
-      </a>
-    </h2>
-    
-    <time>
-      Jan 9, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，把它整合進我們的地圖。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/09/ironman-2018-day21/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Google/">Google</a>
       
 	  </div>
     
@@ -608,15 +481,14 @@
 
   <nav id="page-nav">
     
-    
-    <a class="next" rel="next" href="/archives/2018/01/page/2/">
-      <span class="text">Next</span>
-      <span class="icon icon-chevron-right"></span>
+    <a class="prev" rel="prev" href="/tags/2018鐵人賽-30天打造我的WebGIS系列/page/2/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
     </a>
+    
     
   </nav>
   
-
 
       </div>
       <aside class='l_side'>
