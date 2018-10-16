@@ -1,568 +1,514 @@
 <!DOCTYPE html>
-<html lang=en>
+<html>
 <head>
-    <meta charset="utf-8">
-    
-    <title>Tag: geojson | Chimin&#39;s Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="工程師：GIS, Python, Web app 開發, .NET, NodeJS, Vue">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Tag: geojson | Chimin&#39;s Blog</title>
+  <meta name="description" content="you are never wrong to do the right thing" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="you are never wrong to do the right thing">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chimin&#39;s Blog">
 <meta property="og:url" content="https://chimin17.github.io/tags/geojson/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="工程師：GIS, Python, Web app 開發, .NET, NodeJS, Vue">
+<meta property="og:description" content="you are never wrong to do the right thing">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chimin&#39;s Blog">
-<meta name="twitter:description" content="工程師：GIS, Python, Web app 開發, .NET, NodeJS, Vue">
+<meta name="twitter:description" content="you are never wrong to do the right thing">
     
-
-    
-
-    
-        <link rel="icon" href="/images/wedding-rings.png" />
-    
-
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
-    
-    
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-        <script type="text/javascript">
-(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-71689272-5', 'auto');
-ga('send', 'pageview');
-
-</script>
-    
-    
-    
-
-
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
 </head>
 
 <body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">Chimin&#39;s Blog</span>
-            </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Home</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
-                    <a class="main-nav-link" href="/tags">Tags</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/images/head.jpeg" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
 </div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
 
-</div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">Home</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-    </div>
 
-                </td>
-            </tr>
-        </table>
-    </div>
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Chimin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
 </header>
-
-        <div class="outer">
-            
-                
-
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/images/head.jpeg" />
-            <h2 id="name">Chi-Min Chiu</h2>
-            <h3 id="title">GIS/Web Engineer</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>Taipei, TW</span>
-            <a id="follow" target="_blank" href="https://github.com/chimin17/">FOLLOW</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                30
-                <span>posts</span>
-            </div>
-            <div class="article-info-block">
-                23
-                <span>tags</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="http://github.com/chimin17" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
-    </div>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
 </aside>
 
-            
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#geojson</h1>
-    </div>
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        
+  <script>
+    window.subData= { title:'Tag : geojson'}
+  </script>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
     
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
+    <h2 class="title">
+      <a href="/2018/01/02/ironman-2018-day14/">
+        鐵人賽Day 14- webgis中的網格資料
+      </a>
+    </h2>
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/01/02/ironman-2018-day14/">鐵人賽Day 14- webgis中的網格資料</a>
-        </h1>
+    <time>
+      Jan 2, 2018
+    </time>
+		
     
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/01/02/ironman-2018-day14/">
-            <time datetime="2018-01-01T17:11:43.000Z" itemprop="datePublished">2018-01-02</time>
-        </a>
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
     </div>
 
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>網格(raster)資料是指以規則網格的方式呈現空間資料，可能是<a href="https://gist.github.com/chimin17/a15dd5a8f4664f8a7377e0d8a33673f5" target="_blank" rel="noopener">長這樣</a>。<br><img src="https://ppt.cc/fJZEyx@.png" alt=""></p>
+<p>上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是…</p>
+<p>假設今天網格的間隔<strong>更密一些</strong>，<strong>範圍在大一些</strong>，其資料量可能會很可觀，這時候無論在計算或是前端展示上，GIS傾向會使用影像方式儲存。</p>
+<p>再者，上述案例在網格式資料是<strong>單一波段</strong>的資料(也就是只有solRad這個屬性)，網格資料大多都是<strong>三個波段</strong>的資料(例如正射影像、衛星影像)，相關討論我們在<a href="https://ithelp.ithome.com.tw/articles/10193701" target="_blank" rel="noopener">[Day 6] 常見的GIS資料格式</a>有探討過。</p>
+<p>在webGIS中，我們可能比較少直接處理網格資料，通常都是使用它，今天我們試著使用Leaflet的raster圖層功能。</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="在地圖放影像-使用Leaflet-ImageOverlay"><a href="#在地圖放影像-使用Leaflet-ImageOverlay" class="headerlink" title="在地圖放影像:使用Leaflet-ImageOverlay"></a>在地圖放影像:使用Leaflet-ImageOverlay</h2><p>使用ImageOverlay之前我們先要有資料，這邊我們使用<a href="https://data.gov.tw/dataset/35430" target="_blank" rel="noopener">內政部20米DTM</a>。</p>
+<p>下載下來之後，原始檔案是*.grd，此時必須使用QGIS這套軟體稍作處理，將其轉為.tif或.jpg等。</p>
+<p>原先內政部提供的為TWD97，我們把它轉為WGS84，透過crs設定記錄其範圍坐標（後面要用）。<br><img src="https://ppt.cc/fJEkux@.png" alt=""></p>
+<p>把這張圖片加入地圖，使用imageOverlay，需要使用剛剛記錄的邊界<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var imageUrl = &apos;/dist/DEM.tif&apos;;</span><br><span class="line">var imageBounds = [[24.8737080, 120.9426029], [24.847877, 120.958343]];</span><br><span class="line">var imglayer = L.imageOverlay(imageUrl, imageBounds).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<p>成果：<br><img src="https://ppt.cc/f4WlWx@.png" alt=""></p>
+<p>另外，Leaflet也有VideoOverlay的類別，方法差不多，有需要可以自行參考。</p>
+<h2 id="介接圖磚服務-WMTS-使用Leaflet-TileLayer"><a href="#介接圖磚服務-WMTS-使用Leaflet-TileLayer" class="headerlink" title="介接圖磚服務(WMTS):使用Leaflet-TileLayer"></a>介接圖磚服務(WMTS):使用Leaflet-TileLayer</h2><p>我們在<a href="https://ithelp.ithome.com.tw/articles/10192948" target="_blank" rel="noopener">[Day 3] 談互操作性及Web Map Service 標準</a>有提到WMS與WMTS，兩者在Leaflet中分別方法可以放入我們的地圖，以國土測繪中心的WMTS為例，我們從<a href="https://wmts.nlsc.gov.tw/wmts" target="_blank" rel="noopener">Capabilities</a>的xml檔可以看到介接圖磚的資訊。<br>使用tileLayer實作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L.tileLayer(&apos;https://wmts.nlsc.gov.tw/wmts/EMAP/default/GoogleMapsCompatible/&#123;z&#125;/&#123;y&#125;/&#123;x&#125;&apos;).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<h2 id="圖磚-web-tiles-跟向量圖磚-vector-tiles"><a href="#圖磚-web-tiles-跟向量圖磚-vector-tiles" class="headerlink" title="圖磚(web tiles)跟向量圖磚(vector tiles)"></a>圖磚(web tiles)跟向量圖磚(vector tiles)</h2><p>觀察一下剛剛前面增加的兩個圖層：<br><img src="https://ppt.cc/fDRByx@.png" alt=""><br><img src="https://ppt.cc/fxgSHx@.png" alt=""></p>
+<p>可以觀察到：</p>
+<ul>
+<li>使用imageOverlay，request部分是把整張影像存取下來<br>而使用tileLayer可以發現整個地圖是以細碎的方式存取，這是兩者最大差異。</li>
+<li>對地圖做縮放，imageOverlay並不會重新request資料，tileLayer則會，表示tileLayer是有高度(深度)的。</li>
+</ul>
+<p>以上兩點正好可以拿來說明tileLayer，試想，如果我們一次要存取大範圍的影像，使用imageOverlay應該不太妥當，一來<strong>影像太大</strong>，<strong>二來不能依照深度或高度展示不同細節</strong>。</p>
+<h3 id="圖磚-web-tiles"><a href="#圖磚-web-tiles" class="headerlink" title="圖磚(web tiles)"></a>圖磚(web tiles)</h3><p>TileLayer或是說WMTS的設計概念如下，簡單來講，就是將原始影像<strong>依不同深度切成不同大小的磚</strong>，並透過資料標準的方式協定介接規格，所以client端可以根據不同坐標及深度要求不同的資料，而不是整張影像存取，以增加效率：<br><img src="https://ppt.cc/fPizDx@.png" alt=""><br>(<a href="https://docs.qgis.org/2.14/id/docs/user_manual/working_with_ogc/ogc_client_support.html" target="_blank" rel="noopener">取自QGIS</a>)</p>
+<h2 id="向量圖磚-vector-tiles"><a href="#向量圖磚-vector-tiles" class="headerlink" title="向量圖磚(vector tiles)"></a>向量圖磚(vector tiles)</h2><p>Vector tiles是這幾年webGIS發展的趨勢，它不像wmts是以影像為respond，而是使用geojson，也就是說，過去我們使用的wmts(指通用版電子地圖這類的，不是指正射影像)，是把點線面向量資料網格化成影像製成tiles，而vector tiles是以向量的方式提供給client端。</p>
+<p>使用vector tiles具有這些優勢 (取自<a href="https://www.mapbox.com/vector-tiles/" target="_blank" rel="noopener">mapbox</a>)：</p>
+<ul>
+<li>可自行定義地圖樣式</li>
+<li>vector tile資料小，存取更快</li>
+</ul>
+<p>像是Google map也是採用vector tile的技術，因此可以使用<a href="https://snazzymaps.com/" target="_blank" rel="noopener">snazzy</a>這類工具產生樣式定義檔，並在地圖上使用。</p>
+<p>其他像是<a href="https://carto.com/location-data-services/basemaps/" target="_blank" rel="noopener">cartodb</a>、<a href="https://www.mapbox.com/vector-tiles/" target="_blank" rel="noopener">mapbox</a>，OpenStreetMap的<a href="http://wiki.openstreetmap.org/wiki/Vector_tiles" target="_blank" rel="noopener">ID editor</a>也是利用vector tile技術，而Leaflet也有<a href="http://leafletjs.com/plugins.html#vector-tiles" target="_blank" rel="noopener">相關擴充</a>。</p>
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
-    </div>
 
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GIS/">GIS</a>, <a class="tag-link" href="/tags/geojson/">geojson</a>, <a class="tag-link" href="/tags/leaflet/">leaflet</a>, <a class="tag-link" href="/tags/web/">web</a>, <a class="tag-link" href="/tags/鐵人賽/">鐵人賽</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
     
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/01/01/ironman-2018-day13/">鐵人賽Day 13- webgis中的向量資料:在leaflet實作</a>
-        </h1>
     
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/01/01/ironman-2018-day13/">
-            <time datetime="2018-01-01T05:11:43.000Z" itemprop="datePublished">2018-01-01</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GIS/">GIS</a>, <a class="tag-link" href="/tags/geojson/">geojson</a>, <a class="tag-link" href="/tags/leaflet/">leaflet</a>, <a class="tag-link" href="/tags/web/">web</a>, <a class="tag-link" href="/tags/鐵人賽/">鐵人賽</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
     
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/12/31/ironman-2018-day12/">鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon</a>
-        </h1>
+    <h2 class="title">
+      <a href="/2018/01/01/ironman-2018-day13/">
+        鐵人賽Day 13- webgis中的向量資料:在leaflet實作
+      </a>
+    </h2>
     
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/12/31/ironman-2018-day12/">
-            <time datetime="2017-12-31T02:11:43.000Z" itemprop="datePublished">2017-12-31</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GIS/">GIS</a>, <a class="tag-link" href="/tags/geojson/">geojson</a>, <a class="tag-link" href="/tags/web/">web</a>, <a class="tag-link" href="/tags/鐵人賽/">鐵人賽</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
+    <time>
+      Jan 1, 2018
+    </time>
+		
     
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://ithelp.ithome.com.tw/articles/10192391" target="_blank" rel="noopener">[Day1]webGIS-資訊時代的地理大發現</a>的引言中提到webgis的前端實踐可以透過幾個地圖API，本次鐵人賽將都以<a href="http://leafletjs.com/" target="_blank" rel="noopener">leaflet</a>做說明。</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="Leaflet的向量圖層"><a href="#Leaflet的向量圖層" class="headerlink" title="Leaflet的向量圖層"></a>Leaflet的向量圖層</h2><p>GIS資料中，資料的類型就是網格資料及向量資料，而我們過去也介紹了向量資料的結構(基本上就是點、線、面)。</p>
+<p>在leaflet中，要放向量資料在圖上，可以透過以下物件的實作</p>
+<ul>
+<li>Marker</li>
+<li>Path(以下實作基於此抽象類別)<ul>
+<li>Polyline</li>
+<li>Polygon</li>
+<li>Circle</li>
+<li>CircleMarker</li>
+<li>Rectangle</li>
+</ul>
+</li>
+<li>geojson</li>
+</ul>
+<p>下面就來實作一下這些圖層物件。</p>
+<h3 id="Marker"><a href="#Marker" class="headerlink" title="Marker"></a>Marker</h3><p>相當於geojson中的point。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var marker=L.marker([25.0270000, 121.545745]).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Polylilne"><a href="#Polylilne" class="headerlink" title="Polylilne"></a>Polylilne</h3><p>相當於geojson中的linestring<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var latlngs = [</span><br><span class="line">    [25.0270000, 121.545745],</span><br><span class="line">    [25.0370000, 121.535745],</span><br><span class="line">    [25.0270000, 121.525745]</span><br><span class="line">];</span><br><span class="line">var polyline = L.polyline(latlngs);</span><br><span class="line">polyline.addTo(map);</span><br></pre></td></tr></table></figure></p>
+<h3 id="Polygon"><a href="#Polygon" class="headerlink" title="Polygon"></a>Polygon</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var latlngs = [[</span><br><span class="line">    [25.0270000, 121.555745],</span><br><span class="line">    [25.0370000, 121.565745],</span><br><span class="line">    [25.0270000, 121.575745],</span><br><span class="line">    [25.0270000, 121.555745]</span><br><span class="line">]];</span><br><span class="line">var polygon = L.polygon(latlngs).</span><br><span class="line">polygon.addTo(map);</span><br></pre></td></tr></table></figure>
+<h3 id="rectangle與circle"><a href="#rectangle與circle" class="headerlink" title="rectangle與circle"></a>rectangle與circle</h3><p>rectangle與circle相當於geojson中的polygon跟point的擴充。</p>
+<h4 id="rectangle是長方形，他還是基於polygon"><a href="#rectangle是長方形，他還是基於polygon" class="headerlink" title="rectangle是長方形，他還是基於polygon"></a>rectangle是長方形，他還是基於polygon</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var bounds = [[25.0390000, 121.569745], [25.0380000, 121.568745]];</span><br><span class="line">// create an orange rectangle</span><br><span class="line">L.rectangle(bounds, &#123;color: &quot;#ff7800&quot;, weight: 1&#125;).addTo(map);</span><br></pre></td></tr></table></figure>
+<h4 id="circle是基於point"><a href="#circle是基於point" class="headerlink" title="circle是基於point"></a>circle是基於point</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var circle= L.circle([25.0370000, 121.515745], &#123;radius: 200&#125;);</span><br><span class="line">circle.addTo(map);</span><br><span class="line">console.log(circle.toGeoJSON());</span><br></pre></td></tr></table></figure>
+<h3 id="geojson"><a href="#geojson" class="headerlink" title="geojson"></a>geojson</h3><p>實作也可以直接透過把整份geojson資料，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">var data=&#123;</span><br><span class="line">   &quot;type&quot;: &quot;MultiPolygon&quot;,</span><br><span class="line">   &quot;coordinates&quot;: [</span><br><span class="line">          [</span><br><span class="line">            [</span><br><span class="line">              [</span><br><span class="line">                121.5398,</span><br><span class="line">                25.0071</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5831,</span><br><span class="line">                25.0112</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5515,</span><br><span class="line">                25.0294</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5398,</span><br><span class="line">                25.0071</span><br><span class="line">              ]</span><br><span class="line">            ]</span><br><span class="line">          ],</span><br><span class="line">          [</span><br><span class="line">            [</span><br><span class="line">              [</span><br><span class="line">                121.5398,</span><br><span class="line">                25.0071</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5031,</span><br><span class="line">                25.0112</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5515,</span><br><span class="line">                25.0294</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5398,</span><br><span class="line">                25.0071</span><br><span class="line">              ]</span><br><span class="line">            ]</span><br><span class="line">          ]</span><br><span class="line">      ]</span><br><span class="line">&#125;</span><br><span class="line">var json=L.geoJSON(data).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<h2 id="SVG與Canvas"><a href="#SVG與Canvas" class="headerlink" title="SVG與Canvas"></a>SVG與Canvas</h2><p>Leaflet在Render時可以選擇SVG與Canvas，兩者的選擇跟其他是HTML5應用需考量的問題類似，Canvas適合展現上萬條polyline、上萬點的POI<br>，當資料很大時，如果使用SVG會使效率不佳。</p>
+<p>但是使用Canvas是必須犧牲個別資料間的互動事件(events)。<br>預設的向量資料是採用SVG，這一點可以從執行上面我們的範例<a href="http://jsfiddle.net/d01j5t68/5/" target="_blank" rel="noopener">程式碼</a>後，可以於地圖上按右鍵並開啟瀏覽器開發者模式觀察到：<br><img src="https://ppt.cc/fPv95x@.png" alt=""><br><img src="https://ppt.cc/fSp0cx@.png" alt=""></p>
+<p>指定使用SVG<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var map = L.map(&apos;map&apos;, &#123;</span><br><span class="line">    renderer: L.svg()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>Canvas<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var map = L.map(&apos;map&apos;, &#123;</span><br><span class="line">    renderer: L.canvas()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>使用Canvas後：<br><img src="https://ppt.cc/fjGJCx@.png" alt=""><br><img src="https://ppt.cc/fXkIkx@.png" alt=""></p>
+<h2 id="向量資料object幾個常用的Method與Options"><a href="#向量資料object幾個常用的Method與Options" class="headerlink" title="向量資料object幾個常用的Method與Options"></a>向量資料object幾個常用的Method與Options</h2><p>在webgis中，對於向量資料的操作有一些常用的方法，以下就舉幾個例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//綁定popup於圖層上</span><br><span class="line">polyline.bindPopup(&apos;popup&apos;).</span><br><span class="line">//顯示popup</span><br><span class="line">polyline.openPopup();</span><br><span class="line">//關閉popup</span><br><span class="line">polyline.closePopup();</span><br><span class="line">//為綁定click事件並得到物件的geojson內容</span><br><span class="line">polyline.on(&apos;click&apos;, function(e)&#123;console.log(e.layer.toGeoJSON())&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//移動到某個位置</span><br><span class="line">map.setView([25.0270000, 121.545745], 13);</span><br><span class="line">//移動到polyline範圍</span><br><span class="line">map.fitBounds(polyline.getBounds());</span><br></pre></td></tr></table></figure>
+<p>在實作這些物件時可以設定option，例如繼承於path的polyline、polygon<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var option=&#123;</span><br><span class="line">   color:&apos;#00ff00&apos;,  //顏色</span><br><span class="line">   weight:3,         // 寬度，以pixel為單位</span><br><span class="line">   opacity:0.6,      //透明度</span><br><span class="line">   fill:true,        //是否填滿</span><br><span class="line">   fillColor&apos;red&apos;   //填滿的顏色</span><br><span class="line">&#125;</span><br><span class="line">var polygon = L.polygon(latlngs, option).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>今天測試的內容都會放在<a href="http://jsfiddle.net/d01j5t68/5/" target="_blank" rel="noopener">jsfiddle</a>，有興趣可以自行測試。<br>祝大家新年快樂^^。</p>
+
+
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/12/30/ironman-2018-day11/">鐵人賽Day 11- webgis中的向量圖層-除了點資料以外的幾何</a>
-        </h1>
     
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/12/30/ironman-2018-day11/">
-            <time datetime="2017-12-30T15:11:43.000Z" itemprop="datePublished">2017-12-30</time>
-        </a>
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/31/ironman-2018-day12/">
+        鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon
+      </a>
+    </h2>
+    
+    <time>
+      Dec 31, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
     </div>
 
+  </section>
+  <section class="article typo">
+	  <p>前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="Polygon-with-hole-Polygon裡面有洞"><a href="#Polygon-with-hole-Polygon裡面有洞" class="headerlink" title="Polygon with hole(Polygon裡面有洞)"></a>Polygon with hole(Polygon裡面有洞)</h2><p>polygon with hole是polygon內挖個洞，<strong>geojson</strong>處理polygon with hole的方法是在coordinates中加入hole，而且可以加入多個hole。<br>事實上，polygon的coordinates記錄的內容有兩個部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;coordinates&quot;: </span><br><span class="line">[[外圈形狀(outter ring array)], [內圈形狀1(inner ring array)],[內圈形狀2(inner ring array)]]</span><br></pre></td></tr></table></figure></p>
+<p>舉個例子，一個有洞的Polygon資料是長這樣(用json ediotr觀察)：<br><img src="https://ithelp.ithome.com.tw/upload/images/20171230/20107816EWj2ahVeE1.png" alt="https://ithelp.ithome.com.tw/upload/images/20171230/20107816EWj2ahVeE1.png"><br>coordinates這個array包覆的第一個元素是<strong>outter ring</strong>，為polygon的外框，<br>第二個元素後面則擺可以選擇性的放多個<strong>inner ring</strong>，其效果就是在polygon挖洞，並且可以挖很多洞。</p>
+<p>實務上，我們偶爾會遇到這種幾何，例如包圍著臺北市的新北市行政區域範圍(上面就是新北市的geojson)，polygon中的coordinates除了outter ring外，跟昨天的Polygon範例相比，多了一個inner ring，<a href="https://gist.github.com/chimin17/7dc4f37580e41d068800f05637b34ebb" target="_blank" rel="noopener">如有興趣，新北市geojson請點此下載</a>。<br><img src="https://ppt.cc/fpVcux@.png" alt=""><br>(資料取自<a href="https://github.com/ronnywang/twgeojson" target="_blank" rel="noopener">github twgeojson</a>。)</p>
+<h2 id="行政區域界線圖與Multipolygon"><a href="#行政區域界線圖與Multipolygon" class="headerlink" title="行政區域界線圖與Multipolygon"></a>行政區域界線圖與Multipolygon</h2><p>延續台灣的行政區當例子，行政區除了polygon內要被挖洞以外，當然也有行政區是由多個polgon組成，這時候在GIS資料是用multipolygon表示，例如澎湖等具有島嶼或群島性質的縣市，(<a href="https://gist.github.com/chimin17/a2651d9ad07c4ad5430d251c5b313226" target="_blank" rel="noopener">澎湖縣geojson請點此下載</a>)。<br><img src="https://ppt.cc/fAZJUx@.png" alt=""><br>(資料取自<a href="https://github.com/ronnywang/twgeojson" target="_blank" rel="noopener">github twgeojson</a>。)</p>
+<h3 id="飛地"><a href="#飛地" class="headerlink" title="飛地"></a>飛地</h3><p>除了外島因為地理上就是群島的關係，很合理的需要用到multipolygon，但是在本島，也有不少區域會用到multi polygon，這種現象叫做飛地，例如-<a href="https://zh.wikipedia.org/wiki/%E7%91%AA%E5%AE%B6%E9%84%89#%E8%A1%8C%E6%94%BF%E5%8D%80" target="_blank" rel="noopener">屏東縣瑪家鄉(wiki)</a>，除了原本的區域範圍外，因為政府早期鼓勵原住民到平地鄉開墾，因此遷村到原屬於內埔鄉及長治鄉範圍內，形成飛地，需要使用multipolygon表現<a href="https://gist.github.com/chimin17/271f7bc0fdc970e525ac378516518c5a" target="_blank" rel="noopener">(瑪家鄉geojson資料請點此下載)</a>。<br><img src="http://ppt.cc/fmG5Ax@.png" alt=""><br>(資料重製自<a href="http://nominatim.openstreetmap.org" target="_blank" rel="noopener">Open Street Map</a>)</p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>關於飛地的資料，台灣其實有不少村里，由於一些因素造成遷村(政府政策、災害)，借用原本屬於其他行政區的一塊範圍使用，而出現像是瑪家鄉這樣的飛地。</p>
+<p>另外有一件有趣的事，就是發現國土測繪中心opendata的村里界圖資好像怪怪的…，竟然沒有顯示遷村而調整界線，還是沿用沒有遷村的範圍(1967年就遷村了)，可能有特殊理由吧(掌管門牌及行政區界是根據地方自治應該是縣市政府的權責，國土測繪中心這部分只是整合圖資供應的角色)。</p>
+<p>總之就是套上官方的行政區域圖後，竟發現<strong>瑪家國中位置及門牌竟然在瑪家鄉鄉界的外面</strong>…，這個問題我前陣子遇到過一次，還以為是自己程式有bug，弄了半天才發現是這個資料的問題，所以特別拿出來做為參考囉。</p>
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/30/ironman-2018-day11/">
+        鐵人賽Day 11- webgis中的向量圖層-除了點資料以外的幾何
+      </a>
+    </h2>
+    
+    <time>
+      Dec 30, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
     </div>
 
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GIS/">GIS</a>, <a class="tag-link" href="/tags/geojson/">geojson</a>, <a class="tag-link" href="/tags/web/">web</a>, <a class="tag-link" href="/tags/鐵人賽/">鐵人賽</a>
-    </div>
+  </section>
+  <section class="article typo">
+	  <p>在<a href="https://ithelp.ithome.com.tw/articles/10192976" target="_blank" rel="noopener">Day4</a>、<a href="https://ithelp.ithome.com.tw/articles/10193028" target="_blank" rel="noopener">Day5</a>及<a href="https://ithelp.ithome.com.tw/articles/10193965" target="_blank" rel="noopener">Day8</a>、<a href="https://ithelp.ithome.com.tw/articles/10194193" target="_blank" rel="noopener">Day9</a>談的資料都是點資料，一般使用者最熟悉也最需要的資料也是點，例如各式各樣的POI資料..</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<p>事實上在二維向量GIS資料中還有其他幾何型態，今天就簡單來看看除了點以外的資料：線跟面。</p>
+<h2 id="工具：geojson-io"><a href="#工具：geojson-io" class="headerlink" title="工具：geojson.io"></a>工具：<a href="http://geojson.io/" target="_blank" rel="noopener">geojson.io</a></h2><p>非常推薦<a href="http://geojson.io/" target="_blank" rel="noopener">geojson.io</a>這個線上工具，可以線上編輯geojson及一些基本格式的匯出匯入，如果手邊沒有工具，很推薦用它來做資料基本處理。(<a href="https://www.youtube.com/watch?v=kr3d6SQvZ6o" target="_blank" rel="noopener">示範影片</a>)</p>
+<p>以下資料都可以貼到geojson.io看看實際情況喔！</p>
+<h2 id="線：LineString-polyline"><a href="#線：LineString-polyline" class="headerlink" title="線：LineString(polyline)"></a>線：LineString(polyline)</h2><p>line是兩個點連成的一條線，polyline就是多個點依序連成的線，polyline常用於表示路線，在geojson中，geometry的type為LineString，coordinates記錄方式為：[[x1,y1],[x1,y2]…[xn,yn]]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;type&quot;: &quot;FeatureCollection&quot;,</span><br><span class="line">  &quot;features&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;type&quot;: &quot;Feature&quot;,</span><br><span class="line">      &quot;properties&quot;: &#123;&#125;,</span><br><span class="line">      &quot;geometry&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;LineString&quot;,</span><br><span class="line">        &quot;coordinates&quot;: [</span><br><span class="line">          [</span><br><span class="line">            121.50518417358397,</span><br><span class="line">            25.028994928869533</span><br><span class="line">          ],</span><br><span class="line">          [</span><br><span class="line">            121.53264999389648,</span><br><span class="line">            25.024173053538334</span><br><span class="line">          ],</span><br><span class="line">          [</span><br><span class="line">            121.54312133789062,</span><br><span class="line">            25.037704933043095</span><br><span class="line">          ]</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="面：polygon"><a href="#面：polygon" class="headerlink" title="面：polygon"></a>面：polygon</h2><p>polygon常用於表示範圍，面狀的資料，一個基本的polygon在coordinates的記錄方式為[[[x1,y1],[x1,y2]…[xn,yn],[x1,y1]]]<br>最後一點要收回第一個節點，形成封閉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">      &quot;type&quot;: &quot;Feature&quot;,</span><br><span class="line">      &quot;properties&quot;: &#123;&#125;,</span><br><span class="line">      &quot;geometry&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;Polygon&quot;,</span><br><span class="line">        &quot;coordinates&quot;: [</span><br><span class="line">          [</span><br><span class="line">            [</span><br><span class="line">              121.5395164489746,</span><br><span class="line">              25.007995055821286</span><br><span class="line">            ],</span><br><span class="line">            [</span><br><span class="line">              121.55153274536133,</span><br><span class="line">              25.007995055821286</span><br><span class="line">            ],</span><br><span class="line">            [</span><br><span class="line">              121.55153274536133,</span><br><span class="line">              25.029461551911478</span><br><span class="line">            ],</span><br><span class="line">            [</span><br><span class="line">              121.5395164489746,</span><br><span class="line">              25.029461551911478</span><br><span class="line">            ],</span><br><span class="line">            [</span><br><span class="line">              121.5395164489746,</span><br><span class="line">              25.007995055821286</span><br><span class="line">            ]</span><br><span class="line">          ]</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="MultiPoint"><a href="#MultiPoint" class="headerlink" title="MultiPoint"></a>MultiPoint</h2><p>geojson也定義了multipoint，用來表達多個點合併的結果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;type&quot;: &quot;MultiPoint&quot;,</span><br><span class="line">   &quot;coordinates&quot;: [</span><br><span class="line">       [121.5398,25.0071], [121.5515,25.0294]</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="MultiLineString"><a href="#MultiLineString" class="headerlink" title="MultiLineString"></a>MultiLineString</h2><p>一樣也有MultiLineString的定義<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;type&quot;: &quot;MultiLineString&quot;,</span><br><span class="line">   &quot;coordinates&quot;: [</span><br><span class="line">       [   [121.5398,25.0071], [121.5515,25.0294]],</span><br><span class="line">       [   [121.5831,25.0112], [121.5610,25.0224] ]</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="MultiPolygon"><a href="#MultiPolygon" class="headerlink" title="MultiPolygon"></a>MultiPolygon</h2><p>這是MultiPolygon<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;type&quot;: &quot;MultiPolygon&quot;,</span><br><span class="line">   &quot;coordinates&quot;: [</span><br><span class="line">          [</span><br><span class="line">            [</span><br><span class="line">              [</span><br><span class="line">                121.5398,</span><br><span class="line">                25.0071</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5831,</span><br><span class="line">                25.0112</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5515,</span><br><span class="line">                25.0294</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5398,</span><br><span class="line">                25.0071</span><br><span class="line">              ]</span><br><span class="line">            ]</span><br><span class="line">          ],</span><br><span class="line">          [</span><br><span class="line">            [</span><br><span class="line">              [</span><br><span class="line">                121.5398,</span><br><span class="line">                25.0071</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5031,</span><br><span class="line">                25.0112</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5515,</span><br><span class="line">                25.0294</span><br><span class="line">              ],</span><br><span class="line">              [</span><br><span class="line">                121.5398,</span><br><span class="line">                25.0071</span><br><span class="line">              ]</span><br><span class="line">            ]</span><br><span class="line">          ]</span><br><span class="line">      ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>今天先說明了基本的polyline,polygon及其他類似的擴充，跟今天介紹資料時一樣，未來實作時會以geojson為主，而這幾天後續還是會說一些資料的特性，這些幾何資料是webgis的特色，所以，明天繼續囉！</p>
 
-                </div>
-            </div>
-        </div>
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1797">
+            <div class='name'>30天精通GIS資料分析-使用Python</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541">
+            <div class='name'>30天打造我的WebGIS</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://developer.tomtom.com/">
+            <div class='name'>TomTom for developer</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>30</div></a></li>
+    
+    </ul>
     
 </div>
 </section>
-            
-                
-<aside id="sidebar">
-   
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/22/node-2018-0222/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/post/thumb_0427.jpeg)" alt="關於server side與client side 的Node.js模組" class="thumbnail-image"></span>
-    
-</a>
 
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/02/22/node-2018-0222/" class="title">關於server side與client side 的Node.js模組</a></p>
-                            <p class="item-date"><time datetime="2018-02-22T15:02:33.000Z" itemprop="datePublished">2018-02-22</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/19/ironman-2018-day30/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/post/ironman-2018/iron-3001.png)" alt="鐵人賽Day 30- 最重要的回顧" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/01/19/ironman-2018-day30/" class="title">鐵人賽Day 30- 最重要的回顧</a></p>
-                            <p class="item-date"><time datetime="2018-01-19T12:12:33.000Z" itemprop="datePublished">2018-01-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/18/ironman-2018-day29/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/post/ironman-2018/iron-2901.png)" alt="鐵人賽Day 29- WebGIS大觀園" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/01/18/ironman-2018-day29/" class="title">鐵人賽Day 29- WebGIS大觀園</a></p>
-                            <p class="item-date"><time datetime="2018-01-18T14:02:33.000Z" itemprop="datePublished">2018-01-18</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/17/ironman-2018-day28/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/post/ironman-2018/iron-2801.png)" alt="鐵人賽Day 28- WebGL與3D GIS概觀" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/01/17/ironman-2018-day28/" class="title">鐵人賽Day 28- WebGL與3D GIS概觀</a></p>
-                            <p class="item-date"><time datetime="2018-01-17T00:02:33.000Z" itemprop="datePublished">2018-01-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/16/ironman-2018-day27/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/01/16/ironman-2018-day27/" class="title">鐵人賽Day 27- WebGIS 加入D3.js圖表互動</a></p>
-                            <p class="item-date"><time datetime="2018-01-16T00:02:33.000Z" itemprop="datePublished">2018-01-16</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/node/" style="font-size: 14px; color: #808080">node</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/webpack/" style="font-size: 14px; color: #808080">webpack</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
     </div>
+</div>
 
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">29</span></li></ul>
-        </div>
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
     </div>
+  </div>
+  <footer id="footer" class="clearfix">
 
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/chimin17" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://linkedin.com/in/chi-min-chiu-aba7a5148/" class="social linkedin"
+          target="_blank" rel="external">
+          <span class="icon icon-linkedin"></span>
+        </a>
+      
     
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3/">D3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/">GIS</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leaflet/">Leaflet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mapillary/">Mapillary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/">Mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/">PostgreSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Turf-js/">Turf.js</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebGL/">WebGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geojson/">geojson</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leaflet/">leaflet</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opendata/">opendata</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proj4/">proj4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/鐵人賽/">鐵人賽</a><span class="tag-list-count">27</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/D3/" style="font-size: 10px;">D3</a> <a href="/tags/GIS/" style="font-size: 20px;">GIS</a> <a href="/tags/Google/" style="font-size: 12.5px;">Google</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 10px;">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 10px;">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 10px;">Mongodb</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 12.5px;">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 10px;">WebGL</a> <a href="/tags/geojson/" style="font-size: 15px;">geojson</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/leaflet/" style="font-size: 17.5px;">leaflet</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/opendata/" style="font-size: 10px;">opendata</a> <a href="/tags/proj4/" style="font-size: 10px;">proj4</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/鐵人賽/" style="font-size: 20px;">鐵人賽</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-    
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
-
-            
-        </div>
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2018 Chi-Min Chiu<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
-        </div>
-    </div>
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
 </footer>
-        
-    
-    <script>
-    var disqus_config = function () {
-        
-        this.page.identifier = '';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'chimin17' + '.disqus.com/count.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+<script>
+  var disqus_shortname = 'chimin17';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 
 
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
 
 
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
-    
-    
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-    
-    
-
-
-
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
-
-    </div>
+  <script>setLoadingBarProgress(100);</script>
 </body>
 </html>

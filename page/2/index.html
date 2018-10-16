@@ -1,647 +1,340 @@
 <!DOCTYPE html>
-<html lang=en>
+<html>
 <head>
-    <meta charset="utf-8">
-    
-    <title>Chimin&#39;s Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="工程師：GIS, Python, Web app 開發, .NET, NodeJS, Vue">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Chimin&#39;s Blog</title>
+  <meta name="description" content="you are never wrong to do the right thing" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="you are never wrong to do the right thing">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Chimin&#39;s Blog">
 <meta property="og:url" content="https://chimin17.github.io/page/2/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="工程師：GIS, Python, Web app 開發, .NET, NodeJS, Vue">
+<meta property="og:description" content="you are never wrong to do the right thing">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chimin&#39;s Blog">
-<meta name="twitter:description" content="工程師：GIS, Python, Web app 開發, .NET, NodeJS, Vue">
+<meta name="twitter:description" content="you are never wrong to do the right thing">
     
-
-    
-
-    
-        <link rel="icon" href="/images/wedding-rings.png" />
-    
-
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
-    
-    
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-        <script type="text/javascript">
-(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-71689272-5', 'auto');
-ga('send', 'pageview');
-
-</script>
-    
-    
-    
-
-
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
 </head>
 
 <body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">Chimin&#39;s Blog</span>
-            </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Home</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
-                    <a class="main-nav-link" href="/tags">Tags</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/images/head.jpeg" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
-
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
 </div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
 
-</div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">Home</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-    </div>
 
-                </td>
-            </tr>
-        </table>
-    </div>
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Chimin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
 </header>
-
-        <div class="outer">
-            
-                
-
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/images/head.jpeg" />
-            <h2 id="name">Chi-Min Chiu</h2>
-            <h3 id="title">GIS/Web Engineer</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>Taipei, TW</span>
-            <a id="follow" target="_blank" href="https://github.com/chimin17/">FOLLOW</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                30
-                <span>posts</span>
-            </div>
-            <div class="article-info-block">
-                23
-                <span>tags</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="http://github.com/chimin17" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
-    </div>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
 </aside>
 
-            
-            <section id="main">
-    <article id="post-ironman-2018-day26" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
         
-        
-            <header class="article-header">
-                
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/01/15/ironman-2018-day26/">鐵人賽Day 26- 在資料庫中操作空間資料-MongoDB</a>
-        </h1>
+    <h2 class="title">
+      <a href="/2018/01/16/ironman-2018-day27/">
+        鐵人賽Day 27- WebGIS 加入D3.js圖表互動
+      </a>
+    </h2>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/01/15/ironman-2018-day26/">
-            <time datetime="2018-01-15T00:00:43.000Z" itemprop="datePublished">2018-01-15</time>
-        </a>
+    <time>
+      Jan 16, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
     </div>
 
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在WebGIS中加入一些資訊圖表，利用D3.js來實作圖表並與地圖互動，<a href="https://d3js.org/" target="_blank" rel="noopener">D3.js</a>非常具有彈性且多樣，能與地圖結合有錦上添花的感覺，let’s go!<br>
 
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GIS/">GIS</a>, <a class="tag-link" href="/tags/Mongodb/">Mongodb</a>, <a class="tag-link" href="/tags/web/">web</a>, <a class="tag-link" href="/tags/鐵人賽/">鐵人賽</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>除了前一天有提到的關聯式資料庫具有地理空間函式庫，使用Key-Value的資料庫例如MongoDB也支援一些空間運算子，在不同應用場合可能會用到，就來嘗試看看。<br></p>
-            <p class="article-more-link">
-                <a href="/2018/01/15/ironman-2018-day26/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://chimin17.github.io/2018/01/15/ironman-2018-day26/" data-id="cjlxh4sks001b7wivlpsb5gtk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="https://chimin17.github.io/2018/01/15/ironman-2018-day26/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://chimin17.github.io/2018/01/15/ironman-2018-day26/">Comments</a>
-    
-
-        </footer>
+	  <div class="readmore">
+      <a href="/2018/01/16/ironman-2018-day27/">Read More</a>
     </div>
     
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/D3/">D3</a>
+      
+	  </div>
+    
+  </section>
 </article>
-
-
-
-    <article id="post-ironman-2018-day25" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/01/13/ironman-2018-day25/">鐵人賽Day 25- 在資料庫中操作空間資料-PostGIS</a>
-        </h1>
+    <h2 class="title">
+      <a href="/2018/01/15/ironman-2018-day26/">
+        鐵人賽Day 26- 在資料庫中操作空間資料-MongoDB
+      </a>
+    </h2>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/01/13/ironman-2018-day25/">
-            <time datetime="2018-01-13T03:00:43.000Z" itemprop="datePublished">2018-01-13</time>
-        </a>
+    <time>
+      Jan 15, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
     </div>
 
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>除了前一天有提到的關聯式資料庫具有地理空間函式庫，使用Key-Value的資料庫例如MongoDB也支援一些空間運算子，在不同應用場合可能會用到，就來嘗試看看。<br>
 
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
+    
+	  <div class="readmore">
+      <a href="/2018/01/15/ironman-2018-day26/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/Mongodb/">Mongodb</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/13/ironman-2018-day25/">
+        鐵人賽Day 25- 在資料庫中操作空間資料-PostGIS
+      </a>
+    </h2>
+    
+    <time>
+      Jan 13, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
     </div>
 
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GIS/">GIS</a>, <a class="tag-link" href="/tags/PostgreSQL/">PostgreSQL</a>, <a class="tag-link" href="/tags/web/">web</a>, <a class="tag-link" href="/tags/鐵人賽/">鐵人賽</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PostGIS是PostgreSQL基於OpenGIS中的SFS規範(Simple Feature Specification for SQL)所實作出來的地理物件函式庫，而PostgreSQL則是一個關聯式資料庫的自由軟體(BSD license)，</p>
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PostGIS是PostgreSQL基於OpenGIS中的SFS規範(Simple Feature Specification for SQL)所實作出來的地理物件函式庫，而PostgreSQL則是一個關聯式資料庫的自由軟體(BSD license)，</p>
 <p>跟PostGIS類似的東西相當於MS SQL Server中的SQL Spatial、Oracle spatial、MySQL spatial。</p>
-<p>PostGIS在地理空間運算的實作function非常多，也可以與QGIS等軟體做結合。<br></p>
-            <p class="article-more-link">
-                <a href="/2018/01/13/ironman-2018-day25/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
+<p>PostGIS在地理空間運算的實作function非常多，也可以與QGIS等軟體做結合。<br>
 
-
-
-</div>
-
-    <a data-url="https://chimin17.github.io/2018/01/13/ironman-2018-day25/" data-id="cjlxh4skz001i7wiv0y26ob7h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="https://chimin17.github.io/2018/01/13/ironman-2018-day25/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://chimin17.github.io/2018/01/13/ironman-2018-day25/">Comments</a>
-    
-
-        </footer>
+	  <div class="readmore">
+      <a href="/2018/01/13/ironman-2018-day25/">Read More</a>
     </div>
     
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/PostgreSQL/">PostgreSQL</a>
+      
+	  </div>
+    
+  </section>
 </article>
-
-
-
-    <article id="post-ironman-2018-day24" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/01/12/ironman-2018-day24/">鐵人賽Day 24- 在WebGIS加入Mapillary街景</a>
-        </h1>
+    <h2 class="title">
+      <a href="/2018/01/12/ironman-2018-day24/">
+        鐵人賽Day 24- 在WebGIS加入Mapillary街景
+      </a>
+    </h2>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/01/12/ironman-2018-day24/">
-            <time datetime="2018-01-12T03:00:43.000Z" itemprop="datePublished">2018-01-12</time>
-        </a>
+    <time>
+      Jan 12, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
     </div>
 
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用<a href="https://www.mapillary.com/app/?lat=25.05576118895428&amp;lng=121.61677684859569&amp;z=17&amp;focus=map&amp;pKey=MiEVQvYuxJOmTgpS2TNK8w" target="_blank" rel="noopener"><strong>Mapillary的街景</strong></a>，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(<a href="https://zh.wikipedia.org/wiki/Mapillary" target="_blank" rel="noopener">wiki</a>)，目前Mapillary的資料已授權OpenStreetMap使用。</p>
 
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GIS/">GIS</a>, <a class="tag-link" href="/tags/Mapillary/">Mapillary</a>, <a class="tag-link" href="/tags/leaflet/">leaflet</a>, <a class="tag-link" href="/tags/web/">web</a>, <a class="tag-link" href="/tags/鐵人賽/">鐵人賽</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用<a href="https://www.mapillary.com/app/?lat=25.05576118895428&amp;lng=121.61677684859569&amp;z=17&amp;focus=map&amp;pKey=MiEVQvYuxJOmTgpS2TNK8w" target="_blank" rel="noopener"><strong>Mapillary的街景</strong></a>，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(<a href="https://zh.wikipedia.org/wiki/Mapillary" target="_blank" rel="noopener">wiki</a>)，目前Mapillary的資料已授權OpenStreetMap使用。</p></p>
-            <p class="article-more-link">
-                <a href="/2018/01/12/ironman-2018-day24/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://chimin17.github.io/2018/01/12/ironman-2018-day24/" data-id="cjlxh4skg00107wiv9ttk2u6k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="https://chimin17.github.io/2018/01/12/ironman-2018-day24/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://chimin17.github.io/2018/01/12/ironman-2018-day24/">Comments</a>
-    
-
-        </footer>
+	  <div class="readmore">
+      <a href="/2018/01/12/ironman-2018-day24/">Read More</a>
     </div>
     
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Mapillary/">Mapillary</a>
+      
+	  </div>
+    
+  </section>
 </article>
-
-
-
-    <article id="post-ironman-2018-day23" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/01/11/ironman-2018-day23/">鐵人賽Day 23- 在WebGIS中加入Google街景</a>
-        </h1>
+    <h2 class="title">
+      <a href="/2018/01/11/ironman-2018-day23/">
+        鐵人賽Day 23- 在WebGIS中加入Google街景
+      </a>
+    </h2>
     
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/01/11/ironman-2018-day23/">
-            <time datetime="2018-01-11T00:00:43.000Z" itemprop="datePublished">2018-01-11</time>
-        </a>
+    <time>
+      Jan 11, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
     </div>
 
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GIS/">GIS</a>, <a class="tag-link" href="/tags/Google/">Google</a>, <a class="tag-link" href="/tags/leaflet/">leaflet</a>, <a class="tag-link" href="/tags/web/">web</a>, <a class="tag-link" href="/tags/鐵人賽/">鐵人賽</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在地圖中加入另一個元素：街景。<br>到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。</p>
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在地圖中加入另一個元素：街景。<br>到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。</p>
 <blockquote>
 <p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
 </blockquote>
@@ -678,481 +371,160 @@ ga('send', 'pageview');
 <p>動態成果：<br><img src="https://ppt.cc/fthGCx@.gif" alt=""></p>
 <h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>把Google街景接進自己的圖台會讓WebGIS功能更完整，使用的方法也很簡單，提供參考囉！<br>今天的程式碼一樣放在<a href="https://github.com/chimin17/dotnet-leaflet" target="_blank" rel="noopener">github</a>(day23的commit)。</p>
 
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
 
-
-
-</div>
-
-    <a data-url="https://chimin17.github.io/2018/01/11/ironman-2018-day23/" data-id="cjlxh4skl00157wivbfpsal33" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
     
-        <a href="https://chimin17.github.io/2018/01/11/ironman-2018-day23/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://chimin17.github.io/2018/01/11/ironman-2018-day23/">Comments</a>
     
-
-        </footer>
-    </div>
     
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Google/">Google</a>
+      
+	  </div>
+    
+  </section>
 </article>
-
-
-
-    <article id="post-ironman-2018-day22" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/01/10/ironman-2018-day22/">鐵人賽Day 22- WebGIS中加入Google Directions導航API</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/01/10/ironman-2018-day22/">
-            <time datetime="2018-01-10T03:00:43.000Z" itemprop="datePublished">2018-01-10</time>
-        </a>
     </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/GIS/">GIS</a>, <a class="tag-link" href="/tags/Google/">Google</a>, <a class="tag-link" href="/tags/leaflet/">leaflet</a>, <a class="tag-link" href="/tags/web/">web</a>, <a class="tag-link" href="/tags/鐵人賽/">鐵人賽</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，把它整合進我們的地圖。</p>
-<blockquote>
-<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
-</blockquote>
-<h2 id="申請token"><a href="#申請token" class="headerlink" title="申請token"></a>申請token</h2><p>使用Google API都要申請token，這邊偷懶地簡單說明一下：<br>首先打開<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，按右上角<strong>取得金鑰</strong>。<br><img src="https://ppt.cc/fdq7Nx@.png" alt=""></p>
-<p>然後選取一個專案(如果沒有要另外開啟)。<br><img src="https://ppt.cc/foKFXx@.png" alt=""></p>
-<p>之後就會取得一組金鑰，這就是token。<br><img src="https://ppt.cc/f5iwnx@.png" alt=""></p>
-<p>我們關注一下免費版的使用限制，注意<strong>不是完全免費</strong>的喔。<br><img src="https://ppt.cc/fO6rYx@.png" alt=""></p>
-<ul>
-<li>每日免費要求提供上限為 2,500 個。</li>
-<li>如果啟用計費功能，則每 1,000 個額外要求收費 $0.50 美元，每日提供上限為 100,000 個。</li>
-</ul>
-<h2 id="try-it"><a href="#try-it" class="headerlink" title="try it"></a>try it</h2><p>使用Direction API取得路徑規劃的方式可以用get的方式，<br>最簡單的使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://maps.googleapis.com/maps/api/directions/json?language=zh-TW&amp;origin=&quot; + **start** + &quot;&amp;destination=&quot; + **end** + &quot;&amp;key=&quot; + **token**</span><br></pre></td></tr></table></figure></p>
-<p>request有幾個必填項目，</p>
-<ul>
-<li>key: 金鑰token(如果是在client端使用記得要設定存取domain)</li>
-<li>origin: 起點，起終點都可以使用wgs84坐標或是地標名稱</li>
-<li>destination: 終點</li>
-</ul>
-<p>此外，Direction API有提供很多選填，包含</p>
-<ul>
-<li>language: 語言</li>
-<li>mode: 移動模式(預設為 driving)</li>
-<li>region: 指定地區代碼</li>
-<li>more..<br>Google DirectionAPI可以設定的參數很多，包含避開路線、替代路線等等，有需要者可以詳閱<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw" target="_blank" rel="noopener">API文件</a></li>
-</ul>
-<p>我們就直接request一個看Direction API回應些什麼..<br><img src="https://ppt.cc/fAdTdx@.png" alt=""></p>
-<p>整個回應的資料十分豐富，包含旅行時間、路徑等等，我們可以把這些資訊使用在圖台上！</p>
-<h2 id="解析資料"><a href="#解析資料" class="headerlink" title="解析資料"></a>解析資料</h2><h3 id="1-overview-polyline"><a href="#1-overview-polyline" class="headerlink" title="1.overview_polyline"></a>1.overview_polyline</h3><p>從回應的資料可以看到<strong>overview_polyline</strong>，這是一個經過編碼的路線陣列，記錄的是API規劃的路徑及沿線polyline的預覽，我們可以把它畫在圖上，而編碼的方法請參閱<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#GeocodedWaypoints" target="_blank" rel="noopener">Google文件</a>。<br><img src="https://ppt.cc/fkMB6x@.png" alt=""></p>
-<p>要使用overview_polyline這類的編碼資料，可以引入<a href="https://github.com/jieter/Leaflet.encoded" target="_blank" rel="noopener">Leaflet.encoded</a>，利用這個工具解碼<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var latlngs = L.PolylineUtil.decode(str);</span><br></pre></td></tr></table></figure></p>
-<p>解碼後就是一個polyline的資料，可以直接用polyline放到圖上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L.polyline(latlngs, &#123; color: &apos;red&apos; &#125;).addTo(map);</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-steps"><a href="#2-steps" class="headerlink" title="2.steps"></a>2.steps</h3><p>API回傳的資料很多，其中steps是分段的路徑資訊，我們直接取steps這個陣列來使用，steps裡面包的就是一段一段的轉折點，除了幾何外，還包含了導航文字說明。<br><img src="https://ppt.cc/fkUy9x@.png" alt=""></p>
-<p>展開：<br><img src="https://ppt.cc/fp6Wwx@.png" alt=""></p>
-<p>我們就組個表格，並把文字說明html_instructions塞入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//data為api responds資料</span><br><span class="line">  $.each(data.routes[0].legs[0].steps, function (k, v) &#123;</span><br><span class="line"></span><br><span class="line">    $(&quot;#route-list tbody&quot;).append(&quot;&lt;tr id=&apos;&quot; + v.polyline.points + &quot;&apos; class=&apos;route-row&apos;&gt;&lt;td&gt;&quot; + v.html_instructions + &quot;&lt;/td&gt;&lt;/tr&gt;&quot;);</span><br><span class="line"></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-<p>接著，綁定每段的click事件，使用者點到以後就可以顯示每小段的位置，其中在幾何部分我們使用一樣工具解碼喔！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$(document).on(&quot;click&quot;, &quot;.route-row&quot;, function (e) &#123;</span><br><span class="line">  $(&apos;#googleRouting&apos;).animate(&#123; scrollTop: $(this).context.offsetTop &#125;, 800);</span><br><span class="line">  routelineClick($(this).attr(&quot;id&quot;));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var subRoute = L.geoJson(null);</span><br><span class="line">function routelineClick(str) &#123;</span><br><span class="line">  map.removeLayer(subRoute);</span><br><span class="line">  var latlngs = L.PolylineUtil.decode(str);</span><br><span class="line">  subRoute = L.polyline(latlngs, &#123; color: &apos;red&apos; &#125;).addTo(map);</span><br><span class="line">  map.setView([latlngs[0][0] - 0.001, latlngs[0][1]], 17)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="切版及成果"><a href="#切版及成果" class="headerlink" title="切版及成果"></a>切版及成果</h2><p>為了加入導航的功能，所以今天地圖增加了bottom區塊，有興趣者就自行研究吧，最終的效果如下：<br><img src="https://ppt.cc/furvxx@.gif" alt=""></p>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>今天快速測試一下Google Direction，很好用但是不是完全免費的，而類似的服務還有<a href="https://www.mapbox.com/navigation/" target="_blank" rel="noopener">Mapbox</a>、<a href="https://developer.here.com/documentation/routing/topics/overview.html" target="_blank" rel="noopener">Here Routing API</a>，OSM社群也有一些開源的服務，有機會再詳細介紹吧！</p>
-<p>今天的測試程式碼一樣放在<a href="https://github.com/chimin17/dotnet-leaflet" target="_blank" rel="noopener">github</a>(day22的commit)。</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://chimin17.github.io/2018/01/10/ironman-2018-day22/" data-id="cjlxh4skj00137wiv1e1lho9a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="https://chimin17.github.io/2018/01/10/ironman-2018-day22/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://chimin17.github.io/2018/01/10/ironman-2018-day22/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+  
 </section>
-            
-                
-<aside id="sidebar">
-   
+
+
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+    <a class="next" rel="next" href="/page/3/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    
+  </nav>
+  
+
+      </div>
+      <aside class='l_side'>
         
-    <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/22/node-2018-0222/" class="thumbnail">
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
     
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1797">
+            <div class='name'>30天精通GIS資料分析-使用Python</div>
+        </a></li>
     
-        <span style="background-image:url(/images/post/thumb_0427.jpeg)" alt="關於server side與client side 的Node.js模組" class="thumbnail-image"></span>
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541">
+            <div class='name'>30天打造我的WebGIS</div>
+        </a></li>
     
-</a>
+        <li><a class="flat-box" target="_blank" href="https://developer.tomtom.com/">
+            <div class='name'>TomTom for developer</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
 
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/02/22/node-2018-0222/" class="title">關於server side與client side 的Node.js模組</a></p>
-                            <p class="item-date"><time datetime="2018-02-22T15:02:33.000Z" itemprop="datePublished">2018-02-22</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/19/ironman-2018-day30/" class="thumbnail">
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
     
+    <ul class="entry">
     
-        <span style="background-image:url(/images/post/ironman-2018/iron-3001.png)" alt="鐵人賽Day 30- 最重要的回顧" class="thumbnail-image"></span>
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
     
-</a>
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>30</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
 
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/01/19/ironman-2018-day30/" class="title">鐵人賽Day 30- 最重要的回顧</a></p>
-                            <p class="item-date"><time datetime="2018-01-19T12:12:33.000Z" itemprop="datePublished">2018-01-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/18/ironman-2018-day29/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/post/ironman-2018/iron-2901.png)" alt="鐵人賽Day 29- WebGIS大觀園" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/01/18/ironman-2018-day29/" class="title">鐵人賽Day 29- WebGIS大觀園</a></p>
-                            <p class="item-date"><time datetime="2018-01-18T14:02:33.000Z" itemprop="datePublished">2018-01-18</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/17/ironman-2018-day28/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/images/post/ironman-2018/iron-2801.png)" alt="鐵人賽Day 28- WebGL與3D GIS概觀" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/01/17/ironman-2018-day28/" class="title">鐵人賽Day 28- WebGL與3D GIS概觀</a></p>
-                            <p class="item-date"><time datetime="2018-01-17T00:02:33.000Z" itemprop="datePublished">2018-01-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/16/ironman-2018-day27/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2018/01/16/ironman-2018-day27/" class="title">鐵人賽Day 27- WebGIS 加入D3.js圖表互動</a></p>
-                            <p class="item-date"><time datetime="2018-01-16T00:02:33.000Z" itemprop="datePublished">2018-01-16</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/node/" style="font-size: 14px; color: #808080">node</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/webpack/" style="font-size: 14px; color: #808080">webpack</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
     </div>
+</div>
 
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">29</span></li></ul>
-        </div>
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
     </div>
+  </div>
+  <footer id="footer" class="clearfix">
 
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/chimin17" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://linkedin.com/in/chi-min-chiu-aba7a5148/" class="social linkedin"
+          target="_blank" rel="external">
+          <span class="icon icon-linkedin"></span>
+        </a>
+      
     
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">2</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3/">D3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GIS/">GIS</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google/">Google</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leaflet/">Leaflet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mapillary/">Mapillary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mongodb/">Mongodb</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/">PostgreSQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Turf-js/">Turf.js</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebGL/">WebGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geojson/">geojson</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leaflet/">leaflet</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opendata/">opendata</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/proj4/">proj4</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">27</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/鐵人賽/">鐵人賽</a><span class="tag-list-count">27</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/D3/" style="font-size: 10px;">D3</a> <a href="/tags/GIS/" style="font-size: 20px;">GIS</a> <a href="/tags/Google/" style="font-size: 12.5px;">Google</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 10px;">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 10px;">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 10px;">Mongodb</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 10px;">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 12.5px;">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 10px;">WebGL</a> <a href="/tags/geojson/" style="font-size: 15px;">geojson</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/google/" style="font-size: 10px;">google</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/leaflet/" style="font-size: 17.5px;">leaflet</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/opendata/" style="font-size: 10px;">opendata</a> <a href="/tags/proj4/" style="font-size: 10px;">proj4</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/鐵人賽/" style="font-size: 20px;">鐵人賽</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-    
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
-
-            
-        </div>
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2018 Chi-Min Chiu<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
-        </div>
-    </div>
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
 </footer>
-        
-    
-    <script>
-    var disqus_config = function () {
-        
-        this.page.identifier = '';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'chimin17' + '.disqus.com/count.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+<script>
+  var disqus_shortname = 'chimin17';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 </script>
 
 
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
 
 
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
-    
-    
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-    
-    
-
-
-
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
-
-    </div>
+  <script>setLoadingBarProgress(100);</script>
 </body>
 </html>
