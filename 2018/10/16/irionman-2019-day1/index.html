@@ -12,18 +12,18 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Day01 使用Python處理地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。 或許各路GIS相關的工作者，常會覺得明明空間資料與非空間資料差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。 有感於此，希望藉由這次鐵人賽的砥礪，攻略實務上處理GIS資料時更進階及更自動化的工具與技巧。  這次30天的任務，主要以Pyth">
+  <meta name="description" content="地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。 或許各路GIS相關的工作者，常會覺得明明空間資料與非空間資料差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。 有感於此，希望藉由這次鐵人賽的砥礪，攻略實務上處理GIS資料時更進階及更自動化的工具與技巧。  這次30天的任務，主要以Python為主軸，配合QGIS及空間資料">
 <meta name="keywords" content="鐵人賽,GIS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="鐵人賽2019 Day 1- 前言">
 <meta property="og:url" content="https://chimin17.github.io/2018/10/16/irionman-2019-day1/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="Day01 使用Python處理地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。 或許各路GIS相關的工作者，常會覺得明明空間資料與非空間資料差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。 有感於此，希望藉由這次鐵人賽的砥礪，攻略實務上處理GIS資料時更進階及更自動化的工具與技巧。  這次30天的任務，主要以Pyth">
+<meta property="og:description" content="地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。 或許各路GIS相關的工作者，常會覺得明明空間資料與非空間資料差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。 有感於此，希望藉由這次鐵人賽的砥礪，攻略實務上處理GIS資料時更進階及更自動化的工具與技巧。  這次30天的任務，主要以Python為主軸，配合QGIS及空間資料">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-16T09:43:33.376Z">
+<meta property="og:updated_time" content="2018-10-16T12:51:45.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽2019 Day 1- 前言">
-<meta name="twitter:description" content="Day01 使用Python處理地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。 或許各路GIS相關的工作者，常會覺得明明空間資料與非空間資料差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。 有感於此，希望藉由這次鐵人賽的砥礪，攻略實務上處理GIS資料時更進階及更自動化的工具與技巧。  這次30天的任務，主要以Pyth">
+<meta name="twitter:description" content="地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。 或許各路GIS相關的工作者，常會覺得明明空間資料與非空間資料差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。 有感於此，希望藉由這次鐵人賽的砥礪，攻略實務上處理GIS資料時更進階及更自動化的工具與技巧。  這次30天的任務，主要以Python為主軸，配合QGIS及空間資料">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -139,16 +139,16 @@
 	
     
     <div class='cats'>
-        <a href="/categories/web/">web</a>
+        <a href="/categories/data-analysis/">data analysis</a>
     </div>
 
 	</section>
 	
-		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Day01-使用Python處理"><span class="toc-number">1.</span> <span class="toc-text"> Day01 使用Python處理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#目標架構"><span class="toc-number">1.1.</span> <span class="toc-text">目標架構</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#開發環境"><span class="toc-number">1.2.</span> <span class="toc-text">開發環境</span></a></li></ol></li></ol></section>
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目標架構"><span class="toc-number">1.</span> <span class="toc-text">目標架構</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#開發環境"><span class="toc-number">2.</span> <span class="toc-text">開發環境</span></a></li></ol></section>
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
-    	<h1 id="Day01-使用Python處理"><a href="#Day01-使用Python處理" class="headerlink" title=" Day01 使用Python處理"></a> Day01 使用Python處理</h1><p>地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。</p>
+    	<p>地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。</p>
 <p>或許各路GIS相關的工作者，常會覺得明明<code>空間資料</code>與<code>非空間資料</code>差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。</p>
 <p>有感於此，希望藉由這次<code>鐵人賽</code>的砥礪，攻略實務上處理GIS資料時<code>更進階</code>及更<code>自動化</code>的工具與技巧。</p>
 <blockquote>
@@ -236,9 +236,11 @@
     
     <ul class="entry">
     
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>1</div></a></li>
+    
         <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
     
-        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>29</div></a></li>
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>28</div></a></li>
     
     </ul>
     
