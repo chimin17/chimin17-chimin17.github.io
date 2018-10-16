@@ -28,31 +28,6 @@
     </entry>
     
     <entry>
-      <title>關於server side與client side 的Node.js模組</title>
-      <link href="/2018/02/22/node-2018-0222/"/>
-      <url>/2018/02/22/node-2018-0222/</url>
-      
-        <content type="html"><![CDATA[<h2 id="問題是出在webpack打包時。"><a href="#問題是出在webpack打包時。" class="headerlink" title="問題是出在webpack打包時。"></a>問題是出在webpack打包時。</h2><p>某天在用Node.js寫一個爬蟲應用時，webpack跳出一個request的錯誤。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import request from &apos;request&apos;</span><br><span class="line">import cheerio from &apos;cheerio&apos;</span><br><span class="line">const URL=&quot;&quot;;</span><br><span class="line">const GetData = () =&gt; &#123;</span><br><span class="line">    return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        let list = [];</span><br><span class="line">        request.get(&#123;</span><br><span class="line">            url: URL,</span><br><span class="line">        &#125;, function (err, res, body) &#123;</span><br><span class="line">            const $ = cheerio.load(body);</span><br><span class="line">            $(&apos;table&apos;).each(function (index, element) &#123;</span><br><span class="line">              //略</span><br><span class="line">            &#125;)</span><br><span class="line">            resolve(list);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>錯誤在這邊，編譯發生錯誤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ERROR in ./node_modules/request/lib/har.js</span><br><span class="line">Module not found: Error: Can&apos;t resolve &apos;fs&apos; in &apos;/Users/pann/GitRepo/dotnet-leaflet/node_modules/request/lib&apos;</span><br><span class="line"></span><br><span class="line">ERROR in ./node_modules/forever-agent/index.js</span><br><span class="line">Module not found: Error: Can&apos;t resolve &apos;net&apos; in &apos;/Users/pann/GitRepo/dotnet-leaflet/node_modules/forever-agent&apos;</span><br></pre></td></tr></table></figure></p><p><img src="/images/post/thumb_0427.jpeg" alt=""></p><h2 id="client端與server端模組"><a href="#client端與server端模組" class="headerlink" title="client端與server端模組"></a>client端與server端模組</h2><p>錯誤訊息顯示，fs,net,tls等被request不能被打包，<br>但這幾個是node.js內建模組啊…<br>怎麼會錯？</p><p>後來找到這個issue:<br><a href="https://github.com/webpack/react-starter/issues/3" target="_blank" rel="noopener">https://github.com/webpack/react-starter/issues/3</a></p><p>真相大白…<br>Node.js有分client端與server端的模組<br>webpack打包的都是client端，引入request屬於server端應用</p><p>太少用Node.js寫後端<br>傻傻的也沒想到什麼前端後端問題，</p><h2 id="解決"><a href="#解決" class="headerlink" title="解決"></a>解決</h2><p>解決方案也是不少<br>1.可以找一個request替代套件：superagen<br><a href="https://www.npmjs.com/package/superagent" target="_blank" rel="noopener">https://www.npmjs.com/package/superagent</a><br>superagent簡單來講是一個在client端使用的request模組</p><p>2.當然也可以把request寫去後端的部分，再用API接出來給前端用</p><h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>會發生這個問題，是因為一直以來不常使用Node.js做後端<br>所以第一時間沒有想到是client端與server端的問題</p><p>問題不大，分享一下^^</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> web </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> node </tag>
-            
-            <tag> webpack </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>鐵人賽Day 30- 最重要的回顧</title>
       <link href="/2018/01/19/ironman-2018-day30/"/>
       <url>/2018/01/19/ironman-2018-day30/</url>

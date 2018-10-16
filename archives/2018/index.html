@@ -195,48 +195,6 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/02/22/node-2018-0222/">
-        關於server side與client side 的Node.js模組
-      </a>
-    </h2>
-    
-    <time>
-      Feb 22, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="問題是出在webpack打包時。"><a href="#問題是出在webpack打包時。" class="headerlink" title="問題是出在webpack打包時。"></a>問題是出在webpack打包時。</h2><p>某天在用Node.js寫一個爬蟲應用時，webpack跳出一個request的錯誤。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/02/22/node-2018-0222/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/node/">node</a>
-      
-        <a href="/tags/webpack/">webpack</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
       <a href="/2018/01/19/ironman-2018-day30/">
         鐵人賽Day 30- 最重要的回顧
       </a>
@@ -641,6 +599,89 @@
 </article>
     </div>
   
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/10/ironman-2018-day22/">
+        鐵人賽Day 22- WebGIS中加入Google Directions導航API
+      </a>
+    </h2>
+    
+    <time>
+      Jan 10, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，把它整合進我們的地圖。</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="申請token"><a href="#申請token" class="headerlink" title="申請token"></a>申請token</h2><p>使用Google API都要申請token，這邊偷懶地簡單說明一下：<br>首先打開<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，按右上角<strong>取得金鑰</strong>。<br><img src="https://ppt.cc/fdq7Nx@.png" alt=""></p>
+<p>然後選取一個專案(如果沒有要另外開啟)。<br><img src="https://ppt.cc/foKFXx@.png" alt=""></p>
+<p>之後就會取得一組金鑰，這就是token。<br><img src="https://ppt.cc/f5iwnx@.png" alt=""></p>
+<p>我們關注一下免費版的使用限制，注意<strong>不是完全免費</strong>的喔。<br><img src="https://ppt.cc/fO6rYx@.png" alt=""></p>
+<ul>
+<li>每日免費要求提供上限為 2,500 個。</li>
+<li>如果啟用計費功能，則每 1,000 個額外要求收費 $0.50 美元，每日提供上限為 100,000 個。</li>
+</ul>
+<h2 id="try-it"><a href="#try-it" class="headerlink" title="try it"></a>try it</h2><p>使用Direction API取得路徑規劃的方式可以用get的方式，<br>最簡單的使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://maps.googleapis.com/maps/api/directions/json?language=zh-TW&amp;origin=&quot; + **start** + &quot;&amp;destination=&quot; + **end** + &quot;&amp;key=&quot; + **token**</span><br></pre></td></tr></table></figure></p>
+<p>request有幾個必填項目，</p>
+<ul>
+<li>key: 金鑰token(如果是在client端使用記得要設定存取domain)</li>
+<li>origin: 起點，起終點都可以使用wgs84坐標或是地標名稱</li>
+<li>destination: 終點</li>
+</ul>
+<p>此外，Direction API有提供很多選填，包含</p>
+<ul>
+<li>language: 語言</li>
+<li>mode: 移動模式(預設為 driving)</li>
+<li>region: 指定地區代碼</li>
+<li>more..<br>Google DirectionAPI可以設定的參數很多，包含避開路線、替代路線等等，有需要者可以詳閱<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw" target="_blank" rel="noopener">API文件</a></li>
+</ul>
+<p>我們就直接request一個看Direction API回應些什麼..<br><img src="https://ppt.cc/fAdTdx@.png" alt=""></p>
+<p>整個回應的資料十分豐富，包含旅行時間、路徑等等，我們可以把這些資訊使用在圖台上！</p>
+<h2 id="解析資料"><a href="#解析資料" class="headerlink" title="解析資料"></a>解析資料</h2><h3 id="1-overview-polyline"><a href="#1-overview-polyline" class="headerlink" title="1.overview_polyline"></a>1.overview_polyline</h3><p>從回應的資料可以看到<strong>overview_polyline</strong>，這是一個經過編碼的路線陣列，記錄的是API規劃的路徑及沿線polyline的預覽，我們可以把它畫在圖上，而編碼的方法請參閱<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#GeocodedWaypoints" target="_blank" rel="noopener">Google文件</a>。<br><img src="https://ppt.cc/fkMB6x@.png" alt=""></p>
+<p>要使用overview_polyline這類的編碼資料，可以引入<a href="https://github.com/jieter/Leaflet.encoded" target="_blank" rel="noopener">Leaflet.encoded</a>，利用這個工具解碼<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var latlngs = L.PolylineUtil.decode(str);</span><br></pre></td></tr></table></figure></p>
+<p>解碼後就是一個polyline的資料，可以直接用polyline放到圖上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L.polyline(latlngs, &#123; color: &apos;red&apos; &#125;).addTo(map);</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-steps"><a href="#2-steps" class="headerlink" title="2.steps"></a>2.steps</h3><p>API回傳的資料很多，其中steps是分段的路徑資訊，我們直接取steps這個陣列來使用，steps裡面包的就是一段一段的轉折點，除了幾何外，還包含了導航文字說明。<br><img src="https://ppt.cc/fkUy9x@.png" alt=""></p>
+<p>展開：<br><img src="https://ppt.cc/fp6Wwx@.png" alt=""></p>
+<p>我們就組個表格，並把文字說明html_instructions塞入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//data為api responds資料</span><br><span class="line">  $.each(data.routes[0].legs[0].steps, function (k, v) &#123;</span><br><span class="line"></span><br><span class="line">    $(&quot;#route-list tbody&quot;).append(&quot;&lt;tr id=&apos;&quot; + v.polyline.points + &quot;&apos; class=&apos;route-row&apos;&gt;&lt;td&gt;&quot; + v.html_instructions + &quot;&lt;/td&gt;&lt;/tr&gt;&quot;);</span><br><span class="line"></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p>接著，綁定每段的click事件，使用者點到以後就可以顯示每小段的位置，其中在幾何部分我們使用一樣工具解碼喔！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$(document).on(&quot;click&quot;, &quot;.route-row&quot;, function (e) &#123;</span><br><span class="line">  $(&apos;#googleRouting&apos;).animate(&#123; scrollTop: $(this).context.offsetTop &#125;, 800);</span><br><span class="line">  routelineClick($(this).attr(&quot;id&quot;));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var subRoute = L.geoJson(null);</span><br><span class="line">function routelineClick(str) &#123;</span><br><span class="line">  map.removeLayer(subRoute);</span><br><span class="line">  var latlngs = L.PolylineUtil.decode(str);</span><br><span class="line">  subRoute = L.polyline(latlngs, &#123; color: &apos;red&apos; &#125;).addTo(map);</span><br><span class="line">  map.setView([latlngs[0][0] - 0.001, latlngs[0][1]], 17)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="切版及成果"><a href="#切版及成果" class="headerlink" title="切版及成果"></a>切版及成果</h2><p>為了加入導航的功能，所以今天地圖增加了bottom區塊，有興趣者就自行研究吧，最終的效果如下：<br><img src="https://ppt.cc/furvxx@.gif" alt=""></p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>今天快速測試一下Google Direction，很好用但是不是完全免費的，而類似的服務還有<a href="https://www.mapbox.com/navigation/" target="_blank" rel="noopener">Mapbox</a>、<a href="https://developer.here.com/documentation/routing/topics/overview.html" target="_blank" rel="noopener">Here Routing API</a>，OSM社群也有一些開源的服務，有機會再詳細介紹吧！</p>
+<p>今天的測試程式碼一樣放在<a href="https://github.com/chimin17/dotnet-leaflet" target="_blank" rel="noopener">github</a>(day22的commit)。</p>
+
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/鐵人賽/">鐵人賽</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Google/">Google</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
 </section>
 
 
@@ -688,7 +729,7 @@
     
         <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
     
-        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>30</div></a></li>
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>29</div></a></li>
     
     </ul>
     
@@ -699,7 +740,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/node/" style="font-size: 14px; color: #808080">node</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/webpack/" style="font-size: 14px; color: #808080">webpack</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
+        <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.2px; color: #666">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.2px; color: #666">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.4px; color: #4d4d4d">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.6px; color: #333">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.8px; color: #1a1a1a">web</a> <a href="/tags/鐵人賽/" style="font-size: 20px; color: #000">鐵人賽</a>
     </div>
 </div>
 
