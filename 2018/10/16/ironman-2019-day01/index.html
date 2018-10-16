@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>鐵人賽Day 24- 在WebGIS加入Mapillary街景 | Chimin&#39;s Blog</title>
+  <title>鐵人賽2019 Day 1- 前言 | Chimin&#39;s Blog</title>
   <meta name="description" content="you are never wrong to do the right thing" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,24 +12,18 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用Mapillary的街景，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(wiki)，目前Mapillary的資料已授權OpenStreetMap">
-<meta name="keywords" content="鐵人賽,web,GIS,leaflet,Mapillary">
+  <meta name="description" content="地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。 或許各路GIS相關的工作者，常會覺得明明空間資料與非空間資料差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。 有感於此，希望藉由這次鐵人賽的砥礪，攻略實務上處理GIS資料時更進階及更自動化的工具與技巧。  這次30天的任務，主要以Python為主軸，配合QGIS及空間資料">
+<meta name="keywords" content="鐵人賽,GIS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="鐵人賽Day 24- 在WebGIS加入Mapillary街景">
-<meta property="og:url" content="https://chimin17.github.io/2018/01/12/ironman-2018-day24/index.html">
+<meta property="og:title" content="鐵人賽2019 Day 1- 前言">
+<meta property="og:url" content="https://chimin17.github.io/2018/10/16/ironman-2019-day01/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="前言Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用Mapillary的街景，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(wiki)，目前Mapillary的資料已授權OpenStreetMap">
+<meta property="og:description" content="地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。 或許各路GIS相關的工作者，常會覺得明明空間資料與非空間資料差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。 有感於此，希望藉由這次鐵人賽的砥礪，攻略實務上處理GIS資料時更進階及更自動化的工具與技巧。  這次30天的任務，主要以Python為主軸，配合QGIS及空間資料">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://ppt.cc/fzt81x@.png">
-<meta property="og:image" content="https://ppt.cc/faz6dx@.png">
-<meta property="og:image" content="https://ppt.cc/f7ifZx@.png">
-<meta property="og:image" content="https://ppt.cc/fi3Wwx@.png">
-<meta property="og:image" content="https://ppt.cc/fVUJsx@.png">
-<meta property="og:updated_time" content="2018-02-21T15:06:35.902Z">
+<meta property="og:updated_time" content="2018-10-16T12:54:30.658Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="鐵人賽Day 24- 在WebGIS加入Mapillary街景">
-<meta name="twitter:description" content="前言Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用Mapillary的街景，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(wiki)，目前Mapillary的資料已授權OpenStreetMap">
-<meta name="twitter:image" content="https://ppt.cc/fzt81x@.png">
+<meta name="twitter:title" content="鐵人賽2019 Day 1- 前言">
+<meta name="twitter:description" content="地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。 或許各路GIS相關的工作者，常會覺得明明空間資料與非空間資料差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。 有感於此，希望藉由這次鐵人賽的砥礪，攻略實務上處理GIS資料時更進階及更自動化的工具與技巧。  這次30天的任務，主要以Python為主軸，配合QGIS及空間資料">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -130,45 +124,53 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-ironman-2018-day24"
+        <article id="post-ironman-2019-day01"
   class="post white-box article-type-post"
   itemscope itemprop="blogPost">
 	<section class='meta'>
 	<h2 class="title">
-  	<a href="/2018/01/12/ironman-2018-day24/">
-    	鐵人賽Day 24- 在WebGIS加入Mapillary街景
+  	<a href="/2018/10/16/ironman-2019-day01/">
+    	鐵人賽2019 Day 1- 前言
     </a>
   </h2>
 	<time>
-	  Jan 12, 2018
+	  Oct 16, 2018
 	</time>
 	
     
     <div class='cats'>
-        <a href="/categories/web/">web</a>
+        <a href="/categories/data-analysis/">data analysis</a>
     </div>
 
 	</section>
 	
-		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上傳自己的照片"><span class="toc-number">2.</span> <span class="toc-text">上傳自己的照片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Mapillary-js"><span class="toc-number">3.</span> <span class="toc-text">使用Mapillary.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#後記"><span class="toc-number">4.</span> <span class="toc-text">後記</span></a></li></ol></section>
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目標架構"><span class="toc-number">1.</span> <span class="toc-text">目標架構</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#開發環境"><span class="toc-number">2.</span> <span class="toc-text">開發環境</span></a></li></ol></section>
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
-    	<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用<a href="https://www.mapillary.com/app/?lat=25.05576118895428&amp;lng=121.61677684859569&amp;z=17&amp;focus=map&amp;pKey=MiEVQvYuxJOmTgpS2TNK8w" target="_blank" rel="noopener"><strong>Mapillary的街景</strong></a>，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(<a href="https://zh.wikipedia.org/wiki/Mapillary" target="_blank" rel="noopener">wiki</a>)，目前Mapillary的資料已授權OpenStreetMap使用。</p>
-<a id="more"></a>
+    	<p>地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。</p>
+<p>或許各路GIS相關的工作者，常會覺得明明<code>空間資料</code>與<code>非空間資料</code>差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。</p>
+<p>有感於此，希望藉由這次<code>鐵人賽</code>的砥礪，攻略實務上處理GIS資料時<code>更進階</code>及更<code>自動化</code>的工具與技巧。</p>
 <blockquote>
-<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+<p>這次30天的任務，主要以<code>Python</code>為主軸，配合<code>QGIS</code>及<code>空間資料庫</code>，熟悉GIS工作的<code>自動化</code>流程，解決空間資料分析或是資料工程上的問題。</p>
 </blockquote>
-<p>Mapillary網站畫面(綠色為有街景的區域)<br><img src="https://ppt.cc/fzt81x@.png" alt=""></p>
-<h2 id="上傳自己的照片"><a href="#上傳自己的照片" class="headerlink" title="上傳自己的照片"></a>上傳自己的照片</h2><p>使用Mapillary，我們可以上傳步行、騎車、開車或是全景的照片或照片，只要註冊帳號都可以上傳，可以透過GPX軌跡或是照片本身的EXIF資訊取得地理坐標。<br><img src="https://ppt.cc/faz6dx@.png" alt=""></p>
-<p>Mapillary除了提供照片上傳，利用眾包發展街景服務以外，還提供了一些電腦覺演算法，進一步為照片加值，辨識道路的物件。<br><img src="https://ppt.cc/f7ifZx@.png" alt=""></p>
-<h2 id="使用Mapillary-js"><a href="#使用Mapillary-js" class="headerlink" title="使用Mapillary.js"></a>使用Mapillary.js</h2><p><a href="https://mapillary.github.io/mapillary-js/" target="_blank" rel="noopener">Mapillary.js</a>使用上跟Google街景沒差很多，我們就只接看範例：<br>首先，要申請帳號並取得<a href="https://www.mapillary.com/app/settings/developers" target="_blank" rel="noopener">token</a></p>
-<p><img src="https://ppt.cc/fi3Wwx@.png" alt=""></p>
-<p>加入div<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;mly&quot; &gt; &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>加入程式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var mly = new Mapillary.Viewer(</span><br><span class="line">  &apos;mly&apos;,</span><br><span class="line">  &apos;token&apos;,</span><br><span class="line">  &apos;MiEVQvYuxJOmTgpS2TNK8w&apos;// 初始照片的key</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
-<p>接著，加入marker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var mlyMan;</span><br><span class="line">mly.on(Mapillary.Viewer.nodechanged, function (node) &#123;</span><br><span class="line">  var latLon = [node.latLon.lat, node.latLon.lon];</span><br><span class="line"></span><br><span class="line">  if (!mlyMan) &#123;</span><br><span class="line">    mlyMan = L.marker(latLon);</span><br><span class="line">    mlyMan.addTo(map);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    mlyMan.setLatLng(latLon);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  map.setView(latLon);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://ppt.cc/fVUJsx@.png" alt=""></p>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>Mapillary跟OpenStreetMap一樣透過群眾外包建立地圖(街景)，而且進一步使用自動辨識演算法，讓照片得以加值，有興趣可以上傳喔！</p>
+<a id="more"></a>
+<hr>
+<p>雖然QGIS及ArcGIS中，也支援Python程式的包裝PyQGIS與ArcPy，使用者可以撰寫程式、拉Model或是Macro等，在許多情境下，已經可以解決大多數問題。</p>
+<p>然而GIS資料常是眾多資料流的一部分，以軟體架構角度如果資料流必須跳到另外一個軟體或環境執行，總是覺得不太順遂。因此這30天挑戰的目標將是以Coding方式處理GIS資料，主要是利用Python作為資料分析的語言，當然也會加入一些軟體的輔助。</p>
+<blockquote>
+<p>GIS軟體儘管好用，但若GIS資料是一個資料流的一部分，不允許中斷另以其它軟體做處理，此時，動手寫程式處理GIS資料是必須的，有些時候，撰寫程式會比操作軟體還要方便一些！</p>
+</blockquote>
+<h2 id="目標架構"><a href="#目標架構" class="headerlink" title="目標架構"></a>目標架構</h2><p>在起始階段，原本先構想先規劃一下30天中每一天的目標，但仔細想想，常常寫到一半會發現新多東西或挑戰，很難一次定義清楚每日目標，但整個範疇應該會包含：</p>
+<ul>
+<li>Python 基本GIS資料處理</li>
+<li>資料視覺化</li>
+<li>空間資料庫</li>
+<li>結合各種資料集</li>
+<li>GIS資料採集</li>
+<li>GIS資料分析</li>
+</ul>
+<h2 id="開發環境"><a href="#開發環境" class="headerlink" title="開發環境"></a>開發環境</h2><p>這30天的挑戰會有一些程式碼案例，如果對提供的案例有興趣，歡迎自行測試，測試的環境為Python3，若沒有Python環境建置相關經驗，建議使用Annaconda建置Python3環境，使用Jupyter Notebbook作測試，詳細過程可以參考：<br><a href="https://ithelp.ithome.com.tw/articles/10184561" target="_blank" rel="noopener">[第 01 天] 建立開發環境與計算機應用 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></p>
 
   	</div>
 	  
@@ -176,13 +178,7 @@
       
         <a href="/tags/鐵人賽/">鐵人賽</a>
       
-        <a href="/tags/web/">web</a>
-      
         <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Mapillary/">Mapillary</a>
       
 	  </div>
     
@@ -190,13 +186,9 @@
 	
 		<div class="art-item-footer">
 				
-					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/13/ironman-2018-day25/" rel="prev"  title="鐵人賽Day 25- 在資料庫中操作空間資料-PostGIS">
-						鐵人賽Day 25- 在資料庫中操作空間資料-PostGIS 
-					</a></span>
 				
-				
-					<span class="art-item-right">next：<a href="/2018/01/11/ironman-2018-day23/" rel="next"  title="鐵人賽Day 23- 在WebGIS中加入Google街景">
-						鐵人賽Day 23- 在WebGIS中加入Google街景
+					<span class="art-item-right">next：<a href="/2018/01/19/ironman-2018-day30/" rel="next"  title="鐵人賽Day 30- 最重要的回顧">
+						鐵人賽Day 30- 最重要的回顧
 					</a><i class="icon icon-chevron-thin-right"></i></span>
 				
 		</div>
@@ -210,7 +202,7 @@
 </article>
 <script>
 	window.subData = {
-		title: '鐵人賽Day 24- 在WebGIS加入Mapillary街景',
+		title: '鐵人賽2019 Day 1- 前言',
 		tools: true
 	}
 </script>
@@ -298,7 +290,7 @@
 <script>
   var disqus_shortname = 'chimin17';
   
-  var disqus_url = 'https://chimin17.github.io/2018/01/12/ironman-2018-day24/';
+  var disqus_url = 'https://chimin17.github.io/2018/10/16/ironman-2019-day01/';
   
   (function(){
     var dsq = document.createElement('script');
