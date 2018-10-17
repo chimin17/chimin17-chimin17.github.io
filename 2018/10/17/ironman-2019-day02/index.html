@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/34a71488.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/84d97c63.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/1eaa9264.png">
-<meta property="og:updated_time" content="2018-10-17T12:23:27.215Z">
+<meta property="og:updated_time" content="2018-10-17T12:25:18.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽2019 Day02 Geopandas初探">
 <meta name="twitter:description" content="Pandas是資料分析熱門且好用的工具，熟悉資料分析的人應該都不陌生，GIS相關的Python套件也是滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎，它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫助在Pyt">
@@ -151,7 +151,7 @@
 
 	</section>
 	
-		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Geopandas介紹"><span class="toc-number">1.</span> <span class="toc-text">Geopandas介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讀寫GIS資料"><span class="toc-number">2.</span> <span class="toc-text">讀寫GIS資料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GeoDataFrame"><span class="toc-number">3.</span> <span class="toc-text">GeoDataFrame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gt-簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。"><span class="toc-number">4.</span> <span class="toc-text">&gt; 簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Like-a-DataFrame"><span class="toc-number">5.</span> <span class="toc-text">Like a DataFrame</span></a></li></ol></section>
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Geopandas介紹"><span class="toc-number">1.</span> <span class="toc-text">Geopandas介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讀寫GIS資料"><span class="toc-number">2.</span> <span class="toc-text">讀寫GIS資料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GeoDataFrame"><span class="toc-number">3.</span> <span class="toc-text">GeoDataFrame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Like-a-DataFrame"><span class="toc-number">4.</span> <span class="toc-text">Like a DataFrame</span></a></li></ol></section>
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
@@ -181,7 +181,11 @@
 <p><img src="/2018/10/17/ironman-2019-day02/e58211a8.png" alt=""></p>
 <p>GeoPandas也支援常用的格式</p>
 <h2 id="GeoDataFrame"><a href="#GeoDataFrame" class="headerlink" title="GeoDataFrame"></a>GeoDataFrame</h2><p>GeoDataFrame與DataFrame類似，在[<a href="http://geopandas.org/data_structures.html" target="_blank" rel="noopener">官方文件</a>]中對於DataFrame的基本類型有一些說明。</p>
-<h2 id="gt-簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。"><a href="#gt-簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。" class="headerlink" title="&gt; 簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。"></a>&gt; 簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。</h2><h2 id="Like-a-DataFrame"><a href="#Like-a-DataFrame" class="headerlink" title="Like a DataFrame"></a>Like a DataFrame</h2><p>GeoDataFrame的許多基本操作與Pandas的DataFrame很<br>我們試著做一些Pandas上可以做的事情，</p>
+<blockquote>
+<p>簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。</p>
+</blockquote>
+<hr>
+<h2 id="Like-a-DataFrame"><a href="#Like-a-DataFrame" class="headerlink" title="Like a DataFrame"></a>Like a DataFrame</h2><p>GeoDataFrame的許多基本操作與Pandas的DataFrame很<br>我們試著做一些Pandas上可以做的事情，</p>
 <p>選擇欄位<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subset=gdf_Rail[&apos;RAILNAME&apos;]</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2018/10/17/ironman-2019-day02/a478244e.png" alt=""><br>subset again<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subset=gdf_Rail.iloc[:3]</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2018/10/17/ironman-2019-day02/ca9cb4ab.png" alt=""><br>排序資料<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample=gdf_Rail.sort_values(by=&apos;MDATE&apos;)</span><br></pre></td></tr></table></figure></p>
