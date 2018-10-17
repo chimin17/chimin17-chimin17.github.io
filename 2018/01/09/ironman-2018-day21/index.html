@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>鐵人賽Day 21- WebGIS中加入Google Directions導航API | Chimin&#39;s Blog</title>
+  <title>鐵人賽Day 21- 在WebGIS加入風場圖 | Chimin&#39;s Blog</title>
   <meta name="description" content="you are never wrong to do the right thing" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,28 +12,23 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是Directions API，把它整合進我們的地圖。">
+  <meta name="description" content="前言前幾天研究了內插、TIN、 Voronoi Diagram、Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)，這些都是很常見的webGIS資料視覺化應用，今天要來研究的是前陣子很常看到的全球風場圖，看一下到底做了些什麼…">
 <meta name="keywords" content="2018鐵人賽-30天打造我的WebGIS系列,web,GIS,leaflet,Google">
 <meta property="og:type" content="article">
-<meta property="og:title" content="鐵人賽Day 21- WebGIS中加入Google Directions導航API">
+<meta property="og:title" content="鐵人賽Day 21- 在WebGIS加入風場圖">
 <meta property="og:url" content="https://chimin17.github.io/2018/01/09/ironman-2018-day21/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="前言今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是Directions API，把它整合進我們的地圖。">
+<meta property="og:description" content="前言前幾天研究了內插、TIN、 Voronoi Diagram、Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)，這些都是很常見的webGIS資料視覺化應用，今天要來研究的是前陣子很常看到的全球風場圖，看一下到底做了些什麼…">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://ppt.cc/fdq7Nx@.png">
-<meta property="og:image" content="https://ppt.cc/foKFXx@.png">
-<meta property="og:image" content="https://ppt.cc/f5iwnx@.png">
-<meta property="og:image" content="https://ppt.cc/fO6rYx@.png">
-<meta property="og:image" content="https://ppt.cc/fAdTdx@.png">
-<meta property="og:image" content="https://ppt.cc/fkMB6x@.png">
-<meta property="og:image" content="https://ppt.cc/fkUy9x@.png">
-<meta property="og:image" content="https://ppt.cc/fp6Wwx@.png">
-<meta property="og:image" content="https://ppt.cc/furvxx@.gif">
-<meta property="og:updated_time" content="2018-10-16T13:32:36.060Z">
+<meta property="og:image" content="https://ppt.cc/ftPfLx@.png">
+<meta property="og:image" content="https://ppt.cc/fvjafx@.png">
+<meta property="og:image" content="https://ppt.cc/fgoApx@.png">
+<meta property="og:image" content="https://ppt.cc/fp3OAx@.gif">
+<meta property="og:updated_time" content="2018-10-17T10:51:08.099Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="鐵人賽Day 21- WebGIS中加入Google Directions導航API">
-<meta name="twitter:description" content="前言今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是Directions API，把它整合進我們的地圖。">
-<meta name="twitter:image" content="https://ppt.cc/fdq7Nx@.png">
+<meta name="twitter:title" content="鐵人賽Day 21- 在WebGIS加入風場圖">
+<meta name="twitter:description" content="前言前幾天研究了內插、TIN、 Voronoi Diagram、Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)，這些都是很常見的webGIS資料視覺化應用，今天要來研究的是前陣子很常看到的全球風場圖，看一下到底做了些什麼…">
+<meta name="twitter:image" content="https://ppt.cc/ftPfLx@.png">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -140,7 +135,7 @@
 	<section class='meta'>
 	<h2 class="title">
   	<a href="/2018/01/09/ironman-2018-day21/">
-    	鐵人賽Day 21- WebGIS中加入Google Directions導航API
+    	鐵人賽Day 21- 在WebGIS加入風場圖
     </a>
   </h2>
 	<time>
@@ -154,50 +149,34 @@
 
 	</section>
 	
-		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#申請token"><span class="toc-number">2.</span> <span class="toc-text">申請token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#try-it"><span class="toc-number">3.</span> <span class="toc-text">try it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解析資料"><span class="toc-number">4.</span> <span class="toc-text">解析資料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-overview-polyline"><span class="toc-number">4.1.</span> <span class="toc-text">1.overview_polyline</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-steps"><span class="toc-number">4.2.</span> <span class="toc-text">2.steps</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#切版及成果"><span class="toc-number">5.</span> <span class="toc-text">切版及成果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#後記"><span class="toc-number">6.</span> <span class="toc-text">後記</span></a></li></ol></section>
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原始資料與資料來源"><span class="toc-number">2.</span> <span class="toc-text">原始資料與資料來源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#怎麼畫圖"><span class="toc-number">3.</span> <span class="toc-text">怎麼畫圖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Leaflet實作"><span class="toc-number">4.</span> <span class="toc-text">Leaflet實作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#後記"><span class="toc-number">5.</span> <span class="toc-text">後記</span></a></li></ol></section>
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
-    	<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，把它整合進我們的地圖。</p>
+    	<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前幾天研究了內插、TIN、 Voronoi Diagram、Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)，這些都是很常見的webGIS資料視覺化應用，今天要來研究的是前陣子很常看到的<a href="https://earth.nullschool.net/" target="_blank" rel="noopener">全球風場圖</a>，看一下到底做了些什麼…</p>
 <a id="more"></a>
 <blockquote>
 <p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
 </blockquote>
-<h2 id="申請token"><a href="#申請token" class="headerlink" title="申請token"></a>申請token</h2><p>使用Google API都要申請token，這邊偷懶地簡單說明一下：<br>首先打開<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，按右上角<strong>取得金鑰</strong>。<br><img src="https://ppt.cc/fdq7Nx@.png" alt=""></p>
-<p>然後選取一個專案(如果沒有要另外開啟)。<br><img src="https://ppt.cc/foKFXx@.png" alt=""></p>
-<p>之後就會取得一組金鑰，這就是token。<br><img src="https://ppt.cc/f5iwnx@.png" alt=""></p>
-<p>我們關注一下免費版的使用限制，注意<strong>不是完全免費</strong>的喔。<br><img src="https://ppt.cc/fO6rYx@.png" alt=""></p>
+<p>風場圖在不同的地圖、視覺化工具皆有不同的實作：</p>
 <ul>
-<li>每日免費要求提供上限為 2,500 個。</li>
-<li>如果啟用計費功能，則每 1,000 個額外要求收費 $0.50 美元，每日提供上限為 100,000 個。</li>
+<li><a href="https://earth.nullschool.net/" target="_blank" rel="noopener">D3.js</a></li>
+<li><a href="http://esri.github.io/wind-js/" target="_blank" rel="noopener">ESRI</a></li>
+<li><a href="http://danwild.github.io/wind-js-leaflet/" target="_blank" rel="noopener">Leaflet</a></li>
 </ul>
-<h2 id="try-it"><a href="#try-it" class="headerlink" title="try it"></a>try it</h2><p>使用Direction API取得路徑規劃的方式可以用get的方式，<br>最簡單的使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://maps.googleapis.com/maps/api/directions/json?language=zh-TW&amp;origin=&quot; + **start** + &quot;&amp;destination=&quot; + **end** + &quot;&amp;key=&quot; + **token**</span><br></pre></td></tr></table></figure></p>
-<p>request有幾個必填項目，</p>
-<ul>
-<li>key: 金鑰token(如果是在client端使用記得要設定存取domain)</li>
-<li>origin: 起點，起終點都可以使用wgs84坐標或是地標名稱</li>
-<li>destination: 終點</li>
-</ul>
-<p>此外，Direction API有提供很多選填，包含</p>
-<ul>
-<li>language: 語言</li>
-<li>mode: 移動模式(預設為 driving)</li>
-<li>region: 指定地區代碼</li>
-<li>more..<br>Google DirectionAPI可以設定的參數很多，包含避開路線、替代路線等等，有需要者可以詳閱<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw" target="_blank" rel="noopener">API文件</a></li>
-</ul>
-<p>我們就直接request一個看Direction API回應些什麼..<br><img src="https://ppt.cc/fAdTdx@.png" alt=""></p>
-<p>整個回應的資料十分豐富，包含旅行時間、路徑等等，我們可以把這些資訊使用在圖台上！</p>
-<h2 id="解析資料"><a href="#解析資料" class="headerlink" title="解析資料"></a>解析資料</h2><h3 id="1-overview-polyline"><a href="#1-overview-polyline" class="headerlink" title="1.overview_polyline"></a>1.overview_polyline</h3><p>從回應的資料可以看到<strong>overview_polyline</strong>，這是一個經過編碼的路線陣列，記錄的是API規劃的路徑及沿線polyline的預覽，我們可以把它畫在圖上，而編碼的方法請參閱<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#GeocodedWaypoints" target="_blank" rel="noopener">Google文件</a>。<br><img src="https://ppt.cc/fkMB6x@.png" alt=""></p>
-<p>要使用overview_polyline這類的編碼資料，可以引入<a href="https://github.com/jieter/Leaflet.encoded" target="_blank" rel="noopener">Leaflet.encoded</a>，利用這個工具解碼<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var latlngs = L.PolylineUtil.decode(str);</span><br></pre></td></tr></table></figure></p>
-<p>解碼後就是一個polyline的資料，可以直接用polyline放到圖上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L.polyline(latlngs, &#123; color: &apos;red&apos; &#125;).addTo(map);</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-steps"><a href="#2-steps" class="headerlink" title="2.steps"></a>2.steps</h3><p>API回傳的資料很多，其中steps是分段的路徑資訊，我們直接取steps這個陣列來使用，steps裡面包的就是一段一段的轉折點，除了幾何外，還包含了導航文字說明。<br><img src="https://ppt.cc/fkUy9x@.png" alt=""></p>
-<p>展開：<br><img src="https://ppt.cc/fp6Wwx@.png" alt=""></p>
-<p>我們就組個表格，並把文字說明html_instructions塞入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//data為api responds資料</span><br><span class="line">  $.each(data.routes[0].legs[0].steps, function (k, v) &#123;</span><br><span class="line"></span><br><span class="line">    $(&quot;#route-list tbody&quot;).append(&quot;&lt;tr id=&apos;&quot; + v.polyline.points + &quot;&apos; class=&apos;route-row&apos;&gt;&lt;td&gt;&quot; + v.html_instructions + &quot;&lt;/td&gt;&lt;/tr&gt;&quot;);</span><br><span class="line"></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-<p>接著，綁定每段的click事件，使用者點到以後就可以顯示每小段的位置，其中在幾何部分我們使用一樣工具解碼喔！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$(document).on(&quot;click&quot;, &quot;.route-row&quot;, function (e) &#123;</span><br><span class="line">  $(&apos;#googleRouting&apos;).animate(&#123; scrollTop: $(this).context.offsetTop &#125;, 800);</span><br><span class="line">  routelineClick($(this).attr(&quot;id&quot;));</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var subRoute = L.geoJson(null);</span><br><span class="line">function routelineClick(str) &#123;</span><br><span class="line">  map.removeLayer(subRoute);</span><br><span class="line">  var latlngs = L.PolylineUtil.decode(str);</span><br><span class="line">  subRoute = L.polyline(latlngs, &#123; color: &apos;red&apos; &#125;).addTo(map);</span><br><span class="line">  map.setView([latlngs[0][0] - 0.001, latlngs[0][1]], 17)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="切版及成果"><a href="#切版及成果" class="headerlink" title="切版及成果"></a>切版及成果</h2><p>為了加入導航的功能，所以今天地圖增加了bottom區塊，有興趣者就自行研究吧，最終的效果如下：<br><img src="https://ppt.cc/furvxx@.gif" alt=""></p>
-<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>今天快速測試一下Google Direction，很好用但是不是完全免費的，而類似的服務還有<a href="https://www.mapbox.com/navigation/" target="_blank" rel="noopener">Mapbox</a>、<a href="https://developer.here.com/documentation/routing/topics/overview.html" target="_blank" rel="noopener">Here Routing API</a>，OSM社群也有一些開源的服務，有機會再詳細介紹吧！</p>
-<p>今天的測試程式碼一樣放在<a href="https://github.com/chimin17/dotnet-leaflet" target="_blank" rel="noopener">github</a>(day22的commit)。</p>
+<h2 id="原始資料與資料來源"><a href="#原始資料與資料來源" class="headerlink" title="原始資料與資料來源"></a>原始資料與資料來源</h2><p>全球風場圖的資料來源主要是<a href="https://www.ncdc.noaa.gov/data-access/model-data#hires_weather_datasets" target="_blank" rel="noopener">美國國家海洋暨大氣總署(NOAA)</a>天氣資料，採用的格式為氣象交換格式<a href="https://en.wikipedia.org/wiki/GRIB" target="_blank" rel="noopener">GRIB2</a>，這個格式是Binary的，在上述三個風場圖實作的套件中，都是採用<a href="https://www.npmjs.com/package/grib2json" target="_blank" rel="noopener">grib2json</a>轉成一包json物件，而這個東西到底記錄了什麼呢？他其實就是網格資料。</p>
+<p>打開grib2json匯出的<a href="https://github.com/chimin17/dotnet-leaflet/blob/master/wwwroot/dist/assets/data/wind-global.json" target="_blank" rel="noopener">json檔案</a>，他大概長這樣：<br><img src="https://ppt.cc/ftPfLx@.png" alt=""></p>
+<p>檔案內除了資料外，還記錄了metadata於header，<br>在data的部分，記錄方式是一條一條橫方向記錄，<br>例如第一點是(25.6,120.5),第二點就是(25.6,120.6)的值，第三點(25.6,120.7)…以此類推…</p>
+<p>header有定義格子的起點與長寬資訊，以一般拿到的NOAA大氣資料(空間解析度為一度)展示出來大概會是這麼密：<br><img src="https://ppt.cc/fvjafx@.png" alt=""></p>
+<h2 id="怎麼畫圖"><a href="#怎麼畫圖" class="headerlink" title="怎麼畫圖"></a>怎麼畫圖</h2><p>前面範例的風場圖是空間解析度為一度的NOAA大氣資料(解析度header會定義)，也就是每一個網格點的氣壓，為產生風向圖的效果，做了幾個處理。</p>
+<p>1.在格子與格子間以<a href="https://en.wikipedia.org/wiki/Bilinear_interpolation" target="_blank" rel="noopener">雙線性內插</a>產生面。(<a href="https://en.wikipedia.org/wiki/Bilinear_interpolation" target="_blank" rel="noopener">wiki</a>)<br><img src="https://ppt.cc/fgoApx@.png" alt=""></p>
+<p>2.內插完成面後，隨機在面之中產生若干粒子，讓粒子沿著速度場、梯度方向移動(由高至低)。<br>3.可以設定一些參數，包含粒子的生命週期，最大最小速度、顏色等等<br>ps.詳情可參考<a href="https://github.com/cambecc/earth" target="_blank" rel="noopener">earth</a>的描述及程式碼^^</p>
+<h2 id="Leaflet實作"><a href="#Leaflet實作" class="headerlink" title="Leaflet實作"></a>Leaflet實作</h2><p>接下來，我們使用<a href="https://github.com/danwild/leaflet-velocity" target="_blank" rel="noopener">leaflet-velocity</a>來繪製全球風場圖，加入我們的地圖專案。</p>
+<p>引入leaflet-velocity.js，並預先下載大氣的網格資料。<br>(使用這個專案必須跟grib2json的輸出格式一樣)</p>
+<p>根據套件說明直接使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$.getJSON(&quot;./dist/assets/data/wind-global.json&quot;, function (data) &#123;</span><br><span class="line">  var velocityLayer = L.velocityLayer(&#123;</span><br><span class="line">  //設置一些顯示的參數</span><br><span class="line">    displayValues: false,</span><br><span class="line">    data: data,</span><br><span class="line">    maxVelocity: 10,</span><br><span class="line">    colorScale: [&apos;#bd0026&apos;, &apos;#f03b20&apos;, &apos;#fd8d3c&apos;, &apos;#fecc5c&apos;, &apos;#ffffb2&apos;]//色階</span><br><span class="line">  &#125;);</span><br><span class="line">  map.addLayer(velocityLayer);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>這個圖層是以Canvas方式實作，以增加效能(不然一堆粒子應該會爆炸…)</p>
+<p>成果：<br><img src="https://ppt.cc/fp3OAx@.gif" alt=""></p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>除了NOAA的大氣資料，如果要產生類似效果的向量圖或梯度圖，也可以自行產製類似的資料繪製在地圖上(洋流等等)。<br>今天的程式碼一樣放在<a href="https://github.com/chimin17/dotnet-leaflet" target="_blank" rel="noopener">github</a>(day21的commit)。</p>
 
   	</div>
 	  
@@ -239,7 +218,7 @@
 </article>
 <script>
 	window.subData = {
-		title: '鐵人賽Day 21- WebGIS中加入Google Directions導航API',
+		title: '鐵人賽Day 21- 在WebGIS加入風場圖',
 		tools: true
 	}
 </script>
@@ -278,7 +257,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>1</div></a></li>
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>2</div></a></li>
     
         <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
     
@@ -293,7 +272,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14px; color: #808080">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14.86px; color: #6e6e6e">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.71px; color: #5b5b5b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.71px; color: #5b5b5b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.57px; color: #494949">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.43px; color: #373737">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
     </div>
 </div>
 

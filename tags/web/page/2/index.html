@@ -153,7 +153,7 @@
 	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天延續昨天內插的議題，準備研究一下webGIS中的Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)等方法，用來增進原本只是點資料的資訊呈現方式。</p>
 <h2 id="等高線-或等值線"><a href="#等高線-或等值線" class="headerlink" title="等高線(或等值線)"></a>等高線(或等值線)</h2><p>要算<strong>等高線</strong>(contours)或<strong>等值線</strong>我們可以使用turf.js的isobands，要產製一個等值線圖的流程是：1.離散的資料 2.內插(turf.js要使用規則的points) 3.使用isobands。</p>
 <p>所以，延續昨天的IDW內插，我們內插一組gridType為points的資料後，想進一步將等值的範圍做整合，這個過程可以採用computer vision中的<a href="https://en.wikipedia.org/wiki/Marching_squares" target="_blank" rel="noopener">Marching squares</a>。</p>
-<p>這個方法主要需設定的東西是<strong>breaks</strong>，也就是要分值的斷點，例如<a href="在Marching Squares方法中，是以每四格點做pattern判定，所以例如三個色階會有3的4次方=81種情況，詳細可參考[wiki](https://en.wikipedia.org/wiki/Marching_squares">0, 5, 10, 15, 20, 25, 30</a>)。<br>
+<p>這個方法主要需設定的東西是<strong>breaks</strong>，也就是要分值的斷點，例如<a href="在Marching Squares方法中，是以每四格點做pattern判定，所以例如三個色階會有3的4次方=81種情況，詳細可參考[wiki](https://en.wikipedia.org/wiki/Marching_squares">0, 5, 10, 15, 20, 25, 30</a>)。<br></p>
 
     
 	  <div class="readmore">
@@ -249,7 +249,7 @@
 
   </section>
   <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要介紹turf.js，<br>前兩天的<strong>網球地圖</strong>完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做<strong>空間資料分析</strong>，使用的是<a href="http://turfjs.org/" target="_blank" rel="noopener">turf.js</a>。<br><img src="https://ppt.cc/fo2KJx@.png" alt=""><br>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要介紹turf.js，<br>前兩天的<strong>網球地圖</strong>完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做<strong>空間資料分析</strong>，使用的是<a href="http://turfjs.org/" target="_blank" rel="noopener">turf.js</a>。<br><img src="https://ppt.cc/fo2KJx@.png" alt=""><br></p>
 
     
 	  <div class="readmore">
@@ -298,7 +298,7 @@
   </section>
   <section class="article typo">
 	  <p>昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性<strong>POI</strong>資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。</p>
-<p>今天就繼續昨天的成果，使用<strong>Leaflet</strong>實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。<br>
+<p>今天就繼續昨天的成果，使用<strong>Leaflet</strong>實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。<br></p>
 
     
 	  <div class="readmore">
@@ -354,7 +354,7 @@
 <li>空間查詢</li>
 <li>結合統計圖表</li>
 <li>路徑規劃</li>
-<li>資料視覺化
+<li>資料視覺化</li></ul>
 
     
 	  <div class="readmore">
@@ -404,7 +404,7 @@
 <p>上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是…</p>
 <p>假設今天網格的間隔<strong>更密一些</strong>，<strong>範圍在大一些</strong>，其資料量可能會很可觀，這時候無論在計算或是前端展示上，GIS傾向會使用影像方式儲存。</p>
 <p>再者，上述案例在網格式資料是<strong>單一波段</strong>的資料(也就是只有solRad這個屬性)，網格資料大多都是<strong>三個波段</strong>的資料(例如正射影像、衛星影像)，相關討論我們在<a href="https://ithelp.ithome.com.tw/articles/10193701" target="_blank" rel="noopener">[Day 6] 常見的GIS資料格式</a>有探討過。</p>
-<p>在webGIS中，我們可能比較少直接處理網格資料，通常都是使用它，今天我們試著使用Leaflet的raster圖層功能。<br>
+<p>在webGIS中，我們可能比較少直接處理網格資料，通常都是使用它，今天我們試著使用Leaflet的raster圖層功能。<br></p>
 
     
 	  <div class="readmore">
@@ -452,7 +452,7 @@
 
   </section>
   <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://ithelp.ithome.com.tw/articles/10192391" target="_blank" rel="noopener">[Day1]webGIS-資訊時代的地理大發現</a>的引言中提到webgis的前端實踐可以透過幾個地圖API，本次鐵人賽將都以<a href="http://leafletjs.com/" target="_blank" rel="noopener">leaflet</a>做說明。<br>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://ithelp.ithome.com.tw/articles/10192391" target="_blank" rel="noopener">[Day1]webGIS-資訊時代的地理大發現</a>的引言中提到webgis的前端實踐可以透過幾個地圖API，本次鐵人賽將都以<a href="http://leafletjs.com/" target="_blank" rel="noopener">leaflet</a>做說明。<br></p>
 
     
 	  <div class="readmore">
@@ -500,7 +500,7 @@
 
   </section>
   <section class="article typo">
-	  <p>前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。<br>
+	  <p>前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。<br></p>
 
     
 	  <div class="readmore">
@@ -546,7 +546,7 @@
 
   </section>
   <section class="article typo">
-	  <p>在<a href="https://ithelp.ithome.com.tw/articles/10192976" target="_blank" rel="noopener">Day4</a>、<a href="https://ithelp.ithome.com.tw/articles/10193028" target="_blank" rel="noopener">Day5</a>及<a href="https://ithelp.ithome.com.tw/articles/10193965" target="_blank" rel="noopener">Day8</a>、<a href="https://ithelp.ithome.com.tw/articles/10194193" target="_blank" rel="noopener">Day9</a>談的資料都是點資料，一般使用者最熟悉也最需要的資料也是點，例如各式各樣的POI資料..<br>
+	  <p>在<a href="https://ithelp.ithome.com.tw/articles/10192976" target="_blank" rel="noopener">Day4</a>、<a href="https://ithelp.ithome.com.tw/articles/10193028" target="_blank" rel="noopener">Day5</a>及<a href="https://ithelp.ithome.com.tw/articles/10193965" target="_blank" rel="noopener">Day8</a>、<a href="https://ithelp.ithome.com.tw/articles/10194193" target="_blank" rel="noopener">Day9</a>談的資料都是點資料，一般使用者最熟悉也最需要的資料也是點，例如各式各樣的POI資料..<br></p>
 
     
 	  <div class="readmore">
@@ -599,7 +599,7 @@
 <h2 id="坐標系統"><a href="#坐標系統" class="headerlink" title="坐標系統"></a>坐標系統</h2><h3 id="大地坐標系統-地球是近似橢球"><a href="#大地坐標系統-地球是近似橢球" class="headerlink" title="大地坐標系統: 地球是近似橢球"></a>大地坐標系統: 地球是近似橢球</h3><p>由於地球是近似橢球，會有很多模式來描述這個橢球，以及球上面的點位坐標，描述這個橢球及球上位置的系統稱作<strong>大地坐標系統</strong>，需要定義的東西很多，包含幾何面的橢球參數、其他物理面及觀測資料的整合推估，GPS使用的WGS84經緯度屬此類，簡單來說，大地坐標系統是想描述橢球及球上面的位置。</p>
 <h3 id="Map-projection-一切都是投影"><a href="#Map-projection-一切都是投影" class="headerlink" title="Map projection: 一切都是投影"></a>Map projection: 一切都是投影</h3><p>為了製造地圖，人們必須把近似橢球狀的地球投影到平面上，這個坐標系統稱作投影坐標系統，只要是地圖，一定會採用投影系統。<br>投影的方式有很多，麥卡托、藍柏特投影等等…，而從<a href="https://www.jasondavies.com/maps/transition/" target="_blank" rel="noopener">Map Projection Transitions</a>網站的各種投影機制的模擬圖可以看得出來，投影一定會有失真的情況，所以才會常常有以下新聞出現:</p>
 <blockquote>
-<p><a href="https://news.tvbs.com.tw/fun/728573" target="_blank" rel="noopener">400年來世界地圖都失真　各國大小差很多</a><br><a href="https://kknews.cc/zh-tw/news/899oqn.html" target="_blank" rel="noopener">格陵蘭島到底有多大，在地圖上一直是個謎</a><br>
+<p><a href="https://news.tvbs.com.tw/fun/728573" target="_blank" rel="noopener">400年來世界地圖都失真　各國大小差很多</a><br><a href="https://kknews.cc/zh-tw/news/899oqn.html" target="_blank" rel="noopener">格陵蘭島到底有多大，在地圖上一直是個謎</a><br></p></blockquote>
 
     
 	  <div class="readmore">
@@ -677,7 +677,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>1</div></a></li>
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>2</div></a></li>
     
         <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
     
@@ -692,7 +692,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14px; color: #808080">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14.86px; color: #6e6e6e">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.71px; color: #5b5b5b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.71px; color: #5b5b5b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.57px; color: #494949">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.43px; color: #373737">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
     </div>
 </div>
 

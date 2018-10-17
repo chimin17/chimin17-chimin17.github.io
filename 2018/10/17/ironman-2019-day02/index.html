@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>鐵人賽2019 Day02 Geopandas初探 | Chimin&#39;s Blog</title>
+  <meta name="description" content="you are never wrong to do the right thing" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Pandas是資料分析熱門且好用的工具，熟悉資料分析的人應該都不陌生，GIS相關的Python套件也是滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎，它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫助在Pyt">
+<meta name="keywords" content="GIS,2019鐵人賽-30天精通GIS資料分析-使用Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鐵人賽2019 Day02 Geopandas初探">
+<meta property="og:url" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/index.html">
+<meta property="og:site_name" content="Chimin&#39;s Blog">
+<meta property="og:description" content="Pandas是資料分析熱門且好用的工具，熟悉資料分析的人應該都不陌生，GIS相關的Python套件也是滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎，它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫助在Pyt">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/e58211a8.png">
+<meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/a478244e.png">
+<meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/ca9cb4ab.png">
+<meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/34a71488.png">
+<meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/34a71488.png">
+<meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/1eaa9264.png">
+<meta property="og:updated_time" content="2018-10-17T11:05:19.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鐵人賽2019 Day02 Geopandas初探">
+<meta name="twitter:description" content="Pandas是資料分析熱門且好用的工具，熟悉資料分析的人應該都不陌生，GIS相關的Python套件也是滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎，它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫助在Pyt">
+<meta name="twitter:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/e58211a8.png">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Chimin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ironman-2019-day02"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/2018/10/17/ironman-2019-day02/">
+    	鐵人賽2019 Day02 Geopandas初探
+    </a>
+  </h2>
+	<time>
+	  Oct 17, 2018
+	</time>
+	
+    
+    <div class='cats'>
+        <a href="/categories/data-analysis/">data analysis</a>
+    </div>
+
+	</section>
+	
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Geopandas介紹"><span class="toc-number">1.</span> <span class="toc-text">Geopandas介紹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#讀寫GIS資料"><span class="toc-number">2.</span> <span class="toc-text">讀寫GIS資料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GeoDataFrame"><span class="toc-number">3.</span> <span class="toc-text">GeoDataFrame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gt-簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。"><span class="toc-number">4.</span> <span class="toc-text">&gt; 簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Like-a-DataFrame"><span class="toc-number">5.</span> <span class="toc-text">Like a DataFrame</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p><code>Pandas</code>是資料分析熱門且好用的工具，熟悉資料分析的人應該都不陌生，GIS相關的Python套件也是滿坑滿谷，這邊我們選定<code>Geopandas</code>作為資料操作的基礎，它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。</p>
+<h2 id="Geopandas介紹"><a href="#Geopandas介紹" class="headerlink" title="Geopandas介紹"></a>Geopandas介紹</h2><p>在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如<code>shapely</code>用在向量資料的處理、<code>fiona</code>則是幫助在Python上操作<code>OGR</code>(支援超多格式的資料轉換)，<code>pyproj</code>做坐標投影的轉換(參考文獻)等等。</p>
+<p>還好，<code>Geopandas</code>的出現，不僅讓這些事情在變得比較好上手，還讓分析資料時感受很像Pandas，<br>他主要依賴了以下Python空間資料處理的套件介面：</p>
+<ul>
+<li>shapely</li>
+<li>fiona</li>
+<li>descartes</li>
+<li>matplotlib</li>
+<li>pyproj</li>
+<li>numpy<br>..more</li>
+</ul>
+<hr>
+<p>使用者可以跟Pandas操作DataFrame一般，在Geopandas操作GeoDataFrame，並且擁有許多空間資料處理的功能。<br>在Python環境中使用GeoPandas，依照官方文件的說明，安裝方法有兩種，第一種是使用Conda(請設定Python3.6環境)：</p>
+<p><code>conda install -c conda-forge geopandas</code></p>
+<p>或是直接透過Geopandas Repo以pip安裝</p>
+<p><code>pip install git+git://github.com/geopandas/geopandas.git</code></p>
+<h2 id="讀寫GIS資料"><a href="#讀寫GIS資料" class="headerlink" title="讀寫GIS資料"></a>讀寫GIS資料</h2><p>今天所使用的GIS資料為<code>向量</code>資料<br>其中shp為空間資料中最為常見的一種向量資料的格式，<br>它可以紀錄點、線、面等幾何</p>
+<blockquote>
+<p>有關向量資料及格式的暸解，可以參考<br><a href="https://ithelp.ithome.com.tw/articles/10193701" target="_blank" rel="noopener">[Day 6] 常見的GIS資料格式 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></p>
+</blockquote>
+<p>我們可以利用GeoPandas讀取shp資料，以進行我們想要的各種處理或分析，以[<a href="https://data.gov.tw/dataset/73220" target="_blank" rel="noopener">臺灣鐵路 | 政府資料開放平臺</a>]這個資料集為例，我們將其下載到本機，使用GeoPandas讀取為GeoDataFrame</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import geopandas as gpd</span><br><span class="line">gdf_Rail=gpd.read_file(&apos;data/Rail/Rail.shp&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">gdf_Rail</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/17/ironman-2019-day02/e58211a8.png" alt=""></p>
+<p>GeoPandas也支援常用的格式</p>
+<h2 id="GeoDataFrame"><a href="#GeoDataFrame" class="headerlink" title="GeoDataFrame"></a>GeoDataFrame</h2><p>GeoDataFrame與DataFrame類似，在[<a href="http://geopandas.org/data_structures.html" target="_blank" rel="noopener">官方文件</a>]中對於DataFrame的基本類型有一些說明。</p>
+<h2 id="gt-簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。"><a href="#gt-簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。" class="headerlink" title="&gt; 簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。"></a>&gt; 簡單來說，與dataframe相對，GeoPandas多了一個geometry的欄位。</h2><h2 id="Like-a-DataFrame"><a href="#Like-a-DataFrame" class="headerlink" title="Like a DataFrame"></a>Like a DataFrame</h2><p>GeoDataFrame的許多基本操作與Pandas的DataFrame很<br>我們試著做一些Pandas上可以做的事情，</p>
+<p>選擇欄位<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subset=gdf_Rail[&apos;RAILNAME&apos;]</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/17/ironman-2019-day02/a478244e.png" alt=""><br>subset again<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subset=gdf_Rail.iloc[:3]</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/17/ironman-2019-day02/ca9cb4ab.png" alt=""><br>排序資料<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample=gdf_Rail.sort_values(by=&apos;MDATE&apos;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/17/ironman-2019-day02/34a71488.png" alt=""></p>
+<p>另外，GeoDataFrame對於地理資料有基本的繪圖功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample.plot()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/17/ironman-2019-day02/34a71488.png" alt=""><br>其採用matplotlib繪圖引擎，例如可以依照欄位來繪圖(下面案例是以鐵道支線名稱分色)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sample.plot(column=&apos;RAILNAME&apos;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/17/ironman-2019-day02/1eaa9264.png" alt=" "><br>GeoDataFrame讓GIS資料處理更方便，他與DataFrame操作體驗接近，今天也初探了一些簡單的功能</p>
+<p>對於DataFrame或者GeoDataFrame的操作，可以參考<a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" target="_blank" rel="noopener">Data wrangling with Pandas</a>的圖表，<br>對於Pandas的功能有一些快速指南，大部分也都通用於Geopandas。</p>
+<blockquote>
+<p>今天的相關測試可以參考<a href="https://github.com/chimin17/2019_30day/blob/master/Day02_Geopandas.ipynb" target="_blank" rel="noopener">GitHub</a></p>
+</blockquote>
+
+  	</div>
+	  
+	  <div class="article-tags tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+		
+	
+		<div class="art-item-footer">
+				
+				
+					<span class="art-item-right">next：<a href="/2018/10/16/ironman-2019-day01/" rel="next"  title="鐵人賽2019 Day01 前言">
+						鐵人賽2019 Day01 前言
+					</a><i class="icon icon-chevron-thin-right"></i></span>
+				
+		</div>
+	
+	</section>
+	
+		<section id="comments">
+			<div id="disqus_thread"></div>
+		</section>
+	
+</article>
+<script>
+	window.subData = {
+		title: '鐵人賽2019 Day02 Geopandas初探',
+		tools: true
+	}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1797">
+            <div class='name'>30天精通GIS資料分析-使用Python</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541">
+            <div class='name'>30天打造我的WebGIS</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://developer.tomtom.com/">
+            <div class='name'>TomTom for developer</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://medium.com/tag/chiminevelynswedding">
+            <div class='name'>30 day challallenge for weddings</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>2</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>28</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14.86px; color: #6e6e6e">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.71px; color: #5b5b5b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.71px; color: #5b5b5b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.57px; color: #494949">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.43px; color: #373737">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+    </div>
+</div>
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/chimin17" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://linkedin.com/in/chi-min-chiu-aba7a5148/" class="social linkedin"
+          target="_blank" rel="external">
+          <span class="icon icon-linkedin"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+<script>
+  var disqus_shortname = 'chimin17';
+  
+  var disqus_url = 'https://chimin17.github.io/2018/10/17/ironman-2019-day02/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

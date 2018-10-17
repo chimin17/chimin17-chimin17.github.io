@@ -130,8 +130,56 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/01/10/ironman-2018-day22/">
+        鐵人賽Day 22- WebGIS中加入Google Directions導航API
+      </a>
+    </h2>
+    
+    <time>
+      Jan 10, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，把它整合進我們的地圖。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/10/ironman-2018-day22/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Google/">Google</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/01/09/ironman-2018-day21/">
-        鐵人賽Day 21- WebGIS中加入Google Directions導航API
+        鐵人賽Day 21- 在WebGIS加入風場圖
       </a>
     </h2>
     
@@ -146,7 +194,7 @@
 
   </section>
   <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，把它整合進我們的地圖。</p>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前幾天研究了內插、TIN、 Voronoi Diagram、Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)，這些都是很常見的webGIS資料視覺化應用，今天要來研究的是前陣子很常看到的<a href="https://earth.nullschool.net/" target="_blank" rel="noopener">全球風場圖</a>，看一下到底做了些什麼…</p>
 
     
 	  <div class="readmore">
@@ -197,7 +245,7 @@
 	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天延續昨天內插的議題，準備研究一下webGIS中的Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)等方法，用來增進原本只是點資料的資訊呈現方式。</p>
 <h2 id="等高線-或等值線"><a href="#等高線-或等值線" class="headerlink" title="等高線(或等值線)"></a>等高線(或等值線)</h2><p>要算<strong>等高線</strong>(contours)或<strong>等值線</strong>我們可以使用turf.js的isobands，要產製一個等值線圖的流程是：1.離散的資料 2.內插(turf.js要使用規則的points) 3.使用isobands。</p>
 <p>所以，延續昨天的IDW內插，我們內插一組gridType為points的資料後，想進一步將等值的範圍做整合，這個過程可以採用computer vision中的<a href="https://en.wikipedia.org/wiki/Marching_squares" target="_blank" rel="noopener">Marching squares</a>。</p>
-<p>這個方法主要需設定的東西是<strong>breaks</strong>，也就是要分值的斷點，例如<a href="在Marching Squares方法中，是以每四格點做pattern判定，所以例如三個色階會有3的4次方=81種情況，詳細可參考[wiki](https://en.wikipedia.org/wiki/Marching_squares">0, 5, 10, 15, 20, 25, 30</a>)。<br>
+<p>這個方法主要需設定的東西是<strong>breaks</strong>，也就是要分值的斷點，例如<a href="在Marching Squares方法中，是以每四格點做pattern判定，所以例如三個色階會有3的4次方=81種情況，詳細可參考[wiki](https://en.wikipedia.org/wiki/Marching_squares">0, 5, 10, 15, 20, 25, 30</a>)。<br></p>
 
     
 	  <div class="readmore">
@@ -293,7 +341,7 @@
 
   </section>
   <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要介紹turf.js，<br>前兩天的<strong>網球地圖</strong>完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做<strong>空間資料分析</strong>，使用的是<a href="http://turfjs.org/" target="_blank" rel="noopener">turf.js</a>。<br><img src="https://ppt.cc/fo2KJx@.png" alt=""><br>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要介紹turf.js，<br>前兩天的<strong>網球地圖</strong>完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做<strong>空間資料分析</strong>，使用的是<a href="http://turfjs.org/" target="_blank" rel="noopener">turf.js</a>。<br><img src="https://ppt.cc/fo2KJx@.png" alt=""><br></p>
 
     
 	  <div class="readmore">
@@ -313,53 +361,6 @@
         <a href="/tags/leaflet/">leaflet</a>
       
         <a href="/tags/Turf-js/">Turf.js</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/05/ironman-2018-day17/">
-        鐵人賽Day 17- Leaflet.js：加入資料及資料互動
-      </a>
-    </h2>
-    
-    <time>
-      Jan 5, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性<strong>POI</strong>資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。</p>
-<p>今天就繼續昨天的成果，使用<strong>Leaflet</strong>實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/05/ironman-2018-day17/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
       
 	  </div>
     
@@ -420,7 +421,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>1</div></a></li>
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>2</div></a></li>
     
         <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
     
@@ -435,7 +436,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14px; color: #808080">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 14.86px; color: #6e6e6e">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15.71px; color: #5b5b5b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15.71px; color: #5b5b5b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16.57px; color: #494949">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.43px; color: #373737">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
     </div>
 </div>
 
