@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://chimin17.github.io/2018/10/18/ironman-2019-day03/059467f1.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/18/ironman-2019-day03/28d89d47.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/18/ironman-2019-day03/49526754.png">
-<meta property="og:updated_time" content="2018-10-18T13:23:25.951Z">
+<meta property="og:updated_time" content="2018-10-18T13:27:52.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽2019 Day03 從Pandas到Geopandas的幾種方法">
 <meta name="twitter:description" content="Geopandas可以讀取各GIS格式進行空間運算，然而實際上我們可能會拿到的資料不見得會是GIS的格式雖然不是GIS格式，但它可能有坐標資訊的資料 比較常見的會是一個csv,Excel含有經緯度或xy的資料，對於這樣的資料，我們可以把它轉為Geopandas的GeoDataFrame。">
@@ -189,6 +189,7 @@
 <p><img src="/2018/10/18/ironman-2019-day03/28d89d47.png" alt=""></p>
 <p>一樣，看看成果吧</p>
 <p><img src="/2018/10/18/ironman-2019-day03/49526754.png" alt=""></p>
+<p>GeoDataFrame可以輸出成GIS格式，用以在其他平台檢視與處理，包含常用的shp或是geojson<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdf.to_file(driver = &apos;ESRI Shapefile&apos;, filename = &apos;output/Light.shp&apos;)</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>今天的相關測試可以參考<a href="https://github.com/chimin17/2019_30day/blob/master/Day03_Pandas2GeoPandas.ipynb" target="_blank" rel="noopener">GitHub</a></p>
 </blockquote>
