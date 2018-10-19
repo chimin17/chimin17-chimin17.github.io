@@ -12,13 +12,13 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Pandas是資料分析熱門且好用的工具，熟悉資料分析的人應該都不陌生，GIS相關的Python套件也是滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎，它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫助在Pyt">
+  <meta name="description" content="Pandas是資料分析熱門且好用的工具，相信熟悉資料分析的各路英雄好漢都不陌生在Python中，與GIS相關的套件滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫">
 <meta name="keywords" content="GIS,2019鐵人賽-30天精通GIS資料分析-使用Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="鐵人賽2019 Day02 Geopandas初探">
 <meta property="og:url" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="Pandas是資料分析熱門且好用的工具，熟悉資料分析的人應該都不陌生，GIS相關的Python套件也是滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎，它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫助在Pyt">
+<meta property="og:description" content="Pandas是資料分析熱門且好用的工具，相信熟悉資料分析的各路英雄好漢都不陌生在Python中，與GIS相關的套件滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/e58211a8.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/a478244e.png">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/34a71488.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/84d97c63.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/1eaa9264.png">
-<meta property="og:updated_time" content="2018-10-17T12:25:18.065Z">
+<meta property="og:updated_time" content="2018-10-19T12:54:49.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽2019 Day02 Geopandas初探">
-<meta name="twitter:description" content="Pandas是資料分析熱門且好用的工具，熟悉資料分析的人應該都不陌生，GIS相關的Python套件也是滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎，它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫助在Pyt">
+<meta name="twitter:description" content="Pandas是資料分析熱門且好用的工具，相信熟悉資料分析的各路英雄好漢都不陌生在Python中，與GIS相關的套件滿坑滿谷，這邊我們選定Geopandas作為資料操作的基礎它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。 Geopandas介紹在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如shapely用在向量資料的處理、fiona則是幫">
 <meta name="twitter:image" content="https://chimin17.github.io/2018/10/17/ironman-2019-day02/e58211a8.png">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
@@ -155,10 +155,10 @@
 	
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
-    	<p><code>Pandas</code>是資料分析熱門且好用的工具，熟悉資料分析的人應該都不陌生，GIS相關的Python套件也是滿坑滿谷，這邊我們選定<code>Geopandas</code>作為資料操作的基礎，它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。</p>
-<h2 id="Geopandas介紹"><a href="#Geopandas介紹" class="headerlink" title="Geopandas介紹"></a>Geopandas介紹</h2><p>在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如<code>shapely</code>用在向量資料的處理、<code>fiona</code>則是幫助在Python上操作<code>OGR</code>(支援超多格式的資料轉換)，<code>pyproj</code>做坐標投影的轉換(參考文獻)等等。</p>
+    	<p><code>Pandas</code>是資料分析熱門且好用的工具，相信熟悉資料分析的各路英雄好漢都不陌生<br>在Python中，與GIS相關的套件滿坑滿谷，這邊我們選定<code>Geopandas</code>作為資料操作的基礎<br>它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。</p>
+<h2 id="Geopandas介紹"><a href="#Geopandas介紹" class="headerlink" title="Geopandas介紹"></a>Geopandas介紹</h2><p>在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如<code>shapely</code>用在向量資料的處理、<code>fiona</code>則是幫助使用Python上操作<code>OGR</code>(支援超多格式的資料轉換)，<code>pyproj</code>做坐標投影的轉換等等。</p>
 <a id="more"></a>
-<p>還好，<code>Geopandas</code>的出現，不僅讓這些事情在變得比較好上手，還讓分析資料時感受很像Pandas，<br>他主要依賴了以下Python空間資料處理的套件介面：</p>
+<p>還好，<code>Geopandas</code>的出現，讓這些事情變得比較好上手，也讓分析資料時感受很像Pandas，<br>他主要依賴了以下Python空間資料處理的套件介面：</p>
 <ul>
 <li>shapely</li>
 <li>fiona</li>
