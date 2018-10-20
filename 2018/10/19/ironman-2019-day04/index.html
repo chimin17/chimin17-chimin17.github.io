@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://chimin17.github.io/2018/10/19/ironman-2019-day04/4af333a6.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/19/ironman-2019-day04/bd276c9e.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/19/ironman-2019-day04/9efb6e0e.png">
-<meta property="og:updated_time" content="2018-10-19T12:50:47.294Z">
+<meta property="og:updated_time" content="2018-10-20T04:46:35.141Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="鐵人賽2019 Day04 幾何資料基本運算">
 <meta name="twitter:description" content="GeoDataFrame使操作GIS資料分析時更有彈性我們可以很快對GIS的屬性資料的分析與過濾 當然，也包括一些幾何空間的運算 坐標轉換坐標轉換幾乎是GIS第一門課，可以參考[Day10] 坐標系統及WebGIS常用的坐標轉換有大致的說明。">
@@ -191,6 +191,9 @@
 <h3 id="difference"><a href="#difference" class="headerlink" title="difference"></a>difference</h3><p>算出兩個幾何的差異，一樣以黃色表示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">difference = gpd.overlay(p1,p2,  how=&apos;difference&apos;)</span><br><span class="line">base=p1.plot(color=&apos;blue&apos;)</span><br><span class="line">p2.plot(ax=base,color=&apos;brown&apos;)</span><br><span class="line">difference.plot(ax=base,color=&apos;yellow&apos;)</span><br></pre></td></tr></table></figure></p>
 <p><img src="/2018/10/19/ironman-2019-day04/9efb6e0e.png" alt=""></p>
 <p>以上就簡單測試一些幾何運算子，未來幾天有機會會在應用到這些方法</p>
+<blockquote>
+<p>今天的相關測試可以參考<a href="https://github.com/chimin17/2019_30day/blob/master/Day04_geometric_analysis.ipynb" target="_blank" rel="noopener">GitHub</a></p>
+</blockquote>
 
   	</div>
 	  
@@ -205,6 +208,10 @@
 		
 	
 		<div class="art-item-footer">
+				
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/10/20/ironman-2019-day05/" rel="prev"  title="鐵人賽2019 Day05 基本的資料聚合">
+						鐵人賽2019 Day05 基本的資料聚合 
+					</a></span>
 				
 				
 					<span class="art-item-right">next：<a href="/2018/10/18/ironman-2019-day03/" rel="next"  title="鐵人賽2019 Day03 從Pandas到Geopandas的幾種方法">
@@ -261,7 +268,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>4</div></a></li>
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>5</div></a></li>
     
         <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
     
@@ -276,7 +283,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19px; color: #151515">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 16px; color: #555">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 15px; color: #6b6b6b">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 15px; color: #6b6b6b">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 16px; color: #555">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17px; color: #404040">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18px; color: #2b2b2b">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 16.57px; color: #494949">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.43px; color: #373737">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
     </div>
 </div>
 
