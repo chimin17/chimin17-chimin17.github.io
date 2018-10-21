@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chimin17.github.io/"/>
-  <updated>2018-10-20T04:54:26.403Z</updated>
+  <updated>2018-10-21T05:51:20.080Z</updated>
   <id>https://chimin17.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>其它資料聚合與geohash</title>
+    <link href="https://chimin17.github.io/2018/10/21/ironman-2019-day06/"/>
+    <id>https://chimin17.github.io/2018/10/21/ironman-2019-day06/</id>
+    <published>2018-10-21T05:48:22.000Z</published>
+    <updated>2018-10-21T05:51:20.080Z</updated>
+    
+    <content type="html"><![CDATA[<p>前一天的資料聚合，所舉的應用例是行政區村里，實作簡單的點資料與空間單元做結合，然而事實上，聚合的單元不限於行政區村里，以台灣來說，可以使用內政部最小統計區的空間單元來做資料聚合，最小統計區與其發佈區的劃設主要是根據<code>人口</code>，有關最小統計區請參考<a href="https://data.moi.gov.tw/MoiOD/Data/DataDetail.aspx?oid=03C1D0A5-1F39-4C1F-AA2E-BB37A0405369" target="_blank" rel="noopener">最小統計區圖｜MOI Open Data</a>。</p><p>另外，也有特別針對其他用途的統計區：<a href="https://data.nat.gov.tw/dataset/5970" target="_blank" rel="noopener">經濟統計區圖資| 政府資料開放平臺</a>，或是如集水區等都可以採用前一天的方法，與點資料做整合，相關資料請自行參閱。</p><p>今天要介紹的也與昨日的資料聚合有一點關係-<code>geohash</code></p><h3 id="Geohash"><a href="#Geohash" class="headerlink" title="Geohash"></a>Geohash</h3><p><code>geohash</code>故名意思是一種編碼，包含了多層級的架構，將空間劃分為網格(分為1-12層)，Geohash的產生是根據Z-order curve的方式產生的，這樣的特性讓查詢上可以透過hash編碼的前綴來加快空間搜尋速度。</p><p><code>geohash</code>被很常用在GIS資料的indexing上，他有點類似R-tree或Quadtree</p><p>以示意圖來理解<code>geohash</code><br><img src="https://camo.githubusercontent.com/65c8bcb95cad5f8eaee05318c91c33c7fccbaf34/687474703a2f2f692e737461636b2e696d6775722e636f6d2f74563953372e6a7067" alt="687474703a2f2f692e737461636b2e696d6775722e636f6d2f74563953372e6a7067"><br>(取自<a href="https://github.com/stephenlb/geohash-chat-by-proximity" target="_blank" rel="noopener">GitHub - stephenlb/geohash-chat-by-proximity: Geo Hashing Chat by Proximity to connect two or more users to a group chat.</a>)</p><p>geohash的每個層級的網格的解析度<code>大致</code>如下：<br>1    5,009.4km x 4,992.6km<br>2    1,252.3km x 624.1km<br>3    156.5km x 156km<br>4    39.1km x 19.5km<br>5    4.9km x 4.9km<br>6    1.2km x 609.4m<br>7    152.9m x 152.4m<br>8    38.2m x 19m<br>9    4.8m x 4.8m<br>10    1.2m x 59.5cm<br>11    14.9cm x 14.9cm<br>12    3.7cm x 1.9cm</p><p>線上也有一些工具可以檢視及瀏覽geohash編碼<br><a href="https://www.movable-type.co.uk/scripts/geohash.html" target="_blank" rel="noopener">Geohash encoding/decoding</a></p><p>瀏覽這個網站也會對geohash更有感覺<br><a href="http://geohash.gofreerange.com/" target="_blank" rel="noopener">GeohashExplorer</a></p><h3 id="project-point-to-geohash"><a href="#project-point-to-geohash" class="headerlink" title="project point to geohash"></a>project point to geohash</h3><p>我們直接簡單從python做一些測試，geohash是透過經緯度坐標系統建構的：</p><p>以<code>路燈</code>資料為例，先轉為經緯度資料<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import geopandas as gpd</span><br><span class="line">light=gpd.read_file(&apos;output/light.shp&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">light=light[light.is_valid]</span><br><span class="line">light=light[light[&apos;district&apos;]==&apos;永和區&apos;]</span><br><span class="line">light.crs = &#123;&apos;init&apos; :&apos;epsg:3826&apos;&#125; </span><br><span class="line">light=light.to_crs(epsg=4326)</span><br><span class="line">light</span><br></pre></td></tr></table></figure></p><p><img src="/2018/10/21/ironman-2019-day06/50440629.png" alt="Screen Shot 2018-10-21 at 11.57.40.png"></p><p>接著，直接我們使用pygeohash，precision 7 代表第七層</p><blockquote><p>須先安裝，使用 <code>pip install python-geohash</code></p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import geohash</span><br><span class="line">light[&apos;geohash&apos;]=[geohash.encode(row[&apos;geometry&apos;].y,row[&apos;geometry&apos;].x, precision=7) for idx,row in light.iterrows()]</span><br><span class="line">light</span><br></pre></td></tr></table></figure><p><img src="/2018/10/21/ironman-2019-day06/ff093595.png" alt="Screen Shot 2018-10-21 at 12.08.16.png"></p><p>接著使用groupby<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">group=light.groupby(&apos;geohash&apos;)</span><br><span class="line">group=group.size().reset_index(name=&apos;counts&apos;)</span><br></pre></td></tr></table></figure></p><p><img src="/2018/10/21/ironman-2019-day06/2f884ad4.png" alt="Screen Shot 2018-10-21 at 12.12.37.png"></p><p>我們試著把geohash解碼，geohash.bbox(0)提供geohash的邊界，我們把它轉為Polygob，把它存進去一個新的array<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from shapely.geometry import Polygon</span><br><span class="line">geohashs=[]</span><br><span class="line">for idx,row in group.iterrows():</span><br><span class="line">    decoded=geohash.bbox(row[&apos;geohash&apos;])</span><br><span class="line">    geohashs.append(Polygon([(decoded[&apos;s&apos;], decoded[&apos;w&apos;]), (decoded[&apos;s&apos;],decoded[&apos;e&apos;]), (decoded[&apos;n&apos;], decoded[&apos;e&apos;]), (decoded[&apos;n&apos;],decoded[&apos;w&apos;])]))</span><br></pre></td></tr></table></figure></p><p>我們把資訊畫出來吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g = gpd.GeoSeries(geohashs)        </span><br><span class="line">g_aggr = gpd.GeoDataFrame(group)</span><br><span class="line">g_aggr[&apos;geometry&apos;]=g</span><br><span class="line">g_aggr.plot(&apos;counts&apos;)</span><br></pre></td></tr></table></figure></p><p><img src="/2018/10/21/ironman-2019-day06/2acd059a.png" alt="Screen Shot 2018-10-21 at 13.38.20.png"></p><h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>透過今天的練習，利用geohash也可以進行網格式的資料聚合以及多時期的資料分析。</p><blockquote><p>今天的相關測試可以參考<a href="https://github.com/chimin17/2019_30day/blob/master/Day06_geohash.ipynb" target="_blank" rel="noopener">GitHub</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;前一天的資料聚合，所舉的應用例是行政區村里，實作簡單的點資料與空間單元做結合，然而事實上，聚合的單元不限於行政區村里，以台灣來說，可以使用內政部最小統計區的空間單元來做資料聚合，最小統計區與其發佈區的劃設主要是根據&lt;code&gt;人口&lt;/code&gt;，有關最小統計區請參考&lt;a h
+      
+    
+    </summary>
+    
+      <category term="data analysis" scheme="https://chimin17.github.io/categories/data-analysis/"/>
+    
+    
+      <category term="GIS" scheme="https://chimin17.github.io/tags/GIS/"/>
+    
+      <category term="2019鐵人賽-30天精通GIS資料分析-使用Python" scheme="https://chimin17.github.io/tags/2019%E9%90%B5%E4%BA%BA%E8%B3%BD-30%E5%A4%A9%E7%B2%BE%E9%80%9AGIS%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90-%E4%BD%BF%E7%94%A8Python/"/>
+    
+  </entry>
   
   <entry>
     <title>鐵人賽2019 Day05 基本的資料聚合</title>
@@ -549,44 +576,6 @@
     
       &lt;p&gt;昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性&lt;strong&gt;POI&lt;/strong&gt;資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。&lt;/p&gt;
 &lt;p&gt;今天就繼續昨天的成果，使用&lt;strong&gt;Leaflet&lt;/strong&gt;實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="web" scheme="https://chimin17.github.io/categories/web/"/>
-    
-    
-      <category term="2018鐵人賽-30天打造我的WebGIS系列" scheme="https://chimin17.github.io/tags/2018%E9%90%B5%E4%BA%BA%E8%B3%BD-30%E5%A4%A9%E6%89%93%E9%80%A0%E6%88%91%E7%9A%84WebGIS%E7%B3%BB%E5%88%97/"/>
-    
-      <category term="web" scheme="https://chimin17.github.io/tags/web/"/>
-    
-      <category term="GIS" scheme="https://chimin17.github.io/tags/GIS/"/>
-    
-      <category term="leaflet" scheme="https://chimin17.github.io/tags/leaflet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>鐵人賽Day 16- Leaflet.js：設置基本地圖元件</title>
-    <link href="https://chimin17.github.io/2018/01/04/ironman-2018-day16/"/>
-    <id>https://chimin17.github.io/2018/01/04/ironman-2018-day16/</id>
-    <published>2018-01-03T16:11:43.000Z</published>
-    <updated>2018-10-16T13:32:14.359Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天開始要逐步建立一個webGIS，練習一下使用<strong>Leaflet</strong>等API的實戰能力，在開始之前，先設定這個系統的基本功能：</p><ul><li>切換底圖</li><li>定位</li><li>量測</li><li>資料查詢</li><li>街景</li><li>空間查詢</li><li>結合統計圖表</li><li>路徑規劃</li><li>資料視覺化<a id="more"></a><blockquote><p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p></blockquote></li></ul><h2 id="今日工作"><a href="#今日工作" class="headerlink" title="今日工作"></a>今日工作</h2><p>我們把工作分成幾天說明，今天預計會完成的部分屬於地圖基本款的設置，<br>包含了：</p><ul><li>版型及基本設置</li><li>切換底圖</li><li>定位</li><li>量測</li></ul><p>相關的程式碼都放在<a href="https://github.com/chimin17/dotnet-leaflet" target="_blank" rel="noopener">github</a>，commit原則上會依照文章標示。</p><h3 id="版型及基本設置"><a href="#版型及基本設置" class="headerlink" title="版型及基本設置"></a>版型及基本設置</h3><p>首先，版型很重要，為了方便起見，我們直接套用<strong>boostrap template</strong>，並模仿bootleaf這個專案設計了一套版型。</p><p>大概會是長這樣：<br><img src="https://ppt.cc/fOgvux@.png" alt=""></p><p>上方留一個Navigation Bar做為選單空間，此外，最重要的區塊，就是要有一個map的 div</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;container&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;map&quot;&gt;&lt;/div&gt;</span><br><span class="line">  //預留其他上下左右panel,寬度及高度建議滿版</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><blockquote><p>ps.關於排版詳情請參考原始碼..</p></blockquote><p>接下來，我們在app.js加入：<br><code>map = L.map(&#39;map&#39;).setView([25.0375928, 121.5529563], 10);</code><br>在這邊提醒一下，leaflet預設使用的坐標系統是<strong>EPSG:4326</strong>，但tileLayers的WMTS標準大多是EPSG:3857，忘記或搞混的可以參考<a href="https://ithelp.ithome.com.tw/articles/10194371" target="_blank" rel="noopener">這一篇</a>，另外，第二個值是指zoom layer。</p><h3 id="底圖切換功能"><a href="#底圖切換功能" class="headerlink" title="底圖切換功能"></a>底圖切換功能</h3><p>加入底圖部分，在過去幾天我們也有使用了幾次，基本上是使用tileLayer這個類別，然而，webGIS通常會加入多種底圖，並且要有切換的功能。</p><p>因此，在此我們使用<a href="https://github.com/consbio/Leaflet.Basemaps" target="_blank" rel="noopener">Leaflet.Basemaps</a>套件：</p><blockquote><p>ps.類似的功能也可以自行實作看看，使用<strong>layerGroup</strong></p></blockquote><p>Include the CSS:<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;L.Control.Basemaps.css&quot; /&gt;</code><br>Include the JavaScript:<br><code>&lt;script src=&quot;L.Control.Basemaps-min.js&quot;&gt;&lt;/script&gt;</code></p><p>app.js：<strong>這邊用了兩個我覺得滿好看的底圖</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var basemaps = [</span><br><span class="line">  L.tileLayer(&apos;//&#123;s&#125;.tile.stamen.com/toner-lite/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;.png&apos;, &#123;</span><br><span class="line">    attribution: &apos;Map tiles by &lt;a href=&quot;http://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt; — Map data © &lt;a href=&quot;http://openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href=&quot;http://creativecommons.org/licenses/by-sa/2.0/&quot;&gt;CC-BY-SA&lt;/a&gt;&apos;,</span><br><span class="line">    subdomains: &apos;abcd&apos;,</span><br><span class="line">    maxZoom: 20,</span><br><span class="line">    minZoom: 0,</span><br><span class="line">    label: &apos;Toner Lite&apos;  // optional label used for tooltip</span><br><span class="line">  &#125;),</span><br><span class="line"></span><br><span class="line">  L.tileLayer(&apos;//&#123;s&#125;.tile.stamen.com/watercolor/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;.png&apos;, &#123;</span><br><span class="line">    attribution: &apos;Map tiles by &lt;a href=&quot;http://stamen.com&quot;&gt;Stamen Design&lt;/a&gt;, &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0&quot;&gt;CC BY 3.0&lt;/a&gt; — Map data © &lt;a href=&quot;http://openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href=&quot;http://creativecommons.org/licenses/by-sa/2.0/&quot;&gt;CC-BY-SA&lt;/a&gt;&apos;,</span><br><span class="line">    subdomains: &apos;abcd&apos;,</span><br><span class="line">    maxZoom: 16,</span><br><span class="line">    minZoom: 1,</span><br><span class="line">    label: &apos;Watercolor&apos;</span><br><span class="line">  &#125;)</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">map.addControl(L.control.basemaps(&#123;</span><br><span class="line">  basemaps: basemaps,</span><br><span class="line">  tileX: 0,  // tile X coordinate</span><br><span class="line">  tileY: 0,  // tile Y coordinate</span><br><span class="line">  tileZ: 1   // tile zoom level</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure></p><h3 id="定位功能"><a href="#定位功能" class="headerlink" title="定位功能"></a>定位功能</h3><p>定位功能是webgis基本款，因為光有地圖，很多使用者會不知道自己在哪裡而迷了路，因此類似Google關鍵字地標搜尋，可以輸入關鍵字定位的功能，會是webGIS會出現的東西。</p><p>這類地標搜尋可以使用<strong>Google、Here、Mapbox</strong>，有些是免費(有request限制)以些是付費的，像這些POI供應平台申請access token後即可使用他們的API，在這邊我們使用的也是套件:<a href="https://github.com/perliedman/leaflet-control-geocoder" target="_blank" rel="noopener">Leaflet.geocoder</a>。</p><p>Include the CSS:<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;~/dist/assets/css/Control.Geocoder.css&quot; /&gt;</code></p><p> Include the JavaScript:<br><code>&lt;script src=&quot;~/dist/assets/js/Control.Geocoder.js&quot;&gt;&lt;/script&gt;</code></p><p>app.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var geocoder = L.Control.geocoder(&#123;</span><br><span class="line">  defaultMarkGeocode: true</span><br><span class="line">&#125;).addTo(map);</span><br></pre></td></tr></table></figure></p><h3 id="量測功能"><a href="#量測功能" class="headerlink" title="量測功能"></a>量測功能</h3><p>在圖上量測距離及面積，我們一樣直接使用模組，並把套件的文字稍微中文化。<br>Include the CSS:<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;~/dist/assets/css/leaflet-measure.css&quot; /&gt;</code></p><p> Include the JavaScript:<br><code>&lt;script src=&quot;~/dist/assets/js/leaflet-measure.js&quot;&gt;&lt;/script&gt;</code></p><p>app.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var measureControl = new L.Control.Measure(&#123; measureControl: true, primaryLengthUnit: &apos;meters&apos;, secondaryLengthUnit: &apos;kilometers&apos; &#125;);</span><br><span class="line">measureControl.addTo(map);</span><br></pre></td></tr></table></figure></p><h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>今天先將版型設置好及將地圖基本款功能放在地圖上，後續我們還有很多部分要實作，明天繼續加油！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;今天開始要逐步建立一個webGIS，練習一下使用&lt;strong&gt;Leaflet&lt;/strong&gt;等API的實戰能力，在開始之前，先設定這個系統的基本功能：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;切換底圖&lt;/li&gt;
-&lt;li&gt;定位&lt;/li&gt;
-&lt;li&gt;量測&lt;/li&gt;
-&lt;li&gt;資料查詢&lt;/li&gt;
-&lt;li&gt;街景&lt;/li&gt;
-&lt;li&gt;空間查詢&lt;/li&gt;
-&lt;li&gt;結合統計圖表&lt;/li&gt;
-&lt;li&gt;路徑規劃&lt;/li&gt;
-&lt;li&gt;資料視覺化&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     

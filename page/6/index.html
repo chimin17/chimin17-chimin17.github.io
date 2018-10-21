@@ -130,6 +130,59 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2017/12/29/ironman-2018-day10/">
+        鐵人賽Day 10-坐標系統及webgis常用的坐標轉換
+      </a>
+    </h2>
+    
+    <time>
+      Dec 29, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p><strong>坐標系統</strong>是GIS、大地測量及製圖的核心，而<strong>坐標轉換</strong>則是開發webGIS最常會遇到的課題。</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="坐標系統"><a href="#坐標系統" class="headerlink" title="坐標系統"></a>坐標系統</h2><h3 id="大地坐標系統-地球是近似橢球"><a href="#大地坐標系統-地球是近似橢球" class="headerlink" title="大地坐標系統: 地球是近似橢球"></a>大地坐標系統: 地球是近似橢球</h3><p>由於地球是近似橢球，會有很多模式來描述這個橢球，以及球上面的點位坐標，描述這個橢球及球上位置的系統稱作<strong>大地坐標系統</strong>，需要定義的東西很多，包含幾何面的橢球參數、其他物理面及觀測資料的整合推估，GPS使用的WGS84經緯度屬此類，簡單來說，大地坐標系統是想描述橢球及球上面的位置。</p>
+<h3 id="Map-projection-一切都是投影"><a href="#Map-projection-一切都是投影" class="headerlink" title="Map projection: 一切都是投影"></a>Map projection: 一切都是投影</h3><p>為了製造地圖，人們必須把近似橢球狀的地球投影到平面上，這個坐標系統稱作投影坐標系統，只要是地圖，一定會採用投影系統。<br>投影的方式有很多，麥卡托、藍柏特投影等等…，而從<a href="https://www.jasondavies.com/maps/transition/" target="_blank" rel="noopener">Map Projection Transitions</a>網站的各種投影機制的模擬圖可以看得出來，投影一定會有失真的情況，所以才會常常有以下新聞出現:</p>
+<blockquote>
+<p><a href="https://news.tvbs.com.tw/fun/728573" target="_blank" rel="noopener">400年來世界地圖都失真　各國大小差很多</a><br><a href="https://kknews.cc/zh-tw/news/899oqn.html" target="_blank" rel="noopener">格陵蘭島到底有多大，在地圖上一直是個謎</a><br></p></blockquote>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/29/ironman-2018-day10/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/proj4/">proj4</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2017/12/28/ironman-2018-day9/">
         鐵人賽Day 9-自己產製資料-地址定位part2
       </a>
@@ -321,54 +374,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/12/22/ironman-2018-day3/">
-        鐵人賽Day 3-談互操作性及Web service 標準
-      </a>
-    </h2>
-    
-    <time>
-      Dec 22, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>前一天用了Leaflet了一個地圖，並接了國土測繪中心的WMTS跟一個geojson，像是WMTS(Web Map Tile Service)這類web service已廣泛流通於webgis世界，今天試著來使用這些標準。</p>
-<h1 id="Interoperability-amp-Standard"><a href="#Interoperability-amp-Standard" class="headerlink" title="Interoperability &amp; Standard"></a>Interoperability &amp; Standard</h1><p>在進入今天的主題「空間資料的格式及標準」之前，先來個名詞解釋—Interoperability。<br>Interoperability中文為<strong>互操作性</strong>，IEEE對於互操作性的定義如下(<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E6%93%8D%E4%BD%9C%E6%80%A7" target="_blank" rel="noopener">維基百科</a>)</p>
-<blockquote>
-<p><strong>兩個或多個系統之間交換信息之能力，以及對交換的信息加以使用之能力</strong></p>
-</blockquote>
-
-    
-	  <div class="readmore">
-      <a href="/2017/12/22/ironman-2018-day3/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -422,7 +427,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>5</div></a></li>
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>6</div></a></li>
     
         <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
     
