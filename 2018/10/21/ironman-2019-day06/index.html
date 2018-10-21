@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://chimin17.github.io/2018/10/21/ironman-2019-day06/ff093595.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/21/ironman-2019-day06/2f884ad4.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/21/ironman-2019-day06/2acd059a.png">
-<meta property="og:updated_time" content="2018-10-21T05:51:20.080Z">
+<meta property="og:updated_time" content="2018-10-21T05:51:54.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="其它資料聚合與geohash">
 <meta name="twitter:description" content="前一天的資料聚合，所舉的應用例是行政區村里，實作簡單的點資料與空間單元做結合，然而事實上，聚合的單元不限於行政區村里，以台灣來說，可以使用內政部最小統計區的空間單元來做資料聚合，最小統計區與其發佈區的劃設主要是根據人口，有關最小統計區請參考最小統計區圖｜MOI Open Data。 另外，也有特別針對其他用途的統計區：經濟統計區圖資| 政府資料開放平臺，或是如集水區等都可以採用前一天的方法，與點資">
@@ -156,7 +156,7 @@
   	<div class="article-entry" itemprop="articleBody">
     	<p>前一天的資料聚合，所舉的應用例是行政區村里，實作簡單的點資料與空間單元做結合，然而事實上，聚合的單元不限於行政區村里，以台灣來說，可以使用內政部最小統計區的空間單元來做資料聚合，最小統計區與其發佈區的劃設主要是根據<code>人口</code>，有關最小統計區請參考<a href="https://data.moi.gov.tw/MoiOD/Data/DataDetail.aspx?oid=03C1D0A5-1F39-4C1F-AA2E-BB37A0405369" target="_blank" rel="noopener">最小統計區圖｜MOI Open Data</a>。</p>
 <p>另外，也有特別針對其他用途的統計區：<a href="https://data.nat.gov.tw/dataset/5970" target="_blank" rel="noopener">經濟統計區圖資| 政府資料開放平臺</a>，或是如集水區等都可以採用前一天的方法，與點資料做整合，相關資料請自行參閱。</p>
-<p>今天要介紹的也與昨日的資料聚合有一點關係-<code>geohash</code></p>
+<p>今天要介紹的也與昨日的資料聚合有一點關係-<code>geohash</code><br><a id="more"></a></p>
 <h3 id="Geohash"><a href="#Geohash" class="headerlink" title="Geohash"></a>Geohash</h3><p><code>geohash</code>故名意思是一種編碼，包含了多層級的架構，將空間劃分為網格(分為1-12層)，Geohash的產生是根據Z-order curve的方式產生的，這樣的特性讓查詢上可以透過hash編碼的前綴來加快空間搜尋速度。</p>
 <p><code>geohash</code>被很常用在GIS資料的indexing上，他有點類似R-tree或Quadtree</p>
 <p>以示意圖來理解<code>geohash</code><br><img src="https://camo.githubusercontent.com/65c8bcb95cad5f8eaee05318c91c33c7fccbaf34/687474703a2f2f692e737461636b2e696d6775722e636f6d2f74563953372e6a7067" alt="687474703a2f2f692e737461636b2e696d6775722e636f6d2f74563953372e6a7067"><br>(取自<a href="https://github.com/stephenlb/geohash-chat-by-proximity" target="_blank" rel="noopener">GitHub - stephenlb/geohash-chat-by-proximity: Geo Hashing Chat by Proximity to connect two or more users to a group chat.</a>)</p>
