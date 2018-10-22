@@ -130,6 +130,53 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2017/12/25/ironman-2018-day6/">
+        鐵人賽Day 6-常見的GIS資料格式
+      </a>
+    </h2>
+    
+    <time>
+      Dec 25, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>前兩天我們先用CARTO(CartoDB)實作了一些基本的GIS資料視覺化，接觸了GIS資料。</p>
+<p>延續 <strong><a href="https://ithelp.ithome.com.tw/articles/10192948" target="_blank" rel="noopener">[Day3]  談互操作性及Web Map Service 標準</a>議題</strong>，我們在處理資料時可能會遇到各種GIS格式，今日就來攻略幾種<strong>web常用的GIS資料格式</strong>。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/25/ironman-2018-day6/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/json/">json</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2017/12/22/ironman-2018-day3/">
         鐵人賽Day 3-談互操作性及Web service 標準
       </a>
@@ -326,93 +373,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/08/25/hello-world/">
-        Hello Hexo
-      </a>
-    </h2>
-    
-    <time>
-      Aug 25, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>Hexo 是基於node.js 開發的部落格框架，文章內容主要是以markdown撰寫，並可藉由hexo-git-deploy部署到 <a href="https://pages.github.com/" target="_blank" rel="noopener">Github pages</a>靜態網頁服務<br>部署完成後網址: https://&lt;帳號&gt;.github.io</p>
-<ul>
-<li>官網 <a href="https://hexo.io/zh-tw/index.html" target="_blank" rel="noopener">Hexo</a>  ps.似乎國人開發的</li>
-<li>主題包 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">themes</a></li>
-</ul>
-<p>搭建Hexo步驟如下</p>
-<ul>
-<li>安裝Node.js</li>
-<li><p>安裝Hexo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo -g</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>創建專案資料夾，並在裡面初始化<br>初始化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>喜好設定 _config.yml （可使用預設）</p>
-<ul>
-<li><p>喜好設定 下載next主題(官網有很多主題)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>喜好設定 修改_config.yml的theme為next </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- theme: next</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>喜好設定 修改theme/next/_config.yml的menu項目自定義選單 </p>
-</li>
-</ul>
-</li>
-<li><p>如果要新增貼文 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post hello world</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果要新增頁面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>編譯</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在本機運行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如要部署到Github.io</p>
-<ul>
-<li>創建一個repository名稱為&lt;帳號&gt;.github.io</li>
-<li>在repository開通Github pages</li>
-</ul>
-</li>
-<li><p>設定好 _config.yml 的 deploy參數 (github), 部署</p>
-<h2 id="Docs-https-hexo-io-docs-deployment-html"><a href="#Docs-https-hexo-io-docs-deployment-html" class="headerlink" title="Docs: https://hexo.io/docs/deployment.html"></a>Docs: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">https://hexo.io/docs/deployment.html</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repository: git@github.com:&lt;帳號&gt;/&lt;帳號&gt;.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo delploy</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/Hexo/">Hexo</a>
-      
-        <a href="/tags/github/">github</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -423,6 +383,11 @@
       <span class="text">Previous</span>
     </a>
     
+    
+    <a class="next" rel="next" href="/page/8/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
     
   </nav>
   
@@ -461,7 +426,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>6</div></a></li>
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>7</div></a></li>
     
         <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
     
