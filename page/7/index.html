@@ -130,6 +130,52 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2017/12/26/ironman-2018-day7/">
+        鐵人賽Day 7-常見的GIS資料格式-轉換篇
+      </a>
+    </h2>
+    
+    <time>
+      Dec 26, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>昨天介紹了geojson、shapefile、kml基本概念，今天我們簡單用npm上面的工具寫個簡單轉換，有關node.js的安裝及使用請各位參考其他線上教學資源，這邊我們就直接使用囉。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/26/ironman-2018-day7/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/Node/">Node</a>
+      
+        <a href="/tags/javascript/">javascript</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2017/12/25/ironman-2018-day6/">
         鐵人賽Day 6-常見的GIS資料格式
       </a>
@@ -318,56 +364,6 @@
         <a href="/tags/GIS/">GIS</a>
       
 	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/08/26/annaconda/">
-        annaconda python環境快速搭建
-      </a>
-    </h2>
-    
-    <time>
-      Aug 26, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/python/">python</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>annoconda快速搭建</p>
-<h1 id="1-下載"><a href="#1-下載" class="headerlink" title="1.下載"></a>1.下載</h1><p>–<br>首先去annconda<a href="https://www.continuum.io/downloads" target="_blank" rel="noopener">官網</a>下載<br>選擇x64環境或是x86之安裝檔<br>例如要跑arcpy必須在x86 環境執行<br>經測試x86 跟x64 annaconda可以並存</p>
-<h1 id="2-安裝"><a href="#2-安裝" class="headerlink" title="2. 安裝"></a>2. 安裝</h1><h3 id="1-一鍵安裝Anaconda"><a href="#1-一鍵安裝Anaconda" class="headerlink" title="1.一鍵安裝Anaconda"></a>1.一鍵安裝Anaconda</h3><h3 id="2-Anaconda-Navigator"><a href="#2-Anaconda-Navigator" class="headerlink" title="2.Anaconda Navigator"></a>2.Anaconda Navigator</h3><ul>
-<li>設定環境(例如設定python2.7, python3.6環境)</li>
-</ul>
-<h3 id="3-使用conda-prompt"><a href="#3-使用conda-prompt" class="headerlink" title="3.使用conda prompt"></a>3.使用conda prompt</h3><ul>
-<li>pip install 可擴充相關模組</li>
-</ul>
-<h3 id="4-IPython"><a href="#4-IPython" class="headerlink" title="4.IPython"></a>4.IPython</h3><ul>
-<li>逐行操作</li>
-</ul>
-<h3 id="5-使用spyder"><a href="#5-使用spyder" class="headerlink" title="5.使用spyder"></a>5.使用spyder</h3><ul>
-<li>run, variable viewer</li>
-</ul>
-<h1 id="3-模組"><a href="#3-模組" class="headerlink" title="3.模組"></a>3.模組</h1><h3 id="1-Anaconda-32bit-with-python2-7"><a href="#1-Anaconda-32bit-with-python2-7" class="headerlink" title="1.Anaconda 32bit- with python2.7"></a>1.Anaconda 32bit- with python2.7</h3><h3 id="2-Archook-Arcpy"><a href="#2-Archook-Arcpy" class="headerlink" title="2.Archook Arcpy"></a>2.Archook Arcpy</h3><ul>
-<li>找尋環境中的python路徑 -<a href="https://github.com/JamesRamm/archook" target="_blank" rel="noopener">Github Githook</a></li>
-<li>pip install archook<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">python=1</span><br><span class="line">import archook #The module which locates arcgis</span><br><span class="line">archook.get_arcpy()</span><br><span class="line">import arcpy</span><br><span class="line"></span><br><span class="line">#下面就可以寫python了#</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="4-基本操作"><a href="#4-基本操作" class="headerlink" title="4.基本操作"></a>4.基本操作</h1><h3 id="1-if"><a href="#1-if" class="headerlink" title="1.if"></a>1.if</h3><h3 id="2-for"><a href="#2-for" class="headerlink" title="2.for"></a>2.for</h3><h3 id="3-list-array-tuple"><a href="#3-list-array-tuple" class="headerlink" title="3.list, array,tuple"></a>3.list, array,tuple</h3><p>============================</p>
-<h1 id="5-常用模組"><a href="#5-常用模組" class="headerlink" title="5.常用模組"></a>5.常用模組</h1><h3 id="1-shapefile"><a href="#1-shapefile" class="headerlink" title="1.shapefile"></a>1.shapefile</h3><h3 id="2-math-csv"><a href="#2-math-csv" class="headerlink" title="2.math,csv"></a>2.math,csv</h3><h3 id="3-繪圖matplotlib"><a href="#3-繪圖matplotlib" class="headerlink" title="3.繪圖matplotlib"></a>3.繪圖matplotlib</h3>
-
-    
-    
     
   </section>
 </article>

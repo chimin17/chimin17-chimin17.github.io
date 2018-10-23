@@ -130,6 +130,75 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/10/23/ironman-2019-day08/">
+        i鐵人賽2019 Day08 GIS資料基本繪圖
+      </a>
+    </h2>
+    
+    <time>
+      Oct 23, 2018
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>前幾天我們也有利用<code>Geopandas</code>裡面包的<code>matplotlib</code>做一些基本的繪圖<br>GIS資料很常出現在日常生活的資訊視覺化，除了在資料工程上用在<code>Data wrangling</code>外，資料視覺化扮演著資訊發布的重任，GIS或是地圖的視覺化的學習與資源非常的多，今天我們以<code>matplotlib</code>，討論一下GIS資料視覺化的一些要素。</p>
+<h3 id="投影的選擇"><a href="#投影的選擇" class="headerlink" title="投影的選擇"></a>投影的選擇</h3><p>坐標、投影原本就是GIS資料始終圍繞的主題，<br>前面幾天提到坐標轉換，大多時候我們必須要把不同坐標系統的資料轉到同一個系統，才能一起做資料分析及處理<br>在展示地圖時，也要面臨投影的問題<br>因為地球是近似橢圓，地圖的製作實際上是將全部或局部的地球投影在面上，<br>凡是投影都會有誤差，地圖上的投影會造成幾何的扭曲</p>
+<p>使用matplotlib的<code>basemap</code>試著說明這些，<br>首先，繪製全球海岸線的圖<br>在產生basemap時，要先設定投影projection=’merc’，<code>merc</code>就是麥卡托投影<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from mpl_toolkits.basemap import Basemap</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">plt.figure(figsize=(16,8))</span><br><span class="line">m = Basemap(projection=&apos;merc&apos;,urcrnrlat=80, llcrnrlat=-80,llcrnrlon=-180, urcrnrlon=180)  </span><br><span class="line">m.drawcoastlines(color=&apos;#0066CC&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>為了方便觀察，加入繪製經緯線<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Draw lines of latitude (parallels) and longitude (meridians)</span><br><span class="line">m.drawparallels(range(-90,91,30), color=&apos;#CCCCCC&apos;)</span><br><span class="line">m.drawmeridians(range(-180,181,60), color=&apos;#CCCCCC&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>為了理解投影的變形與誤差，我們可以在圖上繪製Tissot’s Indicatrix(底索變形橢圓)<br>圓(橢圓)的變化代表的就是投影方法在不同區域造成的變形<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># draw tissot&apos;s indicatrix to show distortion.</span><br><span class="line">for y in np.linspace(m.ymax/20, 19*m.ymax/20, 9):</span><br><span class="line">    for x in np.linspace(m.xmax/20, 19*m.xmax/20, 9):</span><br><span class="line">        lon, lat = m(x,y,inverse=True)</span><br><span class="line">        poly = m.tissot(lon, lat, 1.5, 100, facecolor=&apos;#2ca25f&apos;, zorder=10, alpha=0.6);</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/23/ironman-2019-day08/834403ff.png" alt="Screen Shot 2018-10-23 at 19.47.40.png"></p>
+<p>可以看到，在不同緯度，麥卡托投影對於全球不同地區有著不同程度的變形，<br>我們在呈現資料時，特別是大範圍的資料，變形是必須面對的，當然適度的變形也是滿美的。</p>
+<p>關於投影，這邊提供另外一個例子，適用在南北極的極投影npstere(North-Polar Stereographic)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(16,8))</span><br><span class="line">m = Basemap(projection=&apos;npstere&apos;,boundinglat=10,lon_0=270,resolution=&apos;l&apos;)</span><br><span class="line">m.drawcoastlines()</span><br><span class="line">m.drawparallels(np.arange(-80.,81.,20.))</span><br><span class="line">m.drawmeridians(np.arange(-180.,181.,20.))</span><br><span class="line"></span><br><span class="line">for y in np.linspace(m.ymax/20,19*m.ymax/20,10):</span><br><span class="line">    for x in np.linspace(m.xmax/20,19*m.xmax/20,10):</span><br><span class="line">        lon, lat = m(x,y,inverse=True)</span><br><span class="line">        poly = m.tissot(lon,lat,2.5,100,\</span><br><span class="line">                        facecolor=&apos;#2ca25f&apos;,zorder=10,alpha=0.5)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/23/ironman-2019-day08/5953a086.png" alt="Screen Shot 2018-10-23 at 21.03.15.png"></p>
+<p>接著是美國，以蘭伯特等方位投影(Lambert Azimuthal Equal Area)呈現<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(16,8))</span><br><span class="line">m = Basemap(width=5e6,height=3e6,projection=&apos;laea&apos;,boundinglat=10,</span><br><span class="line">        resolution=&apos;c&apos;,lat_0=39, lon_0=-96)</span><br><span class="line">m.drawcoastlines()</span><br><span class="line">m.drawcountries()</span><br><span class="line">m.drawstates()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/23/ironman-2019-day08/e16ca5ba.png" alt="Screen Shot 2018-10-23 at 21.24.01.png"><br>如果改以蘭伯特投影呈現，會有不同的效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize=(16,8))</span><br><span class="line">plt.figure()</span><br><span class="line">m = Basemap(</span><br><span class="line">    llcrnrlon=-119,</span><br><span class="line">    llcrnrlat=22,</span><br><span class="line">    urcrnrlon=-64,</span><br><span class="line">    urcrnrlat=49,</span><br><span class="line">    projection=&apos;lcc&apos;,</span><br><span class="line">    lat_1=39,</span><br><span class="line">    lon_0=-98</span><br><span class="line">   )</span><br><span class="line">m.drawcoastlines()</span><br><span class="line">m.drawcountries()</span><br><span class="line">m.drawstates()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/23/ironman-2019-day08/85cadf1d.png" alt="Screen Shot 2018-10-23 at 21.35.12.png"><br>另外，其他比較常用到的投影包含：</p>
+<ul>
+<li>merc(Mercator): 麥卡托投影</li>
+<li>tmerc(Transverse Mercator): 橫麥卡托投影</li>
+<li>npstere,spstere(North(South)-Polar Stereographic): 極投影</li>
+<li>lcc(Lambert Conformal: 蘭伯特投影</li>
+<li>robin(Robinson): 羅賓森投影<br>在matplotlib的basemap中的投影代碼請參考<a href="https://matplotlib.org/basemap/api/basemap_api.html" target="_blank" rel="noopener">matplotlib basemap toolkit — Basemap Matplotlib Toolkit 1.1.0 documentation</a></li>
+</ul>
+<p>由於各式投影要給的參數不同，今天只是簡單測試，關於如何選擇投影，可以參考<br><a href="https://github.com/croach/oreilly-matplotlib-course/blob/master/07%20-%20Mapping%20in%20matplotlib/0701%20-%20What%20is%20a%20Map%20Projection%3F.ipynb" target="_blank" rel="noopener">What is a Map Projection?</a>有一些說明，適度暸解投影的特性，會讓資料視覺化更成功</p>
+<h3 id="顏色-值域的正規化"><a href="#顏色-值域的正規化" class="headerlink" title="顏色/值域的正規化"></a>顏色/值域的正規化</h3><p>資訊圖表的視覺化需考量<code>視覺變數</code>，顏色是視覺變數的其中一個項目，<br>以<a href="https://ithelp.ithome.com.tw/articles/10203720" target="_blank" rel="noopener">Day06 其它資料聚合與geohash</a>的geohash成果為例(以下代碼同第六天)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import geopandas as gpd</span><br><span class="line">light=gpd.read_file(&apos;output/light.shp&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">light=light[light.is_valid]</span><br><span class="line">light=light[light[&apos;district&apos;]==&apos;永和區&apos;]</span><br><span class="line">light.crs = &#123;&apos;init&apos; :&apos;epsg:3826&apos;&#125; # 避免資料沒設，這邊再重新給一次</span><br><span class="line">light=light.to_crs(epsg=4326)</span><br><span class="line"></span><br><span class="line">import geohash</span><br><span class="line">light[&apos;geohash&apos;]=[geohash.encode(row[&apos;geometry&apos;].y,row[&apos;geometry&apos;].x, precision=7) for idx,row in light.iterrows()]</span><br><span class="line"></span><br><span class="line">group=light.groupby(&apos;geohash&apos;)</span><br><span class="line">group=group.size().reset_index(name=&apos;counts&apos;)</span><br><span class="line"></span><br><span class="line">from shapely.geometry import Polygon</span><br><span class="line">geohashs=[]</span><br><span class="line">for idx,row in group.iterrows():</span><br><span class="line">    decoded=geohash.bbox(row[&apos;geohash&apos;])</span><br><span class="line">    geohashs.append(Polygon([(decoded[&apos;s&apos;], decoded[&apos;w&apos;]), (decoded[&apos;s&apos;],decoded[&apos;e&apos;]), (decoded[&apos;n&apos;], decoded[&apos;e&apos;]), (decoded[&apos;n&apos;],decoded[&apos;w&apos;])]))</span><br><span class="line">g = gpd.GeoSeries(geohashs)</span><br><span class="line"></span><br><span class="line">g_aggr = gpd.GeoDataFrame(group)</span><br><span class="line">g_aggr[&apos;geometry&apos;]=g</span><br></pre></td></tr></table></figure></p>
+<p>這個資料我們想以<code>counts</code>上色，我們第六天的時候，一切設定都是default值</p>
+<p>然而，我們其實可以控制一些繪圖的參數</p>
+<p>第一個可以控制的是cmap顏色類型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g_aggr.plot(&apos;counts&apos;,cmap=&apos;YlGn&apos;, figsize=(12, 12))</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/23/ironman-2019-day08/37232308.png" alt="Screen Shot 2018-10-23 at 22.07.33.png"></p>
+<p>給另外一種顏色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g_aggr.plot(&apos;counts&apos;,cmap=&apos;PiYG&apos;, figsize=(12, 12))</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/23/ironman-2019-day08/399a9bff.png" alt="Screen Shot 2018-10-23 at 22.09.46.png"><br><a href="https://matplotlib.org/examples/color/colormaps_reference.html" target="_blank" rel="noopener">顏色類型參考— Matplotlib 2.0.2 documentation</a></p>
+<p>另外，還可以調整scheme，<br>包含了‘equal_interval’, ‘quantiles’ or ‘percentiles’，也就是顏色間隔的計算方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g_aggr.plot(&apos;counts&apos;,cmap=&apos;PiYG&apos;, scheme = &apos;equal_interval&apos;, figsize=(12, 12))</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/23/ironman-2019-day08/6328301e.png" alt="Screen Shot 2018-10-23 at 22.15.24.png"></p>
+<p>還有k值，給定顏色的數量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g_aggr.plot(&apos;counts&apos;,cmap=&apos;PiYG&apos;, scheme = &apos;equal_interval&apos;,k=15, figsize=(12, 12))</span><br></pre></td></tr></table></figure></p>
+<p><img src="/2018/10/23/ironman-2019-day08/ad5291ef.png" alt="Screen Shot 2018-10-23 at 22.16.15.png"></p>
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><p><a href="https://github.com/croach/oreilly-matplotlib-course/tree/master/07%20-%20Mapping%20in%20matplotlib" target="_blank" rel="noopener">oreilly-matplotlib-course/07 - Mapping in matplotlib at master · croach/oreilly-matplotlib-course · GitHub</a></p>
+<blockquote>
+<p><a href="https://github.com/chimin17/2019_30day/blob/master/Day08_matplotlib_basemap.ipynb" target="_blank" rel="noopener">今天的相關測試可以參考GitHub</a></p>
+</blockquote>
+
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/10/22/ironman-2019-day07/">
         鐵人賽2019 Day07 進階幾何資料處理
       </a>
@@ -285,50 +354,6 @@
     
 	  <div class="readmore">
       <a href="/2018/10/19/ironman-2019-day04/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/10/18/ironman-2019-day03/">
-        鐵人賽2019 Day03 從Pandas到Geopandas的幾種方法
-      </a>
-    </h2>
-    
-    <time>
-      Oct 18, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/data-analysis/">data analysis</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>Geopandas可以讀取各GIS格式進行空間運算，<br>然而實際上我們可能拿到的資料不見得是GIS的格式</p>
-<p>不是GIS格式，但它可能是有坐標資訊的資料</p>
-<p>比較常見的會是一個csv,Excel含有經緯度或xy的資料，對於這樣的資料，我們可以把它轉為<code>Geopandas</code>的<code>GeoDataFrame</code>。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/10/18/ironman-2019-day03/">Read More</a>
     </div>
     
     
