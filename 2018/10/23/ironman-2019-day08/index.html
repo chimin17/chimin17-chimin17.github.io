@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>i鐵人賽2019 Day08 GIS資料基本繪圖 | Chimin&#39;s Blog</title>
+  <title>鐵人賽2019 Day08 GIS資料基本繪圖 | Chimin&#39;s Blog</title>
   <meta name="description" content="you are never wrong to do the right thing" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -12,13 +12,13 @@
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前幾天我們也有利用Geopandas裡面包的matplotlib做一些基本的繪圖GIS資料很常出現在日常生活的資訊視覺化，除了在資料工程上用在Data wrangling外，資料視覺化扮演著資訊發布的重任，GIS或是地圖的視覺化的學習與資源非常的多，今天我們以matplotlib，討論一下GIS資料視覺化的一些要素。 投影的選擇坐標、投影原本就是GIS資料始終圍繞的主題，前面幾天提到坐標轉換，大多">
+  <meta name="description" content="前幾天我們也有利用Geopandas裡面包的matplotlib做一些基本的繪圖GIS資料很常出現在日常生活的資訊視覺化，除了在資料工程上用在Data wrangling外，資料視覺化扮演著資訊發布的重任，GIS或是地圖的視覺化的學習與資源非常的多，今天我們以matplotlib，討論一下GIS資料視覺化的一些要素。">
 <meta name="keywords" content="GIS,2019鐵人賽-30天精通GIS資料分析-使用Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="i鐵人賽2019 Day08 GIS資料基本繪圖">
+<meta property="og:title" content="鐵人賽2019 Day08 GIS資料基本繪圖">
 <meta property="og:url" content="https://chimin17.github.io/2018/10/23/ironman-2019-day08/index.html">
 <meta property="og:site_name" content="Chimin&#39;s Blog">
-<meta property="og:description" content="前幾天我們也有利用Geopandas裡面包的matplotlib做一些基本的繪圖GIS資料很常出現在日常生活的資訊視覺化，除了在資料工程上用在Data wrangling外，資料視覺化扮演著資訊發布的重任，GIS或是地圖的視覺化的學習與資源非常的多，今天我們以matplotlib，討論一下GIS資料視覺化的一些要素。 投影的選擇坐標、投影原本就是GIS資料始終圍繞的主題，前面幾天提到坐標轉換，大多">
+<meta property="og:description" content="前幾天我們也有利用Geopandas裡面包的matplotlib做一些基本的繪圖GIS資料很常出現在日常生活的資訊視覺化，除了在資料工程上用在Data wrangling外，資料視覺化扮演著資訊發布的重任，GIS或是地圖的視覺化的學習與資源非常的多，今天我們以matplotlib，討論一下GIS資料視覺化的一些要素。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/23/ironman-2019-day08/834403ff.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/23/ironman-2019-day08/5953a086.png">
@@ -28,10 +28,10 @@
 <meta property="og:image" content="https://chimin17.github.io/2018/10/23/ironman-2019-day08/399a9bff.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/23/ironman-2019-day08/6328301e.png">
 <meta property="og:image" content="https://chimin17.github.io/2018/10/23/ironman-2019-day08/ad5291ef.png">
-<meta property="og:updated_time" content="2018-10-23T16:12:33.241Z">
+<meta property="og:updated_time" content="2018-11-02T02:16:26.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="i鐵人賽2019 Day08 GIS資料基本繪圖">
-<meta name="twitter:description" content="前幾天我們也有利用Geopandas裡面包的matplotlib做一些基本的繪圖GIS資料很常出現在日常生活的資訊視覺化，除了在資料工程上用在Data wrangling外，資料視覺化扮演著資訊發布的重任，GIS或是地圖的視覺化的學習與資源非常的多，今天我們以matplotlib，討論一下GIS資料視覺化的一些要素。 投影的選擇坐標、投影原本就是GIS資料始終圍繞的主題，前面幾天提到坐標轉換，大多">
+<meta name="twitter:title" content="鐵人賽2019 Day08 GIS資料基本繪圖">
+<meta name="twitter:description" content="前幾天我們也有利用Geopandas裡面包的matplotlib做一些基本的繪圖GIS資料很常出現在日常生活的資訊視覺化，除了在資料工程上用在Data wrangling外，資料視覺化扮演著資訊發布的重任，GIS或是地圖的視覺化的學習與資源非常的多，今天我們以matplotlib，討論一下GIS資料視覺化的一些要素。">
 <meta name="twitter:image" content="https://chimin17.github.io/2018/10/23/ironman-2019-day08/834403ff.png">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
@@ -139,7 +139,7 @@
 	<section class='meta'>
 	<h2 class="title">
   	<a href="/2018/10/23/ironman-2019-day08/">
-    	i鐵人賽2019 Day08 GIS資料基本繪圖
+    	鐵人賽2019 Day08 GIS資料基本繪圖
     </a>
   </h2>
 	<time>
@@ -153,6 +153,7 @@
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
     	<p>前幾天我們也有利用<code>Geopandas</code>裡面包的<code>matplotlib</code>做一些基本的繪圖<br>GIS資料很常出現在日常生活的資訊視覺化，除了在資料工程上用在<code>Data wrangling</code>外，資料視覺化扮演著資訊發布的重任，GIS或是地圖的視覺化的學習與資源非常的多，今天我們以<code>matplotlib</code>，討論一下GIS資料視覺化的一些要素。</p>
+<a id="more"></a>
 <h3 id="投影的選擇"><a href="#投影的選擇" class="headerlink" title="投影的選擇"></a>投影的選擇</h3><p>坐標、投影原本就是GIS資料始終圍繞的主題，<br>前面幾天提到坐標轉換，大多時候我們必須要把不同坐標系統的資料轉到同一個系統，才能一起做資料分析及處理<br>在展示地圖時，也要面臨投影的問題<br>因為地球是近似橢圓，地圖的製作實際上是將全部或局部的地球投影在面上，<br>凡是投影都會有誤差，地圖上的投影會造成幾何的扭曲</p>
 <p>使用matplotlib的<code>basemap</code>試著說明這些，<br>首先，繪製全球海岸線的圖<br>在產生basemap時，要先設定投影projection=’merc’，<code>merc</code>就是麥卡托投影<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from mpl_toolkits.basemap import Basemap</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">plt.figure(figsize=(16,8))</span><br><span class="line">m = Basemap(projection=&apos;merc&apos;,urcrnrlat=80, llcrnrlat=-80,llcrnrlon=-180, urcrnrlon=180)  </span><br><span class="line">m.drawcoastlines(color=&apos;#0066CC&apos;)</span><br></pre></td></tr></table></figure></p>
 <p>為了方便觀察，加入繪製經緯線<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Draw lines of latitude (parallels) and longitude (meridians)</span><br><span class="line">m.drawparallels(range(-90,91,30), color=&apos;#CCCCCC&apos;)</span><br><span class="line">m.drawmeridians(range(-180,181,60), color=&apos;#CCCCCC&apos;)</span><br></pre></td></tr></table></figure></p>
@@ -203,6 +204,10 @@
 	
 		<div class="art-item-footer">
 				
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/10/24/ironman-2019-day09/" rel="prev"  title="鐵人賽2019 Day09 使用GeoPlot">
+						鐵人賽2019 Day09 使用GeoPlot 
+					</a></span>
+				
 				
 					<span class="art-item-right">next：<a href="/2018/10/22/ironman-2019-day07/" rel="next"  title="鐵人賽2019 Day07 進階幾何資料處理">
 						鐵人賽2019 Day07 進階幾何資料處理
@@ -219,7 +224,7 @@
 </article>
 <script>
 	window.subData = {
-		title: 'i鐵人賽2019 Day08 GIS資料基本繪圖',
+		title: '鐵人賽2019 Day08 GIS資料基本繪圖',
 		tools: true
 	}
 </script>
@@ -273,7 +278,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 16.57px; color: #494949">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.43px; color: #373737">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 17.43px; color: #373737">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
     </div>
 </div>
 

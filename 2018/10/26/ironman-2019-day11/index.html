@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>鐵人賽2019 Day11 台鐵意外事件與folium練習-前處理 | Chimin&#39;s Blog</title>
+  <meta name="description" content="you are never wrong to do the right thing" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近的台鐵意外事件，看到有媒體及網友製作前端的網頁地圖呈現通話紀錄，剛好昨天使用了folium，一時興起今天也來用folium做看看，今天先來做一些前處理  ps. 另外，也祝傷者平安及亡者安息">
+<meta name="keywords" content="GIS,2019鐵人賽-30天精通GIS資料分析-使用Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鐵人賽2019 Day11 台鐵意外事件與folium練習-前處理">
+<meta property="og:url" content="https://chimin17.github.io/2018/10/26/ironman-2019-day11/index.html">
+<meta property="og:site_name" content="Chimin&#39;s Blog">
+<meta property="og:description" content="最近的台鐵意外事件，看到有媒體及網友製作前端的網頁地圖呈現通話紀錄，剛好昨天使用了folium，一時興起今天也來用folium做看看，今天先來做一些前處理  ps. 另外，也祝傷者平安及亡者安息">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181026/20107816cLUgXXES29.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181026/20107816B55Kmp8FJ5.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181026/20107816kroJtDUgtw.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181026/20107816PBY1KZVxgN.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181026/201078169VVve0jLrr.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181026/20107816A6oajmkggD.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181026/20107816JWxh417cbh.png">
+<meta property="og:updated_time" content="2018-11-02T02:16:19.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鐵人賽2019 Day11 台鐵意外事件與folium練習-前處理">
+<meta name="twitter:description" content="最近的台鐵意外事件，看到有媒體及網友製作前端的網頁地圖呈現通話紀錄，剛好昨天使用了folium，一時興起今天也來用folium做看看，今天先來做一些前處理  ps. 另外，也祝傷者平安及亡者安息">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20181026/20107816cLUgXXES29.png">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Chimin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ironman-2019-day11"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/2018/10/26/ironman-2019-day11/">
+    	鐵人賽2019 Day11 台鐵意外事件與folium練習-前處理
+    </a>
+  </h2>
+	<time>
+	  Oct 26, 2018
+	</time>
+	
+	</section>
+	
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#資料來源"><span class="toc-number">1.</span> <span class="toc-text">資料來源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逐字稿文字資料整理"><span class="toc-number">2.</span> <span class="toc-text">逐字稿文字資料整理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#整合車站資料與路線"><span class="toc-number">3.</span> <span class="toc-text">整合車站資料與路線</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#後記"><span class="toc-number">4.</span> <span class="toc-text">後記</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>最近的台鐵意外事件，看到有媒體及網友製作前端的網頁地圖呈現通話紀錄，剛好昨天使用了folium，一時興起今天也來用folium做看看，今天先來做一些前處理</p>
+<blockquote>
+<p>ps. 另外，也祝傷者平安及亡者安息</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="資料來源"><a href="#資料來源" class="headerlink" title="資料來源"></a>資料來源</h3><p>要呈現這樣的圖，包括了以下幾種資料：</p>
+<ul>
+<li><a href="https://data.gov.tw/dataset/73220" target="_blank" rel="noopener">臺灣鐵路 | 政府資料開放平臺</a></li>
+<li><a href="https://www.railway.gov.tw/Upload/UserFiles/%E8%BB%8A%E7%AB%99%E5%9F%BA%E6%9C%AC%E8%B3%87%E6%96%99.json" target="_blank" rel="noopener">台鐵車站基本資料</a>（<a href="https://www.railway.gov.tw/tw/CP.aspx?sn=16938&amp;n=19573" target="_blank" rel="noopener">台鐵</a>）</li>
+<li><a href="https://news.ftv.com.tw/AMP/News_Amp.aspx?id=2018A25W0003" target="_blank" rel="noopener">普悠瑪翻車前257句43分鐘對話曝光！ 司機一路求援邊開邊修-民視新聞網</a></li>
+</ul>
+<h3 id="逐字稿文字資料整理"><a href="#逐字稿文字資料整理" class="headerlink" title="逐字稿文字資料整理"></a>逐字稿文字資料整理</h3><p>網站上的逐字稿在上面的新聞網站可以看到<br><img src="https://ithelp.ithome.com.tw/upload/images/20181026/20107816cLUgXXES29.png" alt="https://ithelp.ithome.com.tw/upload/images/20181026/20107816cLUgXXES29.png"></p>
+<p>我們試著把它結構化，我們使用requests去get網頁文檔，並用BeautifulSoup結構化資料<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import pandas as pd </span><br><span class="line">import geopandas as gpd</span><br><span class="line">import re</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line">result=requests.get(&apos;https://news.ftv.com.tw/AMP/News_Amp.aspx?id=2018A25W0003&apos;)</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">soup = BeautifulSoup(result.text, &apos;html.parser&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>有關這些技術細節，請參考以下程式碼<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">p_count=0</span><br><span class="line">start_flag=False</span><br><span class="line">p_contents=soup.find_all(&apos;p&apos;)</span><br><span class="line">all_data=[]</span><br><span class="line">location=&quot;&quot;</span><br><span class="line">time=&quot;&quot;</span><br><span class="line">for p_item in p_contents:</span><br><span class="line">    </span><br><span class="line">    text=str(p_item.text)</span><br><span class="line">    if text ==&apos;完整通聯紀錄：&apos;:</span><br><span class="line">        start_flag=True</span><br><span class="line">        p_count+=1</span><br><span class="line">        continue</span><br><span class="line">    </span><br><span class="line">    if len(re.findall(&apos;地點&apos;,text))&gt;0:</span><br><span class="line">        location=text</span><br><span class="line">        continue</span><br><span class="line">        </span><br><span class="line">    if len(text.split(&apos;:&apos;))==3 and len(text)==8:</span><br><span class="line">        time=text</span><br><span class="line">        continue</span><br><span class="line">            </span><br><span class="line">    # 處理前幾行</span><br><span class="line">    if start_flag==True:</span><br><span class="line">        if  p_count&lt;4:</span><br><span class="line">            p_count+=1</span><br><span class="line">            time=text[0:8]</span><br><span class="line">            all_data.append([location,time,text[8:]])</span><br><span class="line">        else:</span><br><span class="line">            all_data.append([location,time,text])</span><br><span class="line">       </span><br><span class="line">all_data</span><br></pre></td></tr></table></figure></p>
+<p>整理好會變這樣<br><img src="https://ithelp.ithome.com.tw/upload/images/20181026/20107816B55Kmp8FJ5.png" alt="https://ithelp.ithome.com.tw/upload/images/20181026/20107816B55Kmp8FJ5.png"></p>
+<h3 id="整合車站資料與路線"><a href="#整合車站資料與路線" class="headerlink" title="整合車站資料與路線"></a>整合車站資料與路線</h3><p>首先，我們把車站資料處理成GIS資料，利用pandas2geopandas的技巧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from shapely.geometry import Point</span><br><span class="line">station_pd=pd.read_json(&apos;data/Station/Station.json&apos;, &apos;r&apos;, encoding=&apos;utf-8-sig&apos;)</span><br><span class="line">station_pd=station_pd[station_pd[&apos;gps&apos;]!=&apos;&apos;]</span><br><span class="line">y = [float(row[&apos;gps&apos;].split(&apos;,&apos;)[0].replace(&apos; &apos;,&apos;&apos;)) for idx,row in station_pd.iterrows()]</span><br><span class="line">x = [float(row[&apos;gps&apos;].split(&apos;,&apos;)[1].replace(&apos; &apos;,&apos;&apos;)) for idx,row in station_pd.iterrows()]</span><br><span class="line">geom = [Point(xy) for xy in zip(x, y)]</span><br><span class="line">crs = &#123;&apos;init&apos;: &apos;epsg:4326&apos;&#125;</span><br><span class="line">station = gpd.GeoDataFrame(station_pd, crs=crs, geometry=geom)</span><br><span class="line">station[[&apos;Station_Name&apos;,&apos;geometry&apos;]].to_file(&apos;output/station.shp&apos;)</span><br><span class="line">station</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181026/20107816kroJtDUgtw.png" alt="https://ithelp.ithome.com.tw/upload/images/20181026/20107816kroJtDUgtw.png"></p>
+<p>然後把第一天出現過的鐵路資料再拿來，並且選擇<code>臺鐵宜蘭線</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rail=gpd.read_file(&apos;data/Rail/Rail.shp&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">rail.crs = &#123;&apos;init&apos; :&apos;epsg:3826&apos;&#125; # 避免資料沒設，這邊再重新給一次</span><br><span class="line">rail=rail.to_crs(epsg=4326)</span><br><span class="line"># rail.groupby(&apos;RAILNAME&apos;).size()</span><br><span class="line">rail=rail[rail[&apos;RAILNAME&apos;]==&apos;臺鐵宜蘭線&apos;]</span><br><span class="line">rail.reset_index(inplace=True)</span><br><span class="line">rail</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181026/20107816PBY1KZVxgN.png" alt="https://ithelp.ithome.com.tw/upload/images/20181026/20107816PBY1KZVxgN.png"></p>
+<p>先觀察一下資料，我們把他們一起畫在地圖上瀏覽：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import folium</span><br><span class="line">m = folium.Map((24.694192,121.775163),zoom_start=18)</span><br><span class="line"></span><br><span class="line">folium.GeoJson(</span><br><span class="line">    station.to_json(),</span><br><span class="line">    name=&apos;geojson&apos;</span><br><span class="line">).add_to(m)</span><br><span class="line"></span><br><span class="line">rail_geojson  = folium.GeoJson(</span><br><span class="line">    rail.to_json(),</span><br><span class="line">    name=&apos;geojson&apos;,</span><br><span class="line"> </span><br><span class="line">)</span><br><span class="line">popup = folium.Popup(&apos;Hi&apos;)</span><br><span class="line">popup.add_to(rail_geojson)</span><br><span class="line">rail_geojson.add_to(m)</span><br><span class="line"></span><br><span class="line">m</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181026/201078169VVve0jLrr.png" alt="https://ithelp.ithome.com.tw/upload/images/20181026/201078169VVve0jLrr.png"></p>
+<p>由於車站的資料與鐵路資料有一點gap，也就是說車站的點不會在鐵路線上，這會影響到展示，<br>因此，我們試著把他投影到線上，這邊的投影我們直接使用向量內外積來處理：<br><img src="https://ithelp.ithome.com.tw/upload/images/20181026/20107816A6oajmkggD.png" alt="https://ithelp.ithome.com.tw/upload/images/20181026/20107816A6oajmkggD.png"></p>
+<p>計算過程中，我們把每個元素的投影都算一遍，並取距離最短的點，作為車站修正後的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">from shapely.geometry import Point</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for i1,r1 in station.iterrows():</span><br><span class="line">    point=r1[&apos;geometry&apos;]</span><br><span class="line">    min_distance=999</span><br><span class="line">    new_point=point</span><br><span class="line">    for i2,r2 in rail.iterrows():</span><br><span class="line"></span><br><span class="line">        line = r2[&apos;geometry&apos;]</span><br><span class="line"></span><br><span class="line">        x = np.array(point.coords[0])</span><br><span class="line"></span><br><span class="line">        u = np.array(line.coords[0])</span><br><span class="line">        v = np.array(line.coords[len(line.coords)-1])</span><br><span class="line"></span><br><span class="line">        n = v - u</span><br><span class="line">        n /= np.linalg.norm(n, 2)</span><br><span class="line"></span><br><span class="line">        P = u + n*np.dot(x - u, n)</span><br><span class="line">        distance=Point(P).distance(point)</span><br><span class="line">        if distance&lt;min_distance:</span><br><span class="line">            min_distance=distance</span><br><span class="line">            new_point=Point(P)</span><br><span class="line">    station.at[i1,&apos;geometry&apos;]=new_point</span><br></pre></td></tr></table></figure></p>
+<p>還有另外一種解法，在<code>第七天</code>的時候我們提到<code>shapely</code>的<code>project</code>與<code>interpolate</code><br>這兩個連續技，結果跟上面是一樣的<br><code>new_point = line.interpolate(line.project(point))</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">for i1,r1 in station.iterrows():</span><br><span class="line">    point=r1[&apos;geometry&apos;]</span><br><span class="line">    min_distance=999</span><br><span class="line">    new_point=point</span><br><span class="line">    for i2,r2 in rail.iterrows():</span><br><span class="line"></span><br><span class="line">        line = r2[&apos;geometry&apos;]</span><br><span class="line">        temp_point = line.interpolate(line.project(point))</span><br><span class="line">        distance=temp_point.distance(point)</span><br><span class="line">        if distance&lt;min_distance:</span><br><span class="line">            min_distance=distance</span><br><span class="line">            new_point=temp_point</span><br><span class="line">    station.at[i1,&apos;geometry&apos;]=new_point</span><br></pre></td></tr></table></figure></p>
+<p>上面的方法二選一，再用前面的code繪製一次成果，可以看到車站已經被修正在鐵路網上！<br><img src="https://ithelp.ithome.com.tw/upload/images/20181026/20107816JWxh417cbh.png" alt="https://ithelp.ithome.com.tw/upload/images/20181026/20107816JWxh417cbh.png"></p>
+<h3 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h3><p>今天我們完成了一些前處理<br>雖然這些前處理其實有些也沒這麼必要，甚至手動畫一畫就好了，不過基於練習的精神還是明天繼續把它完成吧<br>下班時間有點晚，明天再加油！</p>
+<blockquote>
+<p>對今天的測試有興趣請參考<a href="https://github.com/chimin17/2019_30day/blob/master/Day11_TWNRAIL_folium_part1.ipynb" target="_blank" rel="noopener">github程式碼</a></p>
+</blockquote>
+
+  	</div>
+	  
+	  <div class="article-tags tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+		
+	
+		<div class="art-item-footer">
+				
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/10/27/ironman-2019-day12/" rel="prev"  title="鐵人賽2019 Day12 台鐵意外事件與folium練習-續篇">
+						鐵人賽2019 Day12 台鐵意外事件與folium練習-續篇 
+					</a></span>
+				
+				
+					<span class="art-item-right">next：<a href="/2018/10/25/ironman-2019-day10/" rel="next"  title="鐵人賽2019 Day10 地圖互動folium">
+						鐵人賽2019 Day10 地圖互動folium
+					</a><i class="icon icon-chevron-thin-right"></i></span>
+				
+		</div>
+	
+	</section>
+	
+		<section id="comments">
+			<div id="disqus_thread"></div>
+		</section>
+	
+</article>
+<script>
+	window.subData = {
+		title: '鐵人賽2019 Day11 台鐵意外事件與folium練習-前處理',
+		tools: true
+	}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1797">
+            <div class='name'>30天精通GIS資料分析-使用Python</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541">
+            <div class='name'>30天打造我的WebGIS</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://developer.tomtom.com/">
+            <div class='name'>TomTom for developer</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://medium.com/tag/chiminevelynswedding">
+            <div class='name'>30 day challallenge for weddings</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>28</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 17.43px; color: #373737">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+    </div>
+</div>
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/chimin17" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://linkedin.com/in/chi-min-chiu-aba7a5148/" class="social linkedin"
+          target="_blank" rel="external">
+          <span class="icon icon-linkedin"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+<script>
+  var disqus_shortname = 'chimin17';
+  
+  var disqus_url = 'https://chimin17.github.io/2018/10/26/ironman-2019-day11/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

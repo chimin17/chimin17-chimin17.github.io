@@ -130,13 +130,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/26/ironman-2018-day7/">
-        鐵人賽Day 7-常見的GIS資料格式-轉換篇
+      <a href="/2018/01/05/ironman-2018-day17/">
+        鐵人賽Day 17- Leaflet.js：加入資料及資料互動
       </a>
     </h2>
     
     <time>
-      Dec 26, 2017
+      Jan 5, 2018
     </time>
 		
     
@@ -146,58 +146,12 @@
 
   </section>
   <section class="article typo">
-	  <p>昨天介紹了geojson、shapefile、kml基本概念，今天我們簡單用npm上面的工具寫個簡單轉換，有關node.js的安裝及使用請各位參考其他線上教學資源，這邊我們就直接使用囉。</p>
+	  <p>昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性<strong>POI</strong>資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。</p>
+<p>今天就繼續昨天的成果，使用<strong>Leaflet</strong>實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。<br></p>
 
     
 	  <div class="readmore">
-      <a href="/2017/12/26/ironman-2018-day7/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/Node/">Node</a>
-      
-        <a href="/tags/javascript/">javascript</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/12/25/ironman-2018-day6/">
-        鐵人賽Day 6-常見的GIS資料格式
-      </a>
-    </h2>
-    
-    <time>
-      Dec 25, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>前兩天我們先用CARTO(CartoDB)實作了一些基本的GIS資料視覺化，接觸了GIS資料。</p>
-<p>延續 <strong><a href="https://ithelp.ithome.com.tw/articles/10192948" target="_blank" rel="noopener">[Day3]  談互操作性及Web Map Service 標準</a>議題</strong>，我們在處理資料時可能會遇到各種GIS格式，今日就來攻略幾種<strong>web常用的GIS資料格式</strong>。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2017/12/25/ironman-2018-day6/">Read More</a>
+      <a href="/2018/01/05/ironman-2018-day17/">Read More</a>
     </div>
     
     
@@ -210,7 +164,7 @@
       
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/json/">json</a>
+        <a href="/tags/leaflet/">leaflet</a>
       
 	  </div>
     
@@ -223,13 +177,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/22/ironman-2018-day3/">
-        鐵人賽Day 3-談互操作性及Web service 標準
+      <a href="/2018/01/04/ironman-2018-day16/">
+        鐵人賽Day 16- Leaflet.js：設置基本地圖元件
       </a>
     </h2>
     
     <time>
-      Dec 22, 2017
+      Jan 4, 2018
     </time>
 		
     
@@ -239,72 +193,21 @@
 
   </section>
   <section class="article typo">
-	  <p>前一天用了Leaflet了一個地圖，並接了國土測繪中心的WMTS跟一個geojson，像是WMTS(Web Map Tile Service)這類web service已廣泛流通於webgis世界，今天試著來使用這些標準。</p>
-<h1 id="Interoperability-amp-Standard"><a href="#Interoperability-amp-Standard" class="headerlink" title="Interoperability &amp; Standard"></a>Interoperability &amp; Standard</h1><p>在進入今天的主題「空間資料的格式及標準」之前，先來個名詞解釋—Interoperability。<br>Interoperability中文為<strong>互操作性</strong>，IEEE對於互操作性的定義如下(<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E6%93%8D%E4%BD%9C%E6%80%A7" target="_blank" rel="noopener">維基百科</a>)</p>
-<blockquote>
-<p><strong>兩個或多個系統之間交換信息之能力，以及對交換的信息加以使用之能力</strong></p>
-</blockquote>
-
-    
-	  <div class="readmore">
-      <a href="/2017/12/22/ironman-2018-day3/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/12/21/ironman-2018-day2/">
-        鐵人賽Day 2-webGIS初步
-      </a>
-    </h2>
-    
-    <time>
-      Dec 21, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="webgis：從Client端及Server端談起"><a href="#webgis：從Client端及Server端談起" class="headerlink" title="webgis：從Client端及Server端談起"></a>webgis：從Client端及Server端談起</h2><h3 id="Clinet端："><a href="#Clinet端：" class="headerlink" title="Clinet端："></a>Clinet端：</h3><p>跟一般網頁應用程式一樣，webgis需要前端程式與使用者互動，要開發一個webgis，開發者可以使用各種前端框架。<br>然而，要炒一盤webgis的菜，就必須要有專屬於gis/地圖的前端框架</p>
-<blockquote>
-<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
-</blockquote>
-<p><strong>這些框架主要功能包含提供地圖，圖層渲染，基本地圖互動、介接資料等功能，Javascript常見的webgis框架包含:</strong></p>
-<blockquote>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天開始要逐步建立一個webGIS，練習一下使用<strong>Leaflet</strong>等API的實戰能力，在開始之前，先設定這個系統的基本功能：</p>
 <ul>
-<li>(1)leaflet</li>
-<li>(2)openlayers</li>
-<li>(3)google maps api</li>
-<li>(4)esri javascript api</li>
-</ul>
-</blockquote>
-<p>一個地圖框架提供我們基本地圖操作，把地圖元素(含空間坐標物件)轉換成前端可操作的元件(DOM等)，而為使地圖互動更生動活潑，其它前端工具當然也是可以整合進來的，包含Jquery, Vue, React, Angularjs…甚至D3.js, C3.js等可能都需要整合在webGIS中。</p>
+<li>切換底圖</li>
+<li>定位</li>
+<li>量測</li>
+<li>資料查詢</li>
+<li>街景</li>
+<li>空間查詢</li>
+<li>結合統計圖表</li>
+<li>路徑規劃</li>
+<li>資料視覺化</li></ul>
 
     
 	  <div class="readmore">
-      <a href="/2017/12/21/ironman-2018-day2/">Read More</a>
+      <a href="/2018/01/04/ironman-2018-day16/">Read More</a>
     </div>
     
     
@@ -316,6 +219,8 @@
         <a href="/tags/web/">web</a>
       
         <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
       
 	  </div>
     
@@ -328,13 +233,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/20/ironman-2018-day1/">
-        鐵人賽Day 1-webGIS:資訊時代的地理大發現
+      <a href="/2018/01/02/ironman-2018-day14/">
+        鐵人賽Day 14- webgis中的網格資料
       </a>
     </h2>
     
     <time>
-      Dec 20, 2017
+      Jan 2, 2018
     </time>
 		
     
@@ -344,13 +249,15 @@
 
   </section>
   <section class="article typo">
-	  <h2 id="webGIS-資訊時代的地理大發現"><a href="#webGIS-資訊時代的地理大發現" class="headerlink" title="webGIS-資訊時代的地理大發現"></a>webGIS-資訊時代的地理大發現</h2><p>在現代的網頁應用中，地圖應用已經成為了不可或缺的網頁元素，一個現代網頁中，有了地圖應用，可以讓使用者查詢空間資訊；開發者亦可實踐各種<strong>LBS</strong>(Location Based Services)及<strong>IOT</strong>(Internet of Things)的應用。</p>
-<p>目前網路上有許多開發資源可以協助我們建構一些地圖應用，並且透過資料視覺化及UI/UX，使空間資訊有效地呈現給user，user也可以request資訊，讓系統是雙向互動的，相關的應用國內外都有很多案例。</p>
-<p>然而，目前線上整合這些資源且能涵蓋背後相關技術的完整介紹並不多，我們團隊希望藉由<strong>2018 IT邦鐵人賽</strong>機會，除整合資源應用外，再加碼一些GIS相關技術面探討，目標是運用開源軟體，<strong>30天打造一個webGIS系統</strong>。</p>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>網格(raster)資料是指以規則網格的方式呈現空間資料，可能是<a href="https://gist.github.com/chimin17/a15dd5a8f4664f8a7377e0d8a33673f5" target="_blank" rel="noopener">長這樣</a>。<br><img src="https://ppt.cc/fJZEyx@.png" alt=""></p>
+<p>上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是…</p>
+<p>假設今天網格的間隔<strong>更密一些</strong>，<strong>範圍在大一些</strong>，其資料量可能會很可觀，這時候無論在計算或是前端展示上，GIS傾向會使用影像方式儲存。</p>
+<p>再者，上述案例在網格式資料是<strong>單一波段</strong>的資料(也就是只有solRad這個屬性)，網格資料大多都是<strong>三個波段</strong>的資料(例如正射影像、衛星影像)，相關討論我們在<a href="https://ithelp.ithome.com.tw/articles/10193701" target="_blank" rel="noopener">[Day 6] 常見的GIS資料格式</a>有探討過。</p>
+<p>在webGIS中，我們可能比較少直接處理網格資料，通常都是使用它，今天我們試著使用Leaflet的raster圖層功能。<br></p>
 
     
 	  <div class="readmore">
-      <a href="/2017/12/20/ironman-2018-day1/">Read More</a>
+      <a href="/2018/01/02/ironman-2018-day14/">Read More</a>
     </div>
     
     
@@ -362,6 +269,104 @@
         <a href="/tags/web/">web</a>
       
         <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/01/ironman-2018-day13/">
+        鐵人賽Day 13- webgis中的向量資料:在leaflet實作
+      </a>
+    </h2>
+    
+    <time>
+      Jan 1, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://ithelp.ithome.com.tw/articles/10192391" target="_blank" rel="noopener">[Day1]webGIS-資訊時代的地理大發現</a>的引言中提到webgis的前端實踐可以透過幾個地圖API，本次鐵人賽將都以<a href="http://leafletjs.com/" target="_blank" rel="noopener">leaflet</a>做說明。<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/01/ironman-2018-day13/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/31/ironman-2018-day12/">
+        鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon
+      </a>
+    </h2>
+    
+    <time>
+      Dec 31, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/31/ironman-2018-day12/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/geojson/">geojson</a>
       
 	  </div>
     
@@ -437,7 +442,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 16.57px; color: #494949">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.43px; color: #373737">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 17.43px; color: #373737">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
     </div>
 </div>
 

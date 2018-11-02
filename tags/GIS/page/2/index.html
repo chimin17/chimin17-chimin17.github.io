@@ -134,6 +134,410 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/10/22/ironman-2019-day07/">
+        鐵人賽2019 Day07 進階幾何資料處理
+      </a>
+    </h2>
+    
+    <time>
+      Oct 22, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/data-analysis/">data analysis</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>今天的主題是延續<a href="https://ithelp.ithome.com.tw/articles/10203180" target="_blank" rel="noopener">Day04 幾何資料基本運算</a>，記錄一下在GIS向量資料中，可能會碰到但比較進階的幾何處理，今天的測試主要是圍繞在<code>shapely</code>的應用，<code>shapely</code>在<code>Geopandas</code>也有依賴，因此相關操作可以互相延伸。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/10/22/ironman-2019-day07/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/10/21/ironman-2019-day06/">
+        鐵人賽2019 Day06 其它資料聚合與geohash
+      </a>
+    </h2>
+    
+    <time>
+      Oct 21, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/data-analysis/">data analysis</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>前一天的資料聚合，所舉的應用例是行政區村里，實作簡單的點資料與空間單元做結合，然而事實上，聚合的單元不限於行政區村里，以台灣來說，可以使用內政部最小統計區的空間單元來做資料聚合，最小統計區與其發佈區的劃設主要是根據<code>人口</code>，有關最小統計區請參考<a href="https://data.moi.gov.tw/MoiOD/Data/DataDetail.aspx?oid=03C1D0A5-1F39-4C1F-AA2E-BB37A0405369" target="_blank" rel="noopener">最小統計區圖｜MOI Open Data</a>。</p>
+<p>另外，也有特別針對其他用途的統計區：<a href="https://data.nat.gov.tw/dataset/5970" target="_blank" rel="noopener">經濟統計區圖資| 政府資料開放平臺</a>，或是如集水區等都可以採用前一天的方法，與點資料做整合，相關資料請自行參閱。</p>
+<p>今天要介紹的也與昨日的資料聚合有一點關係-<code>geohash</code><br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/10/21/ironman-2019-day06/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/10/20/ironman-2019-day05/">
+        鐵人賽2019 Day05 基本的資料聚合
+      </a>
+    </h2>
+    
+    <time>
+      Oct 20, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/data-analysis/">data analysis</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>在Pandas可以使用<code>groupby</code>等方法進行資料聚合<br>例如先前第三天的路燈資料，如果想看一下不同的統計成果，除了空間上的展示外，可以用資料內的行政區欄位(district)做聚合</p>
+<p>回顧這份資料，有district欄位表示行政區</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">light=gpd.read_file(&apos;output/light.shp&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">light</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/20/ironman-2019-day05/55847807.png" alt="Screen Shot 2018-10-19 at 23.37.11.png"></p>
+<p>我們可以很簡單的用groupy做資料的的聚合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">light.groupby(&apos;district&apos;).size()</span><br></pre></td></tr></table></figure></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/10/20/ironman-2019-day05/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/10/19/ironman-2019-day04/">
+        鐵人賽2019 Day04 幾何資料基本運算
+      </a>
+    </h2>
+    
+    <time>
+      Oct 19, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/data-analysis/">data analysis</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>GeoDataFrame使操作GIS資料分析時更有彈性<br>我們可以很快對GIS的屬性資料的分析與過濾</p>
+<p>當然，也包括一些幾何空間的運算</p>
+<h2 id="坐標轉換"><a href="#坐標轉換" class="headerlink" title="坐標轉換"></a>坐標轉換</h2><p>坐標轉換幾乎是GIS第一門課，可以參考<a href="https://ithelp.ithome.com.tw/articles/10194371" target="_blank" rel="noopener">[Day10] 坐標系統及WebGIS常用的坐標轉換</a>有大致的說明。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/10/19/ironman-2019-day04/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/10/18/ironman-2019-day03/">
+        鐵人賽2019 Day03 從Pandas到Geopandas的幾種方法
+      </a>
+    </h2>
+    
+    <time>
+      Oct 18, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/data-analysis/">data analysis</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>Geopandas可以讀取各GIS格式進行空間運算，<br>然而實際上我們可能拿到的資料不見得是GIS的格式</p>
+<p>不是GIS格式，但它可能是有坐標資訊的資料</p>
+<p>比較常見的會是一個csv,Excel含有經緯度或xy的資料，對於這樣的資料，我們可以把它轉為<code>Geopandas</code>的<code>GeoDataFrame</code>。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/10/18/ironman-2019-day03/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/10/17/ironman-2019-day02/">
+        鐵人賽2019 Day02 Geopandas初探
+      </a>
+    </h2>
+    
+    <time>
+      Oct 17, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/data-analysis/">data analysis</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p><code>Pandas</code>是資料分析熱門且好用的工具，相信熟悉資料分析的各路英雄好漢都不陌生<br>在Python中，與GIS相關的套件滿坑滿谷，這邊我們選定<code>Geopandas</code>作為資料操作的基礎<br>它與Pandas有很接近的操作體驗，並且依賴了許多GIS常用的Python套件。</p>
+<h2 id="Geopandas介紹"><a href="#Geopandas介紹" class="headerlink" title="Geopandas介紹"></a>Geopandas介紹</h2><p>在Python上處理空間資料有許多套件們，這些套件都有不同的使用場景，例如<code>shapely</code>用在向量資料的處理、<code>fiona</code>則是幫助使用Python上操作<code>OGR</code>(支援超多格式的資料轉換)，<code>pyproj</code>做坐標投影的轉換等等。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/10/17/ironman-2019-day02/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/10/16/ironman-2019-day01/">
+        鐵人賽2019 Day01 前言
+      </a>
+    </h2>
+    
+    <time>
+      Oct 16, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/data-analysis/">data analysis</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>地理空間資料或簡稱GIS資料，無論是學術研究、資料科學、商業分析、或是各種資料採集等，或多或少都需要與空間資料相處。</p>
+<p>或許各路GIS相關的工作者，常會覺得明明<code>空間資料</code>與<code>非空間資料</code>差異只在於有無坐標資料，但實際處理起來卻常常遇到各種坑苦。</p>
+<p>有感於此，希望藉由這次<code>鐵人賽</code>的砥礪，攻略實務上處理GIS資料時<code>更進階</code>及更<code>自動化</code>的工具與技巧。</p>
+<blockquote>
+<p>這次30天的任務，主要以<code>Python</code>為主軸，配合<code>QGIS</code>及<code>空間資料庫</code>，熟悉GIS工作的<code>自動化</code>流程，解決空間資料分析或是資料工程上的問題。</p>
+</blockquote>
+
+    
+	  <div class="readmore">
+      <a href="/2018/10/16/ironman-2019-day01/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/19/ironman-2018-day30/">
+        鐵人賽Day 30- 最重要的回顧
+      </a>
+    </h2>
+    
+    <time>
+      Jan 19, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>第30天了，來回顧一下並發表心得吧！</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="30天的發文大綱"><a href="#30天的發文大綱" class="headerlink" title="30天的發文大綱"></a>30天的發文大綱</h2><p>這30天的大綱可以切為6塊，分述如下：<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/19/ironman-2018-day30/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/18/ironman-2018-day29/">
+        鐵人賽Day 29- WebGIS大觀園
+      </a>
+    </h2>
+    
+    <time>
+      Jan 18, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>到了第29天，想講的東西很多，但能寫的時間不多XD，所以決定在倒數第二天來看一些有趣的WebGIS。<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/18/ironman-2018-day29/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/Leaflet/">Leaflet</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/01/17/ironman-2018-day28/">
         鐵人賽Day 28- WebGL與3D GIS概觀
       </a>
@@ -169,437 +573,6 @@
         <a href="/tags/GIS/">GIS</a>
       
         <a href="/tags/WebGL/">WebGL</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/16/ironman-2018-day27/">
-        鐵人賽Day 27- WebGIS 加入D3.js圖表互動
-      </a>
-    </h2>
-    
-    <time>
-      Jan 16, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在WebGIS中加入一些資訊圖表，利用D3.js來實作圖表並與地圖互動，<a href="https://d3js.org/" target="_blank" rel="noopener">D3.js</a>非常具有彈性且多樣，能與地圖結合有錦上添花的感覺，let’s go!<br></p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/16/ironman-2018-day27/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/D3/">D3</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/15/ironman-2018-day26/">
-        鐵人賽Day 26- 在資料庫中操作空間資料-MongoDB
-      </a>
-    </h2>
-    
-    <time>
-      Jan 15, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>除了前一天有提到的關聯式資料庫具有地理空間函式庫，使用Key-Value的資料庫例如MongoDB也支援一些空間運算子，在不同應用場合可能會用到，就來嘗試看看。<br></p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/15/ironman-2018-day26/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/Mongodb/">Mongodb</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/13/ironman-2018-day25/">
-        鐵人賽Day 25- 在資料庫中操作空間資料-PostGIS
-      </a>
-    </h2>
-    
-    <time>
-      Jan 13, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PostGIS是PostgreSQL基於OpenGIS中的SFS規範(Simple Feature Specification for SQL)所實作出來的地理物件函式庫，而PostgreSQL則是一個關聯式資料庫的自由軟體(BSD license)，</p>
-<p>跟PostGIS類似的東西相當於MS SQL Server中的SQL Spatial、Oracle spatial、MySQL spatial。</p>
-<p>PostGIS在地理空間運算的實作function非常多，也可以與QGIS等軟體做結合。<br></p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/13/ironman-2018-day25/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/PostgreSQL/">PostgreSQL</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/12/ironman-2018-day24/">
-        鐵人賽Day 24- 在WebGIS加入Mapillary街景
-      </a>
-    </h2>
-    
-    <time>
-      Jan 12, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用<a href="https://www.mapillary.com/app/?lat=25.05576118895428&amp;lng=121.61677684859569&amp;z=17&amp;focus=map&amp;pKey=MiEVQvYuxJOmTgpS2TNK8w" target="_blank" rel="noopener"><strong>Mapillary的街景</strong></a>，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(<a href="https://zh.wikipedia.org/wiki/Mapillary" target="_blank" rel="noopener">wiki</a>)，目前Mapillary的資料已授權OpenStreetMap使用。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/12/ironman-2018-day24/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Mapillary/">Mapillary</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/11/ironman-2018-day23/">
-        鐵人賽Day 23- 在WebGIS中加入Google街景
-      </a>
-    </h2>
-    
-    <time>
-      Jan 11, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在地圖中加入另一個元素：街景。<br>到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/11/ironman-2018-day23/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Google/">Google</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/10/ironman-2018-day22/">
-        鐵人賽Day 22- WebGIS中加入Google Directions導航API
-      </a>
-    </h2>
-    
-    <time>
-      Jan 10, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，把它整合進我們的地圖。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/10/ironman-2018-day22/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Google/">Google</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/09/ironman-2018-day21/">
-        鐵人賽Day 21- 在WebGIS加入風場圖
-      </a>
-    </h2>
-    
-    <time>
-      Jan 9, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前幾天研究了內插、TIN、 Voronoi Diagram、Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)，這些都是很常見的webGIS資料視覺化應用，今天要來研究的是前陣子很常看到的<a href="https://earth.nullschool.net/" target="_blank" rel="noopener">全球風場圖</a>，看一下到底做了些什麼…</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/09/ironman-2018-day21/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Google/">Google</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/08/ironman-2018-day20/">
-        鐵人賽Day 20- WebGIS中的Contours、Heatmaps與Clustering資料呈現
-      </a>
-    </h2>
-    
-    <time>
-      Jan 8, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天延續昨天內插的議題，準備研究一下webGIS中的Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)等方法，用來增進原本只是點資料的資訊呈現方式。</p>
-<h2 id="等高線-或等值線"><a href="#等高線-或等值線" class="headerlink" title="等高線(或等值線)"></a>等高線(或等值線)</h2><p>要算<strong>等高線</strong>(contours)或<strong>等值線</strong>我們可以使用turf.js的isobands，要產製一個等值線圖的流程是：1.離散的資料 2.內插(turf.js要使用規則的points) 3.使用isobands。</p>
-<p>所以，延續昨天的IDW內插，我們內插一組gridType為points的資料後，想進一步將等值的範圍做整合，這個過程可以採用computer vision中的<a href="https://en.wikipedia.org/wiki/Marching_squares" target="_blank" rel="noopener">Marching squares</a>。</p>
-<p>這個方法主要需設定的東西是<strong>breaks</strong>，也就是要分值的斷點，例如<a href="在Marching Squares方法中，是以每四格點做pattern判定，所以例如三個色階會有3的4次方=81種情況，詳細可參考[wiki](https://en.wikipedia.org/wiki/Marching_squares">0, 5, 10, 15, 20, 25, 30</a>)。<br></p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/08/ironman-2018-day20/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Turf-js/">Turf.js</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/07/ironman-2018-day19/">
-        鐵人賽Day 19- 使用Turf.js進行空間資料內插
-      </a>
-    </h2>
-    
-    <time>
-      Jan 7, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/web/">web</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天的主題是空間資料<strong>內插(interpolation)</strong>，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成<strong>面狀成果</strong>，這樣除了方便資料視覺化，也可以進一步進行空間分析。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/07/ironman-2018-day19/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
-        <a href="/tags/GIS/">GIS</a>
-      
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Turf-js/">Turf.js</a>
       
 	  </div>
     
@@ -675,7 +648,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 16.57px; color: #494949">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.43px; color: #373737">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 17.43px; color: #373737">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
     </div>
 </div>
 

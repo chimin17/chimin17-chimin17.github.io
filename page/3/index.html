@@ -130,41 +130,36 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/17/ironman-2018-day28/">
-        鐵人賽Day 28- WebGL與3D GIS概觀
+      <a href="/2018/10/22/ironman-2019-day07/">
+        鐵人賽2019 Day07 進階幾何資料處理
       </a>
     </h2>
     
     <time>
-      Jan 17, 2018
+      Oct 22, 2018
     </time>
 		
     
     <div class='cats'>
-        <a href="/categories/web/">web</a>
+        <a href="/categories/data-analysis/">data analysis</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <h2 id="3D-GIS"><a href="#3D-GIS" class="headerlink" title="3D GIS"></a>3D GIS</h2><p>WebGIS已經逐步走向3D GIS時代，雖然說3D GIS已經發展很多年了，也有Google Earth這樣的產品，不過真的3D GIS在這幾年才比較有大進展，突破原因除了資料獲取的技術提升以外，主要還是跟Web技術息息相關，其中WebGL佔了重要角色。</p>
-<p>3D GIS雖然過去有Google Earth這種霸王級產品，但是其應用有限，而要說這幾年3D GIS發展及前進的速度可說是過去的好幾倍，這與WebGL發展有關，目前3D GIS仍是百家爭鳴階段，連互操作相關議題才剛有幾家大型龍頭爭奪完畢好讓自己的格式成為OGC標準(ESRI I3S勝出)，姑且不論很早起就已ready for use的3D空間分析演算法(與2D差異甚多)，3D GIS在格式、資料方面都與2D截然不同，所以，既然如此，今天就不討論那些，來瀏覽看看一些WebGL for 3D GIS的範例。<br></p>
+	  <p>今天的主題是延續<a href="https://ithelp.ithome.com.tw/articles/10203180" target="_blank" rel="noopener">Day04 幾何資料基本運算</a>，記錄一下在GIS向量資料中，可能會碰到但比較進階的幾何處理，今天的測試主要是圍繞在<code>shapely</code>的應用，<code>shapely</code>在<code>Geopandas</code>也有依賴，因此相關操作可以互相延伸。</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/17/ironman-2018-day28/">Read More</a>
+      <a href="/2018/10/22/ironman-2019-day07/">Read More</a>
     </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/WebGL/">WebGL</a>
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
       
 	  </div>
     
@@ -177,40 +172,38 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/16/ironman-2018-day27/">
-        鐵人賽Day 27- WebGIS 加入D3.js圖表互動
+      <a href="/2018/10/21/ironman-2019-day06/">
+        鐵人賽2019 Day06 其它資料聚合與geohash
       </a>
     </h2>
     
     <time>
-      Jan 16, 2018
+      Oct 21, 2018
     </time>
 		
     
     <div class='cats'>
-        <a href="/categories/web/">web</a>
+        <a href="/categories/data-analysis/">data analysis</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在WebGIS中加入一些資訊圖表，利用D3.js來實作圖表並與地圖互動，<a href="https://d3js.org/" target="_blank" rel="noopener">D3.js</a>非常具有彈性且多樣，能與地圖結合有錦上添花的感覺，let’s go!<br></p>
+	  <p>前一天的資料聚合，所舉的應用例是行政區村里，實作簡單的點資料與空間單元做結合，然而事實上，聚合的單元不限於行政區村里，以台灣來說，可以使用內政部最小統計區的空間單元來做資料聚合，最小統計區與其發佈區的劃設主要是根據<code>人口</code>，有關最小統計區請參考<a href="https://data.moi.gov.tw/MoiOD/Data/DataDetail.aspx?oid=03C1D0A5-1F39-4C1F-AA2E-BB37A0405369" target="_blank" rel="noopener">最小統計區圖｜MOI Open Data</a>。</p>
+<p>另外，也有特別針對其他用途的統計區：<a href="https://data.nat.gov.tw/dataset/5970" target="_blank" rel="noopener">經濟統計區圖資| 政府資料開放平臺</a>，或是如集水區等都可以採用前一天的方法，與點資料做整合，相關資料請自行參閱。</p>
+<p>今天要介紹的也與昨日的資料聚合有一點關係-<code>geohash</code><br></p>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/16/ironman-2018-day27/">Read More</a>
+      <a href="/2018/10/21/ironman-2019-day06/">Read More</a>
     </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/D3/">D3</a>
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
       
 	  </div>
     
@@ -223,40 +216,40 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/15/ironman-2018-day26/">
-        鐵人賽Day 26- 在資料庫中操作空間資料-MongoDB
+      <a href="/2018/10/20/ironman-2019-day05/">
+        鐵人賽2019 Day05 基本的資料聚合
       </a>
     </h2>
     
     <time>
-      Jan 15, 2018
+      Oct 20, 2018
     </time>
 		
     
     <div class='cats'>
-        <a href="/categories/web/">web</a>
+        <a href="/categories/data-analysis/">data analysis</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>除了前一天有提到的關聯式資料庫具有地理空間函式庫，使用Key-Value的資料庫例如MongoDB也支援一些空間運算子，在不同應用場合可能會用到，就來嘗試看看。<br></p>
+	  <p>在Pandas可以使用<code>groupby</code>等方法進行資料聚合<br>例如先前第三天的路燈資料，如果想看一下不同的統計成果，除了空間上的展示外，可以用資料內的行政區欄位(district)做聚合</p>
+<p>回顧這份資料，有district欄位表示行政區</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">light=gpd.read_file(&apos;output/light.shp&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">light</span><br></pre></td></tr></table></figure>
+<p><img src="/2018/10/20/ironman-2019-day05/55847807.png" alt="Screen Shot 2018-10-19 at 23.37.11.png"></p>
+<p>我們可以很簡單的用groupy做資料的的聚合<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">light.groupby(&apos;district&apos;).size()</span><br></pre></td></tr></table></figure></p>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/15/ironman-2018-day26/">Read More</a>
+      <a href="/2018/10/20/ironman-2019-day05/">Read More</a>
     </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/Mongodb/">Mongodb</a>
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
       
 	  </div>
     
@@ -269,42 +262,38 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/13/ironman-2018-day25/">
-        鐵人賽Day 25- 在資料庫中操作空間資料-PostGIS
+      <a href="/2018/10/19/ironman-2019-day04/">
+        鐵人賽2019 Day04 幾何資料基本運算
       </a>
     </h2>
     
     <time>
-      Jan 13, 2018
+      Oct 19, 2018
     </time>
 		
     
     <div class='cats'>
-        <a href="/categories/web/">web</a>
+        <a href="/categories/data-analysis/">data analysis</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PostGIS是PostgreSQL基於OpenGIS中的SFS規範(Simple Feature Specification for SQL)所實作出來的地理物件函式庫，而PostgreSQL則是一個關聯式資料庫的自由軟體(BSD license)，</p>
-<p>跟PostGIS類似的東西相當於MS SQL Server中的SQL Spatial、Oracle spatial、MySQL spatial。</p>
-<p>PostGIS在地理空間運算的實作function非常多，也可以與QGIS等軟體做結合。<br></p>
+	  <p>GeoDataFrame使操作GIS資料分析時更有彈性<br>我們可以很快對GIS的屬性資料的分析與過濾</p>
+<p>當然，也包括一些幾何空間的運算</p>
+<h2 id="坐標轉換"><a href="#坐標轉換" class="headerlink" title="坐標轉換"></a>坐標轉換</h2><p>坐標轉換幾乎是GIS第一門課，可以參考<a href="https://ithelp.ithome.com.tw/articles/10194371" target="_blank" rel="noopener">[Day10] 坐標系統及WebGIS常用的坐標轉換</a>有大致的說明。</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/13/ironman-2018-day25/">Read More</a>
+      <a href="/2018/10/19/ironman-2019-day04/">Read More</a>
     </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/PostgreSQL/">PostgreSQL</a>
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
       
 	  </div>
     
@@ -317,42 +306,38 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/12/ironman-2018-day24/">
-        鐵人賽Day 24- 在WebGIS加入Mapillary街景
+      <a href="/2018/10/18/ironman-2019-day03/">
+        鐵人賽2019 Day03 從Pandas到Geopandas的幾種方法
       </a>
     </h2>
     
     <time>
-      Jan 12, 2018
+      Oct 18, 2018
     </time>
 		
     
     <div class='cats'>
-        <a href="/categories/web/">web</a>
+        <a href="/categories/data-analysis/">data analysis</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用<a href="https://www.mapillary.com/app/?lat=25.05576118895428&amp;lng=121.61677684859569&amp;z=17&amp;focus=map&amp;pKey=MiEVQvYuxJOmTgpS2TNK8w" target="_blank" rel="noopener"><strong>Mapillary的街景</strong></a>，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(<a href="https://zh.wikipedia.org/wiki/Mapillary" target="_blank" rel="noopener">wiki</a>)，目前Mapillary的資料已授權OpenStreetMap使用。</p>
+	  <p>Geopandas可以讀取各GIS格式進行空間運算，<br>然而實際上我們可能拿到的資料不見得是GIS的格式</p>
+<p>不是GIS格式，但它可能是有坐標資訊的資料</p>
+<p>比較常見的會是一個csv,Excel含有經緯度或xy的資料，對於這樣的資料，我們可以把它轉為<code>Geopandas</code>的<code>GeoDataFrame</code>。</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/12/ironman-2018-day24/">Read More</a>
+      <a href="/2018/10/18/ironman-2019-day03/">Read More</a>
     </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
-      
-        <a href="/tags/web/">web</a>
-      
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/leaflet/">leaflet</a>
-      
-        <a href="/tags/Mapillary/">Mapillary</a>
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
       
 	  </div>
     
@@ -428,7 +413,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 16.57px; color: #494949">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 17.43px; color: #373737">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 17.43px; color: #373737">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
     </div>
 </div>
 
