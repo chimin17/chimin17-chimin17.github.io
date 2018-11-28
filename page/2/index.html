@@ -130,25 +130,22 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/10/28/ironman-2019-day13/">
-        鐵人賽2019 Day13 台鐵意外事件與folium練習-繪圖
+      <a href="/2018/11/09/ironman-2019-day25/">
+        鐵人賽2019 Day25 用Owslib操作WMS
       </a>
     </h2>
     
     <time>
-      Oct 28, 2018
+      Nov 9, 2018
     </time>
 		
   </section>
   <section class="article typo">
-	  <p>昨天我們已經整合了台鐵路線與對話的資料<br>今天就把圖畫完吧！</p>
-<p>首先，<br>再次看看昨天的成果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_lines_talk</span><br></pre></td></tr></table></figure>
-<p><img src="https://ithelp.ithome.com.tw/upload/images/20181028/201078166JDsBw1Y1c.png" alt="https://ithelp.ithome.com.tw/upload/images/20181028/201078166JDsBw1Y1c.png"></p>
+	  <p>今天要來介紹<code>owslib</code>，這個套件是python中拿來處理wms/wmts等服務的套件，<br>在<a href="https://matplotlib.org/basemap/api/basemap_api.html" target="_blank" rel="noopener">matplotlib basemap</a>也是使用這個套件，另外QGIS軟體中也有使用。</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/10/28/ironman-2019-day13/">Read More</a>
+      <a href="/2018/11/09/ironman-2019-day25/">Read More</a>
     </div>
     
     
@@ -170,23 +167,23 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/10/27/ironman-2019-day12/">
-        鐵人賽2019 Day12 台鐵意外事件與folium練習-續篇
+      <a href="/2018/11/08/ironman-2019-day24/">
+        鐵人賽2019 Day24 交通資料-國道ETC
       </a>
     </h2>
     
     <time>
-      Oct 27, 2018
+      Nov 8, 2018
     </time>
 		
   </section>
   <section class="article typo">
-	  <p>昨天做了一些前處理，<br>今天把昨天的處理好的資料做整合</p>
-<p>首先是宜蘭縣鐵道(polyline)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import geopandas as gpd</span><br><span class="line">rail_yilan=gpd.read_file(&apos;output/Rail_yilan.shp&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">rail_yilan</span><br></pre></td></tr></table></figure></p>
+	  <p>今天試著來看看高速公路局ETC的資料。</p>
+<p>交通與GIS的結合有許多應用，在實務上也有各種不同的議題，三言兩語也討論不完<br>既然討論不完就找一個資料來試試…</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/10/27/ironman-2019-day12/">Read More</a>
+      <a href="/2018/11/08/ironman-2019-day24/">Read More</a>
     </div>
     
     
@@ -208,25 +205,22 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/10/26/ironman-2019-day11/">
-        鐵人賽2019 Day11 台鐵意外事件與folium練習-前處理
+      <a href="/2018/11/07/ironman-2019-day23/">
+        鐵人賽2019 Day23 資料品質：幾何檢查(續篇)
       </a>
     </h2>
     
     <time>
-      Oct 26, 2018
+      Nov 7, 2018
     </time>
 		
   </section>
   <section class="article typo">
-	  <p>最近的台鐵意外事件，看到有媒體及網友製作前端的網頁地圖呈現通話紀錄，剛好昨天使用了folium，一時興起今天也來用folium做看看，今天先來做一些前處理</p>
-<blockquote>
-<p>ps. 另外，也祝傷者平安及亡者安息</p>
-</blockquote>
+	  <p>今天繼續GIS的幾何檢查的部分，主要處理的是polygon的接邊問題，這是一種常見的topology的問題。</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/10/26/ironman-2019-day11/">Read More</a>
+      <a href="/2018/11/07/ironman-2019-day23/">Read More</a>
     </div>
     
     
@@ -248,26 +242,22 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/10/25/ironman-2019-day10/">
-        鐵人賽2019 Day10 地圖互動folium
+      <a href="/2018/11/06/ironman-2019-day22/">
+        鐵人賽2019 Day22 資料品質：幾何檢查
       </a>
     </h2>
     
     <time>
-      Oct 25, 2018
+      Nov 6, 2018
     </time>
 		
   </section>
   <section class="article typo">
-	  <p><code>folium</code>是基於leaflet.js的python地圖套件，讓使用者可以很快速的使用python產生一些可互動的地圖。<br>我們可以很方便把加工後的GIS資料丟進去，並完成一個網頁地圖。</p>
-<blockquote>
-<p>leaflet: <a href="https://ithelp.ithome.com.tw/articles/10194830" target="_blank" rel="noopener">[Day 13] WebGIS中的向量資料-在Leaflet實作 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></p>
-</blockquote>
-<p>以下我們就快速來試一試</p>
+	  <p>GIS生產的過程中，在向量幾何資料部分有一些常用的位向關係檢查，這些檢查的品質指標在ArcGIS或是QGIS中都有各自的模組，例如商用軟體<code>ArcGIS</code>的<code>topology</code>系列模組(e.g. <code>Creating a topology</code>)。</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/10/25/ironman-2019-day10/">Read More</a>
+      <a href="/2018/11/06/ironman-2019-day22/">Read More</a>
     </div>
     
     
@@ -289,25 +279,22 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/10/24/ironman-2019-day09/">
-        鐵人賽2019 Day09 使用GeoPlot
+      <a href="/2018/11/05/ironman-2019-day21/">
+        鐵人賽2019 Day21 OSMnx應用(續篇)
       </a>
     </h2>
     
     <time>
-      Oct 24, 2018
+      Nov 5, 2018
     </time>
 		
   </section>
   <section class="article typo">
-	  <p>另外一個GIS資料畫圖的利器是Geoplot，它擴充了cartopy與matplotlib，讓GIS資料的視覺化更方便，當然，他也設計給Geopandas作為其資料的端口。</p>
-<blockquote>
-<p>有關geoplot的安裝，使用annaconda：<br>conda install geoplot -c conda-forge</p>
-</blockquote>
+	  <p>昨天我們主要應用OSM的路網資料，除了路網，OSMnx還有其他的資料可以使用，今天就繼續OSMnx吧！</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/10/24/ironman-2019-day09/">Read More</a>
+      <a href="/2018/11/05/ironman-2019-day21/">Read More</a>
     </div>
     
     
@@ -392,7 +379,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 17.43px; color: #373737">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 18.29px; color: #252525">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 19.14px; color: #121212">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 17.43px; color: #373737">web</a>
     </div>
 </div>
 

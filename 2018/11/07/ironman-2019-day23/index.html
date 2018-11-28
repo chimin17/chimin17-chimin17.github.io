@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>鐵人賽2019 Day23 資料品質：幾何檢查(續篇) | Chimin&#39;s Blog</title>
+  <meta name="description" content="you are never wrong to do the right thing" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天繼續GIS的幾何檢查的部分，主要處理的是polygon的接邊問題，這是一種常見的topology的問題。">
+<meta name="keywords" content="GIS,2019鐵人賽-30天精通GIS資料分析-使用Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鐵人賽2019 Day23 資料品質：幾何檢查(續篇)">
+<meta property="og:url" content="https://chimin17.github.io/2018/11/07/ironman-2019-day23/index.html">
+<meta property="og:site_name" content="Chimin&#39;s Blog">
+<meta property="og:description" content="今天繼續GIS的幾何檢查的部分，主要處理的是polygon的接邊問題，這是一種常見的topology的問題。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181107/20107816SzAZQoYlpv.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181107/20107816Fc64O9SC1P.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181107/20107816euXaTBcYPC.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181107/20107816a5xCXg1QjZ.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181107/20107816nbMLpVpqm6.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181107/20107816orUuH7zKCb.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181107/20107816cWR4bVRJxM.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181107/20107816BIYcx2Ldzr.png">
+<meta property="og:updated_time" content="2018-11-28T03:45:49.631Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鐵人賽2019 Day23 資料品質：幾何檢查(續篇)">
+<meta name="twitter:description" content="今天繼續GIS的幾何檢查的部分，主要處理的是polygon的接邊問題，這是一種常見的topology的問題。">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20181107/20107816SzAZQoYlpv.png">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Chimin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ironman-2019-day23"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/2018/11/07/ironman-2019-day23/">
+    	鐵人賽2019 Day23 資料品質：幾何檢查(續篇)
+    </a>
+  </h2>
+	<time>
+	  Nov 7, 2018
+	</time>
+	
+	</section>
+	
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gap-and-sliver-polygon"><span class="toc-number">1.</span> <span class="toc-text">gap and sliver polygon</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#檢查方法"><span class="toc-number">2.</span> <span class="toc-text">檢查方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修正"><span class="toc-number">3.</span> <span class="toc-text">修正</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#後記"><span class="toc-number">4.</span> <span class="toc-text">後記</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>今天繼續GIS的幾何檢查的部分，主要處理的是polygon的接邊問題，這是一種常見的topology的問題。</p>
+<a id="more"></a>
+<p>大綱: </p>
+<ul>
+<li>gap and sliver polygon</li>
+<li>檢查方法</li>
+<li>修正</li>
+</ul>
+<h2 id="gap-and-sliver-polygon"><a href="#gap-and-sliver-polygon" class="headerlink" title="gap and sliver polygon"></a>gap and sliver polygon</h2><p>兩個相接的polygon可能因為繪製的錯誤，或是浮點數的位數問題，造成邊界些微的不吻合(shp檔沒有儲存topology)，可能有兩種情況，第一種是中間有縫隙(gap)，第二種則是中間有一些重疊(sliver)。</p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181107/20107816SzAZQoYlpv.png" alt="https://ithelp.ithome.com.tw/upload/images/20181107/20107816SzAZQoYlpv.png"><br><img src="https://ithelp.ithome.com.tw/upload/images/20181107/20107816Fc64O9SC1P.png" alt="https://ithelp.ithome.com.tw/upload/images/20181107/20107816Fc64O9SC1P.png"></p>
+<h2 id="檢查方法"><a href="#檢查方法" class="headerlink" title="檢查方法"></a>檢查方法</h2><p>為了測試，我自行畫了一個範例：<br><img src="https://ithelp.ithome.com.tw/upload/images/20181107/20107816euXaTBcYPC.png" alt="https://ithelp.ithome.com.tw/upload/images/20181107/20107816euXaTBcYPC.png"></p>
+<p>總共有三個Polygon，紅色部分highlight起來凸顯邊界問題，另外一個Polygon則是分開的</p>
+<p>要檢查是否有因邊界不吻合所造成gap或sliver，<br>最簡單的方法，可以將polygon組為multyPolygon，利用shapely的is_valid檢查：</p>
+<blockquote>
+<p>A valid MultiPolygon may not collect any overlapping polygons.  — Shapely</p>
+</blockquote>
+<p>用Geopandas讀自己畫的Polygon<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import geopandas as gpd</span><br><span class="line">from shapely.geometry import MultiPolygon, Polygon</span><br><span class="line">test=gpd.read_file(&apos;data/test.shp&apos;,encoding=&apos;utf-8&apos;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181107/20107816a5xCXg1QjZ.png" alt="https://ithelp.ithome.com.tw/upload/images/20181107/20107816a5xCXg1QjZ.png"></p>
+<p>將polygon丟進去multypolygon</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from shapely.geometry import MultiPolygon, Polygon</span><br><span class="line">data=[]</span><br><span class="line">for i in range(len(test.geometry)):</span><br><span class="line">    data.append(test[&apos;geometry&apos;][i])</span><br><span class="line">mp = MultiPolygon(data)</span><br><span class="line">mp_obj = gpd.GeoSeries(mp)</span><br><span class="line">mp_obj.is_valid</span><br></pre></td></tr></table></figure>
+<p>回傳:<code>False</code><br>由於很明顯有不一致的現象，所以回傳是False</p>
+<h2 id="修正"><a href="#修正" class="headerlink" title="修正"></a>修正</h2><p>確定這分資料有邊界的問題後，接下來是修正<br>昨天提到，修正最好還是在GIS軟體中編修介面中操作，<br>但我們可以試著將要修正的區塊找出來</p>
+<p>首先可以使用unary_union將聯集的部分合併<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">union = test.geometry.unary_union</span><br><span class="line">union</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181107/20107816nbMLpVpqm6.png" alt="https://ithelp.ithome.com.tw/upload/images/20181107/20107816nbMLpVpqm6.png"></p>
+<p>結果由三個polygon被合併為兩個<br>1號polygon是被合併的部分，我們試著找出邊界不一致的區塊<br>可以例用<code>difference</code>跟<code>intersection</code>的運算找出gap或sliver</p>
+<p>找gap:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># gap</span><br><span class="line">gap = list(union)[1]  # </span><br><span class="line">gap=gap.difference(test[&apos;geometry&apos;][2]).difference(test[&apos;geometry&apos;][1])</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181107/20107816orUuH7zKCb.png" alt="https://ithelp.ithome.com.tw/upload/images/20181107/20107816orUuH7zKCb.png"></p>
+<p>找sliver<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># sliver</span><br><span class="line">sliver=test[&apos;geometry&apos;][2].intersection(test[&apos;geometry&apos;][1])</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181107/20107816cWR4bVRJxM.png" alt="https://ithelp.ithome.com.tw/upload/images/20181107/20107816cWR4bVRJxM.png"></p>
+<p>把成果疊一起示意：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ax=mp_obj.plot()</span><br><span class="line">gap_obj = gpd.GeoSeries(gap)</span><br><span class="line">sliver_obj = gpd.GeoSeries(sliver)</span><br><span class="line">ax=gap_obj.plot(ax=ax,color=&apos;yellow&apos;)</span><br><span class="line">sliver_obj.plot(ax=ax,color=&apos;red&apos;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181107/20107816BIYcx2Ldzr.png" alt="https://ithelp.ithome.com.tw/upload/images/20181107/20107816BIYcx2Ldzr.png"></p>
+<p>找出gap及sliver的區塊以後，建議回到QGIS加以編修，利用正確的數化工具將錯誤修正。<br>個人認為找出錯誤的部分比自動修正還要重要，<br>因為自動修正時編號1號的區塊很難程式化的決定要採取左邊或右邊的邊界，<br>有時候會遇到硬條件或是其他因素，自動化會比較瑣碎<br>(工人智慧?XD)</p>
+<h2 id="後記"><a href="#後記" class="headerlink" title="後記"></a>後記</h2><p>幾何資料的正確性對資料品質影響很大，錯誤的資料在幾何運算也會有問題<br>今天的案例是一個測試，跟幾何有關的情況還有一些，有機會再來研究。</p>
+<p>參考資料<br><a href="https://gis.stackexchange.com/questions/277334/shapely-polygon-union-results-in-strange-artifacts-of-tiny-non-overlapping-area" target="_blank" rel="noopener">https://gis.stackexchange.com/questions/277334/shapely-polygon-union-results-in-strange-artifacts-of-tiny-non-overlapping-area</a><br><a href="https://www.gislounge.com/digitizing-errors-in-gis/" target="_blank" rel="noopener">https://www.gislounge.com/digitizing-errors-in-gis/</a></p>
+
+  	</div>
+	  
+	  <div class="article-tags tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+		
+	
+		<div class="art-item-footer">
+				
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/11/08/ironman-2019-day24/" rel="prev"  title="鐵人賽2019 Day24 交通資料-國道ETC">
+						鐵人賽2019 Day24 交通資料-國道ETC 
+					</a></span>
+				
+				
+					<span class="art-item-right">next：<a href="/2018/11/06/ironman-2019-day22/" rel="next"  title="鐵人賽2019 Day22 資料品質：幾何檢查">
+						鐵人賽2019 Day22 資料品質：幾何檢查
+					</a><i class="icon icon-chevron-thin-right"></i></span>
+				
+		</div>
+	
+	</section>
+	
+		<section id="comments">
+			<div id="disqus_thread"></div>
+		</section>
+	
+</article>
+<script>
+	window.subData = {
+		title: '鐵人賽2019 Day23 資料品質：幾何檢查(續篇)',
+		tools: true
+	}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1797">
+            <div class='name'>30天精通GIS資料分析-使用Python</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541">
+            <div class='name'>30天打造我的WebGIS</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://developer.tomtom.com/">
+            <div class='name'>TomTom for developer</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://medium.com/tag/chiminevelynswedding">
+            <div class='name'>30 day challallenge for weddings</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>28</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 18.29px; color: #252525">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 19.14px; color: #121212">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 17.43px; color: #373737">web</a>
+    </div>
+</div>
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/chimin17" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://linkedin.com/in/chi-min-chiu-aba7a5148/" class="social linkedin"
+          target="_blank" rel="external">
+          <span class="icon icon-linkedin"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+<script>
+  var disqus_shortname = 'chimin17';
+  
+  var disqus_url = 'https://chimin17.github.io/2018/11/07/ironman-2019-day23/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

@@ -130,46 +130,48 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/08/26/annaconda/">
-        annaconda python環境快速搭建
+      <a href="/2018/01/02/ironman-2018-day14/">
+        鐵人賽Day 14- webgis中的網格資料
       </a>
     </h2>
     
     <time>
-      Aug 26, 2017
+      Jan 2, 2018
     </time>
 		
     
     <div class='cats'>
-        <a href="/categories/python/">python</a>
+        <a href="/categories/web/">web</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <p>annoconda快速搭建</p>
-<h1 id="1-下載"><a href="#1-下載" class="headerlink" title="1.下載"></a>1.下載</h1><p>–<br>首先去annconda<a href="https://www.continuum.io/downloads" target="_blank" rel="noopener">官網</a>下載<br>選擇x64環境或是x86之安裝檔<br>例如要跑arcpy必須在x86 環境執行<br>經測試x86 跟x64 annaconda可以並存</p>
-<h1 id="2-安裝"><a href="#2-安裝" class="headerlink" title="2. 安裝"></a>2. 安裝</h1><h3 id="1-一鍵安裝Anaconda"><a href="#1-一鍵安裝Anaconda" class="headerlink" title="1.一鍵安裝Anaconda"></a>1.一鍵安裝Anaconda</h3><h3 id="2-Anaconda-Navigator"><a href="#2-Anaconda-Navigator" class="headerlink" title="2.Anaconda Navigator"></a>2.Anaconda Navigator</h3><ul>
-<li>設定環境(例如設定python2.7, python3.6環境)</li>
-</ul>
-<h3 id="3-使用conda-prompt"><a href="#3-使用conda-prompt" class="headerlink" title="3.使用conda prompt"></a>3.使用conda prompt</h3><ul>
-<li>pip install 可擴充相關模組</li>
-</ul>
-<h3 id="4-IPython"><a href="#4-IPython" class="headerlink" title="4.IPython"></a>4.IPython</h3><ul>
-<li>逐行操作</li>
-</ul>
-<h3 id="5-使用spyder"><a href="#5-使用spyder" class="headerlink" title="5.使用spyder"></a>5.使用spyder</h3><ul>
-<li>run, variable viewer</li>
-</ul>
-<h1 id="3-模組"><a href="#3-模組" class="headerlink" title="3.模組"></a>3.模組</h1><h3 id="1-Anaconda-32bit-with-python2-7"><a href="#1-Anaconda-32bit-with-python2-7" class="headerlink" title="1.Anaconda 32bit- with python2.7"></a>1.Anaconda 32bit- with python2.7</h3><h3 id="2-Archook-Arcpy"><a href="#2-Archook-Arcpy" class="headerlink" title="2.Archook Arcpy"></a>2.Archook Arcpy</h3><ul>
-<li>找尋環境中的python路徑 -<a href="https://github.com/JamesRamm/archook" target="_blank" rel="noopener">Github Githook</a></li>
-<li>pip install archook<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">python=1</span><br><span class="line">import archook #The module which locates arcgis</span><br><span class="line">archook.get_arcpy()</span><br><span class="line">import arcpy</span><br><span class="line"></span><br><span class="line">#下面就可以寫python了#</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="4-基本操作"><a href="#4-基本操作" class="headerlink" title="4.基本操作"></a>4.基本操作</h1><h3 id="1-if"><a href="#1-if" class="headerlink" title="1.if"></a>1.if</h3><h3 id="2-for"><a href="#2-for" class="headerlink" title="2.for"></a>2.for</h3><h3 id="3-list-array-tuple"><a href="#3-list-array-tuple" class="headerlink" title="3.list, array,tuple"></a>3.list, array,tuple</h3><p>============================</p>
-<h1 id="5-常用模組"><a href="#5-常用模組" class="headerlink" title="5.常用模組"></a>5.常用模組</h1><h3 id="1-shapefile"><a href="#1-shapefile" class="headerlink" title="1.shapefile"></a>1.shapefile</h3><h3 id="2-math-csv"><a href="#2-math-csv" class="headerlink" title="2.math,csv"></a>2.math,csv</h3><h3 id="3-繪圖matplotlib"><a href="#3-繪圖matplotlib" class="headerlink" title="3.繪圖matplotlib"></a>3.繪圖matplotlib</h3>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>網格(raster)資料是指以規則網格的方式呈現空間資料，可能是<a href="https://gist.github.com/chimin17/a15dd5a8f4664f8a7377e0d8a33673f5" target="_blank" rel="noopener">長這樣</a>。<br><img src="https://ppt.cc/fJZEyx@.png" alt=""></p>
+<p>上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是…</p>
+<p>假設今天網格的間隔<strong>更密一些</strong>，<strong>範圍在大一些</strong>，其資料量可能會很可觀，這時候無論在計算或是前端展示上，GIS傾向會使用影像方式儲存。</p>
+<p>再者，上述案例在網格式資料是<strong>單一波段</strong>的資料(也就是只有solRad這個屬性)，網格資料大多都是<strong>三個波段</strong>的資料(例如正射影像、衛星影像)，相關討論我們在<a href="https://ithelp.ithome.com.tw/articles/10193701" target="_blank" rel="noopener">[Day 6] 常見的GIS資料格式</a>有探討過。</p>
+<p>在webGIS中，我們可能比較少直接處理網格資料，通常都是使用它，今天我們試著使用Leaflet的raster圖層功能。<br></p>
 
     
+	  <div class="readmore">
+      <a href="/2018/01/02/ironman-2018-day14/">Read More</a>
+    </div>
     
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
     
   </section>
 </article>
@@ -180,13 +182,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/08/25/hello-world/">
-        Hello Hexo
+      <a href="/2018/01/01/ironman-2018-day13/">
+        鐵人賽Day 13- webgis中的向量資料:在leaflet實作
       </a>
     </h2>
     
     <time>
-      Aug 25, 2017
+      Jan 1, 2018
     </time>
 		
     
@@ -196,65 +198,171 @@
 
   </section>
   <section class="article typo">
-	  <p>Hexo 是基於node.js 開發的部落格框架，文章內容主要是以markdown撰寫，並可藉由hexo-git-deploy部署到 <a href="https://pages.github.com/" target="_blank" rel="noopener">Github pages</a>靜態網頁服務<br>部署完成後網址: https://&lt;帳號&gt;.github.io</p>
-<ul>
-<li>官網 <a href="https://hexo.io/zh-tw/index.html" target="_blank" rel="noopener">Hexo</a>  ps.似乎國人開發的</li>
-<li>主題包 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">themes</a></li>
-</ul>
-<p>搭建Hexo步驟如下</p>
-<ul>
-<li>安裝Node.js</li>
-<li><p>安裝Hexo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo -g</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>創建專案資料夾，並在裡面初始化<br>初始化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>喜好設定 _config.yml （可使用預設）</p>
-<ul>
-<li><p>喜好設定 下載next主題(官網有很多主題)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>喜好設定 修改_config.yml的theme為next </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- theme: next</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>喜好設定 修改theme/next/_config.yml的menu項目自定義選單 </p>
-</li>
-</ul>
-</li>
-<li><p>如果要新增貼文 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post hello world</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果要新增頁面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page about</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>編譯</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在本機運行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如要部署到Github.io</p>
-<ul>
-<li>創建一個repository名稱為&lt;帳號&gt;.github.io</li>
-<li>在repository開通Github pages</li>
-</ul>
-</li>
-<li><p>設定好 _config.yml 的 deploy參數 (github), 部署</p>
-<h2 id="Docs-https-hexo-io-docs-deployment-html"><a href="#Docs-https-hexo-io-docs-deployment-html" class="headerlink" title="Docs: https://hexo.io/docs/deployment.html"></a>Docs: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">https://hexo.io/docs/deployment.html</a></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repository: git@github.com:&lt;帳號&gt;/&lt;帳號&gt;.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo delploy</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://ithelp.ithome.com.tw/articles/10192391" target="_blank" rel="noopener">[Day1]webGIS-資訊時代的地理大發現</a>的引言中提到webgis的前端實踐可以透過幾個地圖API，本次鐵人賽將都以<a href="http://leafletjs.com/" target="_blank" rel="noopener">leaflet</a>做說明。<br></p>
 
-
+    
+	  <div class="readmore">
+      <a href="/2018/01/01/ironman-2018-day13/">Read More</a>
+    </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/Hexo/">Hexo</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
       
-        <a href="/tags/github/">github</a>
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/31/ironman-2018-day12/">
+        鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon
+      </a>
+    </h2>
+    
+    <time>
+      Dec 31, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/31/ironman-2018-day12/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/30/ironman-2018-day11/">
+        鐵人賽Day 11- webgis中的向量圖層-除了點資料以外的幾何
+      </a>
+    </h2>
+    
+    <time>
+      Dec 30, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>在<a href="https://ithelp.ithome.com.tw/articles/10192976" target="_blank" rel="noopener">Day4</a>、<a href="https://ithelp.ithome.com.tw/articles/10193028" target="_blank" rel="noopener">Day5</a>及<a href="https://ithelp.ithome.com.tw/articles/10193965" target="_blank" rel="noopener">Day8</a>、<a href="https://ithelp.ithome.com.tw/articles/10194193" target="_blank" rel="noopener">Day9</a>談的資料都是點資料，一般使用者最熟悉也最需要的資料也是點，例如各式各樣的POI資料..<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/30/ironman-2018-day11/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/29/ironman-2018-day10/">
+        鐵人賽Day 10-坐標系統及webgis常用的坐標轉換
+      </a>
+    </h2>
+    
+    <time>
+      Dec 29, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p><strong>坐標系統</strong>是GIS、大地測量及製圖的核心，而<strong>坐標轉換</strong>則是開發webGIS最常會遇到的課題。</p>
+<blockquote>
+<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
+</blockquote>
+<h2 id="坐標系統"><a href="#坐標系統" class="headerlink" title="坐標系統"></a>坐標系統</h2><h3 id="大地坐標系統-地球是近似橢球"><a href="#大地坐標系統-地球是近似橢球" class="headerlink" title="大地坐標系統: 地球是近似橢球"></a>大地坐標系統: 地球是近似橢球</h3><p>由於地球是近似橢球，會有很多模式來描述這個橢球，以及球上面的點位坐標，描述這個橢球及球上位置的系統稱作<strong>大地坐標系統</strong>，需要定義的東西很多，包含幾何面的橢球參數、其他物理面及觀測資料的整合推估，GPS使用的WGS84經緯度屬此類，簡單來說，大地坐標系統是想描述橢球及球上面的位置。</p>
+<h3 id="Map-projection-一切都是投影"><a href="#Map-projection-一切都是投影" class="headerlink" title="Map projection: 一切都是投影"></a>Map projection: 一切都是投影</h3><p>為了製造地圖，人們必須把近似橢球狀的地球投影到平面上，這個坐標系統稱作投影坐標系統，只要是地圖，一定會採用投影系統。<br>投影的方式有很多，麥卡托、藍柏特投影等等…，而從<a href="https://www.jasondavies.com/maps/transition/" target="_blank" rel="noopener">Map Projection Transitions</a>網站的各種投影機制的模擬圖可以看得出來，投影一定會有失真的情況，所以才會常常有以下新聞出現:</p>
+<blockquote>
+<p><a href="https://news.tvbs.com.tw/fun/728573" target="_blank" rel="noopener">400年來世界地圖都失真　各國大小差很多</a><br><a href="https://kknews.cc/zh-tw/news/899oqn.html" target="_blank" rel="noopener">格陵蘭島到底有多大，在地圖上一直是個謎</a><br></p></blockquote>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/29/ironman-2018-day10/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/proj4/">proj4</a>
       
 	  </div>
     
@@ -272,6 +380,11 @@
       <span class="text">Previous</span>
     </a>
     
+    
+    <a class="next" rel="next" href="/page/11/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
     
   </nav>
   
@@ -325,7 +438,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 17.43px; color: #373737">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 18.29px; color: #252525">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 19.14px; color: #121212">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 17.43px; color: #373737">web</a>
     </div>
 </div>
 

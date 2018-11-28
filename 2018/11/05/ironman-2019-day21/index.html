@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>鐵人賽2019 Day21 OSMnx應用(續篇) | Chimin&#39;s Blog</title>
+  <meta name="description" content="you are never wrong to do the right thing" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="昨天我們主要應用OSM的路網資料，除了路網，OSMnx還有其他的資料可以使用，今天就繼續OSMnx吧！">
+<meta name="keywords" content="GIS,2019鐵人賽-30天精通GIS資料分析-使用Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鐵人賽2019 Day21 OSMnx應用(續篇)">
+<meta property="og:url" content="https://chimin17.github.io/2018/11/05/ironman-2019-day21/index.html">
+<meta property="og:site_name" content="Chimin&#39;s Blog">
+<meta property="og:description" content="昨天我們主要應用OSM的路網資料，除了路網，OSMnx還有其他的資料可以使用，今天就繼續OSMnx吧！">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181105/20107816qJaf5ZbYgW.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181105/20107816NTJMUoMbmc.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181105/20107816R4s1H8uIBK.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181105/20107816KzcQiTB79J.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181105/20107816VegBOoGXsH.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181105/20107816erpFbC3Axc.png">
+<meta property="og:updated_time" content="2018-11-28T03:45:37.581Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鐵人賽2019 Day21 OSMnx應用(續篇)">
+<meta name="twitter:description" content="昨天我們主要應用OSM的路網資料，除了路網，OSMnx還有其他的資料可以使用，今天就繼續OSMnx吧！">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20181105/20107816qJaf5ZbYgW.png">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Chimin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ironman-2019-day21"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/2018/11/05/ironman-2019-day21/">
+    	鐵人賽2019 Day21 OSMnx應用(續篇)
+    </a>
+  </h2>
+	<time>
+	  Nov 5, 2018
+	</time>
+	
+	</section>
+	
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#building"><span class="toc-number">1.</span> <span class="toc-text">building</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#街道方向角"><span class="toc-number">2.</span> <span class="toc-text">街道方向角</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>昨天我們主要應用OSM的路網資料，除了路網，OSMnx還有其他的資料可以使用，今天就繼續OSMnx吧！</p>
+<a id="more"></a>
+<p>大綱：</p>
+<ul>
+<li>building</li>
+<li>街道方向角</li>
+</ul>
+<h2 id="building"><a href="#building" class="headerlink" title="building"></a>building</h2><p>OSMnx有一個buidling模組，跟路網一樣，他可以把OSM上的建物輪廓資料取下，取下來的資料是GeoDataFrame</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b=ox.buildings.buildings_from_point((25.048545,121.51123), 300, retain_invalid=False)</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181105/20107816qJaf5ZbYgW.png" alt="https://ithelp.ithome.com.tw/upload/images/20181105/20107816qJaf5ZbYgW.png"><br>building可以直接繪圖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ox.buildings.plot_buildings(b)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181105/20107816NTJMUoMbmc.png" alt="https://ithelp.ithome.com.tw/upload/images/20181105/20107816NTJMUoMbmc.png"></p>
+<p>繪圖的部分，還可以加入一些效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">point = (25.048545,121.51123)</span><br><span class="line">dist = 300</span><br><span class="line">gdf = ox.buildings_from_point(point=point, distance=dist)</span><br><span class="line">gdf_proj = ox.project_gdf(gdf)</span><br><span class="line">bbox = ox.bbox_from_point(point=point, distance=dist, project_utm=True)</span><br><span class="line">ox.plot_buildings(gdf_proj, bgcolor=&apos;#333333&apos;, color=&apos;w&apos;, figsize=(4,4), bbox=bbox, close=True)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181105/20107816R4s1H8uIBK.png" alt="https://ithelp.ithome.com.tw/upload/images/20181105/20107816R4s1H8uIBK.png"></p>
+<p>下面網站有一些世界各國城市的某些角落，有興趣的人可以看看！<br><a href="https://geoffboeing.com/2017/04/urban-form-analysis-openstreetmap/" target="_blank" rel="noopener">Urban Form Analysis with OpenStreetMap Data - Geoff Boeing</a></p>
+<h2 id="街道方向角"><a href="#街道方向角" class="headerlink" title="街道方向角"></a>街道方向角</h2><p>OSMnx有提供一個計算街道方向角的範例，使用<code>add_edge_bearings</code>，而方向角的值域是0-360度，官網也提供一個圖表範例，看起來滿有fu的。</p>
+<p>我們就以台北火車站為中心，方圓1.5km，大概就是古台北城的範圍來做範例吧！</p>
+<p>台北火車站的坐標大概是<code>25.048545,121.51123</code>，取得資料<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">G = ox.graph_from_point((25.048545,121.51123), distance=1500, network_type=&apos;drive&apos;)</span><br><span class="line">fig, ax = ox.plot_graph(ox.project_graph(G), node_size=0)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181105/20107816KzcQiTB79J.png" alt="https://ithelp.ithome.com.tw/upload/images/20181105/20107816KzcQiTB79J.png"></p>
+<p>計算方向角add edge bearings:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G = ox.add_edge_bearings(G)</span><br></pre></td></tr></table></figure></p>
+<p>把方向角整理一下，bar chart<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bearings = pd.Series([data[&apos;bearing&apos;] for u, v, k, data in G.edges(keys=True, data=True)])</span><br><span class="line">ax = bearings.hist(bins=30, zorder=2, alpha=0.8)</span><br><span class="line">xlim = ax.set_xlim(0, 360)</span><br><span class="line">ax.set_title(&apos;bearning&apos;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181105/20107816VegBOoGXsH.png" alt="https://ithelp.ithome.com.tw/upload/images/20181105/20107816VegBOoGXsH.png"></p>
+<p>以雷達圖繪圖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">n = 30</span><br><span class="line">bins = [ang * 360 / n for ang in range(0, n + 1)]</span><br><span class="line">count, division = np.histogram(bearings, bins=bins, range=(bearings.min(), bearings.max()))</span><br><span class="line">division = division[0:-1]</span><br><span class="line">width =  2 * np.pi/n</span><br><span class="line">ax = plt.subplot(111, projection=&apos;polar&apos;)</span><br><span class="line">ax.set_theta_zero_location(&apos;N&apos;)</span><br><span class="line">ax.set_theta_direction(&apos;clockwise&apos;)</span><br><span class="line">bars = ax.bar(division * np.pi/180 - width * 0.5 , count, width=width, bottom=20.0)</span><br><span class="line">ax.set_title(&apos;street network edge bearings&apos;, y=1.1)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181105/20107816erpFbC3Axc.png" alt="https://ithelp.ithome.com.tw/upload/images/20181105/20107816erpFbC3Axc.png"></p>
+<p>(台北市應該算滿正的)</p>
+
+  	</div>
+	  
+	  <div class="article-tags tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+		
+	
+		<div class="art-item-footer">
+				
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/11/06/ironman-2019-day22/" rel="prev"  title="鐵人賽2019 Day22 資料品質：幾何檢查">
+						鐵人賽2019 Day22 資料品質：幾何檢查 
+					</a></span>
+				
+				
+					<span class="art-item-right">next：<a href="/2018/11/04/ironman-2019-day20/" rel="next"  title="鐵人賽2019 Day20 OSMnx應用">
+						鐵人賽2019 Day20 OSMnx應用
+					</a><i class="icon icon-chevron-thin-right"></i></span>
+				
+		</div>
+	
+	</section>
+	
+		<section id="comments">
+			<div id="disqus_thread"></div>
+		</section>
+	
+</article>
+<script>
+	window.subData = {
+		title: '鐵人賽2019 Day21 OSMnx應用(續篇)',
+		tools: true
+	}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1797">
+            <div class='name'>30天精通GIS資料分析-使用Python</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541">
+            <div class='name'>30天打造我的WebGIS</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://developer.tomtom.com/">
+            <div class='name'>TomTom for developer</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://medium.com/tag/chiminevelynswedding">
+            <div class='name'>30 day challallenge for weddings</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>28</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 18.29px; color: #252525">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 19.14px; color: #121212">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 17.43px; color: #373737">web</a>
+    </div>
+</div>
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/chimin17" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://linkedin.com/in/chi-min-chiu-aba7a5148/" class="social linkedin"
+          target="_blank" rel="external">
+          <span class="icon icon-linkedin"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+<script>
+  var disqus_shortname = 'chimin17';
+  
+  var disqus_url = 'https://chimin17.github.io/2018/11/05/ironman-2019-day21/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

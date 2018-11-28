@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>鐵人賽2019 Day29 Pysal空間自相關 | Chimin&#39;s Blog</title>
+  <meta name="description" content="you are never wrong to do the right thing" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Tobler地理學第一定律：all attribute values on a geographic surface are related to each other, but closer values are more strongly related than are more distant ones. 空間自相關指的是空間單元的數據與其周遭空間單元的相似性，今天我們以Pysal的說明頁">
+<meta name="keywords" content="GIS,2019鐵人賽-30天精通GIS資料分析-使用Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鐵人賽2019 Day29 Pysal空間自相關">
+<meta property="og:url" content="https://chimin17.github.io/2018/11/13/ironman-2019-day29/index.html">
+<meta property="og:site_name" content="Chimin&#39;s Blog">
+<meta property="og:description" content="Tobler地理學第一定律：all attribute values on a geographic surface are related to each other, but closer values are more strongly related than are more distant ones. 空間自相關指的是空間單元的數據與其周遭空間單元的相似性，今天我們以Pysal的說明頁">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181113/20107816Gd7bRaRbqi.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181113/20107816kvLMZ8BZUb.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181113/201078169Fcq3GQoI7.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181113/20107816JBzcmiVdEb.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181113/20107816a15ZTDAKN4.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181114/20107816HBGWlyiQrP.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181113/20107816cKmnN01rdO.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181113/20107816G2NpcEw9bu.png">
+<meta property="og:updated_time" content="2018-11-28T03:53:45.080Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鐵人賽2019 Day29 Pysal空間自相關">
+<meta name="twitter:description" content="Tobler地理學第一定律：all attribute values on a geographic surface are related to each other, but closer values are more strongly related than are more distant ones. 空間自相關指的是空間單元的數據與其周遭空間單元的相似性，今天我們以Pysal的說明頁">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20181113/20107816Gd7bRaRbqi.png">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Chimin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ironman-2019-day29"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/2018/11/13/ironman-2019-day29/">
+    	鐵人賽2019 Day29 Pysal空間自相關
+    </a>
+  </h2>
+	<time>
+	  Nov 13, 2018
+	</time>
+	
+	</section>
+	
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#spatial-weight與attribute-weight"><span class="toc-number">1.</span> <span class="toc-text">spatial weight與attribute weight</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全域空間自相關"><span class="toc-number">1.1.</span> <span class="toc-text">全域空間自相關</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#區域空間自相關"><span class="toc-number">1.2.</span> <span class="toc-text">區域空間自相關</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#參考資料"><span class="toc-number">2.</span> <span class="toc-text">參考資料</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>Tobler地理學第一定律：all attribute values on a geographic surface are related to each other, but closer values are more strongly related than are more distant ones.</p>
+<p><code>空間自相關</code>指的是空間單元的數據與其周遭空間單元的相似性，<br>今天我們以Pysal的說明頁面(<a href="http://darribas.org/gds_scipy16/ipynb_md/04_esda.html" target="_blank" rel="noopener">ESDA with PySAL</a>)為主軸，一步步進行與<code>空間自相關</code>相關的測試</p>
+<a id="more"></a>
+<p>大綱:</p>
+<ul>
+<li>spatial weight與attribute weight</li>
+<li>全域空間自相關</li>
+<li>區域空間自相關</li>
+</ul>
+<h2 id="spatial-weight與attribute-weight"><a href="#spatial-weight與attribute-weight" class="headerlink" title="spatial weight與attribute weight"></a>spatial weight與attribute weight</h2><p>最簡單的<code>spatial weight</code>可以<code>距離相關</code>為weight<br>以外，可以進一步用<code>相鄰性</code>計算spatial weight，常見包含Rook、Queen、Bishop等相鄰性<br>請參考<a href="http://darribas.org/gds_scipy16/ipynb_md/03_spatial_weights.html" target="_blank" rel="noopener">Pysal</a><br>還有其他如<code>核密度權重</code>等等</p>
+<p>在計算之前，需要一些前處理<br>我們在第九天處理一個行政區路燈統計<br>今天進一步計算路燈<code>永和區</code>的路燈分佈密度(以里為單元)<br>看看是否有哪幾區特別亮：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import geopandas as gpd</span><br><span class="line">light=gpd.read_file(&apos;output/light.shp&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">light=light[light.is_valid]</span><br><span class="line">light=light[light[&apos;district&apos;]==&apos;永和區&apos;]</span><br><span class="line">light.crs = &#123;&apos;init&apos; :&apos;epsg:3826&apos;&#125; </span><br><span class="line">light=light.reset_index()</span><br><span class="line">village=gpd.read_file(&apos;data/village/village.shp&apos;,encoding=&apos;utf-8&apos;)</span><br><span class="line">village=village[village.is_valid]</span><br><span class="line">village=village[village[&apos;ADMIT&apos;]==&apos;永和區&apos;]</span><br><span class="line">village.crs = &#123;&apos;init&apos; :&apos;epsg:3826&apos;&#125; </span><br><span class="line">village=village.reset_index()</span><br><span class="line">result=gpd.tools.sjoin(light[[&apos;geometry&apos;,&apos;district&apos;]], village[[&apos;ADMIV&apos;,&apos;ADMIT&apos;,&apos;geometry&apos;]], op=&apos;within&apos;,how=&quot;right&quot;)</span><br><span class="line">result[&apos;count&apos;]=1</span><br><span class="line">result=result.dissolve(by=&apos;ADMIV&apos;, aggfunc=&apos;sum&apos;)</span><br><span class="line">result[&apos;avg&apos;]=result[&apos;count&apos;]/result.area</span><br><span class="line">result</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181113/20107816Gd7bRaRbqi.png" alt="https://ithelp.ithome.com.tw/upload/images/20181113/20107816Gd7bRaRbqi.png"></p>
+<p>經過以上計算，路燈密度欄位為<code>count</code><br>使用Pysal將<code>count</code>分成五個量級，並繪圖展示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cl = pysal.Quantiles(result[&apos;count&apos;], k=5)</span><br><span class="line">result.assign(cl=cl.yb).plot(&apos;cl&apos;, legend=True, categorical=True)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181113/20107816kvLMZ8BZUb.png" alt="https://ithelp.ithome.com.tw/upload/images/20181113/20107816kvLMZ8BZUb.png"></p>
+<p>以上成果是原始的面量圖呈現</p>
+<p>以下我們用Pysal計算spatial weight，採用<code>Queen</code>的相鄰性<br>如果要使用GeoDataFrame的話，可以透過libpysal<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wq =  libpysal.weights.Queen.from_dataframe(result)</span><br><span class="line">wq.transform = &apos;r&apos; #  row standardization</span><br></pre></td></tr></table></figure></p>
+<p>有了spatial Weight，可以計算<code>spatial lag</code>空間間隔<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y = result[&apos;count&apos;]</span><br><span class="line">ylag = libpysal.weights.lag_spatial(wq, y)</span><br></pre></td></tr></table></figure></p>
+<p>一樣分成五個等級繪圖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cl = pysal.Quantiles(ylag, k=5)</span><br><span class="line">result.assign(cl=cl.yb).plot(&apos;cl&apos;, legend=True, cmap=&apos;GnBu&apos;, categorical=True)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181113/201078169Fcq3GQoI7.png" alt="https://ithelp.ithome.com.tw/upload/images/20181113/201078169Fcq3GQoI7.png"></p>
+<blockquote>
+<p>注意：不同的spatial weight會產生完全不同的結果，邦友可以自行測試</p>
+</blockquote>
+<p><code>spatial lag</code>的結果，我們以散布圖與原本的值比較(Moran Scatterplot)<br>看看是否合理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">y = result[&apos;count&apos;]</span><br><span class="line">b, a = np.polyfit(y, ylag, 1)</span><br><span class="line">f, ax = plt.subplots(1, figsize=(9, 9))</span><br><span class="line"></span><br><span class="line">plt.plot(y, ylag, &apos;.&apos;, color=&apos;firebrick&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.vlines(y.mean(), ylag.min(), ylag.max(), linestyle=&apos;--&apos;)</span><br><span class="line">plt.hlines(ylag.mean(), y.min(), y.max(), linestyle=&apos;--&apos;)</span><br><span class="line"></span><br><span class="line">plt.plot(y, a + b*y, &apos;r&apos;)</span><br><span class="line">plt.title(&apos;Moran Scatterplot&apos;)</span><br><span class="line">plt.ylabel(&apos;Spatial Lag of count&apos;)</span><br><span class="line">plt.xlabel(&apos;count&apos;)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181113/20107816JBzcmiVdEb.png" alt="https://ithelp.ithome.com.tw/upload/images/20181113/20107816JBzcmiVdEb.png"></p>
+<h3 id="全域空間自相關"><a href="#全域空間自相關" class="headerlink" title="全域空間自相關"></a>全域空間自相關</h3><p>全域自相關的部分，在<code>Python</code>中可使用Pysal <code>esda</code>計算Moran’s I全域空間自相關</p>
+<blockquote>
+<p>Moran’s I的公式說明詳見<a href="http://desktop.arcgis.com/zh-cn/arcmap/10.3/tools/spatial-statistics-toolbox/h-how-spatial-autocorrelation-moran-s-i-spatial-st.htm" target="_blank" rel="noopener">說明</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import esda</span><br><span class="line">mi = esda.moran.Moran(y, wq)</span><br><span class="line">mi.I</span><br></pre></td></tr></table></figure>
+<p>結果：<code>0.171730</code></p>
+<p>全域Moran’s I的值在-1至1，接近1表示資料正相關，也就是有群聚性，接近-1則是越顯分散<br>此外，越接近0表示自相關程度不高(越不顯著)</p>
+<blockquote>
+<p>注意：不同的spatial weight會產生完全不同的結果，邦友可以自行測試</p>
+</blockquote>
+<h3 id="區域空間自相關"><a href="#區域空間自相關" class="headerlink" title="區域空間自相關"></a>區域空間自相關</h3><p>從上面的成果看來，可知永和區的路燈密，在空間上具有<code>不明顯</code>的<code>群聚的現象</code><br>(有偏袒，沒有特別偏袒)</p>
+<p>接下來使用<code>esda</code>計算Moran區域型的空間自相關<br>看看哪邊特別<code>亮</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">li = esda.moran.Moran_Local(y, wq)</span><br><span class="line">li.q</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：不同的spatial weight會產生完全不同的結果，邦友可以自行測試</p>
+</blockquote>
+<p>繪圖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result.assign(cl=li.q).plot(&apos;cl&apos;, legend=True, cmap=&apos;GnBu&apos;, categorical=True)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181113/20107816a15ZTDAKN4.png" alt="https://ithelp.ithome.com.tw/upload/images/20181113/20107816a15ZTDAKN4.png"></p>
+<p><code>Local Moran’I</code>會算出1-4個等級，<br>在區域型的空間自相關的計算中，會進行假設檢定的統計測試，以測試所算之值顯不顯著</p>
+<p>在範例中，設定通過0.05顯著水準的P測試<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sig = li.p_sim &lt; 0.05</span><br><span class="line">hotspot = 1 * (sig * li.q==1)</span><br><span class="line">coldspot = 3 * (sig * li.q==3)</span><br><span class="line">doughnut = 2 * (sig * li.q==2)</span><br><span class="line">diamond = 4 * (sig * li.q==4)</span><br><span class="line">spots = hotspot + coldspot + doughnut + diamond</span><br><span class="line"></span><br><span class="line">spot_labels = [ &apos;0 ns&apos;, &apos;1 hot spot&apos;, &apos;2 doughnut&apos;, &apos;3 cold spot&apos;, &apos;4 diamond&apos;]</span><br><span class="line">labels = [spot_labels[i] for i in spots]</span><br><span class="line">result.assign(cl=labels).plot(&apos;cl&apos;, legend=True, cmap=&apos;GnBu&apos;, categorical=True)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181114/20107816HBGWlyiQrP.png" alt="https://ithelp.ithome.com.tw/upload/images/20181114/20107816HBGWlyiQrP.png"></p>
+<p>也可以獨立來看<br>hotspot：自相關高，正相關，通過設定的統計測試<br>也就是自己亮周遭也亮的區域<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spots = [&apos;n.sig.&apos;, &apos;hotspot&apos;]</span><br><span class="line">labels = [spots[i] for i in hotspot*1]</span><br><span class="line">result.assign(cl=labels).plot(&apos;cl&apos;, legend=True, cmap=&apos;GnBu&apos;, categorical=True)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181113/20107816cKmnN01rdO.png" alt="https://ithelp.ithome.com.tw/upload/images/20181113/20107816cKmnN01rdO.png"></p>
+<p>例如：所謂一支獨秀<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spots = [&apos;n.sig.&apos;, &apos;diamond&apos;]</span><br><span class="line">labels = [spots[i] for i in diamond*1]</span><br><span class="line">result.assign(cl=labels).plot(&apos;cl&apos;, legend=True, cmap=&apos;GnBu&apos;, categorical=True)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181113/20107816G2NpcEw9bu.png" alt="https://ithelp.ithome.com.tw/upload/images/20181113/20107816G2NpcEw9bu.png"></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p>由於<code>空間自相關</code>的公式較多，在此篇幅無法一一表達清楚，僅能針對操作稍做測試<br>相關細節歡迎邦友參考：<br><a href="https://www.geog-daily.org/geogforum/14" target="_blank" rel="noopener">地理論壇 Geogforum - GEOGDAILY．地理眼</a><br><a href="http://desktop.arcgis.com/zh-cn/arcmap/10.3/tools/spatial-statistics-toolbox/h-how-spatial-autocorrelation-moran-s-i-spatial-st.htm" target="_blank" rel="noopener">Global Moran’s I| ArcGIS for Desktop</a><br><a href="http://darribas.org/gds_scipy16/ipynb_md/04_esda.html" target="_blank" rel="noopener">ESDA with PySAL</a><br><a href="https://github.com/pysal/esda" target="_blank" rel="noopener">GitHub - pysal/esda: statistics and classes for exploratory spatial data analysis</a></p>
+
+  	</div>
+	  
+	  <div class="article-tags tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+		
+	
+		<div class="art-item-footer">
+				
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/11/14/ironman-2019-day30/" rel="prev"  title="鐵人賽2019 Day30 GIS Day(完結)">
+						鐵人賽2019 Day30 GIS Day(完結) 
+					</a></span>
+				
+				
+					<span class="art-item-right">next：<a href="/2018/11/12/ironman-2019-day28/" rel="next"  title="鐵人賽2019 Day28 20米DEM資料處理">
+						鐵人賽2019 Day28 20米DEM資料處理
+					</a><i class="icon icon-chevron-thin-right"></i></span>
+				
+		</div>
+	
+	</section>
+	
+		<section id="comments">
+			<div id="disqus_thread"></div>
+		</section>
+	
+</article>
+<script>
+	window.subData = {
+		title: '鐵人賽2019 Day29 Pysal空間自相關',
+		tools: true
+	}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1797">
+            <div class='name'>30天精通GIS資料分析-使用Python</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541">
+            <div class='name'>30天打造我的WebGIS</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://developer.tomtom.com/">
+            <div class='name'>TomTom for developer</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://medium.com/tag/chiminevelynswedding">
+            <div class='name'>30 day challallenge for weddings</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>28</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 18.29px; color: #252525">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 19.14px; color: #121212">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 17.43px; color: #373737">web</a>
+    </div>
+</div>
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/chimin17" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://linkedin.com/in/chi-min-chiu-aba7a5148/" class="social linkedin"
+          target="_blank" rel="external">
+          <span class="icon icon-linkedin"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+<script>
+  var disqus_shortname = 'chimin17';
+  
+  var disqus_url = 'https://chimin17.github.io/2018/11/13/ironman-2019-day29/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

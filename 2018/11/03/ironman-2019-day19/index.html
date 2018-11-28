@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>鐵人賽2019 Day19 OSMnx取得OpenStreetMap資料 | Chimin&#39;s Blog</title>
+  <meta name="description" content="you are never wrong to do the right thing" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="昨天簡單介紹了networkX，我們可以透過把路網polyline轉為node,edge的graph(s2g)來做graph相關操作，例如最短路徑等等。 OSMnx也是相關的應用，OSMnx結合了Overpass API，讓開發者可以在python中快速取得OpenStreetMap的資料，在路網圖層中，其與networkX結合可進行一些grpah的分析操作。ps.除了路網外，OSMnx也可取得其">
+<meta name="keywords" content="GIS,2019鐵人賽-30天精通GIS資料分析-使用Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鐵人賽2019 Day19 OSMnx取得OpenStreetMap資料">
+<meta property="og:url" content="https://chimin17.github.io/2018/11/03/ironman-2019-day19/index.html">
+<meta property="og:site_name" content="Chimin&#39;s Blog">
+<meta property="og:description" content="昨天簡單介紹了networkX，我們可以透過把路網polyline轉為node,edge的graph(s2g)來做graph相關操作，例如最短路徑等等。 OSMnx也是相關的應用，OSMnx結合了Overpass API，讓開發者可以在python中快速取得OpenStreetMap的資料，在路網圖層中，其與networkX結合可進行一些grpah的分析操作。ps.除了路網外，OSMnx也可取得其">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181103/20107816aJc3ZQkTBw.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181103/20107816wtOK23KcsU.png">
+<meta property="og:image" content="https://ithelp.ithome.com.tw/upload/images/20181103/20107816I8TMJ7RT7D.png">
+<meta property="og:updated_time" content="2018-11-28T03:45:38.619Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="鐵人賽2019 Day19 OSMnx取得OpenStreetMap資料">
+<meta name="twitter:description" content="昨天簡單介紹了networkX，我們可以透過把路網polyline轉為node,edge的graph(s2g)來做graph相關操作，例如最短路徑等等。 OSMnx也是相關的應用，OSMnx結合了Overpass API，讓開發者可以在python中快速取得OpenStreetMap的資料，在路網圖層中，其與networkX結合可進行一些grpah的分析操作。ps.除了路網外，OSMnx也可取得其">
+<meta name="twitter:image" content="https://ithelp.ithome.com.tw/upload/images/20181103/20107816aJc3ZQkTBw.png">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Chimin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ironman-2019-day19"
+  class="post white-box article-type-post"
+  itemscope itemprop="blogPost">
+	<section class='meta'>
+	<h2 class="title">
+  	<a href="/2018/11/03/ironman-2019-day19/">
+    	鐵人賽2019 Day19 OSMnx取得OpenStreetMap資料
+    </a>
+  </h2>
+	<time>
+	  Nov 3, 2018
+	</time>
+	
+	</section>
+	
+		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安裝OSMnx"><span class="toc-number">1.</span> <span class="toc-text">安裝OSMnx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取得路網"><span class="toc-number">2.</span> <span class="toc-text">取得路網</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#輸出路網"><span class="toc-number">3.</span> <span class="toc-text">輸出路網</span></a></li></ol></section>
+	
+	<section class="article typo">
+  	<div class="article-entry" itemprop="articleBody">
+    	<p>昨天簡單介紹了<code>networkX</code>，我們可以透過把路網polyline轉為node,edge的graph(<code>s2g</code>)來做graph相關操作，例如最短路徑等等。</p>
+<p><code>OSMnx</code>也是相關的應用，OSMnx結合了<code>Overpass API</code>，讓開發者可以在python中快速取得OpenStreetMap的資料，在路網圖層中，其與<code>networkX</code>結合可進行一些grpah的分析操作。<br>ps.除了路網外，OSMnx也可取得其他OpenStreetMap的圖層喔</p>
+<a id="more"></a>
+<p>大綱：</p>
+<ul>
+<li>安裝OSMnx</li>
+<li>取得路網</li>
+<li>輸出路網</li>
+</ul>
+<h2 id="安裝OSMnx"><a href="#安裝OSMnx" class="headerlink" title="安裝OSMnx"></a>安裝OSMnx</h2><p>OSMnx建議使用conda安裝<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c conda-forge osmnx</span><br></pre></td></tr></table></figure></p>
+<p>如果使用pip安裝目前可能會遇到一些問題，<br>建議開一個乾淨的的virtual environment再來安裝</p>
+<h2 id="取得路網"><a href="#取得路網" class="headerlink" title="取得路網"></a>取得路網</h2><p>OSMnx取得OSM的來源是<code>Overpass API</code>，得到資料後會對OSM資料做處理，變成node+edge的graph<br>給定一個坐標<code>(25.0528108,121.6137452)</code>後，設定一個範圍<code>(distance=750)</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import osmnx as ox</span><br><span class="line">G = ox.graph_from_point((25.0528108,121.6137452), distance=750, network_type=&apos;drive&apos;)</span><br><span class="line">ox.plot_graph(G)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181103/20107816aJc3ZQkTBw.png" alt="https://ithelp.ithome.com.tw/upload/images/20181103/20107816aJc3ZQkTBw.png"></p>
+<blockquote>
+<p>osmnx還有其他query的方法，包括輸入city name, bounding box及address等等，</p>
+</blockquote>
+<p>列出edge，並是以坐標表示:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G.edges</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181103/20107816wtOK23KcsU.png" alt="https://ithelp.ithome.com.tw/upload/images/20181103/20107816wtOK23KcsU.png"></p>
+<p>當然也可以看到node的列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G.nodes</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181103/20107816I8TMJ7RT7D.png" alt="https://ithelp.ithome.com.tw/upload/images/20181103/20107816I8TMJ7RT7D.png"></p>
+<h2 id="輸出路網"><a href="#輸出路網" class="headerlink" title="輸出路網"></a>輸出路網</h2><p>osmnx可以把組成的graph成果輸出，graph的組成是edge跟node</p>
+<p>把edge跟node輸出可做其他用途<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">G_proj = ox.project_gdf(G)</span><br><span class="line">ox.save_graph_shapefile(G_projected, filename=&apos;network-shape&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>上面的輸出為edge以及node的shp<br>另一種可行的輸出格式GraphML()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ox.save_graphml(G_projected, filename=&apos;network.graphml&apos;)</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>有關GraphML<br><a href="http://graphml.graphdrawing.org/" target="_blank" rel="noopener">The GraphML File Format</a></p>
+</blockquote>
+<p>OSMnx很方便地讓我們取得路網資料(以及其他OpenStreetMap資料)，<br>對於GIS分析人員來說，不怕手邊沒資料啦！</p>
+
+  	</div>
+	  
+	  <div class="article-tags tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+		
+	
+		<div class="art-item-footer">
+				
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/11/04/ironman-2019-day20/" rel="prev"  title="鐵人賽2019 Day20 OSMnx應用">
+						鐵人賽2019 Day20 OSMnx應用 
+					</a></span>
+				
+				
+					<span class="art-item-right">next：<a href="/2018/11/02/ironman-2019-day18/" rel="next"  title="鐵人賽2019 Day18 networkX與GIS資料初探">
+						鐵人賽2019 Day18 networkX與GIS資料初探
+					</a><i class="icon icon-chevron-thin-right"></i></span>
+				
+		</div>
+	
+	</section>
+	
+		<section id="comments">
+			<div id="disqus_thread"></div>
+		</section>
+	
+</article>
+<script>
+	window.subData = {
+		title: '鐵人賽2019 Day19 OSMnx取得OpenStreetMap資料',
+		tools: true
+	}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1797">
+            <div class='name'>30天精通GIS資料分析-使用Python</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541">
+            <div class='name'>30天打造我的WebGIS</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://developer.tomtom.com/">
+            <div class='name'>TomTom for developer</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://medium.com/tag/chiminevelynswedding">
+            <div class='name'>30 day challallenge for weddings</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>28</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 18.29px; color: #252525">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 19.14px; color: #121212">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 17.43px; color: #373737">web</a>
+    </div>
+</div>
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/chimin17" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://linkedin.com/in/chi-min-chiu-aba7a5148/" class="social linkedin"
+          target="_blank" rel="external">
+          <span class="icon icon-linkedin"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+<script>
+  var disqus_shortname = 'chimin17';
+  
+  var disqus_url = 'https://chimin17.github.io/2018/11/03/ironman-2019-day19/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

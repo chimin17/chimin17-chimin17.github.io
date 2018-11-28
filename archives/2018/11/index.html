@@ -135,23 +135,23 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/11/02/ironman-2019-day18/">
-        鐵人賽2019 Day18 networkX與GIS資料初探
+      <a href="/2018/11/14/ironman-2019-day30/">
+        鐵人賽2019 Day30 GIS Day(完結)
       </a>
     </h2>
     
     <time>
-      Nov 2, 2018
+      Nov 14, 2018
     </time>
 		
   </section>
   <section class="article typo">
-	  <p>今天要來寫GIS與路網相關的(當然只要跟graph有關的都可以使用，例如管線)一些應用。</p>
-<p>在GIS及LBS應用中少不了路徑規劃，這些路網資料的應用路主要基於graph，<code>networkX</code>可以用來建立及操作graph的工具，它可以產生各種garph，也包含了很多graph演算法。</p>
+	  <p>首先，宣傳一下我的團隊：<a href="https://ithelp.ithome.com.tw/ironman/signup/team/44" target="_blank" rel="noopener">這樣母Tom姆熊</a><br>這30天要不是硬拉了這些隊友，然後看他們一天天準時發文，可能會因為各種原因而寫不下去XD。</p>
+<p><img src="https://ithelp.ithome.com.tw/upload/images/20181114/20107816v4m4DXg8FC.png" alt="https://ithelp.ithome.com.tw/upload/images/20181114/20107816v4m4DXg8FC.png"><br><img src="https://ithelp.ithome.com.tw/upload/images/20181114/201078160Ym2daNvAr.png" alt="https://ithelp.ithome.com.tw/upload/images/20181114/201078160Ym2daNvAr.png"></p>
 
     
 	  <div class="readmore">
-      <a href="/2018/11/02/ironman-2019-day18/">Read More</a>
+      <a href="/2018/11/14/ironman-2019-day30/">Read More</a>
     </div>
     
     
@@ -173,24 +173,321 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/11/01/ironman-2019-day17/">
-        鐵人賽2019 Day17 Geogig GIS版本控制
+      <a href="/2018/11/13/ironman-2019-day29/">
+        鐵人賽2019 Day29 Pysal空間自相關
       </a>
     </h2>
     
     <time>
-      Nov 1, 2018
+      Nov 13, 2018
     </time>
 		
   </section>
   <section class="article typo">
-	  <p>今天的主題與Python較於無關，這陣子遇到資料版本控制的需求，有搜尋並測試了一下<code>geogig</code>這個軟體，在此稍微紀錄一下。</p>
-<p><code>geogig</code>是個開源專案，使用JAVA開發並以BSD授權，主要目的是做GIS資料的版本控制，整個操作經驗與<code>git</code>類似，支援的GIS資料包含<code>shapefile</code>、<code>PostGIS</code>、<code>SpatiaLite</code>等，對每一次commit的GIS追蹤管理，也可對資料開分支、遠端分支等等功能。</p>
-<p>今天就記錄一下比較基本的步驟。</p>
+	  <p>Tobler地理學第一定律：all attribute values on a geographic surface are related to each other, but closer values are more strongly related than are more distant ones.</p>
+<p><code>空間自相關</code>指的是空間單元的數據與其周遭空間單元的相似性，<br>今天我們以Pysal的說明頁面(<a href="http://darribas.org/gds_scipy16/ipynb_md/04_esda.html" target="_blank" rel="noopener">ESDA with PySAL</a>)為主軸，一步步進行與<code>空間自相關</code>相關的測試</p>
 
     
 	  <div class="readmore">
-      <a href="/2018/11/01/ironman-2019-day17/">Read More</a>
+      <a href="/2018/11/13/ironman-2019-day29/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/11/12/ironman-2019-day28/">
+        鐵人賽2019 Day28 20米DEM資料處理
+      </a>
+    </h2>
+    
+    <time>
+      Nov 12, 2018
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>DEM(Digital Elevation Model)以二維網格的方式呈現地形，也是GIS資料常見得網格式資料，我們今天將會使用<a href="https://data.moi.gov.tw/MoiOD/Data/DataDetail.aspx?oid=84CF211B-4788-4FEF-B296-0F292C1DCBB8" target="_blank" rel="noopener">內政資料開放平臺</a>的20米全台DEM資料，他的副檔名是grd格式(ascii)，我們可以使用<code>Rasterio</code>讀取資料，並做一些處理。(ps.如果要使用全球的DEM，可以使用<a href="https://lta.cr.usgs.gov/SRTM1Arc" target="_blank" rel="noopener">SRTM</a>)</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/11/12/ironman-2019-day28/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/11/11/ironman-2019-day27/">
+        鐵人賽2019 Day27 計算NDVI
+      </a>
+    </h2>
+    
+    <time>
+      Nov 11, 2018
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>昨天使用的Rasterio是一個方便的工具，它主要是包了一些GDAL等等的GIS套件，<br>使用GIS資料分析，當然一定會接觸到GDAL，<a href="https://www.gdal.org/" target="_blank" rel="noopener">GDAL Geospatial Data Abstraction Library</a>可以說是始祖，Rasterio建構於它之上讓資料分析更加方便。</p>
+<p>持續Rasterio的主題，今天要測試的項目是NDVI。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/11/11/ironman-2019-day27/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/11/10/ironman-2019-day26/">
+        鐵人賽2019 Day26 網格資料的處理-Rasterio初探
+      </a>
+    </h2>
+    
+    <time>
+      Nov 10, 2018
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>網格資料處理跟主要指的是遙測影像的處理，Python影像處理有許多方便的工具，而今天使用的<code>Rasterio</code>比較針對遙測影像的常見的方法。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/11/10/ironman-2019-day26/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/11/09/ironman-2019-day25/">
+        鐵人賽2019 Day25 用Owslib操作WMS
+      </a>
+    </h2>
+    
+    <time>
+      Nov 9, 2018
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>今天要來介紹<code>owslib</code>，這個套件是python中拿來處理wms/wmts等服務的套件，<br>在<a href="https://matplotlib.org/basemap/api/basemap_api.html" target="_blank" rel="noopener">matplotlib basemap</a>也是使用這個套件，另外QGIS軟體中也有使用。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/11/09/ironman-2019-day25/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/11/08/ironman-2019-day24/">
+        鐵人賽2019 Day24 交通資料-國道ETC
+      </a>
+    </h2>
+    
+    <time>
+      Nov 8, 2018
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>今天試著來看看高速公路局ETC的資料。</p>
+<p>交通與GIS的結合有許多應用，在實務上也有各種不同的議題，三言兩語也討論不完<br>既然討論不完就找一個資料來試試…</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/11/08/ironman-2019-day24/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/11/07/ironman-2019-day23/">
+        鐵人賽2019 Day23 資料品質：幾何檢查(續篇)
+      </a>
+    </h2>
+    
+    <time>
+      Nov 7, 2018
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>今天繼續GIS的幾何檢查的部分，主要處理的是polygon的接邊問題，這是一種常見的topology的問題。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/11/07/ironman-2019-day23/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/11/06/ironman-2019-day22/">
+        鐵人賽2019 Day22 資料品質：幾何檢查
+      </a>
+    </h2>
+    
+    <time>
+      Nov 6, 2018
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>GIS生產的過程中，在向量幾何資料部分有一些常用的位向關係檢查，這些檢查的品質指標在ArcGIS或是QGIS中都有各自的模組，例如商用軟體<code>ArcGIS</code>的<code>topology</code>系列模組(e.g. <code>Creating a topology</code>)。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/11/06/ironman-2019-day22/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/">2019鐵人賽-30天精通GIS資料分析-使用Python</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/11/05/ironman-2019-day21/">
+        鐵人賽2019 Day21 OSMnx應用(續篇)
+      </a>
+    </h2>
+    
+    <time>
+      Nov 5, 2018
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>昨天我們主要應用OSM的路網資料，除了路網，OSMnx還有其他的資料可以使用，今天就繼續OSMnx吧！</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/11/05/ironman-2019-day21/">Read More</a>
     </div>
     
     
@@ -209,6 +506,17 @@
   
 </section>
 
+
+  <nav id="page-nav">
+    
+    
+    <a class="next" rel="next" href="/archives/2018/11/page/2/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    
+  </nav>
+  
 
 
       </div>
@@ -260,7 +568,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 17.43px; color: #373737">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 18.29px; color: #252525">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 19.14px; color: #121212">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 17.43px; color: #373737">web</a>
     </div>
 </div>
 

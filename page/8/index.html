@@ -130,13 +130,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/31/ironman-2018-day12/">
-        鐵人賽Day 12- webgis中的向量資料-一些特殊的Polygon
+      <a href="/2018/01/13/ironman-2018-day25/">
+        鐵人賽Day 25- 在資料庫中操作空間資料-PostGIS
       </a>
     </h2>
     
     <time>
-      Dec 31, 2017
+      Jan 13, 2018
     </time>
 		
     
@@ -146,11 +146,13 @@
 
   </section>
   <section class="article typo">
-	  <p>前一天講了向量圖層中的線跟面，今天來看一些特殊的幾何資料，雖然少見但還是遇得到，也藉此機會多認識一下Polygon。<br></p>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>PostGIS是PostgreSQL基於OpenGIS中的SFS規範(Simple Feature Specification for SQL)所實作出來的地理物件函式庫，而PostgreSQL則是一個關聯式資料庫的自由軟體(BSD license)，</p>
+<p>跟PostGIS類似的東西相當於MS SQL Server中的SQL Spatial、Oracle spatial、MySQL spatial。</p>
+<p>PostGIS在地理空間運算的實作function非常多，也可以與QGIS等軟體做結合。<br></p>
 
     
 	  <div class="readmore">
-      <a href="/2017/12/31/ironman-2018-day12/">Read More</a>
+      <a href="/2018/01/13/ironman-2018-day25/">Read More</a>
     </div>
     
     
@@ -163,7 +165,7 @@
       
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/geojson/">geojson</a>
+        <a href="/tags/PostgreSQL/">PostgreSQL</a>
       
 	  </div>
     
@@ -176,13 +178,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/30/ironman-2018-day11/">
-        鐵人賽Day 11- webgis中的向量圖層-除了點資料以外的幾何
+      <a href="/2018/01/12/ironman-2018-day24/">
+        鐵人賽Day 24- 在WebGIS加入Mapillary街景
       </a>
     </h2>
     
     <time>
-      Dec 30, 2017
+      Jan 12, 2018
     </time>
 		
     
@@ -192,11 +194,11 @@
 
   </section>
   <section class="article typo">
-	  <p>在<a href="https://ithelp.ithome.com.tw/articles/10192976" target="_blank" rel="noopener">Day4</a>、<a href="https://ithelp.ithome.com.tw/articles/10193028" target="_blank" rel="noopener">Day5</a>及<a href="https://ithelp.ithome.com.tw/articles/10193965" target="_blank" rel="noopener">Day8</a>、<a href="https://ithelp.ithome.com.tw/articles/10194193" target="_blank" rel="noopener">Day9</a>談的資料都是點資料，一般使用者最熟悉也最需要的資料也是點，例如各式各樣的POI資料..<br></p>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Mapillary是一個透過眾包建立的街景服務，其目標是建立一個群眾外包的平台分享具空間坐標的照片影片，2013年建立以來，這個平台於2016年11月15日到達一億張相片，除了昨天使用的Google街景以外，我們也可以選擇使用<a href="https://www.mapillary.com/app/?lat=25.05576118895428&amp;lng=121.61677684859569&amp;z=17&amp;focus=map&amp;pKey=MiEVQvYuxJOmTgpS2TNK8w" target="_blank" rel="noopener"><strong>Mapillary的街景</strong></a>，Mapillary計畫透過將其使用者生成的資料授權給其他公司使用來獲利(<a href="https://zh.wikipedia.org/wiki/Mapillary" target="_blank" rel="noopener">wiki</a>)，目前Mapillary的資料已授權OpenStreetMap使用。</p>
 
     
 	  <div class="readmore">
-      <a href="/2017/12/30/ironman-2018-day11/">Read More</a>
+      <a href="/2018/01/12/ironman-2018-day24/">Read More</a>
     </div>
     
     
@@ -209,7 +211,9 @@
       
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/geojson/">geojson</a>
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Mapillary/">Mapillary</a>
       
 	  </div>
     
@@ -222,13 +226,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/29/ironman-2018-day10/">
-        鐵人賽Day 10-坐標系統及webgis常用的坐標轉換
+      <a href="/2018/01/11/ironman-2018-day23/">
+        鐵人賽Day 23- 在WebGIS中加入Google街景
       </a>
     </h2>
     
     <time>
-      Dec 29, 2017
+      Jan 11, 2018
     </time>
 		
     
@@ -238,18 +242,11 @@
 
   </section>
   <section class="article typo">
-	  <p><strong>坐標系統</strong>是GIS、大地測量及製圖的核心，而<strong>坐標轉換</strong>則是開發webGIS最常會遇到的課題。</p>
-<blockquote>
-<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
-</blockquote>
-<h2 id="坐標系統"><a href="#坐標系統" class="headerlink" title="坐標系統"></a>坐標系統</h2><h3 id="大地坐標系統-地球是近似橢球"><a href="#大地坐標系統-地球是近似橢球" class="headerlink" title="大地坐標系統: 地球是近似橢球"></a>大地坐標系統: 地球是近似橢球</h3><p>由於地球是近似橢球，會有很多模式來描述這個橢球，以及球上面的點位坐標，描述這個橢球及球上位置的系統稱作<strong>大地坐標系統</strong>，需要定義的東西很多，包含幾何面的橢球參數、其他物理面及觀測資料的整合推估，GPS使用的WGS84經緯度屬此類，簡單來說，大地坐標系統是想描述橢球及球上面的位置。</p>
-<h3 id="Map-projection-一切都是投影"><a href="#Map-projection-一切都是投影" class="headerlink" title="Map projection: 一切都是投影"></a>Map projection: 一切都是投影</h3><p>為了製造地圖，人們必須把近似橢球狀的地球投影到平面上，這個坐標系統稱作投影坐標系統，只要是地圖，一定會採用投影系統。<br>投影的方式有很多，麥卡托、藍柏特投影等等…，而從<a href="https://www.jasondavies.com/maps/transition/" target="_blank" rel="noopener">Map Projection Transitions</a>網站的各種投影機制的模擬圖可以看得出來，投影一定會有失真的情況，所以才會常常有以下新聞出現:</p>
-<blockquote>
-<p><a href="https://news.tvbs.com.tw/fun/728573" target="_blank" rel="noopener">400年來世界地圖都失真　各國大小差很多</a><br><a href="https://kknews.cc/zh-tw/news/899oqn.html" target="_blank" rel="noopener">格陵蘭島到底有多大，在地圖上一直是個謎</a><br></p></blockquote>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要在地圖中加入另一個元素：街景。<br>到目前為止介紹的WebGIS應用都是2D的，加入街景環景影像雖然不是3D，但還是比較有身歷其境的感覺，今天我們使用的服務為Google街景。</p>
 
     
 	  <div class="readmore">
-      <a href="/2017/12/29/ironman-2018-day10/">Read More</a>
+      <a href="/2018/01/11/ironman-2018-day23/">Read More</a>
     </div>
     
     
@@ -262,7 +259,9 @@
       
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/proj4/">proj4</a>
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Google/">Google</a>
       
 	  </div>
     
@@ -275,13 +274,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/28/ironman-2018-day9/">
-        鐵人賽Day 9-自己產製資料-地址定位part2
+      <a href="/2018/01/10/ironman-2018-day22/">
+        鐵人賽Day 22- WebGIS中加入Google Directions導航API
       </a>
     </h2>
     
     <time>
-      Dec 28, 2017
+      Jan 10, 2018
     </time>
 		
     
@@ -291,16 +290,11 @@
 
   </section>
   <section class="article typo">
-	  <p>今天要介紹TGOS全國門牌定位服務。</p>
-<blockquote>
-<p>本文是參加鐵人賽的文章，同步發表於 <a href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541" target="_blank" rel="noopener">“2018鐵人賽-30天打造我的WebGIS系列”</a></p>
-</blockquote>
-<h2 id="TGOS-Taiwan-Geospatial-One-Stop"><a href="#TGOS-Taiwan-Geospatial-One-Stop" class="headerlink" title="TGOS (Taiwan Geospatial One Stop)"></a>TGOS (Taiwan Geospatial One Stop)</h2><p>TGOS是內政部資訊中心維運的系統，整合了很多國內GIS資料，也提供了很多GIS相關API，除了需要申請token的API外，也有民眾版的查詢系統可供線上使用。<br><img src="https://ithelp.ithome.com.tw/upload/images/20171227/20107816kyqSsyu3bD.jpg" alt="https://ithelp.ithome.com.tw/upload/images/20171227/20107816kyqSsyu3bD.jpg"></p>
-<h3 id="TGOS全國門牌定位服務"><a href="#TGOS全國門牌定位服務" class="headerlink" title="TGOS全國門牌定位服務"></a>TGOS全國門牌定位服務</h3><p><strong><a href="https://www.tgos.tw/TGOS/Web/Address/TGOS_Address.aspx" target="_blank" rel="noopener">全國門牌定位API服務</a></strong> 整合了國內戶政機關的門牌坐標資料，更新頻率很高，因為各縣市門牌資料在建置時驗收的標準滿高的，所以完整性跟正確性都很高。<br></p>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要來接Google路徑導航資訊，Google Maps API有很多很棒的東西可以用在WebGIS，路徑規劃就是其中之一，他的完整名稱是<a href="https://developers.google.com/maps/documentation/directions/intro?hl=zh-tw#Waypoints" target="_blank" rel="noopener">Directions API</a>，把它整合進我們的地圖。</p>
 
     
 	  <div class="readmore">
-      <a href="/2017/12/28/ironman-2018-day9/">Read More</a>
+      <a href="/2018/01/10/ironman-2018-day22/">Read More</a>
     </div>
     
     
@@ -313,7 +307,9 @@
       
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/opendata/">opendata</a>
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Google/">Google</a>
       
 	  </div>
     
@@ -326,13 +322,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/27/ironman-2018-day8/">
-        鐵人賽Day 8-自己產製資料-地址定位part1
+      <a href="/2018/01/09/ironman-2018-day21/">
+        鐵人賽Day 21- 在WebGIS加入風場圖
       </a>
     </h2>
     
     <time>
-      Dec 27, 2017
+      Jan 9, 2018
     </time>
 		
     
@@ -342,17 +338,11 @@
 
   </section>
   <section class="article typo">
-	  <p>取得GIS資料的方式有很多，包含：</p>
-<ul>
-<li>取得實體檔或API(opendata等資料交換平台)</li>
-<li>拿專業儀器測量或在地圖上數化而得：GPS、遙測、工程測量、etc.</li>
-<li>地址定位：僅有poi的地址，可從線上資源取得地址的坐標</li>
-</ul>
-<p>今天要介紹的為<strong>地址定位</strong>，如果你也有一批資料有地址沒坐標，那就參考本篇吧^^。<br></p>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前幾天研究了內插、TIN、 Voronoi Diagram、Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)，這些都是很常見的webGIS資料視覺化應用，今天要來研究的是前陣子很常看到的<a href="https://earth.nullschool.net/" target="_blank" rel="noopener">全球風場圖</a>，看一下到底做了些什麼…</p>
 
     
 	  <div class="readmore">
-      <a href="/2017/12/27/ironman-2018-day8/">Read More</a>
+      <a href="/2018/01/09/ironman-2018-day21/">Read More</a>
     </div>
     
     
@@ -365,7 +355,9 @@
       
         <a href="/tags/GIS/">GIS</a>
       
-        <a href="/tags/google/">google</a>
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Google/">Google</a>
       
 	  </div>
     
@@ -441,7 +433,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 19.14px; color: #121212">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 17.43px; color: #373737">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 18.29px; color: #252525">web</a>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 18.29px; color: #252525">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 19.14px; color: #121212">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 17.43px; color: #373737">web</a>
     </div>
 </div>
 

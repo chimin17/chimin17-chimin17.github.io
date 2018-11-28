@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Archives: 2018 | Chimin&#39;s Blog</title>
+  <meta name="description" content="you are never wrong to do the right thing" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="Chimin's Blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="you are never wrong to do the right thing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chimin&#39;s Blog">
+<meta property="og:url" content="https://chimin17.github.io/archives/2018/page/5/index.html">
+<meta property="og:site_name" content="Chimin&#39;s Blog">
+<meta property="og:description" content="you are never wrong to do the right thing">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chimin&#39;s Blog">
+<meta name="twitter:description" content="you are never wrong to do the right thing">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				Chimin's Blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        
+	
+  <script>
+    window.subData= { title:'Year : 2018'}
+  </script>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/08/ironman-2018-day20/">
+        鐵人賽Day 20- WebGIS中的Contours、Heatmaps與Clustering資料呈現
+      </a>
+    </h2>
+    
+    <time>
+      Jan 8, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天延續昨天內插的議題，準備研究一下webGIS中的Contours(等高線)、Heatmaps(熱區圖)與Clustering(群聚圖)等方法，用來增進原本只是點資料的資訊呈現方式。</p>
+<h2 id="等高線-或等值線"><a href="#等高線-或等值線" class="headerlink" title="等高線(或等值線)"></a>等高線(或等值線)</h2><p>要算<strong>等高線</strong>(contours)或<strong>等值線</strong>我們可以使用turf.js的isobands，要產製一個等值線圖的流程是：1.離散的資料 2.內插(turf.js要使用規則的points) 3.使用isobands。</p>
+<p>所以，延續昨天的IDW內插，我們內插一組gridType為points的資料後，想進一步將等值的範圍做整合，這個過程可以採用computer vision中的<a href="https://en.wikipedia.org/wiki/Marching_squares" target="_blank" rel="noopener">Marching squares</a>。</p>
+<p>這個方法主要需設定的東西是<strong>breaks</strong>，也就是要分值的斷點，例如<a href="在Marching Squares方法中，是以每四格點做pattern判定，所以例如三個色階會有3的4次方=81種情況，詳細可參考[wiki](https://en.wikipedia.org/wiki/Marching_squares">0, 5, 10, 15, 20, 25, 30</a>)。<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/08/ironman-2018-day20/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Turf-js/">Turf.js</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/07/ironman-2018-day19/">
+        鐵人賽Day 19- 使用Turf.js進行空間資料內插
+      </a>
+    </h2>
+    
+    <time>
+      Jan 7, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天的主題是空間資料<strong>內插(interpolation)</strong>，內插是GIS很重要的課題，因為我們拿到的資料(例如觀測站資料)很常是point，內插可以幫助我們把這些離散的資料變成<strong>面狀成果</strong>，這樣除了方便資料視覺化，也可以進一步進行空間分析。</p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/07/ironman-2018-day19/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Turf-js/">Turf.js</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/06/ironman-2018-day18/">
+        鐵人賽Day 18- Turf.js:空間資料運算及分析
+      </a>
+    </h2>
+    
+    <time>
+      Jan 6, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天要介紹turf.js，<br>前兩天的<strong>網球地圖</strong>完成了基本的地圖功能及版面，並在地圖上展示、查詢了GIS資料，今天想進一步對資料做<strong>空間資料分析</strong>，使用的是<a href="http://turfjs.org/" target="_blank" rel="noopener">turf.js</a>。<br><img src="https://ppt.cc/fo2KJx@.png" alt=""><br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/06/ironman-2018-day18/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+        <a href="/tags/Turf-js/">Turf.js</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/05/ironman-2018-day17/">
+        鐵人賽Day 17- Leaflet.js：加入資料及資料互動
+      </a>
+    </h2>
+    
+    <time>
+      Jan 5, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>昨天我們建立了一個初步的地圖，webGIS中，除了基本工具的建立，加入主題性<strong>POI</strong>資料是主要功能，除了加入地圖以外，也必須有瀏覽POI列表及瀏覽詳細資料的操作功能。</p>
+<p>今天就繼續昨天的成果，使用<strong>Leaflet</strong>實作前述事件及資料綁定的工作，資料部分，就以我們團隊成員建立的網球場資料(僅放部分)作為webGIS POI瀏覽範例吧。<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/05/ironman-2018-day17/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/04/ironman-2018-day16/">
+        鐵人賽Day 16- Leaflet.js：設置基本地圖元件
+      </a>
+    </h2>
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天開始要逐步建立一個webGIS，練習一下使用<strong>Leaflet</strong>等API的實戰能力，在開始之前，先設定這個系統的基本功能：</p>
+<ul>
+<li>切換底圖</li>
+<li>定位</li>
+<li>量測</li>
+<li>資料查詢</li>
+<li>街景</li>
+<li>空間查詢</li>
+<li>結合統計圖表</li>
+<li>路徑規劃</li>
+<li>資料視覺化</li></ul>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/04/ironman-2018-day16/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/02/ironman-2018-day14/">
+        鐵人賽Day 14- webgis中的網格資料
+      </a>
+    </h2>
+    
+    <time>
+      Jan 2, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>網格(raster)資料是指以規則網格的方式呈現空間資料，可能是<a href="https://gist.github.com/chimin17/a15dd5a8f4664f8a7377e0d8a33673f5" target="_blank" rel="noopener">長這樣</a>。<br><img src="https://ppt.cc/fJZEyx@.png" alt=""></p>
+<p>上面是試圖以geojson模擬網格資料，網格間隔大概是一英里(1.6km)，並且有一個solRad屬性，像這樣用geojson這種向量格式表達網格看起來沒有什麼問題，但是…</p>
+<p>假設今天網格的間隔<strong>更密一些</strong>，<strong>範圍在大一些</strong>，其資料量可能會很可觀，這時候無論在計算或是前端展示上，GIS傾向會使用影像方式儲存。</p>
+<p>再者，上述案例在網格式資料是<strong>單一波段</strong>的資料(也就是只有solRad這個屬性)，網格資料大多都是<strong>三個波段</strong>的資料(例如正射影像、衛星影像)，相關討論我們在<a href="https://ithelp.ithome.com.tw/articles/10193701" target="_blank" rel="noopener">[Day 6] 常見的GIS資料格式</a>有探討過。</p>
+<p>在webGIS中，我們可能比較少直接處理網格資料，通常都是使用它，今天我們試著使用Leaflet的raster圖層功能。<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/02/ironman-2018-day14/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/01/ironman-2018-day13/">
+        鐵人賽Day 13- webgis中的向量資料:在leaflet實作
+      </a>
+    </h2>
+    
+    <time>
+      Jan 1, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/web/">web</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://ithelp.ithome.com.tw/articles/10192391" target="_blank" rel="noopener">[Day1]webGIS-資訊時代的地理大發現</a>的引言中提到webgis的前端實踐可以透過幾個地圖API，本次鐵人賽將都以<a href="http://leafletjs.com/" target="_blank" rel="noopener">leaflet</a>做說明。<br></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/01/ironman-2018-day13/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/">2018鐵人賽-30天打造我的WebGIS系列</a>
+      
+        <a href="/tags/web/">web</a>
+      
+        <a href="/tags/GIS/">GIS</a>
+      
+        <a href="/tags/geojson/">geojson</a>
+      
+        <a href="/tags/leaflet/">leaflet</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/archives/2018/page/4/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+  </nav>
+  
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1797">
+            <div class='name'>30天精通GIS資料分析-使用Python</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://ithelp.ithome.com.tw/users/20107816/ironman/1541">
+            <div class='name'>30天打造我的WebGIS</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://developer.tomtom.com/">
+            <div class='name'>TomTom for developer</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://medium.com/tag/chiminevelynswedding">
+            <div class='name'>30 day challallenge for weddings</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/data-analysis/"><div class='name'>data analysis</div><div class='badget'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/python/"><div class='name'>python</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/web/"><div class='name'>web</div><div class='badget'>28</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/2018鐵人賽-30天打造我的WebGIS系列/" style="font-size: 18.29px; color: #252525">2018鐵人賽-30天打造我的WebGIS系列</a> <a href="/tags/2019鐵人賽-30天精通GIS資料分析-使用Python/" style="font-size: 19.14px; color: #121212">2019鐵人賽-30天精通GIS資料分析-使用Python</a> <a href="/tags/D3/" style="font-size: 14px; color: #808080">D3</a> <a href="/tags/GIS/" style="font-size: 20px; color: #000">GIS</a> <a href="/tags/Google/" style="font-size: 14.86px; color: #6e6e6e">Google</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #808080">Hexo</a> <a href="/tags/Leaflet/" style="font-size: 14px; color: #808080">Leaflet</a> <a href="/tags/Mapillary/" style="font-size: 14px; color: #808080">Mapillary</a> <a href="/tags/Mongodb/" style="font-size: 14px; color: #808080">Mongodb</a> <a href="/tags/Node/" style="font-size: 14px; color: #808080">Node</a> <a href="/tags/PostgreSQL/" style="font-size: 14px; color: #808080">PostgreSQL</a> <a href="/tags/Turf-js/" style="font-size: 14.86px; color: #6e6e6e">Turf.js</a> <a href="/tags/WebGL/" style="font-size: 14px; color: #808080">WebGL</a> <a href="/tags/geojson/" style="font-size: 15.71px; color: #5b5b5b">geojson</a> <a href="/tags/github/" style="font-size: 14px; color: #808080">github</a> <a href="/tags/google/" style="font-size: 14px; color: #808080">google</a> <a href="/tags/javascript/" style="font-size: 14px; color: #808080">javascript</a> <a href="/tags/json/" style="font-size: 14px; color: #808080">json</a> <a href="/tags/leaflet/" style="font-size: 16.57px; color: #494949">leaflet</a> <a href="/tags/opendata/" style="font-size: 14px; color: #808080">opendata</a> <a href="/tags/proj4/" style="font-size: 14px; color: #808080">proj4</a> <a href="/tags/web/" style="font-size: 17.43px; color: #373737">web</a>
+    </div>
+</div>
+
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/chimin17" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://linkedin.com/in/chi-min-chiu-aba7a5148/" class="social linkedin"
+          target="_blank" rel="external">
+          <span class="icon icon-linkedin"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+<script>
+  var disqus_shortname = 'chimin17';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
